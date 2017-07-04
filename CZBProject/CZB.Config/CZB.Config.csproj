@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{59CD873E-A9C7-46BE-AAFF-43BF2CF613AA}</ProjectGuid>
+    <ProjectGuid>{87BFDACF-049B-4D26-959A-1A08B6065D36}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CZB.Common</RootNamespace>
-    <AssemblyName>CZB.Common</AssemblyName>
+    <RootNamespace>CZB.Config</RootNamespace>
+    <AssemblyName>CZB.Config</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,7 +31,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -40,9 +42,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseConfigFileManager.cs" />
+    <Compile Include="BaseConfigInfo.cs" />
+    <Compile Include="BaseConfigs.cs" />
+    <Compile Include="DefaultConfigFileManager.cs" />
+    <Compile Include="IConfigInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SerializationHelper.cs" />
-    <Compile Include="Utils.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CZB.Common\CZB.Common.csproj">
+      <Project>{59cd873e-a9c7-46be-aaff-43bf2cf613aa}</Project>
+      <Name>CZB.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
