@@ -56,7 +56,12 @@
     <Compile Include="MessageHandlers\CustomMessageHandler\CustomMessageHandler_Events.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\CZB.Config\CZB.Config.csproj">
+      <Project>{87bfdacf-049b-4d26-959a-1a08b6065d36}</Project>
+      <Name>CZB.Config</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>

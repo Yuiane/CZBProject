@@ -10,7 +10,7 @@ namespace CZB.Config
     /// 基本设置描述类, 加[Serializable]标记为可序列化
     /// </summary>
     [Serializable]
-    public class BaseConfigInfo: IConfigInfo
+    public class BaseConfigInfo : IConfigInfo
     {
 
         #region 私有字段
@@ -19,6 +19,9 @@ namespace CZB.Config
         private string m_dbtype = "";
         private string _language = ""; //语言
         private string _skin = string.Empty;//皮肤
+        private string token = "";
+        private string appid = "";
+        private string encodingAESKey = "";
 
         #endregion
 
@@ -36,6 +39,26 @@ namespace CZB.Config
         {
             get { return m_dbconnectstring; }
             set { m_dbconnectstring = value; }
+        }
+
+        public string EncodingAESKey
+        {
+            get { return encodingAESKey; }
+            set { encodingAESKey = value; }
+        }
+
+        public string AppId
+        {
+            get { return appid; }
+            set { appid = value; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public string Token
+        {
+            get { return token; }
+            set { token = value; }
         }
 
         /// <summary>

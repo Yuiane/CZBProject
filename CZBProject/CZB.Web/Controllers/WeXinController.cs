@@ -6,14 +6,15 @@ using Senparc.Weixin.MP;
 using Senparc.Weixin.MP.Entities.Request;
 using Senparc.Weixin.MP.MvcExtension;
 using CZB.Web.WeXin.CommonService.MessageHandlers.CustomMessageHandler;
+using CZB.Config;
 
 namespace CZB.Web.Controllers
 {
     public class WeXinController : Controller
     {
-        public static readonly string Token = "";//与微信公众账号后台的Token设置保持一致，区分大小写。
-        public static readonly string EncodingAESKey = "";//与微信公众账号后台的EncodingAESKey设置保持一致，区分大小写。
-        public static readonly string AppId = "";//与微信公众账号后台的AppId设置保持一致，区分大小写。
+        public static readonly string Token = BaseConfig.Token;
+        public static readonly string EncodingAESKey = BaseConfig.EncodingAESKey;
+        public static readonly string AppId = BaseConfig.AppId;
 
         /// <summary>
         /// 微信后台验证地址（使用Get），微信后台的“接口配置信息”的Url填写如：http://sdk.weixin.senparc.com/weixin

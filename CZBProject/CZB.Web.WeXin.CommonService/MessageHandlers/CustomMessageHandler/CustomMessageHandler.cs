@@ -29,7 +29,7 @@ using System.Xml.Linq;
 using Senparc.Weixin.MP.AdvancedAPIs;
 using System.Threading.Tasks;
 using Senparc.Weixin.Entities.Request;
-
+using CZB.Config;
 
 namespace CZB.Web.WeXin.CommonService.MessageHandlers.CustomMessageHandler
 {
@@ -43,23 +43,10 @@ namespace CZB.Web.WeXin.CommonService.MessageHandlers.CustomMessageHandler
          * 重要提示：v1.5起，MessageHandler提供了一个DefaultResponseMessage的抽象方法，
          * DefaultResponseMessage必须在子类中重写，用于返回没有处理过的消息类型（也可以用于默认消息，如帮助信息等）；
          * 其中所有原OnXX的抽象方法已经都改为虚方法，可以不必每个都重写。若不重写，默认返回DefaultResponseMessage方法中的结果。
+         *
          */
-
-
-#if DEBUG
-        string agentUrl = "http://localhost:12222/App/Weixin/4";
-        string agentToken = "27C455F496044A87";
-        string wiweihiKey = "CNadjJuWzyX5bz5Gn+/XoyqiqMa5DjXQ";
-#else
-        //下面的Url和Token可以用其他平台的消息，或者到www.weiweihi.com注册微信用户，将自动在“微信营销工具”下得到
-        private string agentUrl = WebConfigurationManager.AppSettings["WeixinAgentUrl"];//这里使用了www.weiweihi.com微信自动托管平台
-        private string agentToken = WebConfigurationManager.AppSettings["WeixinAgentToken"];//Token
-        private string wiweihiKey = WebConfigurationManager.AppSettings["WeixinAgentWeiweihiKey"];//WeiweihiKey专门用于对接www.Weiweihi.com平台，获取方式见：http://www.weiweihi.com/ApiDocuments/Item/25#51
-#endif
-
-        private string appId = "";// WebConfigurationManager.AppSettings["WeixinAppId"];
-        private string appSecret = "";// WebConfigurationManager.AppSettings["WeixinAppSecret"];
-
+        private string appId = BaseConfig.AppId; 
+        
         /// <summary>
         /// 模板消息集合（Key：checkCode，Value：OpenId）
         /// </summary>
@@ -116,7 +103,9 @@ namespace CZB.Web.WeXin.CommonService.MessageHandlers.CustomMessageHandler
         /// <returns></returns>
         public override IResponseMessageBase OnTextRequest(RequestMessageText requestMessage)
         {
-            return null;
+            var responseMessage = this.CreateResponseMessage<ResponseMessageText>();
+            responseMessage.Content = requestMessage.Content;
+            return responseMessage;
         }
 
         /// <summary>

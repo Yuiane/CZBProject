@@ -8,7 +8,7 @@ using System.Web;
 
 namespace CZB.Config
 {
-    public class BaseConfigs
+    public static class BaseConfigs
     {
         // private static System.Timers.Timer baseConfigTimer = new System.Timers.Timer(60000);
 

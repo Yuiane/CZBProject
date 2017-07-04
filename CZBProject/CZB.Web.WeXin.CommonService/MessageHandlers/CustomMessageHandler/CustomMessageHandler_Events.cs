@@ -169,29 +169,7 @@ QQ群：342319110
                         //strongResponseMessage.Image.MediaId = uploadResult.media_id;
                     }
                     break;
-                case "SubClickRoot_Agent"://代理消息
-                    {
-                        //获取返回的XML
-                        DateTime dt1 = DateTime.Now;
-                        reponseMessage = MessageAgent.RequestResponseMessage(this, agentUrl, agentToken, RequestDocument.ToString());
-                        //上面的方法也可以使用扩展方法：this.RequestResponseMessage(this,agentUrl, agentToken, RequestDocument.ToString());
-
-                        DateTime dt2 = DateTime.Now;
-
-                        if (reponseMessage is ResponseMessageNews)
-                        {
-                            (reponseMessage as ResponseMessageNews)
-                                .Articles[0]
-                                .Description += string.Format("\r\n\r\n代理过程总耗时：{0}毫秒", (dt2 - dt1).Milliseconds);
-                        }
-                    }
-                    break;
-                case "Member"://托管代理会员信息
-                    {
-                        //原始方法为：MessageAgent.RequestXml(this,agentUrl, agentToken, RequestDocument.ToString());//获取返回的XML
-                        reponseMessage = this.RequestResponseMessage(agentUrl, agentToken, RequestDocument.ToString());
-                    }
-                    break;
+               
                 case "OAuth"://OAuth授权测试
                     {
                         var strongResponseMessage = CreateResponseMessage<ResponseMessageNews>();
