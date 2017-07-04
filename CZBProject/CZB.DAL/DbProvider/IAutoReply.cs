@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CZB.DAL
 {
-    public interface IDataProvider
+    public interface IAutoReply
     {
 
         #region  AutoReply

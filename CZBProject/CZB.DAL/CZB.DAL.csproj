@@ -40,10 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataProvider\AutoReply.cs" />
-    <Compile Include="DbProvider\DatabaseProvider.cs" />
-    <Compile Include="DbProvider\IDataProvider.cs" />
-    <Compile Include="DbProvider\IDbProvider.cs" />
+    <Compile Include="DbProvider\IAutoReply.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

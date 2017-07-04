@@ -6,13 +6,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CZB.Model;
+using CZB.IDAL;
 
 namespace CZB.DAL.SqlServer
 {
     /// <summary>
     /// 数据访问类:CZB_AutoReply
     /// </summary>
-    public partial class DataProvider : IDataProvider
+    public partial class AutoReply : IAutoReply
     {
         #region  BasicMethod
 

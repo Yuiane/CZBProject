@@ -52,9 +52,9 @@
       <Project>{87bfdacf-049b-4d26-959a-1a08b6065d36}</Project>
       <Name>CZB.Config</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CZB.DAL\CZB.DAL.csproj">
-      <Project>{624ac7b6-c2aa-451c-bceb-ecebc41327e8}</Project>
-      <Name>CZB.DAL</Name>
+    <ProjectReference Include="..\CZB.DAL.SqlServer\CZB.DAL.SqlServer.csproj">
+      <Project>{4e38316f-325c-4f4d-971b-d8f49318fc94}</Project>
+      <Name>CZB.DAL.SqlServer</Name>
     </ProjectReference>
     <ProjectReference Include="..\CZB.Model\CZB.Model.csproj">
       <Project>{af4af262-8af1-4c2a-8ac3-bf722bbac0dc}</Project>
