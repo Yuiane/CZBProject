@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CZB.BLL", "CZB.BLL\CZB.BLL.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CZB.IDAL", "CZB.IDAL\CZB.IDAL.csproj", "{6B954FC5-70D9-46F2-BC8F-76A165BA6959}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CZB.Web.WeXin.CommonService", "CZB.Web.WeXin.CommonService\CZB.Web.WeXin.CommonService.csproj", "{845057CF-6DD8-46AC-B036-AEB74BB402E7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{6B954FC5-70D9-46F2-BC8F-76A165BA6959}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6B954FC5-70D9-46F2-BC8F-76A165BA6959}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6B954FC5-70D9-46F2-BC8F-76A165BA6959}.Release|Any CPU.Build.0 = Release|Any CPU
+		{845057CF-6DD8-46AC-B036-AEB74BB402E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{845057CF-6DD8-46AC-B036-AEB74BB402E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{845057CF-6DD8-46AC-B036-AEB74BB402E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{845057CF-6DD8-46AC-B036-AEB74BB402E7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

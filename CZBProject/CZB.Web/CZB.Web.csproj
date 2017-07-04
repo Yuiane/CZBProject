@@ -49,6 +49,18 @@
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Senparc.Weixin, Version=4.12.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Senparc.Weixin.4.12.4\lib\net45\Senparc.Weixin.dll</HintPath>
+    </Reference>
+    <Reference Include="Senparc.Weixin.MP, Version=14.4.13.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Senparc.Weixin.MP.14.4.13\lib\net45\Senparc.Weixin.MP.dll</HintPath>
+    </Reference>
+    <Reference Include="Senparc.Weixin.MP.MvcExtension, Version=4.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Senparc.Weixin.MP.MVC.4.6.0\lib\net45\Senparc.Weixin.MP.MvcExtension.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -112,9 +124,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.ApplicationInsights">
       <HintPath>..\packages\Microsoft.ApplicationInsights.2.2.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
     </Reference>
@@ -143,6 +152,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="Controllers\WeXinController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -191,6 +201,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Test\" />
+    <Folder Include="Views\WeXin\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -219,6 +230,10 @@
     <ProjectReference Include="..\CZB.Model\CZB.Model.csproj">
       <Project>{af4af262-8af1-4c2a-8ac3-bf722bbac0dc}</Project>
       <Name>CZB.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CZB.Web.WeXin.CommonService\CZB.Web.WeXin.CommonService.csproj">
+      <Project>{845057cf-6dd8-46ac-b036-aeb74bb402e7}</Project>
+      <Name>CZB.Web.WeXin.CommonService</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
