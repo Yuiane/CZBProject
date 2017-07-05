@@ -10,6 +10,8 @@ using Senparc.Weixin.HttpUtility;
 using Senparc.Weixin.MP.Entities;
 using Senparc.Weixin.MP.Helpers;
 using Senparc.Weixin.MP.MessageHandlers;
+using CZB.Common.Enums;
+using CZB.Common.Extensions;
 
 namespace CZB.Web.WeXin.CommonService.MessageHandlers.CustomMessageHandler
 {
@@ -18,6 +20,7 @@ namespace CZB.Web.WeXin.CommonService.MessageHandlers.CustomMessageHandler
     /// </summary>
     public partial class CustomMessageHandler
     {
+
         private string GetWelcomeInfo()
         {
             //获取Senparc.Weixin.MP.dll版本信息
@@ -70,7 +73,41 @@ QQ群：342319110
                 version);
         }
 
+        /// <summary>
+        /// 订阅（关注）事件
+        /// </summary>
+        /// <returns></returns>
+        public override IResponseMessageBase OnEvent_SubscribeRequest(RequestMessageEvent_Subscribe requestMessage)
+        {
 
+            var responseMessageContent = string.Empty;
+            var model = new CZB.BLL.AutoReply().GetAutoReplyList(string.Empty).Tables[0].ToEntity<Model.AutoReply>();
+            if (model != null)
+            {
+                if (model.ReplyType == AutoReplyTypeEnum.Text.GetHashCode())
+                {
+                    responseMessageContent = model.ReplyIdList;
+                }
+            }
+
+            var responseMessage = this.CreateResponseMessage<ResponseMessageText>();
+            responseMessage.Content = responseMessageContent;
+            return responseMessage;
+        }
+
+        /// <summary>
+        /// 位置事件
+        /// </summary>
+        /// <param name="requestMessage"></param>
+        /// <returns></returns>
+        public override IResponseMessageBase OnEvent_LocationRequest(RequestMessageEvent_Location requestMessage)
+        {
+            //这里是微信客户端（通过微信服务器）自动发送过来的位置信息
+            var responseMessage = CreateResponseMessage<ResponseMessageText>();
+            responseMessage.Content = "";
+            return responseMessage;//这里也可以返回null（需要注意写日志时候null的问题）
+        }
+        /*
 
         public override IResponseMessageBase OnTextOrEventRequest(RequestMessageText requestMessage)
         {
@@ -90,6 +127,7 @@ QQ群：342319110
             return null;//返回null，则继续执行OnTextRequest或OnEventRequest
         }
 
+        #region 
         /// <summary>
         /// 点击事件
         /// </summary>
@@ -249,7 +287,7 @@ QQ群：342319110
 
             return reponseMessage;
         }
-
+       
         /// <summary>
         /// 进入事件
         /// </summary>
@@ -459,5 +497,7 @@ QQ群：342319110
             //    .CreateResponseMessage<ResponseMessageNoResponse>();
             return null;
         }
+
+        */
     }
 }

@@ -48,5 +48,16 @@ namespace CZB.Config
                 return "";
             }
         }
+
+        /// <summary>
+        /// 公众号默认回复消息
+        /// </summary>
+        public static string DefaultInfo {
+            get {
+                if (config != null)
+                    return config.DefaultInfo;
+                return "";
+            }
+        }
     }
 }

@@ -57,9 +57,21 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CZB.BLL\CZB.BLL.csproj">
+      <Project>{4bc91731-ece2-49a0-a52b-77098e8745e7}</Project>
+      <Name>CZB.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CZB.Common\CZB.Common.csproj">
+      <Project>{59cd873e-a9c7-46be-aaff-43bf2cf613aa}</Project>
+      <Name>CZB.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CZB.Config\CZB.Config.csproj">
       <Project>{87bfdacf-049b-4d26-959a-1a08b6065d36}</Project>
       <Name>CZB.Config</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CZB.Model\CZB.Model.csproj">
+      <Project>{af4af262-8af1-4c2a-8ac3-bf722bbac0dc}</Project>
+      <Name>CZB.Model</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

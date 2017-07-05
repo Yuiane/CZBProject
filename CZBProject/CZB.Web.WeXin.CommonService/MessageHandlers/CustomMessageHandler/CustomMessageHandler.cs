@@ -5,7 +5,7 @@
     文件功能描述：微信公众号自定义MessageHandler
 
 
-    创建标识：Senparc - 20150312
+    创建标识：yuanlj - 2017-07-04
 ----------------------------------------------------------------*/
 
 using System;
@@ -30,6 +30,8 @@ using Senparc.Weixin.MP.AdvancedAPIs;
 using System.Threading.Tasks;
 using Senparc.Weixin.Entities.Request;
 using CZB.Config;
+using CZB.Common.Extensions;
+using CZB.Common.Enums;
 
 namespace CZB.Web.WeXin.CommonService.MessageHandlers.CustomMessageHandler
 {
@@ -45,8 +47,8 @@ namespace CZB.Web.WeXin.CommonService.MessageHandlers.CustomMessageHandler
          * 其中所有原OnXX的抽象方法已经都改为虚方法，可以不必每个都重写。若不重写，默认返回DefaultResponseMessage方法中的结果。
          *
          */
-        private string appId = BaseConfig.AppId; 
-        
+        private string appId = BaseConfig.AppId;
+
         /// <summary>
         /// 模板消息集合（Key：checkCode，Value：OpenId）
         /// </summary>
@@ -103,10 +105,23 @@ namespace CZB.Web.WeXin.CommonService.MessageHandlers.CustomMessageHandler
         /// <returns></returns>
         public override IResponseMessageBase OnTextRequest(RequestMessageText requestMessage)
         {
+            var responseMessageContent = BaseConfig.DefaultInfo;
+            var model = new CZB.BLL.AutoReply().GetAutoReplyList(requestMessage.Content).Tables[0].ToEntity<Model.AutoReply>();
+            if (model != null)
+            {
+                if (model.ReplyType == AutoReplyTypeEnum.Text.GetHashCode())
+                {
+                    responseMessageContent = model.ReplyIdList;
+                }
+            }
             var responseMessage = this.CreateResponseMessage<ResponseMessageText>();
-            responseMessage.Content = requestMessage.Content;
+            responseMessage.Content = responseMessageContent;
             return responseMessage;
         }
+
+        #region 分开管理
+        /*
+       
 
         /// <summary>
         /// 处理位置请求
@@ -239,6 +254,8 @@ namespace CZB.Web.WeXin.CommonService.MessageHandlers.CustomMessageHandler
             //TODO: 对Event信息进行统一操作
             return eventResponseMessage;
         }
+        */
+        #endregion 
 
         public override IResponseMessageBase DefaultResponseMessage(IRequestMessageBase requestMessage)
         {
@@ -250,7 +267,7 @@ namespace CZB.Web.WeXin.CommonService.MessageHandlers.CustomMessageHandler
             */
 
             var responseMessage = this.CreateResponseMessage<ResponseMessageText>();
-            responseMessage.Content = "这条消息来自DefaultResponseMessage。";
+            responseMessage.Content = "success";
             return responseMessage;
         }
     }

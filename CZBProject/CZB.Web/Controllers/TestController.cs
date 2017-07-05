@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CZB.Config;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +12,8 @@ namespace CZB.Web.Controllers
         // GET: Test
         public ActionResult Index()
         {
-            var info = BLL.AutoReply.GetList("");
+            return Content(BaseConfig.DefaultInfo);
+            var info = new BLL.AutoReply().GetList("");
             return Content(info.ToString());
         }
     }

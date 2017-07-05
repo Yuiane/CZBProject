@@ -1,0 +1,288 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>控制台 - Bootstrap后台管理系统模版Ace下载</title>
+    <meta name="keywords" content="Bootstrap模版,Bootstrap模版下载,Bootstrap教程,Bootstrap中文" />
+    <meta name="description" content="站长素材提供Bootstrap模版,Bootstrap教程,Bootstrap中文翻译等相关Bootstrap插件下载" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- basic styles -->
+    <link href="~/Areas/Adm1n_L0g1n/assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Areas/Adm1n_L0g1n/assets/css/font-awesome.min.css" />
+
+    <!--[if IE 7]>
+      <link rel="stylesheet" href="~/Areas/Adm1n_L0g1n/assets/css/font-awesome-ie7.min.css" />
+    <![endif]-->
+    <!-- page specific plugin styles -->
+    <!-- ace styles -->
+
+    <link rel="stylesheet" href="~/Areas/Adm1n_L0g1n/assets/css/ace.min.css" />
+    <link rel="stylesheet" href="~/Areas/Adm1n_L0g1n/assets/css/ace-rtl.min.css" />
+    <link rel="stylesheet" href="~/Areas/Adm1n_L0g1n/assets/css/ace-skins.min.css" />
+
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="~/Areas/Adm1n_L0g1n/assets/css/ace-ie.min.css" />
+    <![endif]-->
+    <!-- inline styles related to this page -->
+    <!-- ace settings handler -->
+
+    <script src="~/Areas/Adm1n_L0g1n/assets/js/ace-extra.min.js"></script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="~/Areas/Adm1n_L0g1n/assets/js/html5shiv.js"></script>
+    <script src="~/Areas/Adm1n_L0g1n/assets/js/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <div class="navbar navbar-default" id="navbar">
+        <script type="text/javascript">
+            try { ace.settings.check('navbar', 'fixed') } catch (e) { }
+        </script>
+
+        <div class="navbar-container" id="navbar-container">
+            <div class="navbar-header pull-left">
+                <a href="#" class="navbar-brand">
+                    <small>
+                        <i class="icon-leaf"></i>
+                        车直保微信管理系统
+                    </small>
+                </a><!-- /.brand -->
+            </div><!-- /.navbar-header -->
+
+            <div class="navbar-header pull-right" role="navigation">
+                <ul class="nav ace-nav">
+                    <li class="light-blue">
+                        <a data-toggle="dropdown" href="#" class="dropdown-toggle">
+                            <img class="nav-user-photo" src="~/Areas/Adm1n_L0g1n/assets/avatars/user.jpg" alt="Jason's Photo" />
+                            <span class="user-info">
+                                <small>欢迎光临,</small>
+                                Jason
+                            </span>
+
+                            <i class="icon-caret-down"></i>
+                        </a>
+
+                        <ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+                            <li>
+                                <a href="#">
+                                    <i class="icon-cog"></i>
+                                    设置
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#">
+                                    <i class="icon-user"></i>
+                                    个人资料
+                                </a>
+                            </li>
+
+                            <li class="divider"></li>
+
+                            <li>
+                                <a href="#">
+                                    <i class="icon-off"></i>
+                                    退出
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul><!-- /.ace-nav -->
+            </div><!-- /.navbar-header -->
+        </div><!-- /.container -->
+    </div>
+
+    <div class="main-container" id="main-container">
+
+        <script type="text/javascript">
+            try { ace.settings.check('main-container', 'fixed') } catch (e) { }
+        </script>
+
+        <div class="main-container-inner">
+            <a class="menu-toggler" id="menu-toggler" href="#">
+                <span class="menu-text"></span>
+            </a>
+
+            <div class="sidebar" id="sidebar">
+                <script type="text/javascript">
+                    try { ace.settings.check('sidebar', 'fixed') } catch (e) { }
+                </script>
+
+                <div class="sidebar-shortcuts" id="sidebar-shortcuts">
+                    <div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
+                        <button class="btn btn-success">
+                            <i class="icon-signal"></i>
+                        </button>
+
+                        <button class="btn btn-info">
+                            <i class="icon-pencil"></i>
+                        </button>
+
+                        <button class="btn btn-warning">
+                            <i class="icon-group"></i>
+                        </button>
+
+                        <button class="btn btn-danger">
+                            <i class="icon-cogs"></i>
+                        </button>
+                    </div>
+
+                    <div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
+                        <span class="btn btn-success"></span>
+
+                        <span class="btn btn-info"></span>
+
+                        <span class="btn btn-warning"></span>
+
+                        <span class="btn btn-danger"></span>
+                    </div>
+                </div><!-- #sidebar-shortcuts -->
+
+                <ul class="nav nav-list">
+                    <li class="active">
+                        <a href="#" class="dropdown-toggle">
+                            <i class="icon-list"></i>
+                            <span class="menu-text"> 回复管理 </span>
+
+                            <b class="arrow icon-angle-down"></b>
+                        </a>
+
+                        <ul class="submenu">
+                            <li>
+                                <a href="~/Adm1n_L0g1n/Manager/List" target="view_frame">
+                                    <i class="icon-double-angle-right"></i>
+                                    关注 &amp; 回复
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="jqgrid.html">
+                                    <i class="icon-double-angle-right"></i>
+                                    关键词 &amp; 回复
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" class="dropdown-toggle">
+                            <i class="icon-tag"></i>
+                            <span class="menu-text"> 更多页面 </span>
+
+                            <b class="arrow icon-angle-down"></b>
+                        </a>
+
+                        <ul class="submenu">
+                            <li>
+                                <a href="invoice.html">
+                                    <i class="icon-double-angle-right"></i>
+                                    购物车
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="timeline.html">
+                                    <i class="icon-double-angle-right"></i>
+                                    时间轴
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" class="dropdown-toggle">
+                            <i class="icon-file-alt"></i>
+
+                            <span class="menu-text">
+                                其他页面
+                                <span class="badge badge-primary ">2</span>
+                            </span>
+
+                            <b class="arrow icon-angle-down"></b>
+                        </a>
+                        <ul class="submenu">
+                            <li>
+                                <a href="faq.html">
+                                    <i class="icon-double-angle-right"></i>
+                                    帮助
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="error-404.html">
+                                    <i class="icon-double-angle-right"></i>
+                                    404错误页面
+                                </a>
+                            </li>
+
+                        </ul>
+                    </li>
+                </ul><!-- /.nav-list -->
+
+                <div class="sidebar-collapse" id="sidebar-collapse">
+                    <i class="icon-double-angle-left" data-icon1="icon-double-angle-left" data-icon2="icon-double-angle-right"></i>
+                </div>
+                <script type="text/javascript">
+                    try { ace.settings.check('sidebar', 'collapsed') } catch (e) { }
+                </script>
+            </div>
+
+            <div class="container-info" style="width:95%; height:520px;">
+                <iframe style="width:100%; height:500px;  border:0;" id="frame" src="~/Adm1n_L0g1n/Manager/List"></iframe>
+            </div>
+
+        </div>
+    </div><!-- /.main-container -->
+    <!-- basic scripts -->
+    <!--[if !IE]> -->
+
+    <script type="text/javascript">
+                    window.jQuery || document.write("<script src='/Areas/Adm1n_L0g1n/assets/js/jquery-2.0.3.min.js'>" + "<" + "script>");
+    </script>
+    <!-- <![endif]-->
+    <!--[if IE]>
+    <script type="text/javascript">
+     window.jQuery || document.write("<script src='~/Areas/Adm1n_L0g1n/assets/js/jquery-1.10.2.min.js'>"+"<"+"script>");
+    </script>
+    <![endif]-->
+
+    <script type="text/javascript">
+                    if ("ontouchend" in document) document.write("<script src='/Areas/Adm1n_L0g1n/assets/js/jquery.mobile.custom.min.js'>" + "<" + "script>");
+    </script>
+    <script src="~/Areas/Adm1n_L0g1n/assets/js/bootstrap.min.js"></script>
+    <script src="~/Areas/Adm1n_L0g1n/assets/js/typeahead-bs2.min.js"></script>
+
+    <!-- page specific plugin scripts -->
+    <!--[if lte IE 8]>
+      <script src="~/Areas/Adm1n_L0g1n/assets/js/excanvas.min.js"></script>
+    <![endif]-->
+
+    <script src="~/Areas/Adm1n_L0g1n/assets/js/jquery-ui-1.10.3.custom.min.js"></script>
+    <script src="~/Areas/Adm1n_L0g1n/assets/js/jquery.ui.touch-punch.min.js"></script>
+    <script src="~/Areas/Adm1n_L0g1n/assets/js/jquery.slimscroll.min.js"></script>
+    <script src="~/Areas/Adm1n_L0g1n/assets/js/jquery.easy-pie-chart.min.js"></script>
+    <script src="~/Areas/Adm1n_L0g1n/assets/js/jquery.sparkline.min.js"></script>
+    <script src="~/Areas/Adm1n_L0g1n/assets/js/flot/jquery.flot.min.js"></script>
+    <script src="~/Areas/Adm1n_L0g1n/assets/js/flot/jquery.flot.pie.min.js"></script>
+    <script src="~/Areas/Adm1n_L0g1n/assets/js/flot/jquery.flot.resize.min.js"></script>
+    <!-- ace scripts -->
+    <script src="~/Areas/Adm1n_L0g1n/assets/js/ace-elements.min.js"></script>
+    <script src="~/Areas/Adm1n_L0g1n/assets/js/ace.min.js"></script>
+    <script type="text/javascript">
+                    $(function () {
+                        $(".container-info").css("margin-left", $(".sidebar").width());
+                    });
+
+                    $("#sidebar-collapse").click(function () {
+                        alert($(".sidebar").width());
+                        $(".container-info").css("margin-left", $(".sidebar").width());
+                    });
+    </script>
+    <!-- inline scripts related to this page -->
+</body>
+</html>

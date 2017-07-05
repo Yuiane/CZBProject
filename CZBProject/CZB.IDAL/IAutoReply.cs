@@ -38,6 +38,21 @@ namespace CZB.IDAL
 
         int GetRecordCount(string strWhere);
 
+
+        /// <summary>
+        /// 获取关注回复信息
+        /// </summary>
+        /// <returns></returns>
+        DataSet GetSubscribeInfo();
+
+
+        /// <summary>
+        /// 获取关键词回复
+        /// </summary>
+        /// <param name="keyWord"></param>
+        /// <returns></returns>
+        DataSet GetAutoReplyListBykeyWord(string keyWord);
+
         #endregion
 
     }

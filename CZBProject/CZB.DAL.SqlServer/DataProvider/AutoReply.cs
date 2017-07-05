@@ -59,6 +59,34 @@ namespace CZB.DAL.SqlServer
                 return false;
             }
         }
+
+        /// <summary>
+        /// 获取关键词回复
+        /// </summary>
+        /// <param name="keyWord"></param>
+        /// <returns></returns>
+        public DataSet GetAutoReplyListBykeyWord(string keyWord)
+        {
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append(" select * from CZB_AutoReply where MessageType=1 and [state]=0 and keyWord=@keyWord ");
+
+            var sqlParameter = new SqlParameter[] {
+                new SqlParameter("@keyWord",keyWord)
+            };
+            return DbHelperSQL.Query(strSql.ToString(), sqlParameter);
+        }
+
+        /// <summary>
+        /// 获取关注回复
+        /// </summary>
+        /// <returns></returns>
+        public DataSet GetSubscribeInfo()
+        {
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append(" select * from CZB_AutoReply where MessageType=0 and [state]=0 ");
+            return DbHelperSQL.Query(strSql.ToString());
+        }
+
         /// <summary>
         /// 更新一条数据
         /// </summary>
@@ -190,7 +218,7 @@ namespace CZB.DAL.SqlServer
                 return Convert.ToInt32(obj);
             }
         }
-       
+
 
         #endregion  BasicMethod
     }
