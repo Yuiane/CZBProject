@@ -61,13 +61,29 @@ namespace CZB.DAL.SqlServer
         }
 
         /// <summary>
+        /// 根据编号获取一条数据
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public DataSet GetModelById(string id)
+        {
+            var strSql = new StringBuilder();
+            strSql.Append(" select * from CZB_AutoReply where Id=@id ");
+
+            var sqlParameter = new SqlParameter[] {
+                    new SqlParameter("@id",id)
+            };
+            return DbHelperSQL.Query(strSql.ToString(), sqlParameter);
+        }
+
+        /// <summary>
         /// 获取关键词回复
         /// </summary>
         /// <param name="keyWord"></param>
         /// <returns></returns>
         public DataSet GetAutoReplyListBykeyWord(string keyWord)
         {
-            StringBuilder strSql = new StringBuilder();
+            var strSql = new StringBuilder();
             strSql.Append(" select * from CZB_AutoReply where MessageType=1 and [state]=0 and keyWord=@keyWord ");
 
             var sqlParameter = new SqlParameter[] {
@@ -82,7 +98,7 @@ namespace CZB.DAL.SqlServer
         /// <returns></returns>
         public DataSet GetSubscribeInfo()
         {
-            StringBuilder strSql = new StringBuilder();
+            var strSql = new StringBuilder();
             strSql.Append(" select * from CZB_AutoReply where MessageType=0 and [state]=0 ");
             return DbHelperSQL.Query(strSql.ToString());
         }
@@ -90,11 +106,10 @@ namespace CZB.DAL.SqlServer
         /// <summary>
         /// 更新一条数据
         /// </summary>
-        public bool Update(CZB.Model.AutoReply model)
+        public bool Update(Model.AutoReply model)
         {
-            StringBuilder strSql = new StringBuilder();
+            var strSql = new StringBuilder();
             strSql.Append("update CZB_AutoReply set ");
-            strSql.Append("ID=@ID,");
             strSql.Append("MessageType=@MessageType,");
             strSql.Append("Keyword=@Keyword,");
             strSql.Append("ReplyType=@ReplyType,");
@@ -105,6 +120,7 @@ namespace CZB.DAL.SqlServer
             strSql.Append("Updatetime=@Updatetime,");
             strSql.Append("state=@state");
             strSql.Append(" where ");
+            strSql.Append("ID=@ID");
             SqlParameter[] parameters = {
                     new SqlParameter("@ID", SqlDbType.NVarChar,50),
                     new SqlParameter("@MessageType", SqlDbType.Int,4),

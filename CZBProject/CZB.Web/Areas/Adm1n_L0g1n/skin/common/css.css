@@ -57,7 +57,7 @@ body {
 }
 
 .content {
-    border: 1px solid #DEE2E5;
+    border: 0px solid #DEE2E5;
     padding: 2px;
 }
 
@@ -1651,6 +1651,7 @@ input[type=checkbox], input[type=radio] {
 
 /*toolbar begin */
 .toolbar {
+    
 }
 
     .toolbar .toolbar-btn {
@@ -1660,7 +1661,7 @@ input[type=checkbox], input[type=radio] {
         border-radius: 5px;
         padding: 3px 3px 3px 3px;
         border-width: 1px;
-        border-style: solid;
+        border: none;
     }
 
         .toolbar .toolbar-btn a {
@@ -1827,4 +1828,13 @@ body.rtl .formError .formErrorArrow{margin:-2px 13px 0 0;}
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
+}
+
+.txtInput {
+    border: 1px solid #cccccc;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 4px;
+    padding: 5px;
+    background-color: #ffffff;
 }

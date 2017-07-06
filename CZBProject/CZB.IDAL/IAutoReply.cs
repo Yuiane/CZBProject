@@ -53,6 +53,12 @@ namespace CZB.IDAL
         /// <returns></returns>
         DataSet GetAutoReplyListBykeyWord(string keyWord);
 
+        /// <summary>
+        /// 根据编号获取一条数据
+        /// </summary>
+        /// <param name="id">编号</param>
+        /// <returns></returns>
+        DataSet GetModelById(string id);
         #endregion
 
     }

@@ -152,6 +152,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Adm1n_L0g1n\Adm1n_L0g1nAreaRegistration.cs" />
     <Compile Include="Areas\Adm1n_L0g1n\Controllers\ManagerController.cs" />
+    <Compile Include="Areas\Adm1n_L0g1n\Models\AutoReplyModel.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Controllers\WeXinController.cs" />
@@ -258,6 +259,15 @@
     <Content Include="Areas\Adm1n_L0g1n\assets\js\x-editable\ace-editable.min.js" />
     <Content Include="Areas\Adm1n_L0g1n\assets\js\x-editable\bootstrap-editable.min.js" />
     <Content Include="Areas\Adm1n_L0g1n\skin\common\css.css" />
+    <Content Include="Areas\Adm1n_L0g1n\skin\common\img\add.png" />
+    <Content Include="Areas\Adm1n_L0g1n\skin\common\img\arrow_refresh.png" />
+    <Content Include="Areas\Adm1n_L0g1n\skin\common\img\delete.png" />
+    <Content Include="Areas\Adm1n_L0g1n\skin\common\img\icon-001.png" />
+    <Content Include="Areas\Adm1n_L0g1n\skin\common\img\magnifier.png" />
+    <Content Include="Areas\Adm1n_L0g1n\skin\common\img\main_55_1.gif" />
+    <Content Include="Areas\Adm1n_L0g1n\skin\common\img\tabs_bg.gif" />
+    <Content Include="Areas\Adm1n_L0g1n\skin\common\img\tOn.gif" />
+    <Content Include="Areas\Adm1n_L0g1n\skin\common\img\tOver.gif" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -276,6 +286,7 @@
     <Content Include="Areas\Adm1n_L0g1n\assets\font\fontawesome-webfont.woff" />
     <Content Include="Areas\Adm1n_L0g1n\Views\Manager\Index.cshtml" />
     <Content Include="Areas\Adm1n_L0g1n\Views\Manager\List.cshtml" />
+    <Content Include="Areas\Adm1n_L0g1n\Views\Manager\Update.cshtml" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -305,7 +316,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Adm1n_L0g1n\Models\" />
     <Folder Include="Areas\Adm1n_L0g1n\Views\Home\" />
     <Folder Include="Areas\Adm1n_L0g1n\Views\Shared\" />
     <Folder Include="Models\" />

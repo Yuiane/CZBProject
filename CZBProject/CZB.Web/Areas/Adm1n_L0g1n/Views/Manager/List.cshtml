@@ -4,28 +4,35 @@
 }
 <link href="~/Areas/Adm1n_L0g1n/skin/common/css.css" rel="stylesheet" />
 @using CZB.Model;
-<table width='100%' border='0' cellpadding='0' cellspacing='0' class='table table-bordered table-hover'>
-    <thead>
-        <tr>
-            <td width="40px" align="center">编号</td>
-            <td align="center">消息类型</td>
-            <td align="center">关键词</td>
-            <td align="center">回复类型</td>
-            <td align="center">回复信息</td>
-            <td align="center">状态</td>
-        </tr>
-    </thead>
-    @{int k = 1;}
-    @foreach (AutoReply info in Model)
-    {
-        <tr>
-            <td>@k</td>
-            <td align="center">@( info.MessageType == 0 ? "关注回复" : "关键词回复" )</td>
-            <td align="center">@info.Keyword </td>
-            <td align="center">@(info.ReplyType == 0 ? "文字" : info.ReplyType == 1 ? "图片" : "图文") </td>
-            <td>@info.ReplyIdList </td>
-            <td align="center">@(info.state == 0 ? "有效" : "无效")  </td>
-        </tr>
-        k += 1;
-    }
-</table>
+<div class="content">
+    <div class="navTitle">回复管理 | 回复列表</div>
+    <table width='100%' border='0' cellpadding='0' cellspacing='0' class='table table-bordered table-hover'>
+        <thead>
+            <tr>
+                <td width="40px" align="center">编号</td>
+                <td width="100px" align="center">消息类型</td>
+                <td width="80px" align="center">关键词</td>
+                <td width="80px" align="center">回复类型</td>
+                <td align="center">回复信息</td>
+                <td width="40px" align="center">状态</td>
+                <td width="40px" align="center">操作</td>
+            </tr>
+        </thead>
+        @{int k = 1;}
+        @foreach (AutoReply info in Model)
+        {
+            <tr>
+                <td align="center">@k</td>
+                <td align="center">@( info.MessageType == 0 ? "关注" : "关键词" )</td>
+                <td align="center">@info.Keyword </td>
+                <td align="center">@(info.ReplyType == 0 ? "文字" : info.ReplyType == 1 ? "图片" : "图文") </td>
+                <td align="left">@info.ReplyIdList </td>
+                <td align="center">@(info.state == 0 ? "有效" : "无效")  </td>
+                <td align="center">
+                    <a href="Update/@info.ID" class="table-btn-edit">修改</a>
+                </td>
+            </tr>
+            k += 1;
+        }
+    </table>
+</div>
