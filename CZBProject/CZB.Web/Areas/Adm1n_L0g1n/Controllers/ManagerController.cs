@@ -55,7 +55,7 @@ namespace CZB.Web.Areas.Adm1n_L0g1n.Controllers
                 var selectMessageType = Request.Form["selectMessageType"].ToInt32();
                 var txtContent = Request.Form["txtContent"].ToStringEx();
                 var selectState = Request.Form["selectState"].ToInt32();
-                var state = Request.Form["state"].ToInt32();
+                var state = Request.Form["selectState"].ToInt32();
                 if (id.IsNotNullOrWhiteSpace())
                 {
                     //修改
