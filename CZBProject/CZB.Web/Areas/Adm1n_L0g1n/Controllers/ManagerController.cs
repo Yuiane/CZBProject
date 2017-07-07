@@ -19,10 +19,24 @@ namespace CZB.Web.Areas.Adm1n_L0g1n.Controllers
         /// <summary>
         /// 回复列表
         /// </summary>
+        /// <param name="type">回复列表</param>
         /// <returns></returns>
-        public ActionResult List()
+        public ActionResult List(int? id)
         {
             var list = new BLL.AutoReply().GetList(string.Empty).Tables[0].ToEntityList<Model.AutoReply>();
+            if (id.HasValue)
+            {
+                if (id == 1)
+                {
+                    //关注
+                    list = list.Where(exp => exp.MessageType == 0).ToList();
+                }
+                else
+                {
+                    //关键词
+                    list = list.Where(exp => exp.MessageType == 1).ToList();
+                }
+            }
             return View(list);
         }
 
@@ -96,7 +110,7 @@ namespace CZB.Web.Areas.Adm1n_L0g1n.Controllers
                     }
                 }
             }
-            catch(Exception err)
+            catch (Exception err)
             {
                 return Content(err.Message);
             }

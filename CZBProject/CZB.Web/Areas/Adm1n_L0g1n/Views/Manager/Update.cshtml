@@ -17,6 +17,7 @@
                         <option value="0">关注</option>
                         <option value="1">关键词</option>
                     </select>
+                    <span class="redbold">*关注消息 只能存在一条,请谨慎修改</span>
                 </td>
             </tr>
             <tr>
@@ -94,12 +95,10 @@
                 alert("网络错误，请刷新后再操作！");
             },
             success: function (result) {
-                if (result == "1")
-                {
+                if (result == "1") {
                     alert("修改成功");
                     window.location.href = "/Adm1n_L0g1n/Manager/List";
-                } else if (result == "3")
-                {
+                } else if (result == "3") {
                     alert("新增成功");
                     window.location.href = "/Adm1n_L0g1n/Manager/List";
                 } else {
