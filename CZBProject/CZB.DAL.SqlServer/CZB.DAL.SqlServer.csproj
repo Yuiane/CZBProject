@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="DataProvider\AutoReply.cs" />
     <Compile Include="CommandInfo.cs" />
+    <Compile Include="DataProvider\Material.cs" />
     <Compile Include="DbHelperSQL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -62,6 +63,9 @@
       <Project>{af4af262-8af1-4c2a-8ac3-bf722bbac0dc}</Project>
       <Name>CZB.Model</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="CZB\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

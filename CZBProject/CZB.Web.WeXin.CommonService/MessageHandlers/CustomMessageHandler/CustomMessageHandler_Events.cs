@@ -81,7 +81,7 @@ QQ群：342319110
         {
 
             var responseMessageContent = string.Empty;
-            var model = new CZB.BLL.AutoReply().GetAutoReplyList(string.Empty).Tables[0].ToEntity<Model.AutoReply>();
+            var model = new CZB.BLL.AutoReplys().GetAutoReplyList(string.Empty).Tables[0].ToEntity<Model.AutoReply>();
             if (model != null)
             {
                 if (model.ReplyType == AutoReplyTypeEnum.Text.GetHashCode())

@@ -106,7 +106,7 @@ namespace CZB.Web.WeXin.CommonService.MessageHandlers.CustomMessageHandler
         public override IResponseMessageBase OnTextRequest(RequestMessageText requestMessage)
         {
             var responseMessageContent = BaseConfig.DefaultInfo;
-            var model = new CZB.BLL.AutoReply().GetAutoReplyList(requestMessage.Content).Tables[0].ToEntity<Model.AutoReply>();
+            var model = new CZB.BLL.AutoReplys().GetAutoReplyList(requestMessage.Content).Tables[0].ToEntity<Model.AutoReply>();
             if (model != null)
             {
                 if (model.ReplyType == AutoReplyTypeEnum.Text.GetHashCode())

@@ -23,7 +23,7 @@ namespace CZB.Web.Areas.Adm1n_L0g1n.Controllers
         /// <returns></returns>
         public ActionResult List(int? id)
         {
-            var list = new BLL.AutoReply().GetList(string.Empty).Tables[0].ToEntityList<Model.AutoReply>();
+            var list = new BLL.AutoReplys().GetList(string.Empty).Tables[0].ToEntityList<Model.AutoReply>();
             if (id.HasValue)
             {
                 if (id == 1)
@@ -50,7 +50,7 @@ namespace CZB.Web.Areas.Adm1n_L0g1n.Controllers
             AutoReplyModel model = new AutoReplyModel();
             if (id.IsNotNullOrWhiteSpace())
             {
-                model.info = new BLL.AutoReply().GetModelById(id);
+                model.info = new BLL.AutoReplys().GetModelById(id);
             }
             return View(model);
         }
@@ -73,14 +73,14 @@ namespace CZB.Web.Areas.Adm1n_L0g1n.Controllers
                 if (id.IsNotNullOrWhiteSpace())
                 {
                     //修改
-                    Model.AutoReply model = new BLL.AutoReply().GetModelById(id);
+                    Model.AutoReply model = new BLL.AutoReplys().GetModelById(id);
                     model.ID = id;
                     model.Keyword = txtKeyWord;
                     model.ReplyType = selectReplyType;
                     model.MessageType = selectMessageType;
                     model.ReplyIdList = txtContent;
                     model.state = state;
-                    if (new BLL.AutoReply().Update(model))
+                    if (new BLL.AutoReplys().Update(model))
                     {
                         return Content("1");
                     }
@@ -100,7 +100,7 @@ namespace CZB.Web.Areas.Adm1n_L0g1n.Controllers
                     model.MessageType = selectMessageType;
                     model.ReplyIdList = txtContent;
                     model.state = state;
-                    if (new BLL.AutoReply().Add(model))
+                    if (new BLL.AutoReplys().Add(model))
                     {
                         return Content("3");
                     }

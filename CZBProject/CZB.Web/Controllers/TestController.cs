@@ -13,7 +13,7 @@ namespace CZB.Web.Controllers
         public ActionResult Index()
         {
             return Content(BaseConfig.DefaultInfo);
-            var info = new BLL.AutoReply().GetList("");
+            var info = new BLL.AutoReplys().GetList("");
             return Content(info.ToString());
         }
     }

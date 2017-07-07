@@ -9,7 +9,7 @@ using CZB.Common.Extensions;
 
 namespace CZB.BLL
 {
-    public class AutoReply
+    public class AutoReplys
     {
         private DAL.SqlServer.AutoReply dal = new DAL.SqlServer.AutoReply();
         /// <summary>
