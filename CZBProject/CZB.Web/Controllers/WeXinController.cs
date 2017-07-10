@@ -7,6 +7,9 @@ using Senparc.Weixin.MP.Entities.Request;
 using Senparc.Weixin.MP.MvcExtension;
 using CZB.Web.WeXin.CommonService.MessageHandlers.CustomMessageHandler;
 using CZB.Config;
+using CZB.Common;
+using CZB.Common.Enums;
+using CZB.Common.Extensions;
 
 namespace CZB.Web.Controllers
 {
@@ -57,7 +60,13 @@ namespace CZB.Web.Controllers
 
             //return Content(messageHandler.ResponseDocument.ToString());//v0.7-
             //return new WeixinResult(messageHandler);//v0.8+
-            return new FixWeixinBugWeixinResult(messageHandler);//v0.8+
+
+            var result = new FixWeixinBugWeixinResult(messageHandler);//v0.8+
+            if (result.ToJson().Contains("success"))
+            {
+                return Content("success");
+            }
+            return result;
         }
 
     }

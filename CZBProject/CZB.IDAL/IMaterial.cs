@@ -48,6 +48,13 @@ namespace CZB.IDAL
         #endregion  成员方法
         #region  MethodEx
 
+        /// <summary>
+        /// 根据编号获取数据信息
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
+        DataSet GetModelById(string Id);
+
         #endregion  MethodEx
     }
 }

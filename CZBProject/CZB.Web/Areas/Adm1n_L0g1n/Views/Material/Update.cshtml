@@ -11,8 +11,8 @@
             <tr>
                 <td align="right">回复类型:</td>
                 <td align="left">
-                    <input type="hidden" id="txtId" name="txtId" />
-                    <select name="selectMessageType" onchange="changeMessageType()" id="selectMessageType">
+                    <input type="hidden" id="txtId" name="txtId" value=" @if (Model.info != null) { @Model.info.ID }" />
+                    <select name="selectReplyType" onchange="changeMessageType()" id="selectReplyType" value=" @if (Model.info != null) { @Model.info.ReplyType}">
                         <option value="0">文字</option>
                         <option value="1">图片</option>
                         <option value="2">图文</option>
@@ -22,27 +22,29 @@
             <tr>
                 <td align="right">回复内容&标题:</td>
                 <td align="left" colspan="2">
-                    <textarea name="txtContent" id="txtContent" style="width: 813px; height:140px;"></textarea>
+                    <textarea name="txtContent" id="txtContent" style="width: 813px; height:140px;">@if (Model.info != null) { @Model.info.Context }</textarea>
                 </td>
             </tr>
             <tr>
                 <td align="right">选择图片:</td>
                 <td colspan="2">
                     <input type="file" style="width:75px; height:50px;float:left;" name="files[]" id="demo-fileInput-4" multiple>
-                    <div id="click" style="width: 50px; margin-left:75px; height: 50px; border: 1px solid #000;"></div>
+                    <div id="click" style="width: 50px; margin-left:75px; height: 50px; border: 1px solid #000;">
+                        <img id="clickImg" src="@if (Model.info != null) { @Model.info.ImageUrl }" style="width: 100%; height: 100%;" />
+                    </div>
                 </td>
             </tr>
 
             <tr>
                 <td align="right">链接地址:</td>
                 <td align="left">
-                    <input name="txtKeyWord" id="txtKeyWord" style="width:320px;" class="txtInput" value="" />
+                    <input name="txtKeyWord" id="txtKeyWord" style="width:320px;" class="txtInput" value="@if (Model.info != null) { @Model.info.LinkUrl }" />
                 </td>
             </tr>
             <tr>
                 <td align="right">状态:</td>
                 <td align="left">
-                    <select name="selectState" id="selectState" value="">
+                    <select name="selectState" id="selectState" value="@if (Model.info != null) { @Model.info.State }">
                         <option value="0">有效</option>
                         <option value="1">无效</option>
                     </select>
@@ -71,14 +73,10 @@
                     alert('文件大小大于2M');
                     return;
                 }
-                img.src = this.result;
-                img.style.width = "100%";
-                img.style.height = "100%";
-                document.getElementById('click').style.width = "50px";
-                document.getElementById('click').style.height = "50px";
-                document.getElementById('click').innerHTML = '';
-                document.getElementById('click').appendChild(img);
+                document.getElementById('clickImg').setAttribute("src", this.result);
             }
         });
+        $("#selectReplyType").find("option[value=" + $("#selectReplyType").attr("value") + "]").attr("selected", true);
+        $("#selectState").find("option[value=" + $("#selectState").attr("value") + "]").attr("selected", true);
     });
 </script>

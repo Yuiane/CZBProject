@@ -155,6 +155,7 @@
     <Compile Include="Areas\Adm1n_L0g1n\Controllers\ManagerController.cs" />
     <Compile Include="Areas\Adm1n_L0g1n\Controllers\MaterialController.cs" />
     <Compile Include="Areas\Adm1n_L0g1n\Models\AutoReplyModel.cs" />
+    <Compile Include="Areas\Adm1n_L0g1n\Models\MaterialModel.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Controllers\WeXinController.cs" />

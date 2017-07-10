@@ -127,6 +127,22 @@ namespace CZB.DAL.SqlServer.DataProvider
         }
 
         /// <summary>
+        /// 根据编号获取数据信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public DataSet GetModelById(string id)
+        {
+            var strSql = new StringBuilder();
+            strSql.Append(" select * from CZB_Material where ID=@ID; ");
+
+            var sqlParametr = new SqlParameter[] {
+                new SqlParameter("@ID",id)
+            };
+            return DbHelperSQL.Query(strSql.ToString(), sqlParametr);
+        }
+
+        /// <summary>
         /// 删除一条数据
         /// </summary>
         public bool Delete(string ID)

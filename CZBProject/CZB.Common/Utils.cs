@@ -4,11 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace CZB.Common
 {
     public class Utils
     {
+
+        /// <summary>
+        /// 得到当前访问的路径[http://www.baidu.com?pIdx=2]
+        /// </summary>
+        /// <returns></returns>
+        public static string GetCurrentUrl()
+        {
+            return HttpContext.Current.Request.Url.ToString();
+        }
 
         /// <summary>
         /// 将对象转换为Int32类型

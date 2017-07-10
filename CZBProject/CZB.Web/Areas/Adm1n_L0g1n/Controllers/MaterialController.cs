@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using CZB.Common.Extensions;
 using System.IO;
 using System.Security.Cryptography;
+using CZB.Web.Areas.Adm1n_L0g1n.Models;
 
 namespace CZB.Web.Areas.Adm1n_L0g1n.Controllers
 {
@@ -29,18 +30,85 @@ namespace CZB.Web.Areas.Adm1n_L0g1n.Controllers
         }
 
         /// <summary>
-        /// 修改&新增
+        /// 修改&新增 页面
         /// </summary>
         /// <returns></returns>
         public ActionResult Update(string id)
         {
-            return View();
+            MaterialModel model = new MaterialModel();
+            if (id.IsNotNullOrWhiteSpace())
+            {
+                model.info = new BLL.Materials().GetModelById(id).Tables[0].ToEntity<Model.Material>();
+            }
+            return View(model);
         }
 
+        /// <summary>
+        /// 修改&新增业务方法
+        /// </summary>
+        /// <returns></returns>
         public ActionResult AddOrUpdate()
         {
-            string imgUrl = Upload(System.Web.HttpContext.Current.Request.Files);
-            return Content("");
+
+            var id = Request.Form["txtId"].ToStringEx();
+            var context = Request.Form["txtContent"].ToStringEx();
+            var linkuurl = Request.Form["txtKeyWord"].ToStringEx();
+            var state = Request.Form["selectState"].ToInt32();
+            var replyState = Request.Form["selectReplyType"].ToInt32();
+            var imgUrl = Upload(System.Web.HttpContext.Current.Request.Files);
+            if (id.IsNotNullOrWhiteSpace())
+            {
+                //修改
+                Model.Material model = new BLL.Materials().GetModelById(id).Tables[0].ToEntity<Model.Material>();
+                if (model != null)
+                {
+                    model.Context = context;
+                    model.LinkUrl = linkuurl;
+                    model.State = state;
+                    model.ReplyType = replyState;
+                    model.UpdateTime = DateTime.Now;
+                    if (imgUrl.IsNotNullOrWhiteSpace())
+                    {
+                        model.ImageUrl = imgUrl;
+                    }
+                    if (new BLL.Materials().Update(model))
+                    {
+                        return Content("1");
+                    }
+                    else
+                    {
+                        return Content("2");
+                    }
+                }
+            }
+
+            else
+            {
+                //新增
+                Model.Material model = new Model.Material()
+                {
+                    ID = Guid.NewGuid().ToStringEx(),
+                    Context = context,
+                    ImageUrl = "",
+                    ReplyType = replyState,
+                    State = state,
+                    LinkUrl = linkuurl
+                };
+                if (imgUrl.IsNotNullOrWhiteSpace())
+                {
+                    model.ImageUrl = imgUrl;
+                }
+
+                if (new BLL.Materials().Add(model))
+                {
+                    return Content("3");
+                }
+                else
+                {
+                    return Content("4");
+                }
+            }
+            return Content("0");
         }
 
 
@@ -62,7 +130,7 @@ namespace CZB.Web.Areas.Adm1n_L0g1n.Controllers
                 string strHashData = System.BitConverter.ToString(arrbytHashValue).Replace("-", "");
                 string FileEextension = Path.GetExtension(files[0].FileName);
                 string uploadDate = DateTime.Now.ToString("yyyyMMdd");
-                string virtualPath = string.Format("/Upload/{0}/{1}{2}", uploadDate, strHashData, FileEextension);
+                string virtualPath = string.Format("/upload/{0}/{1}{2}", uploadDate, strHashData, FileEextension);
                 string fullFileName = Server.MapPath(virtualPath);
                 //创建文件夹，保存文件  
                 string path = Path.GetDirectoryName(fullFileName);
@@ -71,7 +139,7 @@ namespace CZB.Web.Areas.Adm1n_L0g1n.Controllers
                 {
                     files[0].SaveAs(fullFileName);
                 }
-                return files[0].FileName.Substring(files[0].FileName.LastIndexOf("\\") + 1, files[0].FileName.Length - files[0].FileName.LastIndexOf("\\") - 1);
+                return virtualPath;
             }
             catch { }
             return string.Empty;

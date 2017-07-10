@@ -9,7 +9,7 @@ namespace CZB.BLL
 {
     public class Materials
     {
-        private readonly CZB.DAL.SqlServer.DataProvider.Material dal = new DAL.SqlServer.DataProvider.Material();
+        private readonly DAL.SqlServer.DataProvider.Material dal = new DAL.SqlServer.DataProvider.Material();
         public Materials()
         { }
         #region  BasicMethod
@@ -122,6 +122,7 @@ namespace CZB.BLL
         {
             return dal.GetRecordCount(strWhere);
         }
+
         /// <summary>
         /// 分页获取数据列表
         /// </summary>
@@ -139,6 +140,16 @@ namespace CZB.BLL
 
         #endregion  BasicMethod
         #region  ExtensionMethod
+
+        /// <summary>
+        /// 根据编号获取数据信息
+        /// </summary>
+        public DataSet GetModelById(string Id)
+        {
+            return dal.GetModelById(Id);
+        }
+
+
 
         #endregion  ExtensionMethod
     }
