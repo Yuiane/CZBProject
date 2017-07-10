@@ -1838,3 +1838,15 @@ body.rtl .formError .formErrorArrow{margin:-2px 13px 0 0;}
     padding: 5px;
     background-color: #ffffff;
 }
+
+input.btn-submit {
+    background-color: #2b7dbc;
+    display: block;
+    text-align: center;
+    width: 70px;
+    border: 1px;
+    color: white;
+    padding: 3px 4px;
+    font-size: 14px;
+    border-radius: 4px;
+}

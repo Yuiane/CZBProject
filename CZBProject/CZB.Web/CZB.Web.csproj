@@ -151,6 +151,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Adm1n_L0g1n\Adm1n_L0g1nAreaRegistration.cs" />
+    <Compile Include="Areas\Adm1n_L0g1n\Controllers\CommonController.cs" />
     <Compile Include="Areas\Adm1n_L0g1n\Controllers\ManagerController.cs" />
     <Compile Include="Areas\Adm1n_L0g1n\Controllers\MaterialController.cs" />
     <Compile Include="Areas\Adm1n_L0g1n\Models\AutoReplyModel.cs" />
@@ -319,8 +320,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Adm1n_L0g1n\Views\Home\" />
-    <Folder Include="Areas\Adm1n_L0g1n\Views\ImageText\" />
+    <Folder Include="Areas\Adm1n_L0g1n\Views\Common\" />
     <Folder Include="Areas\Adm1n_L0g1n\Views\Shared\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Test\" />
