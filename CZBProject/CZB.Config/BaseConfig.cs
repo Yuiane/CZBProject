@@ -48,12 +48,28 @@ namespace CZB.Config
                 return "";
             }
         }
+        /// <summary>
+        /// 与微信公众账号后台的AppSecret设置保持一致，区分大小写。
+        /// </summary>
+        public static string AppSecret
+        {
+            get
+            {
+                if (config != null)
+                {
+                    return config.AppSecret;
+                }
+                return "";
+            }
+        }
 
         /// <summary>
         /// 公众号默认回复消息
         /// </summary>
-        public static string DefaultInfo {
-            get {
+        public static string DefaultInfo
+        {
+            get
+            {
                 if (config != null)
                     return config.DefaultInfo;
                 return "";

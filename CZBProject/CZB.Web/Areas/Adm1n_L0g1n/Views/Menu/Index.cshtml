@@ -1,0 +1,193 @@
+﻿
+@{
+    Layout = null;
+}
+<link href="~/Areas/Adm1n_L0g1n/skin/common/css.css" rel="stylesheet" />
+@using Senparc.Weixin.MP.Entities;
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<style type="text/css">
+    .input {
+        width: 200px;
+    }
+
+    input {
+        height: 30px !important;
+    }
+
+    .cells {
+        line-height: 48px;
+    }
+
+    .font-small {
+        font-size: 14px;
+    }
+</style>
+<div class="content">
+    <div class="navTitle">自定义菜单管理 | 自定义菜单设置</div>
+    <form action="javascript:void(0);" id="autoReplyForm" name="autoReplyForm">
+        <table width="100%" border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+            <tr>
+                <td align="center"></td>
+                <td align="center">第一列</td>
+                <td align="center">第二列</td>
+                <td align="center">第三列</td>
+            </tr>
+            <tr>
+                <td align="center">二级菜单No.1</td>
+                <td align="center"><input class="input sub-first-menu" type="text" value="" attr-type="" attr-url="" attr-key="" /></td>
+                <td align="center"><input class="input sub-second-menu" type="text" value="" attr-type="" attr-url="" attr-key="" /></td>
+                <td align="center"><input class="input sub-third-menu" type="text" value="" attr-type="" attr-url="" attr-key="" /></td>
+
+            </tr>
+            <tr>
+                <td align="center">二级菜单No.2</td>
+                <td align="center"><input class="input sub-first-menu" type="text" value="" attr-type="" attr-url="" attr-key="" /></td>
+                <td align="center"><input class="input sub-second-menu" type="text" value="" attr-type="" attr-url="" attr-key="" /></td>
+                <td align="center"><input class="input sub-third-menu" type="text" value="" attr-type="" attr-url="" attr-key="" /></td>
+            </tr>
+            <tr>
+                <td align="center">二级菜单No.3</td>
+                <td align="center"><input class="input sub-first-menu" type="text" value="" attr-type="" attr-url="" attr-key="" /></td>
+                <td align="center"><input class="input sub-second-menu" type="text" value="" attr-type="" attr-url="" attr-key="" /></td>
+                <td align="center"><input class="input sub-third-menu" type="text" value="" attr-type="" attr-url="" attr-key="" /></td>
+            </tr>
+            <tr>
+                <td align="center">二级菜单No.4</td>
+                <td align="center"><input class="input sub-first-menu" type="text" value="" attr-type="" attr-url="" attr-key="" /></td>
+                <td align="center"><input class="input sub-second-menu" type="text" value="" attr-type="" attr-url="" attr-key="" /></td>
+                <td align="center"><input class="input sub-third-menu" type="text" value="" attr-type="" attr-url="" attr-key="" /></td>
+            </tr>
+            <tr>
+                <td align="center">二级菜单No.5</td>
+                <td align="center"><input class="input sub-first-menu" type="text" value="" attr-type="" attr-url="" attr-key="" /></td>
+                <td align="center"><input class="input sub-second-menu" type="text" value="" attr-type="" attr-url="" attr-key="" /></td>
+                <td align="center"><input class="input sub-third-menu" type="text" value="" attr-type="" attr-url="" attr-key="" /></td>
+            </tr>
+            <tr class="first-menu">
+                <td align="center">一级菜单按钮</td>
+                <td align="center">
+                    <input class="input first-menu-input" type="text" value="" attr-type="" attr-url="" attr-key="" />
+                </td>
+                <td align="center">
+                    <input class="input first-menu-input" type="text" value="" attr-type="" attr-url="" attr-key="" />
+                </td>
+                <td align="center">
+                    <input class="input first-menu-input" type="text" value="" attr-type="" attr-url="" attr-key="" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3" align="center">
+                    <div class="cells">
+                        &nbsp;&nbsp;Type：&nbsp;
+                        <select id="selectType">
+                            <option value="click" selected="selected">点击事件（传回服务器）</option>
+                            <option value="view">访问网页（直接跳转）</option>
+                            <option value="miniprogram">小程序（直接跳转）</option>
+                            <option value="location_select">弹出地理位置选择器</option>
+                            <option value="pic_photo_or_album">弹出拍照或者相册发图</option>
+                            <option value="pic_sysphoto">弹出系统拍照发图</option>
+                            <option value="pic_weixin">弹出微信相册发图器</option>
+                            <option value="scancode_push">扫码推事件</option>
+                            <option value="scancode_waitmsg">扫码推事件且弹出“消息接收中”提示框</option>
+                        </select>
+                        <div id="KeyConfig">
+                            &nbsp;&nbsp;&nbsp;&nbsp;Key：&nbsp;&nbsp;<input style="width:320px!important;" id="key_value" type="text" value="" />
+                        </div>
+                        <div id="UrlConfig" style="display:none;">
+                            &nbsp;&nbsp;&nbsp;&nbsp;Url：&nbsp;&nbsp;<input style="width:320px!important;" id="url_value" type="text" value="" />
+                        </div>
+                    </div>
+                </td>
+                <td align="center">
+                    <input type="button" class="btn-submit" value="更新菜单" />
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+<script type="text/javascript">
+    $(function () {
+        InitLoad();
+
+        $(".input").on("click", function () {
+            var type = $(this).attr("attr-type");
+            obj = document.getElementById("selectType");
+            for (i = 0; i < obj.length; i++) {
+                if (obj[i].value == type)
+                    obj[i].selected = true;
+            }
+            if (type == "view") {
+                $("#UrlConfig").show();
+                $("#KeyConfig").hide();
+                $("#url_value").val($(this).attr("attr-url"));
+            } else {
+                $("#KeyConfig").show();
+                $("#UrlConfig").hide();
+                $("#key_value").val($(this).attr("attr-key"));
+            }
+
+        })
+    });
+
+    //初始化-加载菜单
+    function InitLoad() {
+        $.ajax({
+            type: "post",
+            async: true,
+            url: "/Adm1n_L0g1n/Menu/GetMenu",
+            dataType: "JSON",
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                alert("网络错误，请刷新后再操作！");
+            },
+            success: function (result) {
+                var result = eval(result);
+                console.log(result);
+                if (result.errcode == 0 && result.menu != null && result.menu.button != null) {
+                    for (var i = 0; i < result.menu.button.length; i++) {
+                        if (result.menu.button[i].sub_button != null) {
+                            //自定义菜单多个
+                            InitLoadMenuSub_Button(result.menu.button[i], i);
+                        }
+                        else {
+                            //自定义菜单单个
+                            InitLoadMenuButton(result.menu.button[i], i);
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    //多个菜单
+    function InitLoadMenuSub_Button(sender, index) {
+        var senderValue = "sub-first-menu";
+        if (index == 0) {
+            senderValue = "sub-first-menu";
+        } else if (index == 1) {
+            senderValue = "sub-second-menu";
+
+        } else {
+            senderValue = "sub-third-menu";
+
+        }
+        $(".first-menu-input").eq(index).val(sender.name);
+        for (var i = 0; i < sender.sub_button.length; i++) {
+            $("." + senderValue).eq(i).val(sender.sub_button[i].name);
+            $("." + senderValue).eq(i).attr("attr-type", sender.sub_button[i].type);
+            $("." + senderValue).eq(i).attr("attr-url", sender.sub_button[i].url);
+            $("." + senderValue).eq(i).attr("attr-key", sender.sub_button[i].key);
+        }
+        console.log(sender);
+        console.log(index);
+    }
+
+    //单个菜单
+    function InitLoadMenuButton(sender, index) {
+        $(".first-menu-input").eq(index).val(sender.name);
+        $(".first-menu-input").eq(index).attr("attr-type", sender.type);
+        $(".first-menu-input").eq(index).attr("attr-url", sender.url);
+        $(".first-menu-input").eq(index).attr("attr-key", sender.key);
+    }
+
+
+</script>

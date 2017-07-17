@@ -154,6 +154,7 @@
     <Compile Include="Areas\Adm1n_L0g1n\Controllers\CommonController.cs" />
     <Compile Include="Areas\Adm1n_L0g1n\Controllers\ManagerController.cs" />
     <Compile Include="Areas\Adm1n_L0g1n\Controllers\MaterialController.cs" />
+    <Compile Include="Areas\Adm1n_L0g1n\Controllers\MenuController.cs" />
     <Compile Include="Areas\Adm1n_L0g1n\Models\AutoReplyModel.cs" />
     <Compile Include="Areas\Adm1n_L0g1n\Models\MaterialModel.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -292,6 +293,7 @@
     <Content Include="Areas\Adm1n_L0g1n\Views\Manager\Update.cshtml" />
     <Content Include="Areas\Adm1n_L0g1n\Views\Material\List.cshtml" />
     <Content Include="Areas\Adm1n_L0g1n\Views\Material\Update.cshtml" />
+    <Content Include="Areas\Adm1n_L0g1n\Views\Menu\Index.cshtml" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />

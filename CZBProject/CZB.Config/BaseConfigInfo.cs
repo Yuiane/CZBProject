@@ -23,6 +23,7 @@ namespace CZB.Config
         private string appid = "";
         private string encodingAESKey = "";
         private string defaultInfo = "";
+        private string appSecret = "";
         #endregion
 
         #region 属性
@@ -40,6 +41,7 @@ namespace CZB.Config
             get { return m_dbconnectstring; }
             set { m_dbconnectstring = value; }
         }
+      
 
         /// <summary>
         /// 微信公众号消息无响应时候回复
@@ -61,6 +63,16 @@ namespace CZB.Config
             get { return appid; }
             set { appid = value; }
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string AppSecret
+        {
+            get { return appSecret; }
+            set { appSecret = value; }
+        }
+
         /// <summary>
         /// 
         /// </summary>
