@@ -1,0 +1,48 @@
+
+http://localhost:52453/Adm1n_L0g1n/Menu/UpdateMenu    16时46分58秒
+{"button":[{"sub_button":[],"name":"单击测试"},{"key":"","type":"","name":"二级菜单"}]}
+
+http://localhost:52453/Adm1n_L0g1n/Menu/UpdateMenu    16时48分02秒
+{"button":[{"sub_button":[],"name":"单击测试"},{"key":"","type":"","name":"二级菜单"}]}
+
+http://localhost:52453/Adm1n_L0g1n/Menu/UpdateMenu    16时49分03秒
+{"button":[{"sub_button":[],"name":"单击测试"},{"key":"","type":"","name":"二级菜单"}]}
+
+http://localhost:52453/Adm1n_L0g1n/Menu/UpdateMenu    16时49分53秒
+{"button":[{"sub_button":[],"name":"单击测试"},{"key":"","type":"","name":"二级菜单"}]}
+
+http://localhost:52453/Adm1n_L0g1n/Menu/UpdateMenu    16时50分46秒
+{"button":[{"sub_button":[],"name":"单击测试"},{"key":"","type":"","name":"二级菜单"}]}
+
+http://localhost:52453/Adm1n_L0g1n/Menu/UpdateMenu    16时52分06秒
+{"button":[{"sub_button":[],"name":"单击测试"},{"key":"","type":"","name":"二级菜单"}]}
+
+http://localhost:52453/Adm1n_L0g1n/Menu/UpdateMenu    16时55分02秒
+{"button":[{"key":"OneClick","type":"click","name":"单击测试"},{"sub_button":[{"key":"SubClickRoot_Text","type":"click","name":"返回文本"},{"key":"SubClickRoot_News","type":"click","name":"返回图文"},{"key":"SubClickRoot_Music","type":"click","name":"返回音乐"},{"url":"http://sdk.weixin.senparc.com","type":"view","name":"Url跳转"},{"key":"SingleLocationSelectButton","type":"location_select","name":"位置"}],"name":"二级菜单"}]}
+
+http://localhost:52453/Adm1n_L0g1n/Menu/UpdateMenu    16时55分44秒
+{"button":[{"key":"OneClick","type":"click","name":"单击测试"},{"sub_button":[{"key":"SubClickRoot_Text","type":"click","name":"返回文本"},{"key":"SubClickRoot_News","type":"click","name":"返回图文"},{"key":"SubClickRoot_Music","type":"click","name":"返回音乐"},{"url":"http://sdk.weixin.senparc.com","type":"view","name":"Url跳转"},{"key":"SingleLocationSelectButton","type":"location_select","name":"位置"}],"name":"二级菜单"}]}
+
+http://localhost:52453/Adm1n_L0g1n/Menu/UpdateMenu    16时56分32秒
+{"button":[{"key":"OneClick","type":"click","name":"单击测试"},{"sub_button":[{"key":"SubClickRoot_Text","type":"click","name":"返回文本"},{"key":"SubClickRoot_News","type":"click","name":"返回图文"},{"key":"SubClickRoot_Music","type":"click","name":"返回音乐"},{"url":"http://sdk.weixin.senparc.com","type":"view","name":"Url跳转"},{"key":"SingleLocationSelectButton","type":"location_select","name":"位置"}],"name":"二级菜单"}]}
+
+http://localhost:52453/Adm1n_L0g1n/Menu/UpdateMenu    16时59分17秒
+{"button":[{"key":"OneClick2222","type":"click","name":"单击测试"},{"sub_button":[{"key":"SubClickRoot_Text","type":"click","name":"返回文本"},{"key":"SubClickRoot_News","type":"click","name":"返回图文"},{"key":"SubClickRoot_Music","type":"click","name":"返回音乐"},{"url":"http://sdk.weixin.senparc.com","type":"view","name":"Url跳转"},{"key":"SingleLocationSelectButton","type":"location_select","name":"位置"}],"name":"二级菜单"}]}
+
+http://localhost:52453/Adm1n_L0g1n/Menu/UpdateMenu    16时59分37秒
+{"button":[{"key":"OneClick2222","type":"view","name":"单击测试"},{"sub_button":[{"key":"SubClickRoot_Text","type":"click","name":"返回文本"},{"key":"SubClickRoot_News","type":"click","name":"返回图文"},{"key":"SubClickRoot_Music","type":"click","name":"返回音乐"},{"url":"www.baidu.com","type":"view","name":"Url跳转"},{"key":"SingleLocationSelectButton","type":"location_select","name":"位置"}],"name":"二级菜单"}]}
+
+http://localhost:52453/Adm1n_L0g1n/Menu/UpdateMenu    16时59分52秒
+{"button":[{"key":"OneClick2222","type":"view","name":"单击测试"},{"sub_button":[{"key":"SubClickRoot_Text","type":"click","name":"返回文本"},{"key":"SubClickRoot_News","type":"click","name":"返回图文"},{"key":"SubClickRoot_Music","type":"click","name":"返回音乐"},{"url":"http://www.baidu.com","type":"view","name":"Url跳转"},{"key":"SingleLocationSelectButton","type":"location_select","name":"位置"}],"name":"二级菜单"}]}
+
+http://localhost:52453/Adm1n_L0g1n/Menu/UpdateMenu    17时00分48秒
+{"button":[{"key":"OneClick2222","type":"view","name":"单击测试"},{"sub_button":[{"key":"SubClickRoot_Text","type":"click","name":"返回文本"},{"key":"SubClickRoot_News","type":"click","name":"返回图文"},{"key":"SubClickRoot_Music","type":"click","name":"返回音乐"},{"url":"https://www.baidu.com","type":"view","name":"Url跳转"},{"key":"SingleLocationSelectButton","type":"location_select","name":"位置"}],"name":"二级菜单"}]}
+
+http://localhost:52453/Adm1n_L0g1n/Menu/UpdateMenu    17时00分55秒
+{"button":[{"key":"OneClick2222","type":"view","name":"单击测试"},{"sub_button":[{"key":"SubClickRoot_Text","type":"click","name":"返回文本"},{"key":"SubClickRoot_News","type":"click","name":"返回图文"},{"key":"SubClickRoot_Music","type":"click","name":"返回音乐"},{"url":"https://www.baidu.com","type":"view","name":"Url跳转"},{"key":"SingleLocationSelectButton","type":"location_select","name":"位置"}],"name":"二级菜单"}]}
+
+http://localhost:52453/Adm1n_L0g1n/Menu/UpdateMenu    17时01分13秒
+{"button":[{"key":"OneClick2222","type":"click","name":"单击测试"},{"sub_button":[{"key":"SubClickRoot_Text","type":"click","name":"返回文本"},{"key":"SubClickRoot_News","type":"click","name":"返回图文"},{"key":"SubClickRoot_Music","type":"click","name":"返回音乐"},{"url":"https://www.baidu.com/","type":"view","name":"Url跳转"},{"key":"SingleLocationSelectButton","type":"location_select","name":"位置"}],"name":"二级菜单"}]}
+
+http://localhost:52453/Adm1n_L0g1n/Menu/UpdateMenu    17时06分10秒
+{"button":[{"key":"123","type":"click","name":"wwww"}]}
