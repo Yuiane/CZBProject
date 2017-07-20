@@ -62,6 +62,7 @@ namespace CZB.Web.Controllers
             //return new WeixinResult(messageHandler);//v0.8+
 
             var result = new FixWeixinBugWeixinResult(messageHandler);//v0.8+
+            LogHelper.WriteLog(LogEnum.Error, result.ToJson());
             if (result.ToJson().Contains("success"))
             {
                 return Content("success");

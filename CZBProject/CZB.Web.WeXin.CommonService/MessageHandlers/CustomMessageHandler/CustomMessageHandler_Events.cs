@@ -12,6 +12,7 @@ using Senparc.Weixin.MP.Helpers;
 using Senparc.Weixin.MP.MessageHandlers;
 using CZB.Common.Enums;
 using CZB.Common.Extensions;
+using CZB.Common;
 
 namespace CZB.Web.WeXin.CommonService.MessageHandlers.CustomMessageHandler
 {
@@ -195,7 +196,7 @@ QQ群：342319110
                         //strongResponseMessage.Image.MediaId = uploadResult.media_id;
                     }
                     break;
-               
+
                 case "OAuth"://OAuth授权测试
                     {
                         var strongResponseMessage = CreateResponseMessage<ResponseMessageNews>();
@@ -275,7 +276,7 @@ QQ群：342319110
 
             return reponseMessage;
         }
-       
+
         /// <summary>
         /// 进入事件
         /// </summary>
