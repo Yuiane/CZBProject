@@ -9,6 +9,9 @@ using System.Web;
 
 namespace CZB.Common
 {
+    /// <summary>
+    /// 日志帮助类
+    /// </summary>
     public class LogHelper
     {
         /// <summary>
