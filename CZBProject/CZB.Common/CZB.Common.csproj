@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="CCCModel\Models.cs" />
     <Compile Include="CCCModel\ReturnResult.cs" />
+    <Compile Include="Enums.cs" />
     <Compile Include="Enums\AutoReplyTypeEnum.cs" />
     <Compile Include="Enums\CCCEnums.cs" />
     <Compile Include="Enums\LogEnum.cs" />

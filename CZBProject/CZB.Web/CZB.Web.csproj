@@ -168,11 +168,12 @@
     <Compile Include="Areas\Adm1n_L0g1n\Models\AutoReplyModel.cs" />
     <Compile Include="Areas\Adm1n_L0g1n\Models\MaterialModel.cs" />
     <Compile Include="Areas\Adm1n_L0g1n\Models\MenuModel.cs" />
-    <Compile Include="Areas\Apis\ApisAreaRegistration.cs" />
-    <Compile Include="Areas\Apis\Controllers\CCCApiController.cs" />
+    <Compile Include="Controllers\Api\CCCApiController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Controllers\WeXinController.cs" />
+    <Compile Include="Filter\GetSetValue.cs" />
+    <Compile Include="Filter\RewriteParameterBinding.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -307,7 +308,6 @@
     <Content Include="Areas\Adm1n_L0g1n\Views\Material\List.cshtml" />
     <Content Include="Areas\Adm1n_L0g1n\Views\Material\Update.cshtml" />
     <Content Include="Areas\Adm1n_L0g1n\Views\Menu\Index.cshtml" />
-    <Content Include="Areas\Apis\Views\web.config" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -339,8 +339,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Adm1n_L0g1n\Views\Common\" />
     <Folder Include="Areas\Adm1n_L0g1n\Views\Shared\" />
-    <Folder Include="Areas\Apis\Models\" />
-    <Folder Include="Areas\Apis\Views\Shared\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Test\" />
     <Folder Include="Views\WeXin\" />

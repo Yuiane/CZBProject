@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,139 @@ namespace CZB.Common.Extensions
     /// </summary>
     public static class PreDefinedTypes
     {
+
+        /// <summary> 
+        /// ToList ,分隔                   Created by   2016.08.22
+        /// </summary> 
+        /// <param name="?"></param>
+        /// <param name="str"></param>
+        /// <param name="splitStr">分割字符串</param> 
+        /// <param name="isRemoveBeginAndEndEmpty"> 是否移除集合首尾空字符 </param>
+        /// <param name="isTrim">是否默认去除首尾空格 </param>
+        /// <returns></returns>
+        public static List<string> SplitList(this string str, string splitStr = ",",
+            bool isRemoveBeginAndEndEmpty = true, bool isTrim = false)
+        {
+            var inxStart = 0;
+            var inxEnd = 0;
+            var rt = new List<string>();
+
+            do
+            {
+                inxEnd = str.IndexOf(splitStr, inxStart, StringComparison.Ordinal);
+                if (inxEnd < 0)
+                {
+                    break;
+                }
+
+                rt.Add(str.Substring(inxStart, inxEnd - inxStart));  //要去除空格,在后面执行 .Select(j=>j.Trim()) 方法,, 或者加个是否去除空格的参数. 空格也是字符串的一部分,,BQ你强制给去除了,影响我逻辑的.
+
+                inxStart = inxEnd + splitStr.Length;
+            } while (true);
+
+            //str = str.Trim();//bq:去除产生的空格
+            rt.Add(str.Substring(inxStart));
+
+            IEnumerable<string> result = rt;
+
+            if (isRemoveBeginAndEndEmpty)
+            {
+                //移除尾部
+                while (rt.Count > 0 && rt.Last().IsNullOrEmpty())
+                {
+                    rt.RemoveAt(rt.Count - 1);
+                }
+
+                //移除头部
+                result = rt.SkipWhile(j => j.IsNullOrEmpty());
+            }
+
+            if (isTrim)
+            {
+                result = result.Select(j => j.Trim());
+            }
+            return result.ToList();
+        }
+
+
+        /// <summary>
+        ///  转换为指定类型
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="targerType"></param>
+        /// <returns></returns>
+        public static object ConvertTo(this object sender, Type targerType)
+        {
+            object rt;
+            sender.ConvertTo(targerType, out rt);
+            return rt;
+        }
+
+        /// <summary> 
+        /// 转换为指定类型
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="targerType"></param>
+        /// <param name="targer"></param>
+        /// <returns></returns>
+        public static bool ConvertTo(this object sender, Type targerType, out object targer)
+        {
+            if (sender == null)
+            {
+                goto err;
+            }
+
+            var t = sender.GetType();
+
+            var tt = targerType;
+
+            if (t == tt)
+            {
+                targer = sender;
+                return true;
+            }
+
+            if (tt.Name == "Nullable`1")
+            {
+                tt = targerType.GetGenericArguments().First();
+            }
+
+            var converter = TypeDescriptor.GetConverter(tt);
+            if (converter.CanConvertFrom(sender.GetType()))
+            {
+                targer = converter.ConvertFrom(sender);
+                return true;
+            }
+
+            // try the other direction 
+            converter = TypeDescriptor.GetConverter(sender.GetType());
+            if (converter.CanConvertTo(tt))
+            {
+                targer = converter.ConvertTo(sender, tt);
+                return true;
+            }
+
+            //需要返回枚举类型
+            if (tt.BaseType == typeof(Enum))
+            {
+                targer = Enum.ToObject(tt, sender.ToInt32());
+                return true;
+            }
+
+            //需要将枚举类型转换为其他类型
+            if (t.IsEnum)
+            {
+                targer = Convert.ChangeType(sender, tt);
+                return true;
+            }
+            err:
+            targer = null;
+            return false;
+        }
+
+
+
+
         /// <summary>
         /// 类型：String
         /// </summary>

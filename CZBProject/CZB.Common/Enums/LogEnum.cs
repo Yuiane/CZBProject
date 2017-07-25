@@ -17,5 +17,11 @@ namespace CZB.Common.Enums
         /// 异常日志
         /// </summary>
         Error,
+
+
+        /// <summary>
+        /// CCCAPI日志
+        /// </summary>
+        CCCApi
     }
 }
