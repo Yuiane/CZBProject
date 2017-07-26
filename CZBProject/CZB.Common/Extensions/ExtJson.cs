@@ -49,7 +49,7 @@ namespace CZB.Common.Extensions
             try
             {
                 var jsonStr = request.Content.ReadAsStringAsync().Result;//{"Name":"tongl","Age":22}
-                jsonStr = jsonStr.Replace("\"{", "{").Replace("}\"", "}");
+                jsonStr = jsonStr.Replace("\"{", "{").Replace("}\"", "}").Replace(@"\", "");
                 LogHelper.WriteLog(Enums.LogEnum.CCCApiJson, jsonStr);
                 return JsonConvert.DeserializeObject<T>(jsonStr);
             }
