@@ -28,15 +28,14 @@ namespace CZB.Web.Controllers
         [AllowAnonymous]
         [Route("ClaimInfoNotification")]
         [AcceptVerbs("Get", "Post")]
-        public ReturnResult ClaimInfoNotification(Models model)
+        public ReturnResult ClaimInfoNotification()
         {
             try
             {
-                
-                var info = "";
+                Models model = Request.Param<Models>();
                 if (model != null)
                 {
-                    info += "partyId:" + model.partyId + "\r\n  businessNo:" + model.businessNo + "\r\n content:" + model.content.ToJson();
+                    var info = "partyId:" + model.partyId + "\r\n  businessNo:" + model.businessNo + "\r\n model.content:" + model.content.ToJson();
                     LogHelper.WriteLog(LogEnum.CCCApi, info);
                     return new ReturnResult
                     {

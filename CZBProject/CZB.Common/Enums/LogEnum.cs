@@ -22,6 +22,11 @@ namespace CZB.Common.Enums
         /// <summary>
         /// CCCAPI日志
         /// </summary>
-        CCCApi
+        CCCApi,
+
+        /// <summary>
+        /// CCCAPI日志
+        /// </summary>
+        CCCApiJson
     }
 }

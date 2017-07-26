@@ -1,7 +1,9 @@
-﻿using Newtonsoft.Json;
+﻿using CZB.Common.CCCModel;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -40,6 +42,21 @@ namespace CZB.Common.Extensions
         public static T JsonToObj<T>(this string json) where T : class, new()
         {
             return JsonConvert.DeserializeObject<T>(json);
+        }
+
+        public static T Param<T>(this HttpRequestMessage request)
+        {
+            try
+            {
+                var jsonStr = request.Content.ReadAsStringAsync().Result;//{"Name":"tongl","Age":22}
+                jsonStr = jsonStr.Replace("\"{", "{").Replace("}\"", "}");
+                LogHelper.WriteLog(Enums.LogEnum.CCCApiJson, jsonStr);
+                return JsonConvert.DeserializeObject<T>(jsonStr);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

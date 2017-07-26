@@ -286,3 +286,5 @@ __pycache__/
 *.btm.cs
 *.odx.cs
 *.xsd.cs
+/CZBProject/CZB.Web/Logs/CCCApi
+/CZBProject/CZB.Web/Logs/CCCApiJson

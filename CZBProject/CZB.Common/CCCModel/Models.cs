@@ -13,13 +13,13 @@ namespace CZB.Common.CCCModel
     {
         public string partyId { get; set; }
         public string businessNo { get; set; }
-        public Content content { get; set; }
+        public ContentInfo content { get; set; }
     }
 
-    public class Content
+    public class ContentInfo
     {
         public Accinfo accInfo { get; set; }
-        public Claimattachment[] claimAttachments { get; set; }
+        public List<Claimattachment> claimAttachments { get; set; }
         public Claiminfo claimInfo { get; set; }
         public Contact contact { get; set; }
         public Discountrate discountRate { get; set; }
@@ -56,29 +56,29 @@ namespace CZB.Common.CCCModel
 
     public class Discountrate
     {
-        public float electricianMachinistRate { get; set; }
-        public int laborFeeManageRate { get; set; }
-        public int manageRate { get; set; }
-        public int multiPaintDiscountRate { get; set; }
-        public float paintRate { get; set; }
+        public string electricianMachinistRate { get; set; }
+        public string laborFeeManageRate { get; set; }
+        public string manageRate { get; set; }
+        public string multiPaintDiscountRate { get; set; }
+        public string paintRate { get; set; }
         public string partType { get; set; }
         public string partTypeCode { get; set; }
-        public float sheetMetalRate { get; set; }
+        public string sheetMetalRate { get; set; }
     }
 
     public class Feetotal
     {
-        public int deductionTotalLaborFee { get; set; }
-        public int depreciation { get; set; }
-        public int entireSalvage { get; set; }
-        public float estimateAmount { get; set; }
-        public float laborFee { get; set; }
-        public float lossTotal { get; set; }
-        public int manageFee { get; set; }
-        public int materialFee { get; set; }
-        public int partFee { get; set; }
-        public int rescueFee { get; set; }
-        public int totalSalvage { get; set; }
+        public string deductionTotalLaborFee { get; set; }
+        public string depreciation { get; set; }
+        public string entireSalvage { get; set; }
+        public string estimateAmount { get; set; }
+        public string laborFee { get; set; }
+        public string lossTotal { get; set; }
+        public string manageFee { get; set; }
+        public string materialFee { get; set; }
+        public string partFee { get; set; }
+        public string rescueFee { get; set; }
+        public string totalSalvage { get; set; }
     }
 
     public class Insurancecompany
@@ -91,47 +91,47 @@ namespace CZB.Common.CCCModel
 
     public class Lossitem
     {
-        public Changeitem[] changeItems { get; set; }
-        public Materialitem[] materialItems { get; set; }
-        public Repairitem[] repairItems { get; set; }
+        public List<Changeitem> changeItems { get; set; }
+        public List<Materialitem> materialItems { get; set; }
+        public List<Repairitem> repairItems { get; set; }
     }
 
     public class Changeitem
     {
-        public int depreciation { get; set; }
-        public int itemId { get; set; }
+        public string depreciation { get; set; }
+        public string itemId { get; set; }
         public string itemName { get; set; }
         public string manualFlag { get; set; }
-        public int partFeeAfterDiscount { get; set; }
+        public string partFeeAfterDiscount { get; set; }
         public string partNo { get; set; }
-        public int partQuantity { get; set; }
+        public string partQuantity { get; set; }
         public string recycleFlag { get; set; }
-        public int salvage { get; set; }
-        public int unitPriceAfterDiscount { get; set; }
+        public string salvage { get; set; }
+        public string unitPriceAfterDiscount { get; set; }
     }
 
     public class Materialitem
     {
-        public int itemId { get; set; }
+        public string itemId { get; set; }
         public string itemName { get; set; }
         public string manualFlag { get; set; }
-        public int partFee { get; set; }
-        public int partQuantity { get; set; }
-        public int unitPrice { get; set; }
+        public string partFee { get; set; }
+        public string partQuantity { get; set; }
+        public string unitPrice { get; set; }
     }
 
     public class Repairitem
     {
-        public int itemId { get; set; }
+        public string itemId { get; set; }
         public string itemName { get; set; }
-        public float laborFeeAfterDiscount { get; set; }
-        public int laborFeeManageRate { get; set; }
-        public int laborHour { get; set; }
-        public float laborHourFee { get; set; }
+        public string laborFeeAfterDiscount { get; set; }
+        public string laborFeeManageRate { get; set; }
+        public string laborHour { get; set; }
+        public string laborHourFee { get; set; }
         public string laborType { get; set; }
         public string manualFlag { get; set; }
         public string operationType { get; set; }
-        public int outerLaborFee { get; set; }
+        public string outerLaborFee { get; set; }
         public string outerRepairFlag { get; set; }
         public string partNo { get; set; }
         public string paintDiscountFlag { get; set; }
@@ -157,7 +157,7 @@ namespace CZB.Common.CCCModel
     public class Baseinfo
     {
         public string brandModel { get; set; }
-        public int currentValue { get; set; }
+        public string currentValue { get; set; }
         public string engineNo { get; set; }
         public string licenseFirstRegisterDate { get; set; }
         public string lossVehicleType { get; set; }
@@ -178,10 +178,10 @@ namespace CZB.Common.CCCModel
 
     public class Lossinfo
     {
-        public int fuelRemain { get; set; }
+        public string fuelRemain { get; set; }
         public string itemsInCar { get; set; }
         public string mainCollisionPoints { get; set; }
-        public int mileage { get; set; }
+        public string mileage { get; set; }
         public string subCollisionPoints { get; set; }
     }
 
@@ -204,7 +204,7 @@ namespace CZB.Common.CCCModel
     public class Claimattachment
     {
         public string attachmentCategoryName { get; set; }
-        public int attachmentId { get; set; }
+        public string attachmentId { get; set; }
         public string attachmentName { get; set; }
         public string attachmentUrl { get; set; }
     }
