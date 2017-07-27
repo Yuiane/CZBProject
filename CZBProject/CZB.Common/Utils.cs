@@ -119,8 +119,11 @@ namespace CZB.Common
             HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(url);
             request.Method = enumType.ToString();
 
-            request.ContentType = "application/x-www-form-urlencoded";
-            request.Accept = "*/*";
+            //request.ContentType = "application/x-www-form-urlencoded";
+            //request.Accept = "*/*";
+            request.ContentType = "application/json";
+            request.Accept = "application/json";
+
             request.Timeout = 15000;
             request.AllowAutoRedirect = false;
 
@@ -146,6 +149,7 @@ namespace CZB.Common
             }
             catch (Exception e)
             {
+                LogHelper.WriteLog(Enums.LogEnum.Error, e.Message);
                 return string.Empty;
             }
             finally

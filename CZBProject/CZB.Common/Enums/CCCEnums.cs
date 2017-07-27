@@ -426,12 +426,6 @@ namespace CZB.Common.Enums
     public enum RepairOrderType
     {
         /// <summary>
-        /// 未开始
-        /// </summary>
-        [Description("30")]
-        NotBegin,
-
-        /// <summary>
         /// 维修中
         /// </summary>
         [Description("60")]
@@ -442,18 +436,6 @@ namespace CZB.Common.Enums
         /// </summary>
         [Description("70")]
         Completed,
-
-        /// <summary>
-        /// 提车
-        /// </summary>
-        [Description("90")]
-        PutTheCar,
-
-        /// <summary>
-        /// 取消
-        /// </summary>
-        [Description("100")]
-        Cancel
     }
 
     /// <summary>
@@ -482,19 +464,19 @@ namespace CZB.Common.Enums
         /// <summary>
         /// 短信
         /// </summary>
-        [Description("01")]
+        [Description("1")]
         Message,
 
         /// <summary>
         /// 微信
         /// </summary>
-        [Description("02")]
+        [Description("2")]
         WeChat,
 
         /// <summary>
         /// 短信+微信
         /// </summary>
-        [Description("03")]
+        [Description("4")]
         WeChatAndMessage
     }
 

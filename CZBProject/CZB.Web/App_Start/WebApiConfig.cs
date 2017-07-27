@@ -17,7 +17,6 @@ namespace CZB.Web
                 routeTemplate: "api/{controller}/{action}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
-
             //config.ParameterBindingRules.Add(j => RewriteParameterBinding.HookupParameterBinding(j));
 
             //GlobalConfiguration.Configuration.Formatters.XmlFormatter.SupportedMediaTypes.Clear();
