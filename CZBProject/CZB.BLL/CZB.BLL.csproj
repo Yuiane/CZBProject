@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AutoReplys.cs" />
+    <Compile Include="CCCAPI_JobLossInformation.cs" />
     <Compile Include="Materials.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
