@@ -1,20 +1,4 @@
-﻿/**  版本信息模板在安装目录下，可自行修改。
-* CCCAPI_JobLossInformation.cs
-*
-* 功 能： N/A
-* 类 名： CCCAPI_JobLossInformation
-*
-* Ver    变更日期             负责人  变更内容
-* ───────────────────────────────────
-* V0.01  2017/7/26 17:56:47   N/A    初版
-*
-* Copyright (c) 2012 Maticsoft Corporation. All rights reserved.
-*┌──────────────────────────────────┐
-*│　此技术信息为本公司机密信息，未经本公司书面同意禁止向第三方披露．　│
-*│　版权所有：动软卓越（北京）科技有限公司　　　　　　　　　　　　　　│
-*└──────────────────────────────────┘
-*/
-using System;
+﻿using System;
 namespace CZB.Model
 {
     /// <summary>
@@ -78,10 +62,7 @@ namespace CZB.Model
         private string _country;
         private string _vehiclemanufmakename;
         private string _vehiclesubmodelname;
-        private string _attachmentcategoryname;
-        private string _attachmenturl;
-        private int? _attachmentid;
-        private string _attachmentname;
+        private string _claimattachmentsids;
         private string _parttype;
         private string _parttypecode;
         private decimal _managerate;
@@ -91,36 +72,9 @@ namespace CZB.Model
         private decimal _paintrate;
         private decimal _managementfee;
         private decimal _multipaintdiscountrate;
-        private int _changeitems_itemid;
-        private string _changeitems_itemname;
-        private bool _changeitems_manualflag;
-        private string _changeitems_partno;
-        private int _changeitems_partquantity;
-        private decimal _changeitems_unitpriceafterdiscount;
-        private decimal _changeitems_partfeeafterdiscount;
-        private decimal? _changeitems_depreciation;
-        private decimal? _changeitems_salvage;
-        private bool _changeitems_recycleflag;
-        private int _repairitems_itemid;
-        private string _repairitems_itemname;
-        private bool _repairitems_manualflag;
-        private string _repairitems_operationtype;
-        private string _repairitems_partno;
-        private string _repairitems_labortype;
-        private decimal _repairitems_laborhourfee;
-        private decimal _repairitems_laborfeemanagerate;
-        private bool _repairitems_paintdiscountflag;
-        private decimal? _repairitems_laborhour;
-        private decimal _repairitems_laborfeeafterdiscount;
-        private bool _repairitems_outerrepairflag;
-        private decimal? _repairitems_outerlaborfee;
-        private int _materialitems_itemid;
-        private string _materialitems_itemname;
-        private bool _materialitems_manualflag;
-        private string _materialitems_materialunit;
-        private decimal _materialitems_partquantity;
-        private decimal _materialitems_unitprice;
-        private decimal _materialitems_partfee;
+        private string _changeitemids;
+        private string _repairitemsids;
+        private string _materialitemsids;
         private decimal _feetotal_partfee;
         private decimal _feetotal_laborfee;
         private decimal _feetotal_materialfee;
@@ -550,34 +504,10 @@ namespace CZB.Model
         /// <summary>
         /// 
         /// </summary>
-        public string attachmentCategoryName
+        public string claimAttachmentsIDs
         {
-            set { _attachmentcategoryname = value; }
-            get { return _attachmentcategoryname; }
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        public string attachmentUrl
-        {
-            set { _attachmenturl = value; }
-            get { return _attachmenturl; }
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        public int? attachmentId
-        {
-            set { _attachmentid = value; }
-            get { return _attachmentid; }
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        public string attachmentName
-        {
-            set { _attachmentname = value; }
-            get { return _attachmentname; }
+            set { _claimattachmentsids = value; }
+            get { return _claimattachmentsids; }
         }
         /// <summary>
         /// 
@@ -654,242 +584,26 @@ namespace CZB.Model
         /// <summary>
         /// 
         /// </summary>
-        public int changeItems_itemId
+        public string ChangeItemIDs
         {
-            set { _changeitems_itemid = value; }
-            get { return _changeitems_itemid; }
+            set { _changeitemids = value; }
+            get { return _changeitemids; }
         }
         /// <summary>
         /// 
         /// </summary>
-        public string changeItems_itemName
+        public string RepairItemsIDs
         {
-            set { _changeitems_itemname = value; }
-            get { return _changeitems_itemname; }
+            set { _repairitemsids = value; }
+            get { return _repairitemsids; }
         }
         /// <summary>
         /// 
         /// </summary>
-        public bool changeItems_manualFlag
+        public string MaterialItemsIDs
         {
-            set { _changeitems_manualflag = value; }
-            get { return _changeitems_manualflag; }
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        public string changeItems_partNo
-        {
-            set { _changeitems_partno = value; }
-            get { return _changeitems_partno; }
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        public int changeItems_partQuantity
-        {
-            set { _changeitems_partquantity = value; }
-            get { return _changeitems_partquantity; }
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        public decimal changeItems_unitPriceAfterDiscount
-        {
-            set { _changeitems_unitpriceafterdiscount = value; }
-            get { return _changeitems_unitpriceafterdiscount; }
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        public decimal changeItems_partFeeAfterDiscount
-        {
-            set { _changeitems_partfeeafterdiscount = value; }
-            get { return _changeitems_partfeeafterdiscount; }
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        public decimal? changeItems_depreciation
-        {
-            set { _changeitems_depreciation = value; }
-            get { return _changeitems_depreciation; }
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        public decimal? changeItems_salvage
-        {
-            set { _changeitems_salvage = value; }
-            get { return _changeitems_salvage; }
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        public bool changeItems_recycleFlag
-        {
-            set { _changeitems_recycleflag = value; }
-            get { return _changeitems_recycleflag; }
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        public int repairItems_itemId
-        {
-            set { _repairitems_itemid = value; }
-            get { return _repairitems_itemid; }
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        public string repairItems_itemName
-        {
-            set { _repairitems_itemname = value; }
-            get { return _repairitems_itemname; }
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        public bool repairItems_manualFlag
-        {
-            set { _repairitems_manualflag = value; }
-            get { return _repairitems_manualflag; }
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        public string repairItems_operationType
-        {
-            set { _repairitems_operationtype = value; }
-            get { return _repairitems_operationtype; }
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        public string repairItems_partNo
-        {
-            set { _repairitems_partno = value; }
-            get { return _repairitems_partno; }
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        public string repairItems_laborType
-        {
-            set { _repairitems_labortype = value; }
-            get { return _repairitems_labortype; }
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        public decimal repairItems_laborHourFee
-        {
-            set { _repairitems_laborhourfee = value; }
-            get { return _repairitems_laborhourfee; }
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        public decimal repairItems_laborFeeManageRate
-        {
-            set { _repairitems_laborfeemanagerate = value; }
-            get { return _repairitems_laborfeemanagerate; }
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        public bool repairItems_paintDiscountFlag
-        {
-            set { _repairitems_paintdiscountflag = value; }
-            get { return _repairitems_paintdiscountflag; }
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        public decimal? repairItems_laborHour
-        {
-            set { _repairitems_laborhour = value; }
-            get { return _repairitems_laborhour; }
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        public decimal repairItems_laborFeeAfterDiscount
-        {
-            set { _repairitems_laborfeeafterdiscount = value; }
-            get { return _repairitems_laborfeeafterdiscount; }
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        public bool repairItems_outerRepairFlag
-        {
-            set { _repairitems_outerrepairflag = value; }
-            get { return _repairitems_outerrepairflag; }
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        public decimal? repairItems_outerLaborFee
-        {
-            set { _repairitems_outerlaborfee = value; }
-            get { return _repairitems_outerlaborfee; }
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        public int materialItems_itemId
-        {
-            set { _materialitems_itemid = value; }
-            get { return _materialitems_itemid; }
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        public string materialItems_itemName
-        {
-            set { _materialitems_itemname = value; }
-            get { return _materialitems_itemname; }
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        public bool materialItems_manualFlag
-        {
-            set { _materialitems_manualflag = value; }
-            get { return _materialitems_manualflag; }
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        public string materialItems_materialUnit
-        {
-            set { _materialitems_materialunit = value; }
-            get { return _materialitems_materialunit; }
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        public decimal materialItems_partQuantity
-        {
-            set { _materialitems_partquantity = value; }
-            get { return _materialitems_partquantity; }
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        public decimal materialItems_unitPrice
-        {
-            set { _materialitems_unitprice = value; }
-            get { return _materialitems_unitprice; }
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        public decimal materialItems_partFee
-        {
-            set { _materialitems_partfee = value; }
-            get { return _materialitems_partfee; }
+            set { _materialitemsids = value; }
+            get { return _materialitemsids; }
         }
         /// <summary>
         /// 

@@ -43,7 +43,11 @@
   <ItemGroup>
     <Compile Include="DataProvider\AutoReply.cs" />
     <Compile Include="CommandInfo.cs" />
+    <Compile Include="DataProvider\CCCAPI_ChangeItems.cs" />
+    <Compile Include="DataProvider\CCCAPI_ClaimAttachments.cs" />
     <Compile Include="DataProvider\CCCAPI_JobLossInformation.cs" />
+    <Compile Include="DataProvider\CCCAPI_MaterialItems.cs" />
+    <Compile Include="DataProvider\CCCAPI_RepairItems.cs" />
     <Compile Include="DataProvider\Material.cs" />
     <Compile Include="DbHelperSQL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

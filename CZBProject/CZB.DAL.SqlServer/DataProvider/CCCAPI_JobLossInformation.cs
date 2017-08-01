@@ -41,9 +41,9 @@ namespace CZB.DAL.SqlServer.DataProvider
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("insert into CCCAPI_JobLossInformation(");
-            strSql.Append("Id,senderTelNo,senderName,vehicleOwnerName,vehicleOwnerTelNo,repairOrderNo,claimNo,sourceType,sendRepairFlag,insuranceCompanyGroupCode,insuranceCompanyGroupName,insuranceCompanyCode,insuranceCompanyName,repairFactoryCode,repairFactoryName,repairFacilityType,qualificationLevel,estimatorCode,estimatorName,workFlowNodeCode,workFlowNodeName,assignDate,estimateStartTime,estimateEndTime,reportNo,reportDate,lossVehicleTypeCode,lossVehicleType,plateNo,vin,brandModel,engineNo,vehicleCategoryCode,vehicleCategory,usingTypeCode,usingType,licenseFirstRegisterDate,purchasePrice,plateTypeCode,plateType,plateColorCode,plateColor,vehicleBodyColor,currentValue,fuelRemain,mileage,itemsInCar,mainCollisionPoints,subCollisionPoints,country,vehicleManufMakeName,vehicleSubModelName,attachmentCategoryName,attachmentUrl,attachmentId,attachmentName,partType,partTypeCode,manageRate,laborFeeManageRate,electricianMachinistRate,sheetMetalRate,paintRate,managementFee,multiPaintDiscountRate,changeItems_itemId,changeItems_itemName,changeItems_manualFlag,changeItems_partNo,changeItems_partQuantity,changeItems_unitPriceAfterDiscount,changeItems_partFeeAfterDiscount,changeItems_depreciation,changeItems_salvage,changeItems_recycleFlag,repairItems_itemId,repairItems_itemName,repairItems_manualFlag,repairItems_operationType,repairItems_partNo,repairItems_laborType,repairItems_laborHourFee,repairItems_laborFeeManageRate,repairItems_paintDiscountFlag,repairItems_laborHour,repairItems_laborFeeAfterDiscount,repairItems_outerRepairFlag,repairItems_outerLaborFee,materialItems_itemId,materialItems_itemName,materialItems_manualFlag,materialItems_materialUnit,materialItems_partQuantity,materialItems_unitPrice,materialItems_partFee,feeTotal_partFee,feeTotal_laborFee,feeTotal_materialFee,feeTotal_entireSalvage,feeTotal_totalSalvage,feeTotal_depreciation,feeTotal_manageFee,feeTotal_estimateAmount,feeTotal_rescueFee,feeTotal_lossTotal)");
+            strSql.Append("Id,senderTelNo,senderName,vehicleOwnerName,vehicleOwnerTelNo,repairOrderNo,claimNo,sourceType,sendRepairFlag,insuranceCompanyGroupCode,insuranceCompanyGroupName,insuranceCompanyCode,insuranceCompanyName,repairFactoryCode,repairFactoryName,repairFacilityType,qualificationLevel,estimatorCode,estimatorName,workFlowNodeCode,workFlowNodeName,assignDate,estimateStartTime,estimateEndTime,reportNo,reportDate,lossVehicleTypeCode,lossVehicleType,plateNo,vin,brandModel,engineNo,vehicleCategoryCode,vehicleCategory,usingTypeCode,usingType,licenseFirstRegisterDate,purchasePrice,plateTypeCode,plateType,plateColorCode,plateColor,vehicleBodyColor,currentValue,fuelRemain,mileage,itemsInCar,mainCollisionPoints,subCollisionPoints,country,vehicleManufMakeName,vehicleSubModelName,claimAttachmentsIDs,partType,partTypeCode,manageRate,laborFeeManageRate,electricianMachinistRate,sheetMetalRate,paintRate,managementFee,multiPaintDiscountRate,ChangeItemIDs,RepairItemsIDs,MaterialItemsIDs,feeTotal_partFee,feeTotal_laborFee,feeTotal_materialFee,feeTotal_entireSalvage,feeTotal_totalSalvage,feeTotal_depreciation,feeTotal_manageFee,feeTotal_estimateAmount,feeTotal_rescueFee,feeTotal_lossTotal)");
             strSql.Append(" values (");
-            strSql.Append("@Id,@senderTelNo,@senderName,@vehicleOwnerName,@vehicleOwnerTelNo,@repairOrderNo,@claimNo,@sourceType,@sendRepairFlag,@insuranceCompanyGroupCode,@insuranceCompanyGroupName,@insuranceCompanyCode,@insuranceCompanyName,@repairFactoryCode,@repairFactoryName,@repairFacilityType,@qualificationLevel,@estimatorCode,@estimatorName,@workFlowNodeCode,@workFlowNodeName,@assignDate,@estimateStartTime,@estimateEndTime,@reportNo,@reportDate,@lossVehicleTypeCode,@lossVehicleType,@plateNo,@vin,@brandModel,@engineNo,@vehicleCategoryCode,@vehicleCategory,@usingTypeCode,@usingType,@licenseFirstRegisterDate,@purchasePrice,@plateTypeCode,@plateType,@plateColorCode,@plateColor,@vehicleBodyColor,@currentValue,@fuelRemain,@mileage,@itemsInCar,@mainCollisionPoints,@subCollisionPoints,@country,@vehicleManufMakeName,@vehicleSubModelName,@attachmentCategoryName,@attachmentUrl,@attachmentId,@attachmentName,@partType,@partTypeCode,@manageRate,@laborFeeManageRate,@electricianMachinistRate,@sheetMetalRate,@paintRate,@managementFee,@multiPaintDiscountRate,@changeItems_itemId,@changeItems_itemName,@changeItems_manualFlag,@changeItems_partNo,@changeItems_partQuantity,@changeItems_unitPriceAfterDiscount,@changeItems_partFeeAfterDiscount,@changeItems_depreciation,@changeItems_salvage,@changeItems_recycleFlag,@repairItems_itemId,@repairItems_itemName,@repairItems_manualFlag,@repairItems_operationType,@repairItems_partNo,@repairItems_laborType,@repairItems_laborHourFee,@repairItems_laborFeeManageRate,@repairItems_paintDiscountFlag,@repairItems_laborHour,@repairItems_laborFeeAfterDiscount,@repairItems_outerRepairFlag,@repairItems_outerLaborFee,@materialItems_itemId,@materialItems_itemName,@materialItems_manualFlag,@materialItems_materialUnit,@materialItems_partQuantity,@materialItems_unitPrice,@materialItems_partFee,@feeTotal_partFee,@feeTotal_laborFee,@feeTotal_materialFee,@feeTotal_entireSalvage,@feeTotal_totalSalvage,@feeTotal_depreciation,@feeTotal_manageFee,@feeTotal_estimateAmount,@feeTotal_rescueFee,@feeTotal_lossTotal)");
+            strSql.Append("@Id,@senderTelNo,@senderName,@vehicleOwnerName,@vehicleOwnerTelNo,@repairOrderNo,@claimNo,@sourceType,@sendRepairFlag,@insuranceCompanyGroupCode,@insuranceCompanyGroupName,@insuranceCompanyCode,@insuranceCompanyName,@repairFactoryCode,@repairFactoryName,@repairFacilityType,@qualificationLevel,@estimatorCode,@estimatorName,@workFlowNodeCode,@workFlowNodeName,@assignDate,@estimateStartTime,@estimateEndTime,@reportNo,@reportDate,@lossVehicleTypeCode,@lossVehicleType,@plateNo,@vin,@brandModel,@engineNo,@vehicleCategoryCode,@vehicleCategory,@usingTypeCode,@usingType,@licenseFirstRegisterDate,@purchasePrice,@plateTypeCode,@plateType,@plateColorCode,@plateColor,@vehicleBodyColor,@currentValue,@fuelRemain,@mileage,@itemsInCar,@mainCollisionPoints,@subCollisionPoints,@country,@vehicleManufMakeName,@vehicleSubModelName,@claimAttachmentsIDs,@partType,@partTypeCode,@manageRate,@laborFeeManageRate,@electricianMachinistRate,@sheetMetalRate,@paintRate,@managementFee,@multiPaintDiscountRate,@ChangeItemIDs,@RepairItemsIDs,@MaterialItemsIDs,@feeTotal_partFee,@feeTotal_laborFee,@feeTotal_materialFee,@feeTotal_entireSalvage,@feeTotal_totalSalvage,@feeTotal_depreciation,@feeTotal_manageFee,@feeTotal_estimateAmount,@feeTotal_rescueFee,@feeTotal_lossTotal)");
             SqlParameter[] parameters = {
                     new SqlParameter("@Id", SqlDbType.NVarChar,255),
                     new SqlParameter("@senderTelNo", SqlDbType.VarChar,50),
@@ -97,10 +97,7 @@ namespace CZB.DAL.SqlServer.DataProvider
                     new SqlParameter("@country", SqlDbType.VarChar,30),
                     new SqlParameter("@vehicleManufMakeName", SqlDbType.VarChar,255),
                     new SqlParameter("@vehicleSubModelName", SqlDbType.VarChar,255),
-                    new SqlParameter("@attachmentCategoryName", SqlDbType.VarChar,50),
-                    new SqlParameter("@attachmentUrl", SqlDbType.VarChar,200),
-                    new SqlParameter("@attachmentId", SqlDbType.Int,4),
-                    new SqlParameter("@attachmentName", SqlDbType.VarChar,100),
+                    new SqlParameter("@claimAttachmentsIDs", SqlDbType.VarChar,50),
                     new SqlParameter("@partType", SqlDbType.VarChar,30),
                     new SqlParameter("@partTypeCode", SqlDbType.VarChar,30),
                     new SqlParameter("@manageRate", SqlDbType.Decimal,9),
@@ -110,36 +107,9 @@ namespace CZB.DAL.SqlServer.DataProvider
                     new SqlParameter("@paintRate", SqlDbType.Decimal,9),
                     new SqlParameter("@managementFee", SqlDbType.Decimal,9),
                     new SqlParameter("@multiPaintDiscountRate", SqlDbType.Decimal,9),
-                    new SqlParameter("@changeItems_itemId", SqlDbType.Int,4),
-                    new SqlParameter("@changeItems_itemName", SqlDbType.VarChar,100),
-                    new SqlParameter("@changeItems_manualFlag", SqlDbType.Bit,1),
-                    new SqlParameter("@changeItems_partNo", SqlDbType.VarChar,30),
-                    new SqlParameter("@changeItems_partQuantity", SqlDbType.Int,4),
-                    new SqlParameter("@changeItems_unitPriceAfterDiscount", SqlDbType.Decimal,9),
-                    new SqlParameter("@changeItems_partFeeAfterDiscount", SqlDbType.Decimal,9),
-                    new SqlParameter("@changeItems_depreciation", SqlDbType.Decimal,9),
-                    new SqlParameter("@changeItems_salvage", SqlDbType.Decimal,9),
-                    new SqlParameter("@changeItems_recycleFlag", SqlDbType.Bit,1),
-                    new SqlParameter("@repairItems_itemId", SqlDbType.Int,4),
-                    new SqlParameter("@repairItems_itemName", SqlDbType.VarChar,100),
-                    new SqlParameter("@repairItems_manualFlag", SqlDbType.Bit,1),
-                    new SqlParameter("@repairItems_operationType", SqlDbType.VarChar,50),
-                    new SqlParameter("@repairItems_partNo", SqlDbType.VarChar,30),
-                    new SqlParameter("@repairItems_laborType", SqlDbType.VarChar,30),
-                    new SqlParameter("@repairItems_laborHourFee", SqlDbType.Decimal,9),
-                    new SqlParameter("@repairItems_laborFeeManageRate", SqlDbType.Decimal,9),
-                    new SqlParameter("@repairItems_paintDiscountFlag", SqlDbType.Bit,1),
-                    new SqlParameter("@repairItems_laborHour", SqlDbType.Decimal,9),
-                    new SqlParameter("@repairItems_laborFeeAfterDiscount", SqlDbType.Decimal,9),
-                    new SqlParameter("@repairItems_outerRepairFlag", SqlDbType.Bit,1),
-                    new SqlParameter("@repairItems_outerLaborFee", SqlDbType.Decimal,9),
-                    new SqlParameter("@materialItems_itemId", SqlDbType.Int,4),
-                    new SqlParameter("@materialItems_itemName", SqlDbType.VarChar,100),
-                    new SqlParameter("@materialItems_manualFlag", SqlDbType.Bit,1),
-                    new SqlParameter("@materialItems_materialUnit", SqlDbType.VarChar,20),
-                    new SqlParameter("@materialItems_partQuantity", SqlDbType.Decimal,5),
-                    new SqlParameter("@materialItems_unitPrice", SqlDbType.Decimal,9),
-                    new SqlParameter("@materialItems_partFee", SqlDbType.Decimal,9),
+                    new SqlParameter("@ChangeItemIDs", SqlDbType.NVarChar,-1),
+                    new SqlParameter("@RepairItemsIDs", SqlDbType.NVarChar,-1),
+                    new SqlParameter("@MaterialItemsIDs", SqlDbType.NVarChar,-1),
                     new SqlParameter("@feeTotal_partFee", SqlDbType.Decimal,9),
                     new SqlParameter("@feeTotal_laborFee", SqlDbType.Decimal,9),
                     new SqlParameter("@feeTotal_materialFee", SqlDbType.Decimal,9),
@@ -202,59 +172,29 @@ namespace CZB.DAL.SqlServer.DataProvider
             parameters[49].Value = model.country;
             parameters[50].Value = model.vehicleManufMakeName;
             parameters[51].Value = model.vehicleSubModelName;
-            parameters[52].Value = model.attachmentCategoryName;
-            parameters[53].Value = model.attachmentUrl;
-            parameters[54].Value = model.attachmentId;
-            parameters[55].Value = model.attachmentName;
-            parameters[56].Value = model.partType;
-            parameters[57].Value = model.partTypeCode;
-            parameters[58].Value = model.manageRate;
-            parameters[59].Value = model.laborFeeManageRate;
-            parameters[60].Value = model.electricianMachinistRate;
-            parameters[61].Value = model.sheetMetalRate;
-            parameters[62].Value = model.paintRate;
-            parameters[63].Value = model.managementFee;
-            parameters[64].Value = model.multiPaintDiscountRate;
-            parameters[65].Value = model.changeItems_itemId;
-            parameters[66].Value = model.changeItems_itemName;
-            parameters[67].Value = model.changeItems_manualFlag;
-            parameters[68].Value = model.changeItems_partNo;
-            parameters[69].Value = model.changeItems_partQuantity;
-            parameters[70].Value = model.changeItems_unitPriceAfterDiscount;
-            parameters[71].Value = model.changeItems_partFeeAfterDiscount;
-            parameters[72].Value = model.changeItems_depreciation;
-            parameters[73].Value = model.changeItems_salvage;
-            parameters[74].Value = model.changeItems_recycleFlag;
-            parameters[75].Value = model.repairItems_itemId;
-            parameters[76].Value = model.repairItems_itemName;
-            parameters[77].Value = model.repairItems_manualFlag;
-            parameters[78].Value = model.repairItems_operationType;
-            parameters[79].Value = model.repairItems_partNo;
-            parameters[80].Value = model.repairItems_laborType;
-            parameters[81].Value = model.repairItems_laborHourFee;
-            parameters[82].Value = model.repairItems_laborFeeManageRate;
-            parameters[83].Value = model.repairItems_paintDiscountFlag;
-            parameters[84].Value = model.repairItems_laborHour;
-            parameters[85].Value = model.repairItems_laborFeeAfterDiscount;
-            parameters[86].Value = model.repairItems_outerRepairFlag;
-            parameters[87].Value = model.repairItems_outerLaborFee;
-            parameters[88].Value = model.materialItems_itemId;
-            parameters[89].Value = model.materialItems_itemName;
-            parameters[90].Value = model.materialItems_manualFlag;
-            parameters[91].Value = model.materialItems_materialUnit;
-            parameters[92].Value = model.materialItems_partQuantity;
-            parameters[93].Value = model.materialItems_unitPrice;
-            parameters[94].Value = model.materialItems_partFee;
-            parameters[95].Value = model.feeTotal_partFee;
-            parameters[96].Value = model.feeTotal_laborFee;
-            parameters[97].Value = model.feeTotal_materialFee;
-            parameters[98].Value = model.feeTotal_entireSalvage;
-            parameters[99].Value = model.feeTotal_totalSalvage;
-            parameters[100].Value = model.feeTotal_depreciation;
-            parameters[101].Value = model.feeTotal_manageFee;
-            parameters[102].Value = model.feeTotal_estimateAmount;
-            parameters[103].Value = model.feeTotal_rescueFee;
-            parameters[104].Value = model.feeTotal_lossTotal;
+            parameters[52].Value = model.claimAttachmentsIDs;
+            parameters[53].Value = model.partType;
+            parameters[54].Value = model.partTypeCode;
+            parameters[55].Value = model.manageRate;
+            parameters[56].Value = model.laborFeeManageRate;
+            parameters[57].Value = model.electricianMachinistRate;
+            parameters[58].Value = model.sheetMetalRate;
+            parameters[59].Value = model.paintRate;
+            parameters[60].Value = model.managementFee;
+            parameters[61].Value = model.multiPaintDiscountRate;
+            parameters[62].Value = model.ChangeItemIDs;
+            parameters[63].Value = model.RepairItemsIDs;
+            parameters[64].Value = model.MaterialItemsIDs;
+            parameters[65].Value = model.feeTotal_partFee;
+            parameters[66].Value = model.feeTotal_laborFee;
+            parameters[67].Value = model.feeTotal_materialFee;
+            parameters[68].Value = model.feeTotal_entireSalvage;
+            parameters[69].Value = model.feeTotal_totalSalvage;
+            parameters[70].Value = model.feeTotal_depreciation;
+            parameters[71].Value = model.feeTotal_manageFee;
+            parameters[72].Value = model.feeTotal_estimateAmount;
+            parameters[73].Value = model.feeTotal_rescueFee;
+            parameters[74].Value = model.feeTotal_lossTotal;
 
             int rows = DbHelperSQL.ExecuteSql(strSql.ToString(), parameters);
             if (rows > 0)
@@ -324,10 +264,7 @@ namespace CZB.DAL.SqlServer.DataProvider
             strSql.Append("country=@country,");
             strSql.Append("vehicleManufMakeName=@vehicleManufMakeName,");
             strSql.Append("vehicleSubModelName=@vehicleSubModelName,");
-            strSql.Append("attachmentCategoryName=@attachmentCategoryName,");
-            strSql.Append("attachmentUrl=@attachmentUrl,");
-            strSql.Append("attachmentId=@attachmentId,");
-            strSql.Append("attachmentName=@attachmentName,");
+            strSql.Append("claimAttachmentsIDs=@claimAttachmentsIDs,");
             strSql.Append("partType=@partType,");
             strSql.Append("partTypeCode=@partTypeCode,");
             strSql.Append("manageRate=@manageRate,");
@@ -337,36 +274,9 @@ namespace CZB.DAL.SqlServer.DataProvider
             strSql.Append("paintRate=@paintRate,");
             strSql.Append("managementFee=@managementFee,");
             strSql.Append("multiPaintDiscountRate=@multiPaintDiscountRate,");
-            strSql.Append("changeItems_itemId=@changeItems_itemId,");
-            strSql.Append("changeItems_itemName=@changeItems_itemName,");
-            strSql.Append("changeItems_manualFlag=@changeItems_manualFlag,");
-            strSql.Append("changeItems_partNo=@changeItems_partNo,");
-            strSql.Append("changeItems_partQuantity=@changeItems_partQuantity,");
-            strSql.Append("changeItems_unitPriceAfterDiscount=@changeItems_unitPriceAfterDiscount,");
-            strSql.Append("changeItems_partFeeAfterDiscount=@changeItems_partFeeAfterDiscount,");
-            strSql.Append("changeItems_depreciation=@changeItems_depreciation,");
-            strSql.Append("changeItems_salvage=@changeItems_salvage,");
-            strSql.Append("changeItems_recycleFlag=@changeItems_recycleFlag,");
-            strSql.Append("repairItems_itemId=@repairItems_itemId,");
-            strSql.Append("repairItems_itemName=@repairItems_itemName,");
-            strSql.Append("repairItems_manualFlag=@repairItems_manualFlag,");
-            strSql.Append("repairItems_operationType=@repairItems_operationType,");
-            strSql.Append("repairItems_partNo=@repairItems_partNo,");
-            strSql.Append("repairItems_laborType=@repairItems_laborType,");
-            strSql.Append("repairItems_laborHourFee=@repairItems_laborHourFee,");
-            strSql.Append("repairItems_laborFeeManageRate=@repairItems_laborFeeManageRate,");
-            strSql.Append("repairItems_paintDiscountFlag=@repairItems_paintDiscountFlag,");
-            strSql.Append("repairItems_laborHour=@repairItems_laborHour,");
-            strSql.Append("repairItems_laborFeeAfterDiscount=@repairItems_laborFeeAfterDiscount,");
-            strSql.Append("repairItems_outerRepairFlag=@repairItems_outerRepairFlag,");
-            strSql.Append("repairItems_outerLaborFee=@repairItems_outerLaborFee,");
-            strSql.Append("materialItems_itemId=@materialItems_itemId,");
-            strSql.Append("materialItems_itemName=@materialItems_itemName,");
-            strSql.Append("materialItems_manualFlag=@materialItems_manualFlag,");
-            strSql.Append("materialItems_materialUnit=@materialItems_materialUnit,");
-            strSql.Append("materialItems_partQuantity=@materialItems_partQuantity,");
-            strSql.Append("materialItems_unitPrice=@materialItems_unitPrice,");
-            strSql.Append("materialItems_partFee=@materialItems_partFee,");
+            strSql.Append("ChangeItemIDs=@ChangeItemIDs,");
+            strSql.Append("RepairItemsIDs=@RepairItemsIDs,");
+            strSql.Append("MaterialItemsIDs=@MaterialItemsIDs,");
             strSql.Append("feeTotal_partFee=@feeTotal_partFee,");
             strSql.Append("feeTotal_laborFee=@feeTotal_laborFee,");
             strSql.Append("feeTotal_materialFee=@feeTotal_materialFee,");
@@ -430,10 +340,7 @@ namespace CZB.DAL.SqlServer.DataProvider
                     new SqlParameter("@country", SqlDbType.VarChar,30),
                     new SqlParameter("@vehicleManufMakeName", SqlDbType.VarChar,255),
                     new SqlParameter("@vehicleSubModelName", SqlDbType.VarChar,255),
-                    new SqlParameter("@attachmentCategoryName", SqlDbType.VarChar,50),
-                    new SqlParameter("@attachmentUrl", SqlDbType.VarChar,200),
-                    new SqlParameter("@attachmentId", SqlDbType.Int,4),
-                    new SqlParameter("@attachmentName", SqlDbType.VarChar,100),
+                    new SqlParameter("@claimAttachmentsIDs", SqlDbType.VarChar,50),
                     new SqlParameter("@partType", SqlDbType.VarChar,30),
                     new SqlParameter("@partTypeCode", SqlDbType.VarChar,30),
                     new SqlParameter("@manageRate", SqlDbType.Decimal,9),
@@ -443,36 +350,9 @@ namespace CZB.DAL.SqlServer.DataProvider
                     new SqlParameter("@paintRate", SqlDbType.Decimal,9),
                     new SqlParameter("@managementFee", SqlDbType.Decimal,9),
                     new SqlParameter("@multiPaintDiscountRate", SqlDbType.Decimal,9),
-                    new SqlParameter("@changeItems_itemId", SqlDbType.Int,4),
-                    new SqlParameter("@changeItems_itemName", SqlDbType.VarChar,100),
-                    new SqlParameter("@changeItems_manualFlag", SqlDbType.Bit,1),
-                    new SqlParameter("@changeItems_partNo", SqlDbType.VarChar,30),
-                    new SqlParameter("@changeItems_partQuantity", SqlDbType.Int,4),
-                    new SqlParameter("@changeItems_unitPriceAfterDiscount", SqlDbType.Decimal,9),
-                    new SqlParameter("@changeItems_partFeeAfterDiscount", SqlDbType.Decimal,9),
-                    new SqlParameter("@changeItems_depreciation", SqlDbType.Decimal,9),
-                    new SqlParameter("@changeItems_salvage", SqlDbType.Decimal,9),
-                    new SqlParameter("@changeItems_recycleFlag", SqlDbType.Bit,1),
-                    new SqlParameter("@repairItems_itemId", SqlDbType.Int,4),
-                    new SqlParameter("@repairItems_itemName", SqlDbType.VarChar,100),
-                    new SqlParameter("@repairItems_manualFlag", SqlDbType.Bit,1),
-                    new SqlParameter("@repairItems_operationType", SqlDbType.VarChar,50),
-                    new SqlParameter("@repairItems_partNo", SqlDbType.VarChar,30),
-                    new SqlParameter("@repairItems_laborType", SqlDbType.VarChar,30),
-                    new SqlParameter("@repairItems_laborHourFee", SqlDbType.Decimal,9),
-                    new SqlParameter("@repairItems_laborFeeManageRate", SqlDbType.Decimal,9),
-                    new SqlParameter("@repairItems_paintDiscountFlag", SqlDbType.Bit,1),
-                    new SqlParameter("@repairItems_laborHour", SqlDbType.Decimal,9),
-                    new SqlParameter("@repairItems_laborFeeAfterDiscount", SqlDbType.Decimal,9),
-                    new SqlParameter("@repairItems_outerRepairFlag", SqlDbType.Bit,1),
-                    new SqlParameter("@repairItems_outerLaborFee", SqlDbType.Decimal,9),
-                    new SqlParameter("@materialItems_itemId", SqlDbType.Int,4),
-                    new SqlParameter("@materialItems_itemName", SqlDbType.VarChar,100),
-                    new SqlParameter("@materialItems_manualFlag", SqlDbType.Bit,1),
-                    new SqlParameter("@materialItems_materialUnit", SqlDbType.VarChar,20),
-                    new SqlParameter("@materialItems_partQuantity", SqlDbType.Decimal,5),
-                    new SqlParameter("@materialItems_unitPrice", SqlDbType.Decimal,9),
-                    new SqlParameter("@materialItems_partFee", SqlDbType.Decimal,9),
+                    new SqlParameter("@ChangeItemIDs", SqlDbType.NVarChar,-1),
+                    new SqlParameter("@RepairItemsIDs", SqlDbType.NVarChar,-1),
+                    new SqlParameter("@MaterialItemsIDs", SqlDbType.NVarChar,-1),
                     new SqlParameter("@feeTotal_partFee", SqlDbType.Decimal,9),
                     new SqlParameter("@feeTotal_laborFee", SqlDbType.Decimal,9),
                     new SqlParameter("@feeTotal_materialFee", SqlDbType.Decimal,9),
@@ -535,60 +415,30 @@ namespace CZB.DAL.SqlServer.DataProvider
             parameters[48].Value = model.country;
             parameters[49].Value = model.vehicleManufMakeName;
             parameters[50].Value = model.vehicleSubModelName;
-            parameters[51].Value = model.attachmentCategoryName;
-            parameters[52].Value = model.attachmentUrl;
-            parameters[53].Value = model.attachmentId;
-            parameters[54].Value = model.attachmentName;
-            parameters[55].Value = model.partType;
-            parameters[56].Value = model.partTypeCode;
-            parameters[57].Value = model.manageRate;
-            parameters[58].Value = model.laborFeeManageRate;
-            parameters[59].Value = model.electricianMachinistRate;
-            parameters[60].Value = model.sheetMetalRate;
-            parameters[61].Value = model.paintRate;
-            parameters[62].Value = model.managementFee;
-            parameters[63].Value = model.multiPaintDiscountRate;
-            parameters[64].Value = model.changeItems_itemId;
-            parameters[65].Value = model.changeItems_itemName;
-            parameters[66].Value = model.changeItems_manualFlag;
-            parameters[67].Value = model.changeItems_partNo;
-            parameters[68].Value = model.changeItems_partQuantity;
-            parameters[69].Value = model.changeItems_unitPriceAfterDiscount;
-            parameters[70].Value = model.changeItems_partFeeAfterDiscount;
-            parameters[71].Value = model.changeItems_depreciation;
-            parameters[72].Value = model.changeItems_salvage;
-            parameters[73].Value = model.changeItems_recycleFlag;
-            parameters[74].Value = model.repairItems_itemId;
-            parameters[75].Value = model.repairItems_itemName;
-            parameters[76].Value = model.repairItems_manualFlag;
-            parameters[77].Value = model.repairItems_operationType;
-            parameters[78].Value = model.repairItems_partNo;
-            parameters[79].Value = model.repairItems_laborType;
-            parameters[80].Value = model.repairItems_laborHourFee;
-            parameters[81].Value = model.repairItems_laborFeeManageRate;
-            parameters[82].Value = model.repairItems_paintDiscountFlag;
-            parameters[83].Value = model.repairItems_laborHour;
-            parameters[84].Value = model.repairItems_laborFeeAfterDiscount;
-            parameters[85].Value = model.repairItems_outerRepairFlag;
-            parameters[86].Value = model.repairItems_outerLaborFee;
-            parameters[87].Value = model.materialItems_itemId;
-            parameters[88].Value = model.materialItems_itemName;
-            parameters[89].Value = model.materialItems_manualFlag;
-            parameters[90].Value = model.materialItems_materialUnit;
-            parameters[91].Value = model.materialItems_partQuantity;
-            parameters[92].Value = model.materialItems_unitPrice;
-            parameters[93].Value = model.materialItems_partFee;
-            parameters[94].Value = model.feeTotal_partFee;
-            parameters[95].Value = model.feeTotal_laborFee;
-            parameters[96].Value = model.feeTotal_materialFee;
-            parameters[97].Value = model.feeTotal_entireSalvage;
-            parameters[98].Value = model.feeTotal_totalSalvage;
-            parameters[99].Value = model.feeTotal_depreciation;
-            parameters[100].Value = model.feeTotal_manageFee;
-            parameters[101].Value = model.feeTotal_estimateAmount;
-            parameters[102].Value = model.feeTotal_rescueFee;
-            parameters[103].Value = model.feeTotal_lossTotal;
-            parameters[104].Value = model.Id;
+            parameters[51].Value = model.claimAttachmentsIDs;
+            parameters[52].Value = model.partType;
+            parameters[53].Value = model.partTypeCode;
+            parameters[54].Value = model.manageRate;
+            parameters[55].Value = model.laborFeeManageRate;
+            parameters[56].Value = model.electricianMachinistRate;
+            parameters[57].Value = model.sheetMetalRate;
+            parameters[58].Value = model.paintRate;
+            parameters[59].Value = model.managementFee;
+            parameters[60].Value = model.multiPaintDiscountRate;
+            parameters[61].Value = model.ChangeItemIDs;
+            parameters[62].Value = model.RepairItemsIDs;
+            parameters[63].Value = model.MaterialItemsIDs;
+            parameters[64].Value = model.feeTotal_partFee;
+            parameters[65].Value = model.feeTotal_laborFee;
+            parameters[66].Value = model.feeTotal_materialFee;
+            parameters[67].Value = model.feeTotal_entireSalvage;
+            parameters[68].Value = model.feeTotal_totalSalvage;
+            parameters[69].Value = model.feeTotal_depreciation;
+            parameters[70].Value = model.feeTotal_manageFee;
+            parameters[71].Value = model.feeTotal_estimateAmount;
+            parameters[72].Value = model.feeTotal_rescueFee;
+            parameters[73].Value = model.feeTotal_lossTotal;
+            parameters[74].Value = model.Id;
 
             int rows = DbHelperSQL.ExecuteSql(strSql.ToString(), parameters);
             if (rows > 0)
@@ -651,7 +501,7 @@ namespace CZB.DAL.SqlServer.DataProvider
         {
 
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("select  top 1 Id,senderTelNo,senderName,vehicleOwnerName,vehicleOwnerTelNo,repairOrderNo,claimNo,sourceType,sendRepairFlag,insuranceCompanyGroupCode,insuranceCompanyGroupName,insuranceCompanyCode,insuranceCompanyName,repairFactoryCode,repairFactoryName,repairFacilityType,qualificationLevel,estimatorCode,estimatorName,workFlowNodeCode,workFlowNodeName,assignDate,estimateStartTime,estimateEndTime,reportNo,reportDate,lossVehicleTypeCode,lossVehicleType,plateNo,vin,brandModel,engineNo,vehicleCategoryCode,vehicleCategory,usingTypeCode,usingType,licenseFirstRegisterDate,purchasePrice,plateTypeCode,plateType,plateColorCode,plateColor,vehicleBodyColor,currentValue,fuelRemain,mileage,itemsInCar,mainCollisionPoints,subCollisionPoints,country,vehicleManufMakeName,vehicleSubModelName,attachmentCategoryName,attachmentUrl,attachmentId,attachmentName,partType,partTypeCode,manageRate,laborFeeManageRate,electricianMachinistRate,sheetMetalRate,paintRate,managementFee,multiPaintDiscountRate,changeItems_itemId,changeItems_itemName,changeItems_manualFlag,changeItems_partNo,changeItems_partQuantity,changeItems_unitPriceAfterDiscount,changeItems_partFeeAfterDiscount,changeItems_depreciation,changeItems_salvage,changeItems_recycleFlag,repairItems_itemId,repairItems_itemName,repairItems_manualFlag,repairItems_operationType,repairItems_partNo,repairItems_laborType,repairItems_laborHourFee,repairItems_laborFeeManageRate,repairItems_paintDiscountFlag,repairItems_laborHour,repairItems_laborFeeAfterDiscount,repairItems_outerRepairFlag,repairItems_outerLaborFee,materialItems_itemId,materialItems_itemName,materialItems_manualFlag,materialItems_materialUnit,materialItems_partQuantity,materialItems_unitPrice,materialItems_partFee,feeTotal_partFee,feeTotal_laborFee,feeTotal_materialFee,feeTotal_entireSalvage,feeTotal_totalSalvage,feeTotal_depreciation,feeTotal_manageFee,feeTotal_estimateAmount,feeTotal_rescueFee,feeTotal_lossTotal from CCCAPI_JobLossInformation ");
+            strSql.Append("select  top 1 Id,senderTelNo,senderName,vehicleOwnerName,vehicleOwnerTelNo,repairOrderNo,claimNo,sourceType,sendRepairFlag,insuranceCompanyGroupCode,insuranceCompanyGroupName,insuranceCompanyCode,insuranceCompanyName,repairFactoryCode,repairFactoryName,repairFacilityType,qualificationLevel,estimatorCode,estimatorName,workFlowNodeCode,workFlowNodeName,assignDate,estimateStartTime,estimateEndTime,reportNo,reportDate,lossVehicleTypeCode,lossVehicleType,plateNo,vin,brandModel,engineNo,vehicleCategoryCode,vehicleCategory,usingTypeCode,usingType,licenseFirstRegisterDate,purchasePrice,plateTypeCode,plateType,plateColorCode,plateColor,vehicleBodyColor,currentValue,fuelRemain,mileage,itemsInCar,mainCollisionPoints,subCollisionPoints,country,vehicleManufMakeName,vehicleSubModelName,claimAttachmentsIDs,partType,partTypeCode,manageRate,laborFeeManageRate,electricianMachinistRate,sheetMetalRate,paintRate,managementFee,multiPaintDiscountRate,ChangeItemIDs,RepairItemsIDs,MaterialItemsIDs,feeTotal_partFee,feeTotal_laborFee,feeTotal_materialFee,feeTotal_entireSalvage,feeTotal_totalSalvage,feeTotal_depreciation,feeTotal_manageFee,feeTotal_estimateAmount,feeTotal_rescueFee,feeTotal_lossTotal from CCCAPI_JobLossInformation ");
             strSql.Append(" where Id=@Id ");
             SqlParameter[] parameters = {
                     new SqlParameter("@Id", SqlDbType.NVarChar,255)           };
@@ -886,21 +736,9 @@ namespace CZB.DAL.SqlServer.DataProvider
                 {
                     model.vehicleSubModelName = row["vehicleSubModelName"].ToString();
                 }
-                if (row["attachmentCategoryName"] != null)
+                if (row["claimAttachmentsIDs"] != null)
                 {
-                    model.attachmentCategoryName = row["attachmentCategoryName"].ToString();
-                }
-                if (row["attachmentUrl"] != null)
-                {
-                    model.attachmentUrl = row["attachmentUrl"].ToString();
-                }
-                if (row["attachmentId"] != null && row["attachmentId"].ToString() != "")
-                {
-                    model.attachmentId = int.Parse(row["attachmentId"].ToString());
-                }
-                if (row["attachmentName"] != null)
-                {
-                    model.attachmentName = row["attachmentName"].ToString();
+                    model.claimAttachmentsIDs = row["claimAttachmentsIDs"].ToString();
                 }
                 if (row["partType"] != null)
                 {
@@ -938,167 +776,17 @@ namespace CZB.DAL.SqlServer.DataProvider
                 {
                     model.multiPaintDiscountRate = decimal.Parse(row["multiPaintDiscountRate"].ToString());
                 }
-                if (row["changeItems_itemId"] != null && row["changeItems_itemId"].ToString() != "")
+                if (row["ChangeItemIDs"] != null)
                 {
-                    model.changeItems_itemId = int.Parse(row["changeItems_itemId"].ToString());
+                    model.ChangeItemIDs = row["ChangeItemIDs"].ToString();
                 }
-                if (row["changeItems_itemName"] != null)
+                if (row["RepairItemsIDs"] != null)
                 {
-                    model.changeItems_itemName = row["changeItems_itemName"].ToString();
+                    model.RepairItemsIDs = row["RepairItemsIDs"].ToString();
                 }
-                if (row["changeItems_manualFlag"] != null && row["changeItems_manualFlag"].ToString() != "")
+                if (row["MaterialItemsIDs"] != null)
                 {
-                    if ((row["changeItems_manualFlag"].ToString() == "1") || (row["changeItems_manualFlag"].ToString().ToLower() == "true"))
-                    {
-                        model.changeItems_manualFlag = true;
-                    }
-                    else
-                    {
-                        model.changeItems_manualFlag = false;
-                    }
-                }
-                if (row["changeItems_partNo"] != null)
-                {
-                    model.changeItems_partNo = row["changeItems_partNo"].ToString();
-                }
-                if (row["changeItems_partQuantity"] != null && row["changeItems_partQuantity"].ToString() != "")
-                {
-                    model.changeItems_partQuantity = int.Parse(row["changeItems_partQuantity"].ToString());
-                }
-                if (row["changeItems_unitPriceAfterDiscount"] != null && row["changeItems_unitPriceAfterDiscount"].ToString() != "")
-                {
-                    model.changeItems_unitPriceAfterDiscount = decimal.Parse(row["changeItems_unitPriceAfterDiscount"].ToString());
-                }
-                if (row["changeItems_partFeeAfterDiscount"] != null && row["changeItems_partFeeAfterDiscount"].ToString() != "")
-                {
-                    model.changeItems_partFeeAfterDiscount = decimal.Parse(row["changeItems_partFeeAfterDiscount"].ToString());
-                }
-                if (row["changeItems_depreciation"] != null && row["changeItems_depreciation"].ToString() != "")
-                {
-                    model.changeItems_depreciation = decimal.Parse(row["changeItems_depreciation"].ToString());
-                }
-                if (row["changeItems_salvage"] != null && row["changeItems_salvage"].ToString() != "")
-                {
-                    model.changeItems_salvage = decimal.Parse(row["changeItems_salvage"].ToString());
-                }
-                if (row["changeItems_recycleFlag"] != null && row["changeItems_recycleFlag"].ToString() != "")
-                {
-                    if ((row["changeItems_recycleFlag"].ToString() == "1") || (row["changeItems_recycleFlag"].ToString().ToLower() == "true"))
-                    {
-                        model.changeItems_recycleFlag = true;
-                    }
-                    else
-                    {
-                        model.changeItems_recycleFlag = false;
-                    }
-                }
-                if (row["repairItems_itemId"] != null && row["repairItems_itemId"].ToString() != "")
-                {
-                    model.repairItems_itemId = int.Parse(row["repairItems_itemId"].ToString());
-                }
-                if (row["repairItems_itemName"] != null)
-                {
-                    model.repairItems_itemName = row["repairItems_itemName"].ToString();
-                }
-                if (row["repairItems_manualFlag"] != null && row["repairItems_manualFlag"].ToString() != "")
-                {
-                    if ((row["repairItems_manualFlag"].ToString() == "1") || (row["repairItems_manualFlag"].ToString().ToLower() == "true"))
-                    {
-                        model.repairItems_manualFlag = true;
-                    }
-                    else
-                    {
-                        model.repairItems_manualFlag = false;
-                    }
-                }
-                if (row["repairItems_operationType"] != null)
-                {
-                    model.repairItems_operationType = row["repairItems_operationType"].ToString();
-                }
-                if (row["repairItems_partNo"] != null)
-                {
-                    model.repairItems_partNo = row["repairItems_partNo"].ToString();
-                }
-                if (row["repairItems_laborType"] != null)
-                {
-                    model.repairItems_laborType = row["repairItems_laborType"].ToString();
-                }
-                if (row["repairItems_laborHourFee"] != null && row["repairItems_laborHourFee"].ToString() != "")
-                {
-                    model.repairItems_laborHourFee = decimal.Parse(row["repairItems_laborHourFee"].ToString());
-                }
-                if (row["repairItems_laborFeeManageRate"] != null && row["repairItems_laborFeeManageRate"].ToString() != "")
-                {
-                    model.repairItems_laborFeeManageRate = decimal.Parse(row["repairItems_laborFeeManageRate"].ToString());
-                }
-                if (row["repairItems_paintDiscountFlag"] != null && row["repairItems_paintDiscountFlag"].ToString() != "")
-                {
-                    if ((row["repairItems_paintDiscountFlag"].ToString() == "1") || (row["repairItems_paintDiscountFlag"].ToString().ToLower() == "true"))
-                    {
-                        model.repairItems_paintDiscountFlag = true;
-                    }
-                    else
-                    {
-                        model.repairItems_paintDiscountFlag = false;
-                    }
-                }
-                if (row["repairItems_laborHour"] != null && row["repairItems_laborHour"].ToString() != "")
-                {
-                    model.repairItems_laborHour = decimal.Parse(row["repairItems_laborHour"].ToString());
-                }
-                if (row["repairItems_laborFeeAfterDiscount"] != null && row["repairItems_laborFeeAfterDiscount"].ToString() != "")
-                {
-                    model.repairItems_laborFeeAfterDiscount = decimal.Parse(row["repairItems_laborFeeAfterDiscount"].ToString());
-                }
-                if (row["repairItems_outerRepairFlag"] != null && row["repairItems_outerRepairFlag"].ToString() != "")
-                {
-                    if ((row["repairItems_outerRepairFlag"].ToString() == "1") || (row["repairItems_outerRepairFlag"].ToString().ToLower() == "true"))
-                    {
-                        model.repairItems_outerRepairFlag = true;
-                    }
-                    else
-                    {
-                        model.repairItems_outerRepairFlag = false;
-                    }
-                }
-                if (row["repairItems_outerLaborFee"] != null && row["repairItems_outerLaborFee"].ToString() != "")
-                {
-                    model.repairItems_outerLaborFee = decimal.Parse(row["repairItems_outerLaborFee"].ToString());
-                }
-                if (row["materialItems_itemId"] != null && row["materialItems_itemId"].ToString() != "")
-                {
-                    model.materialItems_itemId = int.Parse(row["materialItems_itemId"].ToString());
-                }
-                if (row["materialItems_itemName"] != null)
-                {
-                    model.materialItems_itemName = row["materialItems_itemName"].ToString();
-                }
-                if (row["materialItems_manualFlag"] != null && row["materialItems_manualFlag"].ToString() != "")
-                {
-                    if ((row["materialItems_manualFlag"].ToString() == "1") || (row["materialItems_manualFlag"].ToString().ToLower() == "true"))
-                    {
-                        model.materialItems_manualFlag = true;
-                    }
-                    else
-                    {
-                        model.materialItems_manualFlag = false;
-                    }
-                }
-                if (row["materialItems_materialUnit"] != null)
-                {
-                    model.materialItems_materialUnit = row["materialItems_materialUnit"].ToString();
-                }
-                if (row["materialItems_partQuantity"] != null && row["materialItems_partQuantity"].ToString() != "")
-                {
-                    model.materialItems_partQuantity = decimal.Parse(row["materialItems_partQuantity"].ToString());
-                }
-                if (row["materialItems_unitPrice"] != null && row["materialItems_unitPrice"].ToString() != "")
-                {
-                    model.materialItems_unitPrice = decimal.Parse(row["materialItems_unitPrice"].ToString());
-                }
-                if (row["materialItems_partFee"] != null && row["materialItems_partFee"].ToString() != "")
-                {
-                    model.materialItems_partFee = decimal.Parse(row["materialItems_partFee"].ToString());
+                    model.MaterialItemsIDs = row["MaterialItemsIDs"].ToString();
                 }
                 if (row["feeTotal_partFee"] != null && row["feeTotal_partFee"].ToString() != "")
                 {
@@ -1150,7 +838,7 @@ namespace CZB.DAL.SqlServer.DataProvider
         public DataSet GetList(string strWhere)
         {
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("select Id,senderTelNo,senderName,vehicleOwnerName,vehicleOwnerTelNo,repairOrderNo,claimNo,sourceType,sendRepairFlag,insuranceCompanyGroupCode,insuranceCompanyGroupName,insuranceCompanyCode,insuranceCompanyName,repairFactoryCode,repairFactoryName,repairFacilityType,qualificationLevel,estimatorCode,estimatorName,workFlowNodeCode,workFlowNodeName,assignDate,estimateStartTime,estimateEndTime,reportNo,reportDate,lossVehicleTypeCode,lossVehicleType,plateNo,vin,brandModel,engineNo,vehicleCategoryCode,vehicleCategory,usingTypeCode,usingType,licenseFirstRegisterDate,purchasePrice,plateTypeCode,plateType,plateColorCode,plateColor,vehicleBodyColor,currentValue,fuelRemain,mileage,itemsInCar,mainCollisionPoints,subCollisionPoints,country,vehicleManufMakeName,vehicleSubModelName,attachmentCategoryName,attachmentUrl,attachmentId,attachmentName,partType,partTypeCode,manageRate,laborFeeManageRate,electricianMachinistRate,sheetMetalRate,paintRate,managementFee,multiPaintDiscountRate,changeItems_itemId,changeItems_itemName,changeItems_manualFlag,changeItems_partNo,changeItems_partQuantity,changeItems_unitPriceAfterDiscount,changeItems_partFeeAfterDiscount,changeItems_depreciation,changeItems_salvage,changeItems_recycleFlag,repairItems_itemId,repairItems_itemName,repairItems_manualFlag,repairItems_operationType,repairItems_partNo,repairItems_laborType,repairItems_laborHourFee,repairItems_laborFeeManageRate,repairItems_paintDiscountFlag,repairItems_laborHour,repairItems_laborFeeAfterDiscount,repairItems_outerRepairFlag,repairItems_outerLaborFee,materialItems_itemId,materialItems_itemName,materialItems_manualFlag,materialItems_materialUnit,materialItems_partQuantity,materialItems_unitPrice,materialItems_partFee,feeTotal_partFee,feeTotal_laborFee,feeTotal_materialFee,feeTotal_entireSalvage,feeTotal_totalSalvage,feeTotal_depreciation,feeTotal_manageFee,feeTotal_estimateAmount,feeTotal_rescueFee,feeTotal_lossTotal ");
+            strSql.Append("select Id,senderTelNo,senderName,vehicleOwnerName,vehicleOwnerTelNo,repairOrderNo,claimNo,sourceType,sendRepairFlag,insuranceCompanyGroupCode,insuranceCompanyGroupName,insuranceCompanyCode,insuranceCompanyName,repairFactoryCode,repairFactoryName,repairFacilityType,qualificationLevel,estimatorCode,estimatorName,workFlowNodeCode,workFlowNodeName,assignDate,estimateStartTime,estimateEndTime,reportNo,reportDate,lossVehicleTypeCode,lossVehicleType,plateNo,vin,brandModel,engineNo,vehicleCategoryCode,vehicleCategory,usingTypeCode,usingType,licenseFirstRegisterDate,purchasePrice,plateTypeCode,plateType,plateColorCode,plateColor,vehicleBodyColor,currentValue,fuelRemain,mileage,itemsInCar,mainCollisionPoints,subCollisionPoints,country,vehicleManufMakeName,vehicleSubModelName,claimAttachmentsIDs,partType,partTypeCode,manageRate,laborFeeManageRate,electricianMachinistRate,sheetMetalRate,paintRate,managementFee,multiPaintDiscountRate,ChangeItemIDs,RepairItemsIDs,MaterialItemsIDs,feeTotal_partFee,feeTotal_laborFee,feeTotal_materialFee,feeTotal_entireSalvage,feeTotal_totalSalvage,feeTotal_depreciation,feeTotal_manageFee,feeTotal_estimateAmount,feeTotal_rescueFee,feeTotal_lossTotal ");
             strSql.Append(" FROM CCCAPI_JobLossInformation ");
             if (strWhere.Trim() != "")
             {
@@ -1170,7 +858,7 @@ namespace CZB.DAL.SqlServer.DataProvider
             {
                 strSql.Append(" top " + Top.ToString());
             }
-            strSql.Append(" Id,senderTelNo,senderName,vehicleOwnerName,vehicleOwnerTelNo,repairOrderNo,claimNo,sourceType,sendRepairFlag,insuranceCompanyGroupCode,insuranceCompanyGroupName,insuranceCompanyCode,insuranceCompanyName,repairFactoryCode,repairFactoryName,repairFacilityType,qualificationLevel,estimatorCode,estimatorName,workFlowNodeCode,workFlowNodeName,assignDate,estimateStartTime,estimateEndTime,reportNo,reportDate,lossVehicleTypeCode,lossVehicleType,plateNo,vin,brandModel,engineNo,vehicleCategoryCode,vehicleCategory,usingTypeCode,usingType,licenseFirstRegisterDate,purchasePrice,plateTypeCode,plateType,plateColorCode,plateColor,vehicleBodyColor,currentValue,fuelRemain,mileage,itemsInCar,mainCollisionPoints,subCollisionPoints,country,vehicleManufMakeName,vehicleSubModelName,attachmentCategoryName,attachmentUrl,attachmentId,attachmentName,partType,partTypeCode,manageRate,laborFeeManageRate,electricianMachinistRate,sheetMetalRate,paintRate,managementFee,multiPaintDiscountRate,changeItems_itemId,changeItems_itemName,changeItems_manualFlag,changeItems_partNo,changeItems_partQuantity,changeItems_unitPriceAfterDiscount,changeItems_partFeeAfterDiscount,changeItems_depreciation,changeItems_salvage,changeItems_recycleFlag,repairItems_itemId,repairItems_itemName,repairItems_manualFlag,repairItems_operationType,repairItems_partNo,repairItems_laborType,repairItems_laborHourFee,repairItems_laborFeeManageRate,repairItems_paintDiscountFlag,repairItems_laborHour,repairItems_laborFeeAfterDiscount,repairItems_outerRepairFlag,repairItems_outerLaborFee,materialItems_itemId,materialItems_itemName,materialItems_manualFlag,materialItems_materialUnit,materialItems_partQuantity,materialItems_unitPrice,materialItems_partFee,feeTotal_partFee,feeTotal_laborFee,feeTotal_materialFee,feeTotal_entireSalvage,feeTotal_totalSalvage,feeTotal_depreciation,feeTotal_manageFee,feeTotal_estimateAmount,feeTotal_rescueFee,feeTotal_lossTotal ");
+            strSql.Append(" Id,senderTelNo,senderName,vehicleOwnerName,vehicleOwnerTelNo,repairOrderNo,claimNo,sourceType,sendRepairFlag,insuranceCompanyGroupCode,insuranceCompanyGroupName,insuranceCompanyCode,insuranceCompanyName,repairFactoryCode,repairFactoryName,repairFacilityType,qualificationLevel,estimatorCode,estimatorName,workFlowNodeCode,workFlowNodeName,assignDate,estimateStartTime,estimateEndTime,reportNo,reportDate,lossVehicleTypeCode,lossVehicleType,plateNo,vin,brandModel,engineNo,vehicleCategoryCode,vehicleCategory,usingTypeCode,usingType,licenseFirstRegisterDate,purchasePrice,plateTypeCode,plateType,plateColorCode,plateColor,vehicleBodyColor,currentValue,fuelRemain,mileage,itemsInCar,mainCollisionPoints,subCollisionPoints,country,vehicleManufMakeName,vehicleSubModelName,claimAttachmentsIDs,partType,partTypeCode,manageRate,laborFeeManageRate,electricianMachinistRate,sheetMetalRate,paintRate,managementFee,multiPaintDiscountRate,ChangeItemIDs,RepairItemsIDs,MaterialItemsIDs,feeTotal_partFee,feeTotal_laborFee,feeTotal_materialFee,feeTotal_entireSalvage,feeTotal_totalSalvage,feeTotal_depreciation,feeTotal_manageFee,feeTotal_estimateAmount,feeTotal_rescueFee,feeTotal_lossTotal ");
             strSql.Append(" FROM CCCAPI_JobLossInformation ");
             if (strWhere.Trim() != "")
             {
@@ -1227,10 +915,249 @@ namespace CZB.DAL.SqlServer.DataProvider
             return DbHelperSQL.Query(strSql.ToString());
         }
 
-        
+        /*
+		/// <summary>
+		/// 分页获取数据列表
+		/// </summary>
+		public DataSet GetList(int PageSize,int PageIndex,string strWhere)
+		{
+			SqlParameter[] parameters = {
+					new SqlParameter("@tblName", SqlDbType.VarChar, 255),
+					new SqlParameter("@fldName", SqlDbType.VarChar, 255),
+					new SqlParameter("@PageSize", SqlDbType.Int),
+					new SqlParameter("@PageIndex", SqlDbType.Int),
+					new SqlParameter("@IsReCount", SqlDbType.Bit),
+					new SqlParameter("@OrderType", SqlDbType.Bit),
+					new SqlParameter("@strWhere", SqlDbType.VarChar,1000),
+					};
+			parameters[0].Value = "CCCAPI_JobLossInformation";
+			parameters[1].Value = "Id";
+			parameters[2].Value = PageSize;
+			parameters[3].Value = PageIndex;
+			parameters[4].Value = 0;
+			parameters[5].Value = 0;
+			parameters[6].Value = strWhere;	
+			return DbHelperSQL.RunProcedure("UP_GetRecordByPage",parameters,"ds");
+		}*/
 
         #endregion  BasicMethod
         #region  ExtensionMethod
+
+        /// <summary>
+        /// 录入新增
+        /// </summary>
+        /// <param name="model">工单基本信息</param>
+        /// <param name="claimAttachmentsList">附件信息(复数)</param>
+        /// <param name="changeItems">换件项目(复数)</param>
+        /// <param name="materialItems">维修项目(复数)</param>
+        /// <param name="repairItems">辅料项目(复数)</param>
+        /// <returns></returns>
+        public bool AddJobLoss(Model.CCCAPI_JobLossInformation info_Model,
+            List<Model.CCCAPI_ClaimAttachments> claimAttachmentsList,
+            List<Model.CCCAPI_ChangeItems> changeItems,
+            List<Model.CCCAPI_MaterialItems> materialItems,
+            List<Model.CCCAPI_RepairItems> repairItems)
+        {
+            using (SqlConnection conn = new SqlConnection(DbHelperSQL.connectionString))
+            {
+                conn.Open();
+                using (SqlTransaction trans = conn.BeginTransaction())
+                {
+                    try
+                    {
+                        if (claimAttachmentsList != null && claimAttachmentsList.Count > 0)
+                        {
+                            foreach (Model.CCCAPI_ClaimAttachments model in claimAttachmentsList)
+                            {
+                                StringBuilder strSql = new StringBuilder();
+                                strSql.Append("insert into CCCAPI_ClaimAttachments(");
+                                strSql.Append("Id,AttachmentCategoryName,AttachmentUrl,AttachmentId,AttachmentName)");
+                                strSql.Append(" values (");
+                                strSql.Append("@Id,@AttachmentCategoryName,@AttachmentUrl,@AttachmentId,@AttachmentName)");
+                                SqlParameter[] parameters = new SqlParameter[]{
+                                                                new SqlParameter("@Id", model.Id),
+                                                                new SqlParameter("@AttachmentCategoryName", model.AttachmentCategoryName),
+                                                                new SqlParameter("@AttachmentUrl", model.AttachmentUrl),
+                                                                new SqlParameter("@AttachmentId",  model.AttachmentId),
+                                                                new SqlParameter("@AttachmentName",  model.AttachmentName)
+                                                            };
+
+                                DbHelperSQL.ExecuteSql(conn, trans, strSql.ToString(), parameters);
+                            }
+                        }
+                        if (changeItems != null && changeItems.Count > 0)
+                        {
+                            foreach (Model.CCCAPI_ChangeItems model in changeItems)
+                            {
+                                StringBuilder strSql = new StringBuilder();
+                                strSql.Append("insert into CCCAPI_ChangeItems(");
+                                strSql.Append("Id,ItemId,itemName,ManualFlag,partNo,partQuantity,unitPriceAfterDiscount,partFeeAfterDiscount,depreciation,salvage,recycleFlag)");
+                                strSql.Append(" values (");
+                                strSql.Append("@Id,@ItemId,@itemName,@ManualFlag,@partNo,@partQuantity,@unitPriceAfterDiscount,@partFeeAfterDiscount,@depreciation,@salvage,@recycleFlag)");
+                                SqlParameter[] parameters = {
+                                    new SqlParameter("@Id", model.Id),
+                                    new SqlParameter("@ItemId", model.ItemId),
+                                    new SqlParameter("@itemName", model.itemName),
+                                    new SqlParameter("@ManualFlag", model.ManualFlag),
+                                    new SqlParameter("@partNo", model.partNo),
+                                    new SqlParameter("@partQuantity", model.partQuantity),
+                                    new SqlParameter("@unitPriceAfterDiscount", model.unitPriceAfterDiscount),
+                                    new SqlParameter("@partFeeAfterDiscount", model.partFeeAfterDiscount),
+                                    new SqlParameter("@depreciation", model.depreciation),
+                                    new SqlParameter("@salvage", model.salvage),
+                                    new SqlParameter("@recycleFlag", model.recycleFlag)
+                                };
+                                DbHelperSQL.ExecuteSql(conn, trans, strSql.ToString(), parameters);
+                            }
+                        }
+                        if (materialItems != null && materialItems.Count > 0)
+                        {
+                            foreach (Model.CCCAPI_MaterialItems model in materialItems)
+                            {
+                                StringBuilder strSql = new StringBuilder();
+                                strSql.Append("insert into CCCAPI_MaterialItems(");
+                                strSql.Append("id,itemid,itemName,manualFlag,materialUnit,partQuantity,unitPrice,partFee)");
+                                strSql.Append(" values (");
+                                strSql.Append("@id,@itemid,@itemName,@manualFlag,@materialUnit,@partQuantity,@unitPrice,@partFee)");
+                                SqlParameter[] parameters = {
+                                    new SqlParameter("@id", model.id),
+                                    new SqlParameter("@itemid", model.itemid),
+                                    new SqlParameter("@itemName", model.itemName),
+                                    new SqlParameter("@manualFlag", model.manualFlag),
+                                    new SqlParameter("@materialUnit", model.materialUnit),
+                                    new SqlParameter("@partQuantity", model.partQuantity),
+                                    new SqlParameter("@unitPrice", model.unitPrice),
+                                    new SqlParameter("@partFee", model.partFee)
+                                };
+                                DbHelperSQL.ExecuteSql(conn, trans, strSql.ToString(), parameters);
+                            }
+                        }
+                        if (repairItems != null && repairItems.Count > 0)
+                        {
+                            foreach (Model.CCCAPI_RepairItems model in repairItems)
+                            {
+                                StringBuilder strSql = new StringBuilder();
+                                strSql.Append("insert into CCCAPI_RepairItems(");
+                                strSql.Append("id,itemId,itemName,manualFlag,operationType,partNo,laborType,laborHourFee,laborFeeManageRate,paintDiscountFlag,laborHour,laborFeeAfterDiscount,outerRepairFlag,outerLaborFee)");
+                                strSql.Append(" values (");
+                                strSql.Append("@id,@itemId,@itemName,@manualFlag,@operationType,@partNo,@laborType,@laborHourFee,@laborFeeManageRate,@paintDiscountFlag,@laborHour,@laborFeeAfterDiscount,@outerRepairFlag,@outerLaborFee)");
+                                SqlParameter[] parameters = {
+                                    new SqlParameter("@id", model.id),
+                                    new SqlParameter("@itemId", model.itemId),
+                                    new SqlParameter("@itemName", model.itemName),
+                                    new SqlParameter("@manualFlag", model.manualFlag),
+                                    new SqlParameter("@operationType", model.operationType),
+                                    new SqlParameter("@partNo", model.partNo),
+                                    new SqlParameter("@laborType",model.laborHourFee),
+                                    new SqlParameter("@laborHourFee", model.laborHourFee),
+                                    new SqlParameter("@laborFeeManageRate", model.laborFeeManageRate),
+                                    new SqlParameter("@paintDiscountFlag", model.paintDiscountFlag),
+                                    new SqlParameter("@laborHour", model.laborHour),
+                                    new SqlParameter("@laborFeeAfterDiscount", model.laborFeeAfterDiscount),
+                                    new SqlParameter("@outerRepairFlag", model.outerRepairFlag),
+                                    new SqlParameter("@outerLaborFee", model.outerLaborFee)
+                                };
+                                DbHelperSQL.ExecuteSql(conn, trans, strSql.ToString(), parameters);
+                            }
+                        }
+
+                        var strSql = new StringBuilder();
+                        strSql.Append("insert into CCCAPI_JobLossInformation(");
+                        strSql.Append("Id,senderTelNo,senderName,vehicleOwnerName,vehicleOwnerTelNo,repairOrderNo,claimNo,sourceType,sendRepairFlag,insuranceCompanyGroupCode,insuranceCompanyGroupName,insuranceCompanyCode,insuranceCompanyName,repairFactoryCode,repairFactoryName,repairFacilityType,qualificationLevel,estimatorCode,estimatorName,workFlowNodeCode,workFlowNodeName,assignDate,estimateStartTime,estimateEndTime,reportNo,reportDate,lossVehicleTypeCode,lossVehicleType,plateNo,vin,brandModel,engineNo,vehicleCategoryCode,vehicleCategory,usingTypeCode,usingType,licenseFirstRegisterDate,purchasePrice,plateTypeCode,plateType,plateColorCode,plateColor,vehicleBodyColor,currentValue,fuelRemain,mileage,itemsInCar,mainCollisionPoints,subCollisionPoints,country,vehicleManufMakeName,vehicleSubModelName,claimAttachmentsIDs,partType,partTypeCode,manageRate,laborFeeManageRate,electricianMachinistRate,sheetMetalRate,paintRate,managementFee,multiPaintDiscountRate,ChangeItemIDs,RepairItemsIDs,MaterialItemsIDs,feeTotal_partFee,feeTotal_laborFee,feeTotal_materialFee,feeTotal_entireSalvage,feeTotal_totalSalvage,feeTotal_depreciation,feeTotal_manageFee,feeTotal_estimateAmount,feeTotal_rescueFee,feeTotal_lossTotal)");
+                        strSql.Append(" values (");
+                        strSql.Append("@Id,@senderTelNo,@senderName,@vehicleOwnerName,@vehicleOwnerTelNo,@repairOrderNo,@claimNo,@sourceType,@sendRepairFlag,@insuranceCompanyGroupCode,@insuranceCompanyGroupName,@insuranceCompanyCode,@insuranceCompanyName,@repairFactoryCode,@repairFactoryName,@repairFacilityType,@qualificationLevel,@estimatorCode,@estimatorName,@workFlowNodeCode,@workFlowNodeName,@assignDate,@estimateStartTime,@estimateEndTime,@reportNo,@reportDate,@lossVehicleTypeCode,@lossVehicleType,@plateNo,@vin,@brandModel,@engineNo,@vehicleCategoryCode,@vehicleCategory,@usingTypeCode,@usingType,@licenseFirstRegisterDate,@purchasePrice,@plateTypeCode,@plateType,@plateColorCode,@plateColor,@vehicleBodyColor,@currentValue,@fuelRemain,@mileage,@itemsInCar,@mainCollisionPoints,@subCollisionPoints,@country,@vehicleManufMakeName,@vehicleSubModelName,@claimAttachmentsIDs,@partType,@partTypeCode,@manageRate,@laborFeeManageRate,@electricianMachinistRate,@sheetMetalRate,@paintRate,@managementFee,@multiPaintDiscountRate,@ChangeItemIDs,@RepairItemsIDs,@MaterialItemsIDs,@feeTotal_partFee,@feeTotal_laborFee,@feeTotal_materialFee,@feeTotal_entireSalvage,@feeTotal_totalSalvage,@feeTotal_depreciation,@feeTotal_manageFee,@feeTotal_estimateAmount,@feeTotal_rescueFee,@feeTotal_lossTotal)");
+
+                        var parameters =new SqlParameter[] {
+                            new SqlParameter("@Id", info_Model.Id),
+                            new SqlParameter("@senderTelNo", info_Model.senderTelNo),
+                            new SqlParameter("@senderName", info_Model.senderName),
+                            new SqlParameter("@vehicleOwnerName", info_Model.vehicleOwnerName),
+                            new SqlParameter("@vehicleOwnerTelNo", info_Model.vehicleOwnerTelNo),
+                            new SqlParameter("@repairOrderNo", info_Model.repairOrderNo),
+                            new SqlParameter("@claimNo", info_Model.claimNo),
+                            new SqlParameter("@sourceType", info_Model.sourceType),
+                            new SqlParameter("@sendRepairFlag",info_Model.sendRepairFlag),
+                            new SqlParameter("@insuranceCompanyGroupCode", info_Model.insuranceCompanyGroupCode),
+                            new SqlParameter("@insuranceCompanyGroupName", info_Model.insuranceCompanyGroupName),
+                            new SqlParameter("@insuranceCompanyCode", info_Model.insuranceCompanyCode),
+                            new SqlParameter("@insuranceCompanyName", info_Model.insuranceCompanyName),
+                            new SqlParameter("@repairFactoryCode", info_Model.repairFactoryCode),
+                            new SqlParameter("@repairFactoryName", info_Model.repairFactoryName),
+                            new SqlParameter("@repairFacilityType",info_Model.repairFacilityType),
+                            new SqlParameter("@qualificationLevel", info_Model.qualificationLevel),
+                            new SqlParameter("@estimatorCode", info_Model.estimatorCode),
+                            new SqlParameter("@estimatorName", info_Model.estimatorName),
+                            new SqlParameter("@workFlowNodeCode", info_Model.workFlowNodeCode),
+                            new SqlParameter("@workFlowNodeName", info_Model.workFlowNodeName),
+                            new SqlParameter("@assignDate", info_Model.assignDate),
+                            new SqlParameter("@estimateStartTime", info_Model.estimateStartTime),
+                            new SqlParameter("@estimateEndTime", info_Model.estimateEndTime),
+                            new SqlParameter("@reportNo", info_Model.reportNo),
+                            new SqlParameter("@reportDate", info_Model.reportDate),
+                            new SqlParameter("@lossVehicleTypeCode", info_Model.lossVehicleTypeCode),
+                            new SqlParameter("@lossVehicleType", info_Model.lossVehicleType),
+                            new SqlParameter("@plateNo", info_Model.plateNo),
+                            new SqlParameter("@vin", info_Model.vin),
+                            new SqlParameter("@brandModel", info_Model.brandModel),
+                            new SqlParameter("@engineNo", info_Model.engineNo),
+                            new SqlParameter("@vehicleCategoryCode", info_Model.vehicleCategoryCode),
+                            new SqlParameter("@vehicleCategory", info_Model.vehicleCategory),
+                            new SqlParameter("@usingTypeCode", info_Model.usingTypeCode),
+                            new SqlParameter("@usingType", info_Model.usingType),
+                            new SqlParameter("@licenseFirstRegisterDate", info_Model.licenseFirstRegisterDate),
+                            new SqlParameter("@purchasePrice", info_Model.purchasePrice),
+                            new SqlParameter("@plateTypeCode", info_Model.plateTypeCode),
+                            new SqlParameter("@plateType", info_Model.plateType),
+                            new SqlParameter("@plateColorCode", info_Model.plateColorCode),
+                            new SqlParameter("@plateColor", info_Model.plateColor),
+                            new SqlParameter("@vehicleBodyColor", info_Model.vehicleBodyColor),
+                            new SqlParameter("@currentValue", info_Model.currentValue),
+                            new SqlParameter("@fuelRemain", info_Model.fuelRemain),
+                            new SqlParameter("@mileage", info_Model.mileage),
+                            new SqlParameter("@itemsInCar", info_Model.itemsInCar),
+                            new SqlParameter("@mainCollisionPoints",info_Model.mainCollisionPoints),
+                            new SqlParameter("@subCollisionPoints", info_Model.subCollisionPoints),
+                            new SqlParameter("@country", info_Model.country),
+                            new SqlParameter("@vehicleManufMakeName", info_Model.vehicleManufMakeName),
+                            new SqlParameter("@vehicleSubModelName", info_Model.vehicleSubModelName),
+                            new SqlParameter("@claimAttachmentsIDs", info_Model.claimAttachmentsIDs),
+                            new SqlParameter("@partType", info_Model.partType),
+                            new SqlParameter("@partTypeCode", info_Model.partTypeCode),
+                            new SqlParameter("@manageRate", info_Model.manageRate),
+                            new SqlParameter("@laborFeeManageRate", info_Model.laborFeeManageRate),
+                            new SqlParameter("@electricianMachinistRate", info_Model.electricianMachinistRate),
+                            new SqlParameter("@sheetMetalRate", info_Model.sheetMetalRate),
+                            new SqlParameter("@paintRate", info_Model.paintRate),
+                            new SqlParameter("@managementFee", info_Model.managementFee),
+                            new SqlParameter("@multiPaintDiscountRate", info_Model.multiPaintDiscountRate),
+                            new SqlParameter("@ChangeItemIDs", info_Model.ChangeItemIDs),
+                            new SqlParameter("@RepairItemsIDs", info_Model.RepairItemsIDs),
+                            new SqlParameter("@MaterialItemsIDs", info_Model.MaterialItemsIDs),
+                            new SqlParameter("@feeTotal_partFee", info_Model.feeTotal_partFee),
+                            new SqlParameter("@feeTotal_laborFee", info_Model.feeTotal_laborFee),
+                            new SqlParameter("@feeTotal_materialFee", info_Model.feeTotal_materialFee),
+                            new SqlParameter("@feeTotal_entireSalvage",info_Model.feeTotal_entireSalvage),
+                            new SqlParameter("@feeTotal_totalSalvage", info_Model.feeTotal_totalSalvage),
+                            new SqlParameter("@feeTotal_depreciation", info_Model.feeTotal_depreciation),
+                            new SqlParameter("@feeTotal_manageFee", info_Model.feeTotal_manageFee),
+                            new SqlParameter("@feeTotal_estimateAmount",info_Model.feeTotal_estimateAmount),
+                            new SqlParameter("@feeTotal_rescueFee", info_Model.feeTotal_rescueFee),
+                            new SqlParameter("@feeTotal_lossTotal", info_Model.feeTotal_lossTotal)
+                        };
+                        DbHelperSQL.ExecuteSql(conn, trans, strSql.ToString(), parameters);
+
+                        trans.Commit();
+                        return true;
+                    }
+                    catch (Exception err)
+                    {
+                        trans.Rollback();
+                        throw err;
+                    }
+                }
+            }
+            return false;
+        }
 
         #endregion  ExtensionMethod
     }

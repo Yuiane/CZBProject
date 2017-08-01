@@ -21,6 +21,20 @@ namespace CZB.Common.CCCModel
     /// </summary>
     public class ContentInfo
     {
+        public ContentInfo()
+        {
+            accInfo = new Accinfo() { };
+            claimAttachments = new List<Claimattachment>() { };
+            claimInfo = new Claiminfo();
+            contact = new Contact();
+            discountRate = new Discountrate();
+            feeTotal = new Feetotal();
+            insuranceCompany = new Insurancecompany();
+            lossItem = new Lossitem();
+            repairFacility = new Repairfacility();
+            vehicleInfo = new Vehicleinfo();
+            workflow = new Workflow();
+        }
         /// <summary>
         /// 事故信息
         /// </summary>
