@@ -3,15 +3,10 @@ using CZB.Common.CCCModel;
 using CZB.Common.Enums;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web;
 using System.Web.Http;
 using CZB.Common.Extensions;
-using System.Collections.Specialized;
-using Newtonsoft.Json;
 using CZB.Model;
+using CZB.Common;
 
 namespace CZB.Web.Controllers
 {
@@ -38,89 +33,7 @@ namespace CZB.Web.Controllers
                 {
                     var info = "partyId:" + model.partyId + "\r\n  businessNo:" + model.businessNo + "\r\n model.content:" + model.content.ToJson();
                     LogHelper.WriteLog(LogEnum.CCCApi, info);
-
-                    var result = new ReturnResult()
-                    {
-                        resultCode = ResultCode.Success,
-                        repairOrderNo = model.businessNo,
-                        resultMsg = ""
-                    };
-                    //联系人contact
-                    if (model.content.contact != null)
-                    {
-                        if (model.content.contact.senderTelNo == "")
-                        {
-                            result.resultCode = ResultCode.EntriesMustNotBeNull;
-                            result.resultMsg = "联系人电话为必须项!";
-                        }
-                        if (model.content.contact.senderName == "")
-                        {
-                            result.resultCode = ResultCode.EntriesMustNotBeNull;
-                            result.resultMsg = "联系人姓名为必须项!";
-                        }
-                    }
-                    else
-                    {
-                        result.resultCode = ResultCode.DataFormatDoesNotMeetRequirements;
-                        result.resultMsg = "未获取到联系人信息!";
-                    }
-
-                    //工单信息claimInfo
-                    if (model.content.claimInfo != null)
-                    {
-                        if (model.content.claimInfo.repairOrderNo == "")
-                        {
-                            result.resultCode = ResultCode.EntriesMustNotBeNull;
-                            result.resultMsg = "工单信息-DRP工单号为必须项!";
-                        }
-                        if (model.content.claimInfo.claimNo == "")
-                        {
-                            result.resultCode = ResultCode.EntriesMustNotBeNull;
-                            result.resultMsg = "工单信息-定损单号为必须项!";
-                        }
-                        if (model.content.claimInfo.sourceType == "")
-                        {
-                            result.resultCode = ResultCode.EntriesMustNotBeNull;
-                            result.resultMsg = "工单信息-业务来源为必须项!";
-                        }
-                    }
-                    else
-                    {
-                        result.resultCode = ResultCode.DataFormatDoesNotMeetRequirements;
-                        result.resultMsg = "未获取到工单信息!";
-                    }
-
-                    //保险公司 insuranceCompany
-                    if (model.content.insuranceCompany != null)
-                    {
-                        if (model.content.insuranceCompany.insuranceCompanyGroupCode == "")
-                        {
-                            result.resultCode = ResultCode.EntriesMustNotBeNull;
-                            result.resultMsg = "保险公司-保险公司Code为必须项!";
-                        }
-                        if (model.content.insuranceCompany.insuranceCompanyGroupName == "")
-                        {
-                            result.resultCode = ResultCode.EntriesMustNotBeNull;
-                            result.resultMsg = "保险公司-保险公司名称为必须项!";
-                        }
-                        if (model.content.insuranceCompany.insuranceCompanyCode == "")
-                        {
-                            result.resultCode = ResultCode.EntriesMustNotBeNull;
-                            result.resultMsg = "保险公司-保险公司分支机构Code为必须项!";
-                        }
-                        if (model.content.insuranceCompany.insuranceCompanyName == "")
-                        {
-                            result.resultCode = ResultCode.EntriesMustNotBeNull;
-                            result.resultMsg = "保险公司-保险公司分支机构名称为必须项!";
-                        }
-                    }
-                    else {
-                        result.resultCode = ResultCode.DataFormatDoesNotMeetRequirements;
-                        result.resultMsg = "未获取到保险公司信息!";
-                    }
-
-
-
+                    var result = CheckIsNullOrEmpty(model);
                     //非正常状态=>异常结束
                     if (result.resultCode != ResultCode.Success)
                     {
@@ -149,8 +62,6 @@ namespace CZB.Web.Controllers
                         repairFactoryName = model.content.repairFacility.repairFacilityName, // 修理厂名称
                         repairFacilityType = model.content.repairFacility.repairFacilityType, //修理厂类型
                         qualificationLevel = model.content.repairFacility.qualificationLevel, //修理厂资质
-                        estimatorCode = "",
-                        estimatorName = "",
                         //工单流程信息 workflow
                         workFlowNodeCode = model.content.workflow.workFlowNodeCode,   //定损状态环节Code
                         workFlowNodeName = model.content.workflow.workFlowNodeName,  //定损状态环节名称
@@ -161,6 +72,7 @@ namespace CZB.Web.Controllers
                         reportNo = model.content.accInfo.reportNo, //报案号
                         reportDate = model.content.accInfo.reportDate.ToDateTime(), //报案时间
                         //车辆信息 VehicleInfo
+
                         //基本信息 baseInfo
                         lossVehicleTypeCode = model.content.vehicleInfo.baseInfo.lossVehicleType, //损失车辆Code
                         lossVehicleType = model.content.vehicleInfo.baseInfo.lossVehicleType,
@@ -190,9 +102,107 @@ namespace CZB.Web.Controllers
                         country = model.content.vehicleInfo.vehicleModel.country,
                         vehicleManufMakeName = model.content.vehicleInfo.vehicleModel.vehicleManufMakeName,
                         vehicleSubModelName = model.content.vehicleInfo.vehicleModel.vehicleSubModelName,
+                        //费率折扣 discountRate
+                        partType = model.content.discountRate.partType,
+                        partTypeCode = model.content.discountRate.partType,
+                        manageRate = model.content.discountRate.manageRate.ToDecimal(),
+                        laborFeeManageRate = model.content.discountRate.laborFeeManageRate.ToDecimal(),
+                        electricianMachinistRate = model.content.discountRate.electricianMachinistRate.ToDecimal(),
+                        sheetMetalRate = model.content.discountRate.sheetMetalRate.ToDecimal(),
+                        paintRate = model.content.discountRate.paintRate.ToDecimal(),
+                        multiPaintDiscountRate = model.content.discountRate.multiPaintDiscountRate.ToDecimal(),
+                        //定损项目费用合计 feeTotal
+                        feeTotal_partFee = model.content.feeTotal.partFee.ToDecimal(),
+                        feeTotal_laborFee = model.content.feeTotal.laborFee.ToDecimal(),
+                        feeTotal_materialFee = model.content.feeTotal.materialFee.ToDecimal(),
+                        feeTotal_entireSalvage = model.content.feeTotal.entireSalvage.ToDecimal(),
+                        feeTotal_totalSalvage = model.content.feeTotal.totalSalvage.ToDecimal(),
+                        feeTotal_depreciation = model.content.feeTotal.depreciation.ToDecimal(),
+                        feeTotal_manageFee = model.content.feeTotal.manageFee.ToDecimal(),
+                        feeTotal_estimateAmount = model.content.feeTotal.estimateAmount.ToDecimal(),
+                        feeTotal_rescueFee = model.content.feeTotal.rescueFee.ToDecimal(),
+                        feeTotal_lossTotal = model.content.feeTotal.lossTotal.ToDecimal(),
+                        ChangeItemIDs = "", //损失项目-换件项目(复数)
+                        claimAttachmentsIDs = "",//附件信息(复数)
+                        MaterialItemsIDs = "",//损失项目-辅料项目(复数)
+                        RepairItemsIDs = "",//损失项目-维修项目(复数)
+                        estimatorCode = "", //修理厂信息-维修顾问账号
+                        estimatorName = "", //修理厂信息-维修顾问姓名
+                        managementFee = 0,//费率折扣-管理费率
                     };
+                    infoModel.claimAttachmentsIDs = "";
+                    List<Model.CCCAPI_ClaimAttachments> claimAttachmentsList = null;
+                    if (model.content.claimAttachments != null && model.content.claimAttachments.Count > 0)
+                    {
+                        infoModel.claimAttachmentsIDs += ",";
+                        claimAttachmentsList = new List<CCCAPI_ClaimAttachments>();
+                        foreach (var claimAttachmentsModel in model.content.claimAttachments)
+                        {
+                            var _guid = Guid.NewGuid().ToStringEx();
+                            claimAttachmentsList.Add(new Model.CCCAPI_ClaimAttachments()
+                            {
+                                AttachmentCategoryName = claimAttachmentsModel.attachmentCategoryName,
+                                AttachmentId = claimAttachmentsModel.attachmentId.ToInt32(),
+                                AttachmentName = claimAttachmentsModel.attachmentName,
+                                AttachmentUrl = claimAttachmentsModel.attachmentUrl,
+                                Id = _guid
+                            });
+                            infoModel.claimAttachmentsIDs += _guid + ",";
+                        }
+                    }
 
-                    if (new CZB.BLL.CCCAPI_JobLossInformation().AddJobLoss(null, null, null, null, null))
+                    List<Model.CCCAPI_ChangeItems> changeItemsList = null;
+                    if (model.content.lossItem != null && model.content.lossItem.changeItems != null && model.content.lossItem.changeItems.Count > 0)
+                    {
+                        infoModel.ChangeItemIDs += ",";
+                        changeItemsList = new List<CCCAPI_ChangeItems>();
+                        foreach (var changeItemsModel in model.content.lossItem.changeItems)
+                        {
+                            var _guid = Guid.NewGuid().ToStringEx();
+                            changeItemsList.Add(new Model.CCCAPI_ChangeItems()
+                            {
+                                ItemId = changeItemsModel.itemId.ToDecimal(),
+                                unitPriceAfterDiscount = changeItemsModel.unitPriceAfterDiscount.ToDecimal(),
+                                salvage = changeItemsModel.salvage.ToDecimal(),
+                                depreciation = changeItemsModel.depreciation.ToDecimal(),
+                                itemName = changeItemsModel.itemName,
+                                ManualFlag = changeItemsModel.manualFlag.ToLower() == "true" ? true : false,
+                                partFeeAfterDiscount = changeItemsModel.partFeeAfterDiscount.ToDecimal(),
+                                partNo = changeItemsModel.partNo,
+                                partQuantity = changeItemsModel.partQuantity.ToDecimal(),
+                                recycleFlag = changeItemsModel.recycleFlag.ToLower() == "true" ? true : false,
+                                Id = _guid
+                            });
+                            infoModel.ChangeItemIDs += _guid + ",";
+                        }
+                    }
+
+                    List<Model.CCCAPI_MaterialItems> materialItems = null;
+                    if (model.content.lossItem != null && model.content.lossItem.materialItems != null && model.content.lossItem.materialItems.Count > 0)
+                    {
+                        infoModel.MaterialItemsIDs += ",";
+                        materialItems = new List<CCCAPI_MaterialItems>();
+                        foreach (var materialItemsModel in model.content.lossItem.materialItems)
+                        {
+                            var _guid = Guid.NewGuid().ToStringEx();
+                            materialItems.Add(new CCCAPI_MaterialItems()
+                            {
+                                id = _guid,
+                                itemid = materialItemsModel.itemId.ToDecimal(),
+                                itemName = materialItemsModel.itemName,
+                                manualFlag = materialItemsModel.manualFlag.ToLower() == "true" ? true : false,
+                                materialUnit = "",
+                                partFee = materialItemsModel.partFee.ToDecimal(),
+                                partQuantity = materialItemsModel.partQuantity.ToDecimal(),
+                                unitPrice = materialItemsModel.unitPrice.ToDecimal()
+                            });
+                            infoModel.MaterialItemsIDs += _guid + ",";
+                        }
+                    }
+
+
+
+                    if (new CZB.BLL.CCCAPI_JobLossInformation().AddJobLoss(infoModel, claimAttachmentsList, changeItemsList, materialItems, null))
                     {
 
                         return new ReturnResult
@@ -233,21 +243,255 @@ namespace CZB.Web.Controllers
             }
         }
 
+
+
         /// <summary>
-        /// 测试
+        /// 验证数据null问题
         /// </summary>
         /// <returns></returns>
-        [AllowAnonymous]
-        [Route("GetInfo")]
-        [AcceptVerbs("Get", "Post")]
-        public ReturnResult GetInfo()
+        public ReturnResult CheckIsNullOrEmpty(Models model)
         {
-            return new ReturnResult
+            var result = new ReturnResult()
             {
-                resultCode = ResultCode.EntriesMustNotBeNull,
-                repairOrderNo = "111222333",
-                resultMsg = "444555666"
+                resultCode = ResultCode.Success,
+                repairOrderNo = model.businessNo,
+                resultMsg = ""
             };
+            //联系人contact
+            if (model.content.contact != null)
+            {
+                if (model.content.contact.senderTelNo.IsNullOrWhiteSpace())
+                {
+                    result.resultCode = ResultCode.EntriesMustNotBeNull;
+                    result.resultMsg = "联系人电话为必须项!";
+                    return result;
+                }
+                if (model.content.contact.senderName.IsNullOrWhiteSpace())
+                {
+                    result.resultCode = ResultCode.EntriesMustNotBeNull;
+                    result.resultMsg = "联系人姓名为必须项!";
+                    return result;
+                }
+            }
+            else
+            {
+                result.resultCode = ResultCode.DataFormatDoesNotMeetRequirements;
+                result.resultMsg = "未获取到联系人信息!";
+                return result;
+            }
+
+            //工单信息claimInfo
+            if (model.content.claimInfo != null)
+            {
+                if (model.content.claimInfo.repairOrderNo.IsNullOrWhiteSpace())
+                {
+                    result.resultCode = ResultCode.EntriesMustNotBeNull;
+                    result.resultMsg = "工单信息-DRP工单号为必须项!";
+                    return result;
+                }
+                if (model.content.claimInfo.claimNo.IsNullOrWhiteSpace())
+                {
+                    result.resultCode = ResultCode.EntriesMustNotBeNull;
+                    result.resultMsg = "工单信息-定损单号为必须项!";
+                    return result;
+                }
+                if (model.content.claimInfo.sourceType.IsNullOrWhiteSpace())
+                {
+                    result.resultCode = ResultCode.EntriesMustNotBeNull;
+                    result.resultMsg = "工单信息-业务来源为必须项!";
+                    return result;
+                }
+            }
+            else
+            {
+                result.resultCode = ResultCode.DataFormatDoesNotMeetRequirements;
+                result.resultMsg = "未获取到工单信息!";
+                return result;
+            }
+
+            //保险公司 insuranceCompany
+            if (model.content.insuranceCompany != null)
+            {
+                if (model.content.insuranceCompany.insuranceCompanyGroupCode.IsNullOrWhiteSpace())
+                {
+                    result.resultCode = ResultCode.EntriesMustNotBeNull;
+                    result.resultMsg = "保险公司-保险公司Code为必须项!";
+                    return result;
+                }
+                if (model.content.insuranceCompany.insuranceCompanyGroupName.IsNullOrWhiteSpace())
+                {
+                    result.resultCode = ResultCode.EntriesMustNotBeNull;
+                    result.resultMsg = "保险公司-保险公司名称为必须项!";
+                    return result;
+                }
+                if (model.content.insuranceCompany.insuranceCompanyCode.IsNullOrWhiteSpace())
+                {
+                    result.resultCode = ResultCode.EntriesMustNotBeNull;
+                    result.resultMsg = "保险公司-保险公司分支机构Code为必须项!";
+                    return result;
+                }
+                if (model.content.insuranceCompany.insuranceCompanyName.IsNullOrWhiteSpace())
+                {
+                    result.resultCode = ResultCode.EntriesMustNotBeNull;
+                    result.resultMsg = "保险公司-保险公司分支机构名称为必须项!";
+                    return result;
+                }
+            }
+            else
+            {
+                result.resultCode = ResultCode.DataFormatDoesNotMeetRequirements;
+                result.resultMsg = "未获取到保险公司信息!";
+                return result;
+            }
+
+            //事故信息accInfo
+            if (model.content.accInfo != null)
+            {
+                if (model.content.accInfo.reportNo.IsNullOrWhiteSpace())
+                {
+                    result.resultCode = ResultCode.EntriesMustNotBeNull;
+                    result.resultMsg = "事故信息-报案号为必须项!";
+                    return result;
+                }
+            }
+            else
+            {
+                result.resultCode = ResultCode.DataFormatDoesNotMeetRequirements;
+                result.resultMsg = "未获取到事故信息!";
+                return result;
+            }
+
+            //费率折扣 discountRate
+            if (model.content.discountRate != null)
+            {
+                if (model.content.discountRate.partType.IsNullOrWhiteSpace())
+                {
+                    result.resultCode = ResultCode.EntriesMustNotBeNull;
+                    result.resultMsg = "费率折扣-配件渠道名称为必须项!";
+                    return result;
+                }
+                if (model.content.discountRate.partTypeCode.IsNullOrWhiteSpace())
+                {
+                    result.resultCode = ResultCode.EntriesMustNotBeNull;
+                    result.resultMsg = "费率折扣-配件渠道CODE为必须项!";
+                    return result;
+                }
+                if (model.content.discountRate.manageRate.IsNullOrWhiteSpace())
+                {
+                    result.resultCode = ResultCode.EntriesMustNotBeNull;
+                    result.resultMsg = "费率折扣-配件折扣率为必须项!";
+                    return result;
+                }
+                if (model.content.discountRate.laborFeeManageRate.IsNullOrWhiteSpace())
+                {
+                    result.resultCode = ResultCode.EntriesMustNotBeNull;
+                    result.resultMsg = "费率折扣-工时折扣率为必须项!";
+                    return result;
+                }
+                if (model.content.discountRate.electricianMachinistRate.IsNullOrWhiteSpace())
+                {
+                    result.resultCode = ResultCode.EntriesMustNotBeNull;
+                    result.resultMsg = "费率折扣-机电为必须项!";
+                    return result;
+                }
+                if (model.content.discountRate.sheetMetalRate.IsNullOrWhiteSpace())
+                {
+                    result.resultCode = ResultCode.EntriesMustNotBeNull;
+                    result.resultMsg = "费率折扣-钣金为必须项!";
+                    return result;
+                }
+                if (model.content.discountRate.paintRate.IsNullOrWhiteSpace())
+                {
+                    result.resultCode = ResultCode.EntriesMustNotBeNull;
+                    result.resultMsg = "费率折扣-喷漆为必须项!";
+                    return result;
+                }
+                if (model.content.discountRate.multiPaintDiscountRate.IsNullOrWhiteSpace())
+                {
+                    result.resultCode = ResultCode.EntriesMustNotBeNull;
+                    result.resultMsg = "费率折扣-多面喷漆折扣率为必须项!";
+                    return result;
+                }
+            }
+            else
+            {
+                result.resultCode = ResultCode.DataFormatDoesNotMeetRequirements;
+                result.resultMsg = "未获取到事故信息!";
+                return result;
+            }
+
+            //定损项目费用合计 feeTotal
+            if (model.content.feeTotal != null)
+            {
+                if (model.content.feeTotal.partFee.IsNullOrWhiteSpace())
+                {
+                    result.resultCode = ResultCode.EntriesMustNotBeNull;
+                    result.resultMsg = "定损项目费用合计-配件费用为必须项!";
+                    return result;
+                }
+                if (model.content.feeTotal.laborFee.IsNullOrWhiteSpace())
+                {
+                    result.resultCode = ResultCode.EntriesMustNotBeNull;
+                    result.resultMsg = "定损项目费用合计-工时费用为必须项!";
+                    return result;
+                }
+                if (model.content.feeTotal.materialFee.IsNullOrWhiteSpace())
+                {
+                    result.resultCode = ResultCode.EntriesMustNotBeNull;
+                    result.resultMsg = "定损项目费用合计-辅料费用为必须项!";
+                    return result;
+                }
+                if (model.content.feeTotal.entireSalvage.IsNullOrWhiteSpace())
+                {
+                    result.resultCode = ResultCode.EntriesMustNotBeNull;
+                    result.resultMsg = "定损项目费用合计-整单残值为必须项!";
+                    return result;
+                }
+                if (model.content.feeTotal.totalSalvage.IsNullOrWhiteSpace())
+                {
+                    result.resultCode = ResultCode.EntriesMustNotBeNull;
+                    result.resultMsg = "定损项目费用合计-残值总计为必须项!";
+                    return result;
+                }
+                if (model.content.feeTotal.depreciation.IsNullOrWhiteSpace())
+                {
+                    result.resultCode = ResultCode.EntriesMustNotBeNull;
+                    result.resultMsg = "定损项目费用合计-折旧费为必须项!";
+                    return result;
+                }
+                if (model.content.feeTotal.manageFee.IsNullOrWhiteSpace())
+                {
+                    result.resultCode = ResultCode.EntriesMustNotBeNull;
+                    result.resultMsg = "定损项目费用合计-管理费为必须项!";
+                    return result;
+                }
+                if (model.content.feeTotal.estimateAmount.IsNullOrWhiteSpace())
+                {
+                    result.resultCode = ResultCode.EntriesMustNotBeNull;
+                    result.resultMsg = "定损项目费用合计-定损金额为必须项!";
+                    return result;
+                }
+                if (model.content.feeTotal.rescueFee.IsNullOrWhiteSpace())
+                {
+                    result.resultCode = ResultCode.EntriesMustNotBeNull;
+                    result.resultMsg = "定损项目费用合计-施救费为必须项!";
+                    return result;
+                }
+                if (model.content.feeTotal.lossTotal.IsNullOrWhiteSpace())
+                {
+                    result.resultCode = ResultCode.EntriesMustNotBeNull;
+                    result.resultMsg = "定损项目费用合计-损失金额为必须项!";
+                    return result;
+                }
+            }
+            else
+            {
+                result.resultCode = ResultCode.DataFormatDoesNotMeetRequirements;
+                result.resultMsg = "未获取到定损项目费用合计信息!";
+                return result;
+            }
+
+            return result;
         }
     }
 }

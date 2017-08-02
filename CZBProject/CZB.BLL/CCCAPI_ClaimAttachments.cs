@@ -63,30 +63,6 @@ namespace CZB.BLL
 		}
 
 		/// <summary>
-		/// 得到一个对象实体，从缓存中
-		/// </summary>
-		public CZB.Model.CCCAPI_ClaimAttachments GetModelByCache(string Id)
-		{
-			
-			string CacheKey = "CCCAPI_ClaimAttachmentsModel-" + Id;
-			object objModel = Maticsoft.Common.DataCache.GetCache(CacheKey);
-			if (objModel == null)
-			{
-				try
-				{
-					objModel = dal.GetModel(Id);
-					if (objModel != null)
-					{
-						int ModelCache = Maticsoft.Common.ConfigHelper.GetConfigInt("ModelCache");
-						Maticsoft.Common.DataCache.SetCache(CacheKey, objModel, DateTime.Now.AddMinutes(ModelCache), TimeSpan.Zero);
-					}
-				}
-				catch{}
-			}
-			return (CZB.Model.CCCAPI_ClaimAttachments)objModel;
-		}
-
-		/// <summary>
 		/// 获得数据列表
 		/// </summary>
 		public DataSet GetList(string strWhere)

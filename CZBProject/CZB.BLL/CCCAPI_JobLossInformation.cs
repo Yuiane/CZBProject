@@ -128,7 +128,7 @@ namespace CZB.BLL
         #endregion  BasicMethod
         #region  ExtensionMethod
            
-        ///
+        
         public bool AddJobLoss(Model.CCCAPI_JobLossInformation info_Model,
             List<Model.CCCAPI_ClaimAttachments> claimAttachmentsList,
             List<Model.CCCAPI_ChangeItems> changeItems,

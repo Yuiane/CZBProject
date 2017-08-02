@@ -969,12 +969,12 @@ namespace CZB.DAL.SqlServer.DataProvider
                         {
                             foreach (Model.CCCAPI_ClaimAttachments model in claimAttachmentsList)
                             {
-                                StringBuilder strSql = new StringBuilder();
-                                strSql.Append("insert into CCCAPI_ClaimAttachments(");
-                                strSql.Append("Id,AttachmentCategoryName,AttachmentUrl,AttachmentId,AttachmentName)");
-                                strSql.Append(" values (");
-                                strSql.Append("@Id,@AttachmentCategoryName,@AttachmentUrl,@AttachmentId,@AttachmentName)");
-                                SqlParameter[] parameters = new SqlParameter[]{
+                                StringBuilder strSqlClaimAttachments = new StringBuilder();
+                                strSqlClaimAttachments.Append("insert into CCCAPI_ClaimAttachments(");
+                                strSqlClaimAttachments.Append("Id,AttachmentCategoryName,AttachmentUrl,AttachmentId,AttachmentName)");
+                                strSqlClaimAttachments.Append(" values (");
+                                strSqlClaimAttachments.Append("@Id,@AttachmentCategoryName,@AttachmentUrl,@AttachmentId,@AttachmentName)");
+                                SqlParameter[] parametersClaimAttachments = new SqlParameter[]{
                                                                 new SqlParameter("@Id", model.Id),
                                                                 new SqlParameter("@AttachmentCategoryName", model.AttachmentCategoryName),
                                                                 new SqlParameter("@AttachmentUrl", model.AttachmentUrl),
@@ -982,19 +982,19 @@ namespace CZB.DAL.SqlServer.DataProvider
                                                                 new SqlParameter("@AttachmentName",  model.AttachmentName)
                                                             };
 
-                                DbHelperSQL.ExecuteSql(conn, trans, strSql.ToString(), parameters);
+                                DbHelperSQL.ExecuteSql(conn, trans, strSqlClaimAttachments.ToString(), parametersClaimAttachments);
                             }
                         }
                         if (changeItems != null && changeItems.Count > 0)
                         {
                             foreach (Model.CCCAPI_ChangeItems model in changeItems)
                             {
-                                StringBuilder strSql = new StringBuilder();
-                                strSql.Append("insert into CCCAPI_ChangeItems(");
-                                strSql.Append("Id,ItemId,itemName,ManualFlag,partNo,partQuantity,unitPriceAfterDiscount,partFeeAfterDiscount,depreciation,salvage,recycleFlag)");
-                                strSql.Append(" values (");
-                                strSql.Append("@Id,@ItemId,@itemName,@ManualFlag,@partNo,@partQuantity,@unitPriceAfterDiscount,@partFeeAfterDiscount,@depreciation,@salvage,@recycleFlag)");
-                                SqlParameter[] parameters = {
+                                StringBuilder strSqlChangeItems = new StringBuilder();
+                                strSqlChangeItems.Append("insert into CCCAPI_ChangeItems(");
+                                strSqlChangeItems.Append("Id,ItemId,itemName,ManualFlag,partNo,partQuantity,unitPriceAfterDiscount,partFeeAfterDiscount,depreciation,salvage,recycleFlag)");
+                                strSqlChangeItems.Append(" values (");
+                                strSqlChangeItems.Append("@Id,@ItemId,@itemName,@ManualFlag,@partNo,@partQuantity,@unitPriceAfterDiscount,@partFeeAfterDiscount,@depreciation,@salvage,@recycleFlag)");
+                                SqlParameter[] parametersChangeItems = {
                                     new SqlParameter("@Id", model.Id),
                                     new SqlParameter("@ItemId", model.ItemId),
                                     new SqlParameter("@itemName", model.itemName),
@@ -1007,19 +1007,19 @@ namespace CZB.DAL.SqlServer.DataProvider
                                     new SqlParameter("@salvage", model.salvage),
                                     new SqlParameter("@recycleFlag", model.recycleFlag)
                                 };
-                                DbHelperSQL.ExecuteSql(conn, trans, strSql.ToString(), parameters);
+                                DbHelperSQL.ExecuteSql(conn, trans, strSqlChangeItems.ToString(), parametersChangeItems);
                             }
                         }
                         if (materialItems != null && materialItems.Count > 0)
                         {
                             foreach (Model.CCCAPI_MaterialItems model in materialItems)
                             {
-                                StringBuilder strSql = new StringBuilder();
-                                strSql.Append("insert into CCCAPI_MaterialItems(");
-                                strSql.Append("id,itemid,itemName,manualFlag,materialUnit,partQuantity,unitPrice,partFee)");
-                                strSql.Append(" values (");
-                                strSql.Append("@id,@itemid,@itemName,@manualFlag,@materialUnit,@partQuantity,@unitPrice,@partFee)");
-                                SqlParameter[] parameters = {
+                                StringBuilder strSqlMaterialItems = new StringBuilder();
+                                strSqlMaterialItems.Append("insert into CCCAPI_MaterialItems(");
+                                strSqlMaterialItems.Append("id,itemid,itemName,manualFlag,materialUnit,partQuantity,unitPrice,partFee)");
+                                strSqlMaterialItems.Append(" values (");
+                                strSqlMaterialItems.Append("@id,@itemid,@itemName,@manualFlag,@materialUnit,@partQuantity,@unitPrice,@partFee)");
+                                SqlParameter[] parametersMaterialItems = {
                                     new SqlParameter("@id", model.id),
                                     new SqlParameter("@itemid", model.itemid),
                                     new SqlParameter("@itemName", model.itemName),
@@ -1029,19 +1029,19 @@ namespace CZB.DAL.SqlServer.DataProvider
                                     new SqlParameter("@unitPrice", model.unitPrice),
                                     new SqlParameter("@partFee", model.partFee)
                                 };
-                                DbHelperSQL.ExecuteSql(conn, trans, strSql.ToString(), parameters);
+                                DbHelperSQL.ExecuteSql(conn, trans, strSqlMaterialItems.ToString(), parametersMaterialItems);
                             }
                         }
                         if (repairItems != null && repairItems.Count > 0)
                         {
                             foreach (Model.CCCAPI_RepairItems model in repairItems)
                             {
-                                StringBuilder strSql = new StringBuilder();
-                                strSql.Append("insert into CCCAPI_RepairItems(");
-                                strSql.Append("id,itemId,itemName,manualFlag,operationType,partNo,laborType,laborHourFee,laborFeeManageRate,paintDiscountFlag,laborHour,laborFeeAfterDiscount,outerRepairFlag,outerLaborFee)");
-                                strSql.Append(" values (");
-                                strSql.Append("@id,@itemId,@itemName,@manualFlag,@operationType,@partNo,@laborType,@laborHourFee,@laborFeeManageRate,@paintDiscountFlag,@laborHour,@laborFeeAfterDiscount,@outerRepairFlag,@outerLaborFee)");
-                                SqlParameter[] parameters = {
+                                var strSqlRepairItems = new StringBuilder();
+                                strSqlRepairItems.Append("insert into CCCAPI_RepairItems(");
+                                strSqlRepairItems.Append("id,itemId,itemName,manualFlag,operationType,partNo,laborType,laborHourFee,laborFeeManageRate,paintDiscountFlag,laborHour,laborFeeAfterDiscount,outerRepairFlag,outerLaborFee)");
+                                strSqlRepairItems.Append(" values (");
+                                strSqlRepairItems.Append("@id,@itemId,@itemName,@manualFlag,@operationType,@partNo,@laborType,@laborHourFee,@laborFeeManageRate,@paintDiscountFlag,@laborHour,@laborFeeAfterDiscount,@outerRepairFlag,@outerLaborFee)");
+                                SqlParameter[] parametersstrSqlRepairItems = {
                                     new SqlParameter("@id", model.id),
                                     new SqlParameter("@itemId", model.itemId),
                                     new SqlParameter("@itemName", model.itemName),
@@ -1057,7 +1057,7 @@ namespace CZB.DAL.SqlServer.DataProvider
                                     new SqlParameter("@outerRepairFlag", model.outerRepairFlag),
                                     new SqlParameter("@outerLaborFee", model.outerLaborFee)
                                 };
-                                DbHelperSQL.ExecuteSql(conn, trans, strSql.ToString(), parameters);
+                                DbHelperSQL.ExecuteSql(conn, trans, strSqlRepairItems.ToString(), parametersstrSqlRepairItems);
                             }
                         }
 
