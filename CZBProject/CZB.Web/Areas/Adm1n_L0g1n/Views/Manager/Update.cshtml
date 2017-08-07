@@ -57,7 +57,7 @@
             <tr>
                 <td></td>
                 <td align="left" colspan="3">
-                    <input class=" btn-submit"  type="submit" value="提 交" >
+                    <input class=" btn-submit" type="submit" value="提 交">
                 </td>
             </tr>
         </table>
@@ -95,6 +95,7 @@
                 alert("网络错误，请刷新后再操作！");
             },
             success: function (result) {
+                console.log(result);
                 if (result == "1") {
                     alert("修改成功");
                     window.location.href = "/Adm1n_L0g1n/Manager/List";

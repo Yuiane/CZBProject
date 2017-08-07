@@ -59,6 +59,7 @@ namespace CZB.Web.Areas.Adm1n_L0g1n.Controllers
         /// 修改&增加一条数据
         /// </summary>
         /// <returns></returns>
+        [ValidateInput(false)]
         public ActionResult AddOrUpdate()
         {
             try
