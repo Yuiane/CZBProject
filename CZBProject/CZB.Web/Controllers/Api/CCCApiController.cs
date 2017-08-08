@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Web.Http;
 using CZB.Common.Extensions;
 using CZB.Model;
-using CZB.Common;
+using CZB.Common.Helpers;
 
 namespace CZB.Web.Controllers
 {
@@ -33,194 +33,17 @@ namespace CZB.Web.Controllers
                 {
                     var info = "partyId:" + model.partyId + "\r\n  businessNo:" + model.businessNo + "\r\n model.content:" + model.content.ToJson();
                     LogHelper.WriteLog(LogEnum.CCCApi, info);
-                    var result = CheckIsNullOrEmpty(model);
-                    //非正常状态=>异常结束
-                    if (result.resultCode != ResultCode.Success)
+                    ReturnResult result = new ReturnResult();
+                    //定损
+                    if (model.content.workflow.workFlowNodeCode == WorkFlowNode.ToAssessTheDamage.GetDescription())
                     {
-                        return result;
-                    }
-                    Model.CCCAPI_JobLossInformation infoModel = new Model.CCCAPI_JobLossInformation()
-                    {
-                        Id = Guid.NewGuid().ToStringEx(),
-                        //联系人 contact
-                        senderTelNo = model.content.contact.senderTelNo,                    //联系人电话
-                        senderName = model.content.contact.senderName,                      //联系人姓名
-                        vehicleOwnerName = model.content.contact.vehicleOwnerName,          //车主
-                        vehicleOwnerTelNo = model.content.contact.vehicleOwnerTelNo,        //车主电话
-                        //工单信息 claimInfo
-                        repairOrderNo = model.content.claimInfo.repairOrderNo,              //DRP工单号
-                        claimNo = model.content.claimInfo.claimNo,                            //定损单号
-                        sourceType = model.content.claimInfo.sourceType,                      //业务来源
-                        sendRepairFlag = model.content.claimInfo.sendRepairFlag,             //送修/返修标记
-                        //保险公司 insuranceCompany
-                        insuranceCompanyGroupCode = model.content.insuranceCompany.insuranceCompanyGroupCode, //保险公司Code
-                        insuranceCompanyGroupName = model.content.insuranceCompany.insuranceCompanyGroupName,//保险公司名称
-                        insuranceCompanyCode = model.content.insuranceCompany.insuranceCompanyCode,//保险公司分支机构Code
-                        insuranceCompanyName = model.content.insuranceCompany.insuranceCompanyName, //保险公司分支机构名称
-                        //修理厂信息 repairFacility
-                        repairFactoryCode = model.content.repairFacility.repairFacilityCode, //修理厂Code
-                        repairFactoryName = model.content.repairFacility.repairFacilityName, // 修理厂名称
-                        repairFacilityType = model.content.repairFacility.repairFacilityType, //修理厂类型
-                        qualificationLevel = model.content.repairFacility.qualificationLevel, //修理厂资质
-                        //工单流程信息 workflow
-                        workFlowNodeCode = model.content.workflow.workFlowNodeCode,   //定损状态环节Code
-                        workFlowNodeName = model.content.workflow.workFlowNodeName,  //定损状态环节名称
-                        assignDate = model.content.workflow.assignDate.ToDateTime(),        //任务分配时间
-                        estimateStartTime = model.content.workflow.estimateStartTime.ToDateTime(), //定损开始时间
-                        estimateEndTime = model.content.workflow.estimateEndTime.ToDateTime(),   //定损完成时间
-                        //事故信息  accInfo
-                        reportNo = model.content.accInfo.reportNo, //报案号
-                        reportDate = model.content.accInfo.reportDate.ToDateTime(), //报案时间
-                        //车辆信息 VehicleInfo
-
-                        //基本信息 baseInfo
-                        lossVehicleTypeCode = model.content.vehicleInfo.baseInfo.lossVehicleType, //损失车辆Code
-                        lossVehicleType = model.content.vehicleInfo.baseInfo.lossVehicleType,
-                        plateNo = model.content.vehicleInfo.baseInfo.plateNo,
-                        vin = model.content.vehicleInfo.baseInfo.vin,
-                        brandModel = model.content.vehicleInfo.baseInfo.brandModel,
-                        engineNo = model.content.vehicleInfo.baseInfo.engineNo,
-                        vehicleCategoryCode = model.content.vehicleInfo.baseInfo.vehicleCategoryCode,
-                        vehicleCategory = model.content.vehicleInfo.baseInfo.vehicleCategory,
-                        usingTypeCode = model.content.vehicleInfo.baseInfo.usingTypeCode,
-                        usingType = model.content.vehicleInfo.baseInfo.usingType,
-                        licenseFirstRegisterDate = model.content.vehicleInfo.baseInfo.licenseFirstRegisterDate.ToDateTime(),
-                        purchasePrice = model.content.vehicleInfo.baseInfo.purchasePrice,
-                        plateTypeCode = model.content.vehicleInfo.baseInfo.plateTypeCode,
-                        plateType = model.content.vehicleInfo.baseInfo.plateType,
-                        plateColorCode = model.content.vehicleInfo.baseInfo.plateColorCode,
-                        plateColor = model.content.vehicleInfo.baseInfo.plateColor,
-                        vehicleBodyColor = model.content.vehicleInfo.baseInfo.vehicleBodyColor,
-                        currentValue = model.content.vehicleInfo.baseInfo.currentValue.ToDecimal(),
-                        //车辆损失信息 lossInfo
-                        fuelRemain = model.content.vehicleInfo.lossInfo.fuelRemain.ToDecimal(),
-                        mileage = model.content.vehicleInfo.lossInfo.mileage.ToDecimal(),
-                        itemsInCar = model.content.vehicleInfo.lossInfo.itemsInCar,
-                        mainCollisionPoints = model.content.vehicleInfo.lossInfo.mainCollisionPoints,
-                        subCollisionPoints = model.content.vehicleInfo.lossInfo.subCollisionPoints,
-                        //车型数据 vehicleModel
-                        country = model.content.vehicleInfo.vehicleModel.country,
-                        vehicleManufMakeName = model.content.vehicleInfo.vehicleModel.vehicleManufMakeName,
-                        vehicleSubModelName = model.content.vehicleInfo.vehicleModel.vehicleSubModelName,
-                        //费率折扣 discountRate
-                        partType = model.content.discountRate.partType,
-                        partTypeCode = model.content.discountRate.partType,
-                        manageRate = model.content.discountRate.manageRate.ToDecimal(),
-                        laborFeeManageRate = model.content.discountRate.laborFeeManageRate.ToDecimal(),
-                        electricianMachinistRate = model.content.discountRate.electricianMachinistRate.ToDecimal(),
-                        sheetMetalRate = model.content.discountRate.sheetMetalRate.ToDecimal(),
-                        paintRate = model.content.discountRate.paintRate.ToDecimal(),
-                        multiPaintDiscountRate = model.content.discountRate.multiPaintDiscountRate.ToDecimal(),
-                        //定损项目费用合计 feeTotal
-                        feeTotal_partFee = model.content.feeTotal.partFee.ToDecimal(),
-                        feeTotal_laborFee = model.content.feeTotal.laborFee.ToDecimal(),
-                        feeTotal_materialFee = model.content.feeTotal.materialFee.ToDecimal(),
-                        feeTotal_entireSalvage = model.content.feeTotal.entireSalvage.ToDecimal(),
-                        feeTotal_totalSalvage = model.content.feeTotal.totalSalvage.ToDecimal(),
-                        feeTotal_depreciation = model.content.feeTotal.depreciation.ToDecimal(),
-                        feeTotal_manageFee = model.content.feeTotal.manageFee.ToDecimal(),
-                        feeTotal_estimateAmount = model.content.feeTotal.estimateAmount.ToDecimal(),
-                        feeTotal_rescueFee = model.content.feeTotal.rescueFee.ToDecimal(),
-                        feeTotal_lossTotal = model.content.feeTotal.lossTotal.ToDecimal(),
-                        ChangeItemIDs = "", //损失项目-换件项目(复数)
-                        claimAttachmentsIDs = "",//附件信息(复数)
-                        MaterialItemsIDs = "",//损失项目-辅料项目(复数)
-                        RepairItemsIDs = "",//损失项目-维修项目(复数)
-                        estimatorCode = "", //修理厂信息-维修顾问账号
-                        estimatorName = "", //修理厂信息-维修顾问姓名
-                        managementFee = 0,//费率折扣-管理费率
-                    };
-                    infoModel.claimAttachmentsIDs = "";
-                    List<Model.CCCAPI_ClaimAttachments> claimAttachmentsList = null;
-                    if (model.content.claimAttachments != null && model.content.claimAttachments.Count > 0)
-                    {
-                        infoModel.claimAttachmentsIDs += ",";
-                        claimAttachmentsList = new List<CCCAPI_ClaimAttachments>();
-                        foreach (var claimAttachmentsModel in model.content.claimAttachments)
-                        {
-                            var _guid = Guid.NewGuid().ToStringEx();
-                            claimAttachmentsList.Add(new Model.CCCAPI_ClaimAttachments()
-                            {
-                                AttachmentCategoryName = claimAttachmentsModel.attachmentCategoryName,
-                                AttachmentId = claimAttachmentsModel.attachmentId.ToInt32(),
-                                AttachmentName = claimAttachmentsModel.attachmentName,
-                                AttachmentUrl = claimAttachmentsModel.attachmentUrl,
-                                Id = _guid
-                            });
-                            infoModel.claimAttachmentsIDs += _guid + ",";
-                        }
-                    }
-
-                    List<Model.CCCAPI_ChangeItems> changeItemsList = null;
-                    if (model.content.lossItem != null && model.content.lossItem.changeItems != null && model.content.lossItem.changeItems.Count > 0)
-                    {
-                        infoModel.ChangeItemIDs += ",";
-                        changeItemsList = new List<CCCAPI_ChangeItems>();
-                        foreach (var changeItemsModel in model.content.lossItem.changeItems)
-                        {
-                            var _guid = Guid.NewGuid().ToStringEx();
-                            changeItemsList.Add(new Model.CCCAPI_ChangeItems()
-                            {
-                                ItemId = changeItemsModel.itemId.ToDecimal(),
-                                unitPriceAfterDiscount = changeItemsModel.unitPriceAfterDiscount.ToDecimal(),
-                                salvage = changeItemsModel.salvage.ToDecimal(),
-                                depreciation = changeItemsModel.depreciation.ToDecimal(),
-                                itemName = changeItemsModel.itemName,
-                                ManualFlag = changeItemsModel.manualFlag.ToLower() == "true" ? true : false,
-                                partFeeAfterDiscount = changeItemsModel.partFeeAfterDiscount.ToDecimal(),
-                                partNo = changeItemsModel.partNo,
-                                partQuantity = changeItemsModel.partQuantity.ToDecimal(),
-                                recycleFlag = changeItemsModel.recycleFlag.ToLower() == "true" ? true : false,
-                                Id = _guid
-                            });
-                            infoModel.ChangeItemIDs += _guid + ",";
-                        }
-                    }
-
-                    List<Model.CCCAPI_MaterialItems> materialItems = null;
-                    if (model.content.lossItem != null && model.content.lossItem.materialItems != null && model.content.lossItem.materialItems.Count > 0)
-                    {
-                        infoModel.MaterialItemsIDs += ",";
-                        materialItems = new List<CCCAPI_MaterialItems>();
-                        foreach (var materialItemsModel in model.content.lossItem.materialItems)
-                        {
-                            var _guid = Guid.NewGuid().ToStringEx();
-                            materialItems.Add(new CCCAPI_MaterialItems()
-                            {
-                                id = _guid,
-                                itemid = materialItemsModel.itemId.ToDecimal(),
-                                itemName = materialItemsModel.itemName,
-                                manualFlag = materialItemsModel.manualFlag.ToLower() == "true" ? true : false,
-                                materialUnit = "",
-                                partFee = materialItemsModel.partFee.ToDecimal(),
-                                partQuantity = materialItemsModel.partQuantity.ToDecimal(),
-                                unitPrice = materialItemsModel.unitPrice.ToDecimal()
-                            });
-                            infoModel.MaterialItemsIDs += _guid + ",";
-                        }
-                    }
-
-
-
-                    if (new CZB.BLL.CCCAPI_JobLossInformation().AddJobLoss(infoModel, claimAttachmentsList, changeItemsList, materialItems, null))
-                    {
-
-                        return new ReturnResult
-                        {
-                            resultCode = ResultCode.Success,
-                            repairOrderNo = "请求成功",
-                            resultMsg = "请求成功"
-                        };
+                        result = ToAssessTheDamage(model);
                     }
                     else
                     {
-                        return new ReturnResult
-                        {
-                            resultCode = ResultCode.UnknownException,
-                            repairOrderNo = "新增失败",
-                            resultMsg = "未知异常情况"
-                        };
+                        result = NuclearDamage(model);
                     }
+                    return result;
                 }
                 else
                 {
@@ -241,8 +64,331 @@ namespace CZB.Web.Controllers
                     resultMsg = "未知异常情况"
                 };
             }
+
         }
 
+
+        /// <summary>
+        ///  核损
+        /// </summary>
+        /// <returns></returns>
+        public ReturnResult NuclearDamage(Models model)
+        {
+            if (new CZB.BLL.CCCAPI_JobLossInformation().ExistsBusinessNo(model.businessNo)) {
+
+            }
+
+            var result = CheckIsNullOrEmpty(model);
+
+            //非正常状态=>异常结束
+            if (result.resultCode != ResultCode.Success)
+            {
+                return result;
+            }
+
+            Model.CCCAPI_JobLossInformation infoModel = new Model.CCCAPI_JobLossInformation()
+            {
+                Id = Guid.NewGuid().ToStringEx(),
+                //联系人 contact
+                senderTelNo = model.content.contact.senderTelNo,                    //联系人电话
+                senderName = model.content.contact.senderName,                      //联系人姓名
+                vehicleOwnerName = model.content.contact.vehicleOwnerName,          //车主
+                vehicleOwnerTelNo = model.content.contact.vehicleOwnerTelNo,        //车主电话
+                                                                                    //工单信息 claimInfo
+                repairOrderNo = model.content.claimInfo.repairOrderNo,              //DRP工单号
+                claimNo = model.content.claimInfo.claimNo,                            //定损单号
+                sourceType = model.content.claimInfo.sourceType,                      //业务来源
+                sendRepairFlag = model.content.claimInfo.sendRepairFlag,             //送修/返修标记
+                                                                                     //保险公司 insuranceCompany
+                insuranceCompanyGroupCode = model.content.insuranceCompany.insuranceCompanyGroupCode, //保险公司Code
+                insuranceCompanyGroupName = model.content.insuranceCompany.insuranceCompanyGroupName,//保险公司名称
+                insuranceCompanyCode = model.content.insuranceCompany.insuranceCompanyCode,//保险公司分支机构Code
+                insuranceCompanyName = model.content.insuranceCompany.insuranceCompanyName, //保险公司分支机构名称
+                                                                                            //修理厂信息 repairFacility
+                repairFactoryCode = model.content.repairFacility.repairFacilityCode, //修理厂Code
+                repairFactoryName = model.content.repairFacility.repairFacilityName, // 修理厂名称
+                repairFacilityType = model.content.repairFacility.repairFacilityType, //修理厂类型
+                qualificationLevel = model.content.repairFacility.qualificationLevel, //修理厂资质
+                                                                                      //工单流程信息 workflow
+                workFlowNodeCode = model.content.workflow.workFlowNodeCode,   //定损状态环节Code
+                workFlowNodeName = model.content.workflow.workFlowNodeName,  //定损状态环节名称
+                assignDate = model.content.workflow.assignDate.ToDateTime(),        //任务分配时间
+                estimateStartTime = model.content.workflow.estimateStartTime.ToDateTime(), //定损开始时间
+                estimateEndTime = model.content.workflow.estimateEndTime.ToDateTime(),   //定损完成时间
+                                                                                         //事故信息  accInfo
+                reportNo = model.content.accInfo.reportNo, //报案号
+                reportDate = model.content.accInfo.reportDate.ToDateTime(), //报案时间
+                                                                            //车辆信息 VehicleInfo
+
+                //基本信息 baseInfo
+                lossVehicleTypeCode = model.content.vehicleInfo.baseInfo.lossVehicleType, //损失车辆Code
+                lossVehicleType = model.content.vehicleInfo.baseInfo.lossVehicleType,
+                plateNo = model.content.vehicleInfo.baseInfo.plateNo,
+                vin = model.content.vehicleInfo.baseInfo.vin,
+                brandModel = model.content.vehicleInfo.baseInfo.brandModel,
+                engineNo = model.content.vehicleInfo.baseInfo.engineNo,
+                vehicleCategoryCode = model.content.vehicleInfo.baseInfo.vehicleCategoryCode,
+                vehicleCategory = model.content.vehicleInfo.baseInfo.vehicleCategory,
+                usingTypeCode = model.content.vehicleInfo.baseInfo.usingTypeCode,
+                usingType = model.content.vehicleInfo.baseInfo.usingType,
+                licenseFirstRegisterDate = model.content.vehicleInfo.baseInfo.licenseFirstRegisterDate.ToDateTime(),
+                purchasePrice = model.content.vehicleInfo.baseInfo.purchasePrice,
+                plateTypeCode = model.content.vehicleInfo.baseInfo.plateTypeCode,
+                plateType = model.content.vehicleInfo.baseInfo.plateType,
+                plateColorCode = model.content.vehicleInfo.baseInfo.plateColorCode,
+                plateColor = model.content.vehicleInfo.baseInfo.plateColor,
+                vehicleBodyColor = model.content.vehicleInfo.baseInfo.vehicleBodyColor,
+                currentValue = model.content.vehicleInfo.baseInfo.currentValue.ToDecimal(),
+                //车辆损失信息 lossInfo
+                fuelRemain = model.content.vehicleInfo.lossInfo.fuelRemain.ToDecimal(),
+                mileage = model.content.vehicleInfo.lossInfo.mileage.ToDecimal(),
+                itemsInCar = model.content.vehicleInfo.lossInfo.itemsInCar,
+                mainCollisionPoints = model.content.vehicleInfo.lossInfo.mainCollisionPoints,
+                subCollisionPoints = model.content.vehicleInfo.lossInfo.subCollisionPoints,
+                //车型数据 vehicleModel
+                country = model.content.vehicleInfo.vehicleModel.country,
+                vehicleManufMakeName = model.content.vehicleInfo.vehicleModel.vehicleManufMakeName,
+                vehicleSubModelName = model.content.vehicleInfo.vehicleModel.vehicleSubModelName,
+                //费率折扣 discountRate
+                partType = model.content.discountRate.partType,
+                partTypeCode = model.content.discountRate.partType,
+                manageRate = model.content.discountRate.manageRate.ToDecimal(),
+                laborFeeManageRate = model.content.discountRate.laborFeeManageRate.ToDecimal(),
+                electricianMachinistRate = model.content.discountRate.electricianMachinistRate.ToDecimal(),
+                sheetMetalRate = model.content.discountRate.sheetMetalRate.ToDecimal(),
+                paintRate = model.content.discountRate.paintRate.ToDecimal(),
+                multiPaintDiscountRate = model.content.discountRate.multiPaintDiscountRate.ToDecimal(),
+                //定损项目费用合计 feeTotal
+                feeTotal_partFee = model.content.feeTotal.partFee.ToDecimal(),
+                feeTotal_laborFee = model.content.feeTotal.laborFee.ToDecimal(),
+                feeTotal_materialFee = model.content.feeTotal.materialFee.ToDecimal(),
+                feeTotal_entireSalvage = model.content.feeTotal.entireSalvage.ToDecimal(),
+                feeTotal_totalSalvage = model.content.feeTotal.totalSalvage.ToDecimal(),
+                feeTotal_depreciation = model.content.feeTotal.depreciation.ToDecimal(),
+                feeTotal_manageFee = model.content.feeTotal.manageFee.ToDecimal(),
+                feeTotal_estimateAmount = model.content.feeTotal.estimateAmount.ToDecimal(),
+                feeTotal_rescueFee = model.content.feeTotal.rescueFee.ToDecimal(),
+                feeTotal_lossTotal = model.content.feeTotal.lossTotal.ToDecimal(),
+                ChangeItemIDs = "", //损失项目-换件项目(复数)
+                claimAttachmentsIDs = "",//附件信息(复数)
+                MaterialItemsIDs = "",//损失项目-辅料项目(复数)
+                RepairItemsIDs = "",//损失项目-维修项目(复数)
+                estimatorCode = "", //修理厂信息-维修顾问账号
+                estimatorName = "", //修理厂信息-维修顾问姓名
+                managementFee = 0,//费率折扣-管理费率
+            };
+            infoModel.claimAttachmentsIDs = "";
+            List<Model.CCCAPI_ClaimAttachments> claimAttachmentsList = null;
+            if (model.content.claimAttachments != null && model.content.claimAttachments.Count > 0)
+            {
+                infoModel.claimAttachmentsIDs += ",";
+                claimAttachmentsList = new List<CCCAPI_ClaimAttachments>();
+                foreach (var claimAttachmentsModel in model.content.claimAttachments)
+                {
+                    var _guid = Guid.NewGuid().ToStringEx();
+                    claimAttachmentsList.Add(new Model.CCCAPI_ClaimAttachments()
+                    {
+                        AttachmentCategoryName = claimAttachmentsModel.attachmentCategoryName,
+                        AttachmentId = claimAttachmentsModel.attachmentId.ToInt32(),
+                        AttachmentName = claimAttachmentsModel.attachmentName,
+                        AttachmentUrl = claimAttachmentsModel.attachmentUrl,
+                        Id = _guid
+                    });
+                    infoModel.claimAttachmentsIDs += _guid + ",";
+                }
+            }
+
+            List<Model.CCCAPI_ChangeItems> changeItemsList = null;
+            if (model.content.lossItem != null && model.content.lossItem.changeItems != null && model.content.lossItem.changeItems.Count > 0)
+            {
+                infoModel.ChangeItemIDs += ",";
+                changeItemsList = new List<CCCAPI_ChangeItems>();
+                foreach (var changeItemsModel in model.content.lossItem.changeItems)
+                {
+                    var _guid = Guid.NewGuid().ToStringEx();
+                    changeItemsList.Add(new Model.CCCAPI_ChangeItems()
+                    {
+                        ItemId = changeItemsModel.itemId.ToDecimal(),
+                        unitPriceAfterDiscount = changeItemsModel.unitPriceAfterDiscount.ToDecimal(),
+                        salvage = changeItemsModel.salvage.ToDecimal(),
+                        depreciation = changeItemsModel.depreciation.ToDecimal(),
+                        itemName = changeItemsModel.itemName,
+                        ManualFlag = changeItemsModel.manualFlag.ToLower() == "true" ? true : false,
+                        partFeeAfterDiscount = changeItemsModel.partFeeAfterDiscount.ToDecimal(),
+                        partNo = changeItemsModel.partNo,
+                        partQuantity = changeItemsModel.partQuantity.ToDecimal(),
+                        recycleFlag = changeItemsModel.recycleFlag.ToLower() == "true" ? true : false,
+                        Id = _guid
+                    });
+                    infoModel.ChangeItemIDs += _guid + ",";
+                }
+            }
+
+            List<Model.CCCAPI_MaterialItems> materialItems = null;
+            if (model.content.lossItem != null && model.content.lossItem.materialItems != null && model.content.lossItem.materialItems.Count > 0)
+            {
+                infoModel.MaterialItemsIDs += ",";
+                materialItems = new List<CCCAPI_MaterialItems>();
+                foreach (var materialItemsModel in model.content.lossItem.materialItems)
+                {
+                    var _guid = Guid.NewGuid().ToStringEx();
+                    materialItems.Add(new CCCAPI_MaterialItems()
+                    {
+                        id = _guid,
+                        itemid = materialItemsModel.itemId.ToDecimal(),
+                        itemName = materialItemsModel.itemName,
+                        manualFlag = materialItemsModel.manualFlag.ToLower() == "true" ? true : false,
+                        materialUnit = "",
+                        partFee = materialItemsModel.partFee.ToDecimal(),
+                        partQuantity = materialItemsModel.partQuantity.ToDecimal(),
+                        unitPrice = materialItemsModel.unitPrice.ToDecimal()
+                    });
+                    infoModel.MaterialItemsIDs += _guid + ",";
+                }
+            }
+
+
+
+            if (new CZB.BLL.CCCAPI_JobLossInformation().AddJobLoss(infoModel, claimAttachmentsList, changeItemsList, materialItems, null))
+            {
+
+                return new ReturnResult
+                {
+                    resultCode = ResultCode.Success,
+                    repairOrderNo = "请求成功",
+                    resultMsg = "请求成功"
+                };
+            }
+            else
+            {
+                return new ReturnResult
+                {
+                    resultCode = ResultCode.UnknownException,
+                    repairOrderNo = "新增失败",
+                    resultMsg = "未知异常情况"
+                };
+            }
+
+
+        }
+
+        /// <summary>
+        /// 定损
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public ReturnResult ToAssessTheDamage(Models model)
+        {
+            Model.CCCAPI_JobLossInformation infoModel = new Model.CCCAPI_JobLossInformation()
+            {
+                Id = Guid.NewGuid().ToStringEx(),
+                //联系人 contact
+                senderTelNo = model.content.contact.senderTelNo,                    //联系人电话
+                senderName = model.content.contact.senderName,                      //联系人姓名
+                vehicleOwnerName = model.content.contact.vehicleOwnerName,          //车主
+                vehicleOwnerTelNo = model.content.contact.vehicleOwnerTelNo,        //车主电话
+                                                                                    //工单信息 claimInfo
+                repairOrderNo = model.content.claimInfo.repairOrderNo,              //DRP工单号
+                claimNo = model.content.claimInfo.claimNo,                            //定损单号
+                sourceType = model.content.claimInfo.sourceType,                      //业务来源
+                sendRepairFlag = model.content.claimInfo.sendRepairFlag,             //送修/返修标记
+                                                                                     //保险公司 insuranceCompany
+                insuranceCompanyGroupCode = model.content.insuranceCompany.insuranceCompanyGroupCode, //保险公司Code
+                insuranceCompanyGroupName = model.content.insuranceCompany.insuranceCompanyGroupName,//保险公司名称
+                insuranceCompanyCode = model.content.insuranceCompany.insuranceCompanyCode,//保险公司分支机构Code
+                insuranceCompanyName = model.content.insuranceCompany.insuranceCompanyName, //保险公司分支机构名称
+                                                                                            //修理厂信息 repairFacility
+                repairFactoryCode = model.content.repairFacility.repairFacilityCode, //修理厂Code
+                repairFactoryName = model.content.repairFacility.repairFacilityName, // 修理厂名称
+                repairFacilityType = model.content.repairFacility.repairFacilityType, //修理厂类型
+                qualificationLevel = model.content.repairFacility.qualificationLevel, //修理厂资质
+                                                                                      //工单流程信息 workflow
+                workFlowNodeCode = model.content.workflow.workFlowNodeCode,   //定损状态环节Code
+                workFlowNodeName = model.content.workflow.workFlowNodeName,  //定损状态环节名称
+                assignDate = model.content.workflow.assignDate.ToDateTime(),        //任务分配时间
+                estimateStartTime = model.content.workflow.estimateStartTime.ToDateTime(), //定损开始时间
+                estimateEndTime = model.content.workflow.estimateEndTime.ToDateTime(),   //定损完成时间
+                                                                                         //事故信息  accInfo
+                reportNo = model.content.accInfo.reportNo, //报案号
+                reportDate = model.content.accInfo.reportDate.ToDateTime(), //报案时间
+                                                                            //车辆信息 VehicleInfo
+
+                //基本信息 baseInfo
+                lossVehicleTypeCode = model.content.vehicleInfo.baseInfo.lossVehicleType, //损失车辆Code
+                lossVehicleType = model.content.vehicleInfo.baseInfo.lossVehicleType,
+                plateNo = model.content.vehicleInfo.baseInfo.plateNo,
+                vin = model.content.vehicleInfo.baseInfo.vin,
+                brandModel = model.content.vehicleInfo.baseInfo.brandModel,
+                engineNo = model.content.vehicleInfo.baseInfo.engineNo,
+                vehicleCategoryCode = model.content.vehicleInfo.baseInfo.vehicleCategoryCode,
+                vehicleCategory = model.content.vehicleInfo.baseInfo.vehicleCategory,
+                usingTypeCode = model.content.vehicleInfo.baseInfo.usingTypeCode,
+                usingType = model.content.vehicleInfo.baseInfo.usingType,
+                licenseFirstRegisterDate = model.content.vehicleInfo.baseInfo.licenseFirstRegisterDate.ToDateTime(),
+                purchasePrice = model.content.vehicleInfo.baseInfo.purchasePrice,
+                plateTypeCode = model.content.vehicleInfo.baseInfo.plateTypeCode,
+                plateType = model.content.vehicleInfo.baseInfo.plateType,
+                plateColorCode = model.content.vehicleInfo.baseInfo.plateColorCode,
+                plateColor = model.content.vehicleInfo.baseInfo.plateColor,
+                vehicleBodyColor = model.content.vehicleInfo.baseInfo.vehicleBodyColor,
+                currentValue = model.content.vehicleInfo.baseInfo.currentValue.ToDecimal(),
+                //车辆损失信息 lossInfo
+                fuelRemain = model.content.vehicleInfo.lossInfo.fuelRemain.ToDecimal(),
+                mileage = model.content.vehicleInfo.lossInfo.mileage.ToDecimal(),
+                itemsInCar = model.content.vehicleInfo.lossInfo.itemsInCar,
+                mainCollisionPoints = model.content.vehicleInfo.lossInfo.mainCollisionPoints,
+                subCollisionPoints = model.content.vehicleInfo.lossInfo.subCollisionPoints,
+                //车型数据 vehicleModel
+                country = model.content.vehicleInfo.vehicleModel.country,
+                vehicleManufMakeName = model.content.vehicleInfo.vehicleModel.vehicleManufMakeName,
+                vehicleSubModelName = model.content.vehicleInfo.vehicleModel.vehicleSubModelName,
+                //费率折扣 discountRate
+                partType = model.content.discountRate.partType,
+                partTypeCode = model.content.discountRate.partType,
+                manageRate = model.content.discountRate.manageRate.ToDecimal(),
+                laborFeeManageRate = model.content.discountRate.laborFeeManageRate.ToDecimal(),
+                electricianMachinistRate = model.content.discountRate.electricianMachinistRate.ToDecimal(),
+                sheetMetalRate = model.content.discountRate.sheetMetalRate.ToDecimal(),
+                paintRate = model.content.discountRate.paintRate.ToDecimal(),
+                multiPaintDiscountRate = model.content.discountRate.multiPaintDiscountRate.ToDecimal(),
+                //定损项目费用合计 feeTotal
+                feeTotal_partFee = model.content.feeTotal.partFee.ToDecimal(),
+                feeTotal_laborFee = model.content.feeTotal.laborFee.ToDecimal(),
+                feeTotal_materialFee = model.content.feeTotal.materialFee.ToDecimal(),
+                feeTotal_entireSalvage = model.content.feeTotal.entireSalvage.ToDecimal(),
+                feeTotal_totalSalvage = model.content.feeTotal.totalSalvage.ToDecimal(),
+                feeTotal_depreciation = model.content.feeTotal.depreciation.ToDecimal(),
+                feeTotal_manageFee = model.content.feeTotal.manageFee.ToDecimal(),
+                feeTotal_estimateAmount = model.content.feeTotal.estimateAmount.ToDecimal(),
+                feeTotal_rescueFee = model.content.feeTotal.rescueFee.ToDecimal(),
+                feeTotal_lossTotal = model.content.feeTotal.lossTotal.ToDecimal(),
+                ChangeItemIDs = "", //损失项目-换件项目(复数)
+                claimAttachmentsIDs = "",//附件信息(复数)
+                MaterialItemsIDs = "",//损失项目-辅料项目(复数)
+                RepairItemsIDs = "",//损失项目-维修项目(复数)
+                estimatorCode = "", //修理厂信息-维修顾问账号
+                estimatorName = "", //修理厂信息-维修顾问姓名
+                managementFee = 0,//费率折扣-管理费率
+            };
+            if (new CZB.BLL.CCCAPI_JobLossInformation().Add(infoModel))
+            {
+                return new ReturnResult
+                {
+                    resultCode = ResultCode.Success,
+                    repairOrderNo = model.businessNo,
+                    resultMsg = "定损成功"
+                };
+            }
+            else
+            {
+                return new ReturnResult
+                {
+                    resultCode = ResultCode.UnknownException,
+                    repairOrderNo = model.businessNo,
+                    resultMsg = "定损数据库操作败"
+                };
+            }
+        }
 
 
         /// <summary>

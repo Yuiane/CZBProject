@@ -206,6 +206,19 @@ namespace CZB.DAL.SqlServer.DataProvider
                 return false;
             }
         }
+
+        public bool ExistsBusinessNo(string businessNo)
+        {
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("select count(1) from CCCAPI_JobLossInformation");
+            strSql.Append(" where Id=@businessNo ");
+            SqlParameter[] parameters = {
+                    new SqlParameter("@businessNo", SqlDbType.NVarChar,255)           };
+            parameters[0].Value = businessNo;
+
+            return DbHelperSQL.Exists(strSql.ToString(), parameters);
+        }
+
         /// <summary>
         /// 更新一条数据
         /// </summary>
