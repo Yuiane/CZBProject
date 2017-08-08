@@ -171,6 +171,7 @@
     <Compile Include="Controllers\Api\CCCApiController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="Controllers\WechatController.cs" />
     <Compile Include="Controllers\WeXinController.cs" />
     <Compile Include="Filter\GetSetValue.cs" />
     <Compile Include="Filter\RewriteParameterBinding.cs" />
@@ -292,6 +293,10 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\01bg.jpg" />
+    <Content Include="Images\01bottom.png" />
+    <Content Include="Images\01word.png" />
+    <Content Include="Images\02word.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -320,6 +325,10 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\Swiper-3.4.2\animate.min.css" />
+    <Content Include="Scripts\Swiper-3.4.2\swiper.animate1.0.2.min.js" />
+    <Content Include="Scripts\Swiper-3.4.2\swiper.min.css" />
+    <Content Include="Scripts\Swiper-3.4.2\swiper.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -334,6 +343,7 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Wechat\Html5_One.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
