@@ -74,8 +74,14 @@ namespace CZB.Web.Controllers
         /// <returns></returns>
         public ReturnResult NuclearDamage(Models model)
         {
-            if (new CZB.BLL.CCCAPI_JobLossInformation().ExistsBusinessNo(model.businessNo)) {
-
+            if (!new CZB.BLL.CCCAPI_JobLossInformation().ExistsBusinessNo(model.businessNo))
+            {
+                return new ReturnResult
+                {
+                    repairOrderNo = model.businessNo,
+                    resultCode = ResultCode.UnknownException,
+                    resultMsg = "未检索到定损数据"
+                };
             }
 
             var result = CheckIsNullOrEmpty(model);
@@ -89,6 +95,8 @@ namespace CZB.Web.Controllers
             Model.CCCAPI_JobLossInformation infoModel = new Model.CCCAPI_JobLossInformation()
             {
                 Id = Guid.NewGuid().ToStringEx(),
+                partyId = model.partyId,
+                businessNo = model.businessNo,
                 //联系人 contact
                 senderTelNo = model.content.contact.senderTelNo,                    //联系人电话
                 senderName = model.content.contact.senderName,                      //联系人姓名
@@ -151,7 +159,7 @@ namespace CZB.Web.Controllers
                 vehicleSubModelName = model.content.vehicleInfo.vehicleModel.vehicleSubModelName,
                 //费率折扣 discountRate
                 partType = model.content.discountRate.partType,
-                partTypeCode = model.content.discountRate.partType,
+                partTypeCode = model.content.discountRate.partTypeCode,
                 manageRate = model.content.discountRate.manageRate.ToDecimal(),
                 laborFeeManageRate = model.content.discountRate.laborFeeManageRate.ToDecimal(),
                 electricianMachinistRate = model.content.discountRate.electricianMachinistRate.ToDecimal(),
@@ -282,6 +290,8 @@ namespace CZB.Web.Controllers
             Model.CCCAPI_JobLossInformation infoModel = new Model.CCCAPI_JobLossInformation()
             {
                 Id = Guid.NewGuid().ToStringEx(),
+                partyId = model.partyId,
+                businessNo = model.businessNo,
                 //联系人 contact
                 senderTelNo = model.content.contact.senderTelNo,                    //联系人电话
                 senderName = model.content.contact.senderName,                      //联系人姓名
@@ -308,13 +318,13 @@ namespace CZB.Web.Controllers
                 assignDate = model.content.workflow.assignDate.ToDateTime(),        //任务分配时间
                 estimateStartTime = model.content.workflow.estimateStartTime.ToDateTime(), //定损开始时间
                 estimateEndTime = model.content.workflow.estimateEndTime.ToDateTime(),   //定损完成时间
-                                                                                         //事故信息  accInfo
+                //事故信息  accInfo
                 reportNo = model.content.accInfo.reportNo, //报案号
                 reportDate = model.content.accInfo.reportDate.ToDateTime(), //报案时间
                                                                             //车辆信息 VehicleInfo
 
                 //基本信息 baseInfo
-                lossVehicleTypeCode = model.content.vehicleInfo.baseInfo.lossVehicleType, //损失车辆Code
+                lossVehicleTypeCode = model.content.vehicleInfo.baseInfo.lossVehicleTypeCode, //损失车辆Code
                 lossVehicleType = model.content.vehicleInfo.baseInfo.lossVehicleType,
                 plateNo = model.content.vehicleInfo.baseInfo.plateNo,
                 vin = model.content.vehicleInfo.baseInfo.vin,
@@ -344,7 +354,7 @@ namespace CZB.Web.Controllers
                 vehicleSubModelName = model.content.vehicleInfo.vehicleModel.vehicleSubModelName,
                 //费率折扣 discountRate
                 partType = model.content.discountRate.partType,
-                partTypeCode = model.content.discountRate.partType,
+                partTypeCode = model.content.discountRate.partTypeCode,
                 manageRate = model.content.discountRate.manageRate.ToDecimal(),
                 laborFeeManageRate = model.content.discountRate.laborFeeManageRate.ToDecimal(),
                 electricianMachinistRate = model.content.discountRate.electricianMachinistRate.ToDecimal(),
@@ -406,16 +416,16 @@ namespace CZB.Web.Controllers
             //联系人contact
             if (model.content.contact != null)
             {
-                if (model.content.contact.senderTelNo.IsNullOrWhiteSpace())
+                if (model.content.contact.vehicleOwnerName.IsNullOrWhiteSpace())
                 {
                     result.resultCode = ResultCode.EntriesMustNotBeNull;
-                    result.resultMsg = "联系人电话为必须项!";
+                    result.resultMsg = "车主为必须项!";
                     return result;
                 }
-                if (model.content.contact.senderName.IsNullOrWhiteSpace())
+                if (model.content.contact.vehicleOwnerTelNo.IsNullOrWhiteSpace())
                 {
                     result.resultCode = ResultCode.EntriesMustNotBeNull;
-                    result.resultMsg = "联系人姓名为必须项!";
+                    result.resultMsg = "车主联系电话为必须项!";
                     return result;
                 }
             }

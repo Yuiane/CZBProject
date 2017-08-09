@@ -248,6 +248,13 @@ namespace CZB.Common.CCCModel
         public Baseinfo baseInfo { get; set; }
         public Lossinfo lossInfo { get; set; }
         public Vehiclemodel vehicleModel { get; set; }
+
+        public Vehicleinfo()
+        {
+            baseInfo = new Baseinfo();
+            lossInfo = new Lossinfo();
+            vehicleModel = new Vehiclemodel();
+        }
     }
 
     /// <summary>

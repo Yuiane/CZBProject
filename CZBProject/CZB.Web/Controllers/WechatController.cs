@@ -16,10 +16,11 @@ namespace CZB.Web.Controllers
 
 
         /// <summary>
-        /// 
+        /// 微信H5仿易启秀【swiper】案例页
         /// </summary>
         /// <returns></returns>
-        public ActionResult Html5_One() {
+        public ActionResult Html5_One()
+        {
             return View();
         }
     }

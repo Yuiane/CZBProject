@@ -41,11 +41,13 @@ namespace CZB.DAL.SqlServer.DataProvider
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("insert into CCCAPI_JobLossInformation(");
-            strSql.Append("Id,senderTelNo,senderName,vehicleOwnerName,vehicleOwnerTelNo,repairOrderNo,claimNo,sourceType,sendRepairFlag,insuranceCompanyGroupCode,insuranceCompanyGroupName,insuranceCompanyCode,insuranceCompanyName,repairFactoryCode,repairFactoryName,repairFacilityType,qualificationLevel,estimatorCode,estimatorName,workFlowNodeCode,workFlowNodeName,assignDate,estimateStartTime,estimateEndTime,reportNo,reportDate,lossVehicleTypeCode,lossVehicleType,plateNo,vin,brandModel,engineNo,vehicleCategoryCode,vehicleCategory,usingTypeCode,usingType,licenseFirstRegisterDate,purchasePrice,plateTypeCode,plateType,plateColorCode,plateColor,vehicleBodyColor,currentValue,fuelRemain,mileage,itemsInCar,mainCollisionPoints,subCollisionPoints,country,vehicleManufMakeName,vehicleSubModelName,claimAttachmentsIDs,partType,partTypeCode,manageRate,laborFeeManageRate,electricianMachinistRate,sheetMetalRate,paintRate,managementFee,multiPaintDiscountRate,ChangeItemIDs,RepairItemsIDs,MaterialItemsIDs,feeTotal_partFee,feeTotal_laborFee,feeTotal_materialFee,feeTotal_entireSalvage,feeTotal_totalSalvage,feeTotal_depreciation,feeTotal_manageFee,feeTotal_estimateAmount,feeTotal_rescueFee,feeTotal_lossTotal)");
+            strSql.Append("Id,partyId,businessNo,senderTelNo,senderName,vehicleOwnerName,vehicleOwnerTelNo,repairOrderNo,claimNo,sourceType,sendRepairFlag,insuranceCompanyGroupCode,insuranceCompanyGroupName,insuranceCompanyCode,insuranceCompanyName,repairFactoryCode,repairFactoryName,repairFacilityType,qualificationLevel,estimatorCode,estimatorName,workFlowNodeCode,workFlowNodeName,assignDate,estimateStartTime,estimateEndTime,reportNo,reportDate,lossVehicleTypeCode,lossVehicleType,plateNo,vin,brandModel,engineNo,vehicleCategoryCode,vehicleCategory,usingTypeCode,usingType,licenseFirstRegisterDate,purchasePrice,plateTypeCode,plateType,plateColorCode,plateColor,vehicleBodyColor,currentValue,fuelRemain,mileage,itemsInCar,mainCollisionPoints,subCollisionPoints,country,vehicleManufMakeName,vehicleSubModelName,claimAttachmentsIDs,partType,partTypeCode,manageRate,laborFeeManageRate,electricianMachinistRate,sheetMetalRate,paintRate,managementFee,multiPaintDiscountRate,ChangeItemIDs,RepairItemsIDs,MaterialItemsIDs,feeTotal_partFee,feeTotal_laborFee,feeTotal_materialFee,feeTotal_entireSalvage,feeTotal_totalSalvage,feeTotal_depreciation,feeTotal_manageFee,feeTotal_estimateAmount,feeTotal_rescueFee,feeTotal_lossTotal)");
             strSql.Append(" values (");
-            strSql.Append("@Id,@senderTelNo,@senderName,@vehicleOwnerName,@vehicleOwnerTelNo,@repairOrderNo,@claimNo,@sourceType,@sendRepairFlag,@insuranceCompanyGroupCode,@insuranceCompanyGroupName,@insuranceCompanyCode,@insuranceCompanyName,@repairFactoryCode,@repairFactoryName,@repairFacilityType,@qualificationLevel,@estimatorCode,@estimatorName,@workFlowNodeCode,@workFlowNodeName,@assignDate,@estimateStartTime,@estimateEndTime,@reportNo,@reportDate,@lossVehicleTypeCode,@lossVehicleType,@plateNo,@vin,@brandModel,@engineNo,@vehicleCategoryCode,@vehicleCategory,@usingTypeCode,@usingType,@licenseFirstRegisterDate,@purchasePrice,@plateTypeCode,@plateType,@plateColorCode,@plateColor,@vehicleBodyColor,@currentValue,@fuelRemain,@mileage,@itemsInCar,@mainCollisionPoints,@subCollisionPoints,@country,@vehicleManufMakeName,@vehicleSubModelName,@claimAttachmentsIDs,@partType,@partTypeCode,@manageRate,@laborFeeManageRate,@electricianMachinistRate,@sheetMetalRate,@paintRate,@managementFee,@multiPaintDiscountRate,@ChangeItemIDs,@RepairItemsIDs,@MaterialItemsIDs,@feeTotal_partFee,@feeTotal_laborFee,@feeTotal_materialFee,@feeTotal_entireSalvage,@feeTotal_totalSalvage,@feeTotal_depreciation,@feeTotal_manageFee,@feeTotal_estimateAmount,@feeTotal_rescueFee,@feeTotal_lossTotal)");
+            strSql.Append("@Id,@partyId,@businessNo,@senderTelNo,@senderName,@vehicleOwnerName,@vehicleOwnerTelNo,@repairOrderNo,@claimNo,@sourceType,@sendRepairFlag,@insuranceCompanyGroupCode,@insuranceCompanyGroupName,@insuranceCompanyCode,@insuranceCompanyName,@repairFactoryCode,@repairFactoryName,@repairFacilityType,@qualificationLevel,@estimatorCode,@estimatorName,@workFlowNodeCode,@workFlowNodeName,@assignDate,@estimateStartTime,@estimateEndTime,@reportNo,@reportDate,@lossVehicleTypeCode,@lossVehicleType,@plateNo,@vin,@brandModel,@engineNo,@vehicleCategoryCode,@vehicleCategory,@usingTypeCode,@usingType,@licenseFirstRegisterDate,@purchasePrice,@plateTypeCode,@plateType,@plateColorCode,@plateColor,@vehicleBodyColor,@currentValue,@fuelRemain,@mileage,@itemsInCar,@mainCollisionPoints,@subCollisionPoints,@country,@vehicleManufMakeName,@vehicleSubModelName,@claimAttachmentsIDs,@partType,@partTypeCode,@manageRate,@laborFeeManageRate,@electricianMachinistRate,@sheetMetalRate,@paintRate,@managementFee,@multiPaintDiscountRate,@ChangeItemIDs,@RepairItemsIDs,@MaterialItemsIDs,@feeTotal_partFee,@feeTotal_laborFee,@feeTotal_materialFee,@feeTotal_entireSalvage,@feeTotal_totalSalvage,@feeTotal_depreciation,@feeTotal_manageFee,@feeTotal_estimateAmount,@feeTotal_rescueFee,@feeTotal_lossTotal)");
             SqlParameter[] parameters = {
                     new SqlParameter("@Id", SqlDbType.NVarChar,255),
+                    new SqlParameter("@partyId", SqlDbType.VarChar,255),
+                    new SqlParameter("@businessNo", SqlDbType.VarChar,255),
                     new SqlParameter("@senderTelNo", SqlDbType.VarChar,50),
                     new SqlParameter("@senderName", SqlDbType.VarChar,50),
                     new SqlParameter("@vehicleOwnerName", SqlDbType.VarChar,50),
@@ -121,80 +123,82 @@ namespace CZB.DAL.SqlServer.DataProvider
                     new SqlParameter("@feeTotal_rescueFee", SqlDbType.Decimal,9),
                     new SqlParameter("@feeTotal_lossTotal", SqlDbType.Decimal,9)};
             parameters[0].Value = model.Id;
-            parameters[1].Value = model.senderTelNo;
-            parameters[2].Value = model.senderName;
-            parameters[3].Value = model.vehicleOwnerName;
-            parameters[4].Value = model.vehicleOwnerTelNo;
-            parameters[5].Value = model.repairOrderNo;
-            parameters[6].Value = model.claimNo;
-            parameters[7].Value = model.sourceType;
-            parameters[8].Value = model.sendRepairFlag;
-            parameters[9].Value = model.insuranceCompanyGroupCode;
-            parameters[10].Value = model.insuranceCompanyGroupName;
-            parameters[11].Value = model.insuranceCompanyCode;
-            parameters[12].Value = model.insuranceCompanyName;
-            parameters[13].Value = model.repairFactoryCode;
-            parameters[14].Value = model.repairFactoryName;
-            parameters[15].Value = model.repairFacilityType;
-            parameters[16].Value = model.qualificationLevel;
-            parameters[17].Value = model.estimatorCode;
-            parameters[18].Value = model.estimatorName;
-            parameters[19].Value = model.workFlowNodeCode;
-            parameters[20].Value = model.workFlowNodeName;
-            parameters[21].Value = model.assignDate;
-            parameters[22].Value = model.estimateStartTime;
-            parameters[23].Value = model.estimateEndTime;
-            parameters[24].Value = model.reportNo;
-            parameters[25].Value = model.reportDate;
-            parameters[26].Value = model.lossVehicleTypeCode;
-            parameters[27].Value = model.lossVehicleType;
-            parameters[28].Value = model.plateNo;
-            parameters[29].Value = model.vin;
-            parameters[30].Value = model.brandModel;
-            parameters[31].Value = model.engineNo;
-            parameters[32].Value = model.vehicleCategoryCode;
-            parameters[33].Value = model.vehicleCategory;
-            parameters[34].Value = model.usingTypeCode;
-            parameters[35].Value = model.usingType;
-            parameters[36].Value = model.licenseFirstRegisterDate;
-            parameters[37].Value = model.purchasePrice;
-            parameters[38].Value = model.plateTypeCode;
-            parameters[39].Value = model.plateType;
-            parameters[40].Value = model.plateColorCode;
-            parameters[41].Value = model.plateColor;
-            parameters[42].Value = model.vehicleBodyColor;
-            parameters[43].Value = model.currentValue;
-            parameters[44].Value = model.fuelRemain;
-            parameters[45].Value = model.mileage;
-            parameters[46].Value = model.itemsInCar;
-            parameters[47].Value = model.mainCollisionPoints;
-            parameters[48].Value = model.subCollisionPoints;
-            parameters[49].Value = model.country;
-            parameters[50].Value = model.vehicleManufMakeName;
-            parameters[51].Value = model.vehicleSubModelName;
-            parameters[52].Value = model.claimAttachmentsIDs;
-            parameters[53].Value = model.partType;
-            parameters[54].Value = model.partTypeCode;
-            parameters[55].Value = model.manageRate;
-            parameters[56].Value = model.laborFeeManageRate;
-            parameters[57].Value = model.electricianMachinistRate;
-            parameters[58].Value = model.sheetMetalRate;
-            parameters[59].Value = model.paintRate;
-            parameters[60].Value = model.managementFee;
-            parameters[61].Value = model.multiPaintDiscountRate;
-            parameters[62].Value = model.ChangeItemIDs;
-            parameters[63].Value = model.RepairItemsIDs;
-            parameters[64].Value = model.MaterialItemsIDs;
-            parameters[65].Value = model.feeTotal_partFee;
-            parameters[66].Value = model.feeTotal_laborFee;
-            parameters[67].Value = model.feeTotal_materialFee;
-            parameters[68].Value = model.feeTotal_entireSalvage;
-            parameters[69].Value = model.feeTotal_totalSalvage;
-            parameters[70].Value = model.feeTotal_depreciation;
-            parameters[71].Value = model.feeTotal_manageFee;
-            parameters[72].Value = model.feeTotal_estimateAmount;
-            parameters[73].Value = model.feeTotal_rescueFee;
-            parameters[74].Value = model.feeTotal_lossTotal;
+            parameters[1].Value = model.partyId;
+            parameters[2].Value = model.businessNo;
+            parameters[3].Value = model.senderTelNo;
+            parameters[4].Value = model.senderName;
+            parameters[5].Value = model.vehicleOwnerName;
+            parameters[6].Value = model.vehicleOwnerTelNo;
+            parameters[7].Value = model.repairOrderNo;
+            parameters[8].Value = model.claimNo;
+            parameters[9].Value = model.sourceType;
+            parameters[10].Value = model.sendRepairFlag;
+            parameters[11].Value = model.insuranceCompanyGroupCode;
+            parameters[12].Value = model.insuranceCompanyGroupName;
+            parameters[13].Value = model.insuranceCompanyCode;
+            parameters[14].Value = model.insuranceCompanyName;
+            parameters[15].Value = model.repairFactoryCode;
+            parameters[16].Value = model.repairFactoryName;
+            parameters[17].Value = model.repairFacilityType;
+            parameters[18].Value = model.qualificationLevel;
+            parameters[19].Value = model.estimatorCode;
+            parameters[20].Value = model.estimatorName;
+            parameters[21].Value = model.workFlowNodeCode;
+            parameters[22].Value = model.workFlowNodeName;
+            parameters[23].Value = model.assignDate;
+            parameters[24].Value = model.estimateStartTime;
+            parameters[25].Value = model.estimateEndTime;
+            parameters[26].Value = model.reportNo;
+            parameters[27].Value = model.reportDate;
+            parameters[28].Value = model.lossVehicleTypeCode;
+            parameters[29].Value = model.lossVehicleType;
+            parameters[30].Value = model.plateNo;
+            parameters[31].Value = model.vin;
+            parameters[32].Value = model.brandModel;
+            parameters[33].Value = model.engineNo;
+            parameters[34].Value = model.vehicleCategoryCode;
+            parameters[35].Value = model.vehicleCategory;
+            parameters[36].Value = model.usingTypeCode;
+            parameters[37].Value = model.usingType;
+            parameters[38].Value = model.licenseFirstRegisterDate;
+            parameters[39].Value = model.purchasePrice;
+            parameters[40].Value = model.plateTypeCode;
+            parameters[41].Value = model.plateType;
+            parameters[42].Value = model.plateColorCode;
+            parameters[43].Value = model.plateColor;
+            parameters[44].Value = model.vehicleBodyColor;
+            parameters[45].Value = model.currentValue;
+            parameters[46].Value = model.fuelRemain;
+            parameters[47].Value = model.mileage;
+            parameters[48].Value = model.itemsInCar;
+            parameters[49].Value = model.mainCollisionPoints;
+            parameters[50].Value = model.subCollisionPoints;
+            parameters[51].Value = model.country;
+            parameters[52].Value = model.vehicleManufMakeName;
+            parameters[53].Value = model.vehicleSubModelName;
+            parameters[54].Value = model.claimAttachmentsIDs;
+            parameters[55].Value = model.partType;
+            parameters[56].Value = model.partTypeCode;
+            parameters[57].Value = model.manageRate;
+            parameters[58].Value = model.laborFeeManageRate;
+            parameters[59].Value = model.electricianMachinistRate;
+            parameters[60].Value = model.sheetMetalRate;
+            parameters[61].Value = model.paintRate;
+            parameters[62].Value = model.managementFee;
+            parameters[63].Value = model.multiPaintDiscountRate;
+            parameters[64].Value = model.ChangeItemIDs;
+            parameters[65].Value = model.RepairItemsIDs;
+            parameters[66].Value = model.MaterialItemsIDs;
+            parameters[67].Value = model.feeTotal_partFee;
+            parameters[68].Value = model.feeTotal_laborFee;
+            parameters[69].Value = model.feeTotal_materialFee;
+            parameters[70].Value = model.feeTotal_entireSalvage;
+            parameters[71].Value = model.feeTotal_totalSalvage;
+            parameters[72].Value = model.feeTotal_depreciation;
+            parameters[73].Value = model.feeTotal_manageFee;
+            parameters[74].Value = model.feeTotal_estimateAmount;
+            parameters[75].Value = model.feeTotal_rescueFee;
+            parameters[76].Value = model.feeTotal_lossTotal;
 
             int rows = DbHelperSQL.ExecuteSql(strSql.ToString(), parameters);
             if (rows > 0)
@@ -207,11 +211,16 @@ namespace CZB.DAL.SqlServer.DataProvider
             }
         }
 
+        /// <summary>
+        /// 根据工单号查询是否存在
+        /// </summary>
+        /// <param name="businessNo"></param>
+        /// <returns></returns>
         public bool ExistsBusinessNo(string businessNo)
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("select count(1) from CCCAPI_JobLossInformation");
-            strSql.Append(" where Id=@businessNo ");
+            strSql.Append(" where businessNo=@businessNo ");
             SqlParameter[] parameters = {
                     new SqlParameter("@businessNo", SqlDbType.NVarChar,255)           };
             parameters[0].Value = businessNo;
@@ -226,6 +235,8 @@ namespace CZB.DAL.SqlServer.DataProvider
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("update CCCAPI_JobLossInformation set ");
+            strSql.Append("partyId=@partyId,");
+            strSql.Append("businessNo=@businessNo,");
             strSql.Append("senderTelNo=@senderTelNo,");
             strSql.Append("senderName=@senderName,");
             strSql.Append("vehicleOwnerName=@vehicleOwnerName,");
@@ -302,6 +313,8 @@ namespace CZB.DAL.SqlServer.DataProvider
             strSql.Append("feeTotal_lossTotal=@feeTotal_lossTotal");
             strSql.Append(" where Id=@Id ");
             SqlParameter[] parameters = {
+                    new SqlParameter("@partyId", SqlDbType.VarChar,255),
+                    new SqlParameter("@businessNo", SqlDbType.VarChar,255),
                     new SqlParameter("@senderTelNo", SqlDbType.VarChar,50),
                     new SqlParameter("@senderName", SqlDbType.VarChar,50),
                     new SqlParameter("@vehicleOwnerName", SqlDbType.VarChar,50),
@@ -377,81 +390,83 @@ namespace CZB.DAL.SqlServer.DataProvider
                     new SqlParameter("@feeTotal_rescueFee", SqlDbType.Decimal,9),
                     new SqlParameter("@feeTotal_lossTotal", SqlDbType.Decimal,9),
                     new SqlParameter("@Id", SqlDbType.NVarChar,255)};
-            parameters[0].Value = model.senderTelNo;
-            parameters[1].Value = model.senderName;
-            parameters[2].Value = model.vehicleOwnerName;
-            parameters[3].Value = model.vehicleOwnerTelNo;
-            parameters[4].Value = model.repairOrderNo;
-            parameters[5].Value = model.claimNo;
-            parameters[6].Value = model.sourceType;
-            parameters[7].Value = model.sendRepairFlag;
-            parameters[8].Value = model.insuranceCompanyGroupCode;
-            parameters[9].Value = model.insuranceCompanyGroupName;
-            parameters[10].Value = model.insuranceCompanyCode;
-            parameters[11].Value = model.insuranceCompanyName;
-            parameters[12].Value = model.repairFactoryCode;
-            parameters[13].Value = model.repairFactoryName;
-            parameters[14].Value = model.repairFacilityType;
-            parameters[15].Value = model.qualificationLevel;
-            parameters[16].Value = model.estimatorCode;
-            parameters[17].Value = model.estimatorName;
-            parameters[18].Value = model.workFlowNodeCode;
-            parameters[19].Value = model.workFlowNodeName;
-            parameters[20].Value = model.assignDate;
-            parameters[21].Value = model.estimateStartTime;
-            parameters[22].Value = model.estimateEndTime;
-            parameters[23].Value = model.reportNo;
-            parameters[24].Value = model.reportDate;
-            parameters[25].Value = model.lossVehicleTypeCode;
-            parameters[26].Value = model.lossVehicleType;
-            parameters[27].Value = model.plateNo;
-            parameters[28].Value = model.vin;
-            parameters[29].Value = model.brandModel;
-            parameters[30].Value = model.engineNo;
-            parameters[31].Value = model.vehicleCategoryCode;
-            parameters[32].Value = model.vehicleCategory;
-            parameters[33].Value = model.usingTypeCode;
-            parameters[34].Value = model.usingType;
-            parameters[35].Value = model.licenseFirstRegisterDate;
-            parameters[36].Value = model.purchasePrice;
-            parameters[37].Value = model.plateTypeCode;
-            parameters[38].Value = model.plateType;
-            parameters[39].Value = model.plateColorCode;
-            parameters[40].Value = model.plateColor;
-            parameters[41].Value = model.vehicleBodyColor;
-            parameters[42].Value = model.currentValue;
-            parameters[43].Value = model.fuelRemain;
-            parameters[44].Value = model.mileage;
-            parameters[45].Value = model.itemsInCar;
-            parameters[46].Value = model.mainCollisionPoints;
-            parameters[47].Value = model.subCollisionPoints;
-            parameters[48].Value = model.country;
-            parameters[49].Value = model.vehicleManufMakeName;
-            parameters[50].Value = model.vehicleSubModelName;
-            parameters[51].Value = model.claimAttachmentsIDs;
-            parameters[52].Value = model.partType;
-            parameters[53].Value = model.partTypeCode;
-            parameters[54].Value = model.manageRate;
-            parameters[55].Value = model.laborFeeManageRate;
-            parameters[56].Value = model.electricianMachinistRate;
-            parameters[57].Value = model.sheetMetalRate;
-            parameters[58].Value = model.paintRate;
-            parameters[59].Value = model.managementFee;
-            parameters[60].Value = model.multiPaintDiscountRate;
-            parameters[61].Value = model.ChangeItemIDs;
-            parameters[62].Value = model.RepairItemsIDs;
-            parameters[63].Value = model.MaterialItemsIDs;
-            parameters[64].Value = model.feeTotal_partFee;
-            parameters[65].Value = model.feeTotal_laborFee;
-            parameters[66].Value = model.feeTotal_materialFee;
-            parameters[67].Value = model.feeTotal_entireSalvage;
-            parameters[68].Value = model.feeTotal_totalSalvage;
-            parameters[69].Value = model.feeTotal_depreciation;
-            parameters[70].Value = model.feeTotal_manageFee;
-            parameters[71].Value = model.feeTotal_estimateAmount;
-            parameters[72].Value = model.feeTotal_rescueFee;
-            parameters[73].Value = model.feeTotal_lossTotal;
-            parameters[74].Value = model.Id;
+            parameters[0].Value = model.partyId;
+            parameters[1].Value = model.businessNo;
+            parameters[2].Value = model.senderTelNo;
+            parameters[3].Value = model.senderName;
+            parameters[4].Value = model.vehicleOwnerName;
+            parameters[5].Value = model.vehicleOwnerTelNo;
+            parameters[6].Value = model.repairOrderNo;
+            parameters[7].Value = model.claimNo;
+            parameters[8].Value = model.sourceType;
+            parameters[9].Value = model.sendRepairFlag;
+            parameters[10].Value = model.insuranceCompanyGroupCode;
+            parameters[11].Value = model.insuranceCompanyGroupName;
+            parameters[12].Value = model.insuranceCompanyCode;
+            parameters[13].Value = model.insuranceCompanyName;
+            parameters[14].Value = model.repairFactoryCode;
+            parameters[15].Value = model.repairFactoryName;
+            parameters[16].Value = model.repairFacilityType;
+            parameters[17].Value = model.qualificationLevel;
+            parameters[18].Value = model.estimatorCode;
+            parameters[19].Value = model.estimatorName;
+            parameters[20].Value = model.workFlowNodeCode;
+            parameters[21].Value = model.workFlowNodeName;
+            parameters[22].Value = model.assignDate;
+            parameters[23].Value = model.estimateStartTime;
+            parameters[24].Value = model.estimateEndTime;
+            parameters[25].Value = model.reportNo;
+            parameters[26].Value = model.reportDate;
+            parameters[27].Value = model.lossVehicleTypeCode;
+            parameters[28].Value = model.lossVehicleType;
+            parameters[29].Value = model.plateNo;
+            parameters[30].Value = model.vin;
+            parameters[31].Value = model.brandModel;
+            parameters[32].Value = model.engineNo;
+            parameters[33].Value = model.vehicleCategoryCode;
+            parameters[34].Value = model.vehicleCategory;
+            parameters[35].Value = model.usingTypeCode;
+            parameters[36].Value = model.usingType;
+            parameters[37].Value = model.licenseFirstRegisterDate;
+            parameters[38].Value = model.purchasePrice;
+            parameters[39].Value = model.plateTypeCode;
+            parameters[40].Value = model.plateType;
+            parameters[41].Value = model.plateColorCode;
+            parameters[42].Value = model.plateColor;
+            parameters[43].Value = model.vehicleBodyColor;
+            parameters[44].Value = model.currentValue;
+            parameters[45].Value = model.fuelRemain;
+            parameters[46].Value = model.mileage;
+            parameters[47].Value = model.itemsInCar;
+            parameters[48].Value = model.mainCollisionPoints;
+            parameters[49].Value = model.subCollisionPoints;
+            parameters[50].Value = model.country;
+            parameters[51].Value = model.vehicleManufMakeName;
+            parameters[52].Value = model.vehicleSubModelName;
+            parameters[53].Value = model.claimAttachmentsIDs;
+            parameters[54].Value = model.partType;
+            parameters[55].Value = model.partTypeCode;
+            parameters[56].Value = model.manageRate;
+            parameters[57].Value = model.laborFeeManageRate;
+            parameters[58].Value = model.electricianMachinistRate;
+            parameters[59].Value = model.sheetMetalRate;
+            parameters[60].Value = model.paintRate;
+            parameters[61].Value = model.managementFee;
+            parameters[62].Value = model.multiPaintDiscountRate;
+            parameters[63].Value = model.ChangeItemIDs;
+            parameters[64].Value = model.RepairItemsIDs;
+            parameters[65].Value = model.MaterialItemsIDs;
+            parameters[66].Value = model.feeTotal_partFee;
+            parameters[67].Value = model.feeTotal_laborFee;
+            parameters[68].Value = model.feeTotal_materialFee;
+            parameters[69].Value = model.feeTotal_entireSalvage;
+            parameters[70].Value = model.feeTotal_totalSalvage;
+            parameters[71].Value = model.feeTotal_depreciation;
+            parameters[72].Value = model.feeTotal_manageFee;
+            parameters[73].Value = model.feeTotal_estimateAmount;
+            parameters[74].Value = model.feeTotal_rescueFee;
+            parameters[75].Value = model.feeTotal_lossTotal;
+            parameters[76].Value = model.Id;
 
             int rows = DbHelperSQL.ExecuteSql(strSql.ToString(), parameters);
             if (rows > 0)
@@ -514,7 +529,7 @@ namespace CZB.DAL.SqlServer.DataProvider
         {
 
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("select  top 1 Id,senderTelNo,senderName,vehicleOwnerName,vehicleOwnerTelNo,repairOrderNo,claimNo,sourceType,sendRepairFlag,insuranceCompanyGroupCode,insuranceCompanyGroupName,insuranceCompanyCode,insuranceCompanyName,repairFactoryCode,repairFactoryName,repairFacilityType,qualificationLevel,estimatorCode,estimatorName,workFlowNodeCode,workFlowNodeName,assignDate,estimateStartTime,estimateEndTime,reportNo,reportDate,lossVehicleTypeCode,lossVehicleType,plateNo,vin,brandModel,engineNo,vehicleCategoryCode,vehicleCategory,usingTypeCode,usingType,licenseFirstRegisterDate,purchasePrice,plateTypeCode,plateType,plateColorCode,plateColor,vehicleBodyColor,currentValue,fuelRemain,mileage,itemsInCar,mainCollisionPoints,subCollisionPoints,country,vehicleManufMakeName,vehicleSubModelName,claimAttachmentsIDs,partType,partTypeCode,manageRate,laborFeeManageRate,electricianMachinistRate,sheetMetalRate,paintRate,managementFee,multiPaintDiscountRate,ChangeItemIDs,RepairItemsIDs,MaterialItemsIDs,feeTotal_partFee,feeTotal_laborFee,feeTotal_materialFee,feeTotal_entireSalvage,feeTotal_totalSalvage,feeTotal_depreciation,feeTotal_manageFee,feeTotal_estimateAmount,feeTotal_rescueFee,feeTotal_lossTotal from CCCAPI_JobLossInformation ");
+            strSql.Append("select  top 1 Id,partyId,businessNo,senderTelNo,senderName,vehicleOwnerName,vehicleOwnerTelNo,repairOrderNo,claimNo,sourceType,sendRepairFlag,insuranceCompanyGroupCode,insuranceCompanyGroupName,insuranceCompanyCode,insuranceCompanyName,repairFactoryCode,repairFactoryName,repairFacilityType,qualificationLevel,estimatorCode,estimatorName,workFlowNodeCode,workFlowNodeName,assignDate,estimateStartTime,estimateEndTime,reportNo,reportDate,lossVehicleTypeCode,lossVehicleType,plateNo,vin,brandModel,engineNo,vehicleCategoryCode,vehicleCategory,usingTypeCode,usingType,licenseFirstRegisterDate,purchasePrice,plateTypeCode,plateType,plateColorCode,plateColor,vehicleBodyColor,currentValue,fuelRemain,mileage,itemsInCar,mainCollisionPoints,subCollisionPoints,country,vehicleManufMakeName,vehicleSubModelName,claimAttachmentsIDs,partType,partTypeCode,manageRate,laborFeeManageRate,electricianMachinistRate,sheetMetalRate,paintRate,managementFee,multiPaintDiscountRate,ChangeItemIDs,RepairItemsIDs,MaterialItemsIDs,feeTotal_partFee,feeTotal_laborFee,feeTotal_materialFee,feeTotal_entireSalvage,feeTotal_totalSalvage,feeTotal_depreciation,feeTotal_manageFee,feeTotal_estimateAmount,feeTotal_rescueFee,feeTotal_lossTotal from CCCAPI_JobLossInformation ");
             strSql.Append(" where Id=@Id ");
             SqlParameter[] parameters = {
                     new SqlParameter("@Id", SqlDbType.NVarChar,255)           };
@@ -544,6 +559,14 @@ namespace CZB.DAL.SqlServer.DataProvider
                 if (row["Id"] != null)
                 {
                     model.Id = row["Id"].ToString();
+                }
+                if (row["partyId"] != null)
+                {
+                    model.partyId = row["partyId"].ToString();
+                }
+                if (row["businessNo"] != null)
+                {
+                    model.businessNo = row["businessNo"].ToString();
                 }
                 if (row["senderTelNo"] != null)
                 {
@@ -851,7 +874,7 @@ namespace CZB.DAL.SqlServer.DataProvider
         public DataSet GetList(string strWhere)
         {
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("select Id,senderTelNo,senderName,vehicleOwnerName,vehicleOwnerTelNo,repairOrderNo,claimNo,sourceType,sendRepairFlag,insuranceCompanyGroupCode,insuranceCompanyGroupName,insuranceCompanyCode,insuranceCompanyName,repairFactoryCode,repairFactoryName,repairFacilityType,qualificationLevel,estimatorCode,estimatorName,workFlowNodeCode,workFlowNodeName,assignDate,estimateStartTime,estimateEndTime,reportNo,reportDate,lossVehicleTypeCode,lossVehicleType,plateNo,vin,brandModel,engineNo,vehicleCategoryCode,vehicleCategory,usingTypeCode,usingType,licenseFirstRegisterDate,purchasePrice,plateTypeCode,plateType,plateColorCode,plateColor,vehicleBodyColor,currentValue,fuelRemain,mileage,itemsInCar,mainCollisionPoints,subCollisionPoints,country,vehicleManufMakeName,vehicleSubModelName,claimAttachmentsIDs,partType,partTypeCode,manageRate,laborFeeManageRate,electricianMachinistRate,sheetMetalRate,paintRate,managementFee,multiPaintDiscountRate,ChangeItemIDs,RepairItemsIDs,MaterialItemsIDs,feeTotal_partFee,feeTotal_laborFee,feeTotal_materialFee,feeTotal_entireSalvage,feeTotal_totalSalvage,feeTotal_depreciation,feeTotal_manageFee,feeTotal_estimateAmount,feeTotal_rescueFee,feeTotal_lossTotal ");
+            strSql.Append("select Id,partyId,businessNo,senderTelNo,senderName,vehicleOwnerName,vehicleOwnerTelNo,repairOrderNo,claimNo,sourceType,sendRepairFlag,insuranceCompanyGroupCode,insuranceCompanyGroupName,insuranceCompanyCode,insuranceCompanyName,repairFactoryCode,repairFactoryName,repairFacilityType,qualificationLevel,estimatorCode,estimatorName,workFlowNodeCode,workFlowNodeName,assignDate,estimateStartTime,estimateEndTime,reportNo,reportDate,lossVehicleTypeCode,lossVehicleType,plateNo,vin,brandModel,engineNo,vehicleCategoryCode,vehicleCategory,usingTypeCode,usingType,licenseFirstRegisterDate,purchasePrice,plateTypeCode,plateType,plateColorCode,plateColor,vehicleBodyColor,currentValue,fuelRemain,mileage,itemsInCar,mainCollisionPoints,subCollisionPoints,country,vehicleManufMakeName,vehicleSubModelName,claimAttachmentsIDs,partType,partTypeCode,manageRate,laborFeeManageRate,electricianMachinistRate,sheetMetalRate,paintRate,managementFee,multiPaintDiscountRate,ChangeItemIDs,RepairItemsIDs,MaterialItemsIDs,feeTotal_partFee,feeTotal_laborFee,feeTotal_materialFee,feeTotal_entireSalvage,feeTotal_totalSalvage,feeTotal_depreciation,feeTotal_manageFee,feeTotal_estimateAmount,feeTotal_rescueFee,feeTotal_lossTotal ");
             strSql.Append(" FROM CCCAPI_JobLossInformation ");
             if (strWhere.Trim() != "")
             {
@@ -871,7 +894,7 @@ namespace CZB.DAL.SqlServer.DataProvider
             {
                 strSql.Append(" top " + Top.ToString());
             }
-            strSql.Append(" Id,senderTelNo,senderName,vehicleOwnerName,vehicleOwnerTelNo,repairOrderNo,claimNo,sourceType,sendRepairFlag,insuranceCompanyGroupCode,insuranceCompanyGroupName,insuranceCompanyCode,insuranceCompanyName,repairFactoryCode,repairFactoryName,repairFacilityType,qualificationLevel,estimatorCode,estimatorName,workFlowNodeCode,workFlowNodeName,assignDate,estimateStartTime,estimateEndTime,reportNo,reportDate,lossVehicleTypeCode,lossVehicleType,plateNo,vin,brandModel,engineNo,vehicleCategoryCode,vehicleCategory,usingTypeCode,usingType,licenseFirstRegisterDate,purchasePrice,plateTypeCode,plateType,plateColorCode,plateColor,vehicleBodyColor,currentValue,fuelRemain,mileage,itemsInCar,mainCollisionPoints,subCollisionPoints,country,vehicleManufMakeName,vehicleSubModelName,claimAttachmentsIDs,partType,partTypeCode,manageRate,laborFeeManageRate,electricianMachinistRate,sheetMetalRate,paintRate,managementFee,multiPaintDiscountRate,ChangeItemIDs,RepairItemsIDs,MaterialItemsIDs,feeTotal_partFee,feeTotal_laborFee,feeTotal_materialFee,feeTotal_entireSalvage,feeTotal_totalSalvage,feeTotal_depreciation,feeTotal_manageFee,feeTotal_estimateAmount,feeTotal_rescueFee,feeTotal_lossTotal ");
+            strSql.Append(" Id,partyId,businessNo,senderTelNo,senderName,vehicleOwnerName,vehicleOwnerTelNo,repairOrderNo,claimNo,sourceType,sendRepairFlag,insuranceCompanyGroupCode,insuranceCompanyGroupName,insuranceCompanyCode,insuranceCompanyName,repairFactoryCode,repairFactoryName,repairFacilityType,qualificationLevel,estimatorCode,estimatorName,workFlowNodeCode,workFlowNodeName,assignDate,estimateStartTime,estimateEndTime,reportNo,reportDate,lossVehicleTypeCode,lossVehicleType,plateNo,vin,brandModel,engineNo,vehicleCategoryCode,vehicleCategory,usingTypeCode,usingType,licenseFirstRegisterDate,purchasePrice,plateTypeCode,plateType,plateColorCode,plateColor,vehicleBodyColor,currentValue,fuelRemain,mileage,itemsInCar,mainCollisionPoints,subCollisionPoints,country,vehicleManufMakeName,vehicleSubModelName,claimAttachmentsIDs,partType,partTypeCode,manageRate,laborFeeManageRate,electricianMachinistRate,sheetMetalRate,paintRate,managementFee,multiPaintDiscountRate,ChangeItemIDs,RepairItemsIDs,MaterialItemsIDs,feeTotal_partFee,feeTotal_laborFee,feeTotal_materialFee,feeTotal_entireSalvage,feeTotal_totalSalvage,feeTotal_depreciation,feeTotal_manageFee,feeTotal_estimateAmount,feeTotal_rescueFee,feeTotal_lossTotal ");
             strSql.Append(" FROM CCCAPI_JobLossInformation ");
             if (strWhere.Trim() != "")
             {
@@ -1074,90 +1097,168 @@ namespace CZB.DAL.SqlServer.DataProvider
                             }
                         }
 
-                        var strSql = new StringBuilder();
+                        StringBuilder strSql = new StringBuilder();
                         strSql.Append("insert into CCCAPI_JobLossInformation(");
-                        strSql.Append("Id,senderTelNo,senderName,vehicleOwnerName,vehicleOwnerTelNo,repairOrderNo,claimNo,sourceType,sendRepairFlag,insuranceCompanyGroupCode,insuranceCompanyGroupName,insuranceCompanyCode,insuranceCompanyName,repairFactoryCode,repairFactoryName,repairFacilityType,qualificationLevel,estimatorCode,estimatorName,workFlowNodeCode,workFlowNodeName,assignDate,estimateStartTime,estimateEndTime,reportNo,reportDate,lossVehicleTypeCode,lossVehicleType,plateNo,vin,brandModel,engineNo,vehicleCategoryCode,vehicleCategory,usingTypeCode,usingType,licenseFirstRegisterDate,purchasePrice,plateTypeCode,plateType,plateColorCode,plateColor,vehicleBodyColor,currentValue,fuelRemain,mileage,itemsInCar,mainCollisionPoints,subCollisionPoints,country,vehicleManufMakeName,vehicleSubModelName,claimAttachmentsIDs,partType,partTypeCode,manageRate,laborFeeManageRate,electricianMachinistRate,sheetMetalRate,paintRate,managementFee,multiPaintDiscountRate,ChangeItemIDs,RepairItemsIDs,MaterialItemsIDs,feeTotal_partFee,feeTotal_laborFee,feeTotal_materialFee,feeTotal_entireSalvage,feeTotal_totalSalvage,feeTotal_depreciation,feeTotal_manageFee,feeTotal_estimateAmount,feeTotal_rescueFee,feeTotal_lossTotal)");
+                        strSql.Append("Id,partyId,businessNo,senderTelNo,senderName,vehicleOwnerName,vehicleOwnerTelNo,repairOrderNo,claimNo,sourceType,sendRepairFlag,insuranceCompanyGroupCode,insuranceCompanyGroupName,insuranceCompanyCode,insuranceCompanyName,repairFactoryCode,repairFactoryName,repairFacilityType,qualificationLevel,estimatorCode,estimatorName,workFlowNodeCode,workFlowNodeName,assignDate,estimateStartTime,estimateEndTime,reportNo,reportDate,lossVehicleTypeCode,lossVehicleType,plateNo,vin,brandModel,engineNo,vehicleCategoryCode,vehicleCategory,usingTypeCode,usingType,licenseFirstRegisterDate,purchasePrice,plateTypeCode,plateType,plateColorCode,plateColor,vehicleBodyColor,currentValue,fuelRemain,mileage,itemsInCar,mainCollisionPoints,subCollisionPoints,country,vehicleManufMakeName,vehicleSubModelName,claimAttachmentsIDs,partType,partTypeCode,manageRate,laborFeeManageRate,electricianMachinistRate,sheetMetalRate,paintRate,managementFee,multiPaintDiscountRate,ChangeItemIDs,RepairItemsIDs,MaterialItemsIDs,feeTotal_partFee,feeTotal_laborFee,feeTotal_materialFee,feeTotal_entireSalvage,feeTotal_totalSalvage,feeTotal_depreciation,feeTotal_manageFee,feeTotal_estimateAmount,feeTotal_rescueFee,feeTotal_lossTotal)");
                         strSql.Append(" values (");
-                        strSql.Append("@Id,@senderTelNo,@senderName,@vehicleOwnerName,@vehicleOwnerTelNo,@repairOrderNo,@claimNo,@sourceType,@sendRepairFlag,@insuranceCompanyGroupCode,@insuranceCompanyGroupName,@insuranceCompanyCode,@insuranceCompanyName,@repairFactoryCode,@repairFactoryName,@repairFacilityType,@qualificationLevel,@estimatorCode,@estimatorName,@workFlowNodeCode,@workFlowNodeName,@assignDate,@estimateStartTime,@estimateEndTime,@reportNo,@reportDate,@lossVehicleTypeCode,@lossVehicleType,@plateNo,@vin,@brandModel,@engineNo,@vehicleCategoryCode,@vehicleCategory,@usingTypeCode,@usingType,@licenseFirstRegisterDate,@purchasePrice,@plateTypeCode,@plateType,@plateColorCode,@plateColor,@vehicleBodyColor,@currentValue,@fuelRemain,@mileage,@itemsInCar,@mainCollisionPoints,@subCollisionPoints,@country,@vehicleManufMakeName,@vehicleSubModelName,@claimAttachmentsIDs,@partType,@partTypeCode,@manageRate,@laborFeeManageRate,@electricianMachinistRate,@sheetMetalRate,@paintRate,@managementFee,@multiPaintDiscountRate,@ChangeItemIDs,@RepairItemsIDs,@MaterialItemsIDs,@feeTotal_partFee,@feeTotal_laborFee,@feeTotal_materialFee,@feeTotal_entireSalvage,@feeTotal_totalSalvage,@feeTotal_depreciation,@feeTotal_manageFee,@feeTotal_estimateAmount,@feeTotal_rescueFee,@feeTotal_lossTotal)");
+                        strSql.Append("@Id,@partyId,@businessNo,@senderTelNo,@senderName,@vehicleOwnerName,@vehicleOwnerTelNo,@repairOrderNo,@claimNo,@sourceType,@sendRepairFlag,@insuranceCompanyGroupCode,@insuranceCompanyGroupName,@insuranceCompanyCode,@insuranceCompanyName,@repairFactoryCode,@repairFactoryName,@repairFacilityType,@qualificationLevel,@estimatorCode,@estimatorName,@workFlowNodeCode,@workFlowNodeName,@assignDate,@estimateStartTime,@estimateEndTime,@reportNo,@reportDate,@lossVehicleTypeCode,@lossVehicleType,@plateNo,@vin,@brandModel,@engineNo,@vehicleCategoryCode,@vehicleCategory,@usingTypeCode,@usingType,@licenseFirstRegisterDate,@purchasePrice,@plateTypeCode,@plateType,@plateColorCode,@plateColor,@vehicleBodyColor,@currentValue,@fuelRemain,@mileage,@itemsInCar,@mainCollisionPoints,@subCollisionPoints,@country,@vehicleManufMakeName,@vehicleSubModelName,@claimAttachmentsIDs,@partType,@partTypeCode,@manageRate,@laborFeeManageRate,@electricianMachinistRate,@sheetMetalRate,@paintRate,@managementFee,@multiPaintDiscountRate,@ChangeItemIDs,@RepairItemsIDs,@MaterialItemsIDs,@feeTotal_partFee,@feeTotal_laborFee,@feeTotal_materialFee,@feeTotal_entireSalvage,@feeTotal_totalSalvage,@feeTotal_depreciation,@feeTotal_manageFee,@feeTotal_estimateAmount,@feeTotal_rescueFee,@feeTotal_lossTotal)");
+                        SqlParameter[] parameters = {
+                    new SqlParameter("@Id", SqlDbType.NVarChar,255),
+                    new SqlParameter("@partyId", SqlDbType.VarChar,255),
+                    new SqlParameter("@businessNo", SqlDbType.VarChar,255),
+                    new SqlParameter("@senderTelNo", SqlDbType.VarChar,50),
+                    new SqlParameter("@senderName", SqlDbType.VarChar,50),
+                    new SqlParameter("@vehicleOwnerName", SqlDbType.VarChar,50),
+                    new SqlParameter("@vehicleOwnerTelNo", SqlDbType.VarChar,50),
+                    new SqlParameter("@repairOrderNo", SqlDbType.VarChar,50),
+                    new SqlParameter("@claimNo", SqlDbType.VarChar,50),
+                    new SqlParameter("@sourceType", SqlDbType.VarChar,50),
+                    new SqlParameter("@sendRepairFlag", SqlDbType.VarChar,3),
+                    new SqlParameter("@insuranceCompanyGroupCode", SqlDbType.VarChar,50),
+                    new SqlParameter("@insuranceCompanyGroupName", SqlDbType.VarChar,100),
+                    new SqlParameter("@insuranceCompanyCode", SqlDbType.VarChar,30),
+                    new SqlParameter("@insuranceCompanyName", SqlDbType.VarChar,100),
+                    new SqlParameter("@repairFactoryCode", SqlDbType.VarChar,30),
+                    new SqlParameter("@repairFactoryName", SqlDbType.VarChar,100),
+                    new SqlParameter("@repairFacilityType", SqlDbType.VarChar,30),
+                    new SqlParameter("@qualificationLevel", SqlDbType.VarChar,30),
+                    new SqlParameter("@estimatorCode", SqlDbType.VarChar,30),
+                    new SqlParameter("@estimatorName", SqlDbType.VarChar,60),
+                    new SqlParameter("@workFlowNodeCode", SqlDbType.VarChar,30),
+                    new SqlParameter("@workFlowNodeName", SqlDbType.VarChar,30),
+                    new SqlParameter("@assignDate", SqlDbType.DateTime),
+                    new SqlParameter("@estimateStartTime", SqlDbType.DateTime),
+                    new SqlParameter("@estimateEndTime", SqlDbType.DateTime),
+                    new SqlParameter("@reportNo", SqlDbType.VarChar,30),
+                    new SqlParameter("@reportDate", SqlDbType.DateTime),
+                    new SqlParameter("@lossVehicleTypeCode", SqlDbType.VarChar,30),
+                    new SqlParameter("@lossVehicleType", SqlDbType.VarChar,30),
+                    new SqlParameter("@plateNo", SqlDbType.VarChar,30),
+                    new SqlParameter("@vin", SqlDbType.VarChar,150),
+                    new SqlParameter("@brandModel", SqlDbType.VarChar,150),
+                    new SqlParameter("@engineNo", SqlDbType.VarChar,30),
+                    new SqlParameter("@vehicleCategoryCode", SqlDbType.VarChar,30),
+                    new SqlParameter("@vehicleCategory", SqlDbType.VarChar,30),
+                    new SqlParameter("@usingTypeCode", SqlDbType.VarChar,30),
+                    new SqlParameter("@usingType", SqlDbType.VarChar,30),
+                    new SqlParameter("@licenseFirstRegisterDate", SqlDbType.DateTime),
+                    new SqlParameter("@purchasePrice", SqlDbType.Decimal,9),
+                    new SqlParameter("@plateTypeCode", SqlDbType.VarChar,30),
+                    new SqlParameter("@plateType", SqlDbType.VarChar,30),
+                    new SqlParameter("@plateColorCode", SqlDbType.VarChar,30),
+                    new SqlParameter("@plateColor", SqlDbType.VarChar,30),
+                    new SqlParameter("@vehicleBodyColor", SqlDbType.VarChar,30),
+                    new SqlParameter("@currentValue", SqlDbType.Decimal,9),
+                    new SqlParameter("@fuelRemain", SqlDbType.Decimal,9),
+                    new SqlParameter("@mileage", SqlDbType.Decimal,9),
+                    new SqlParameter("@itemsInCar", SqlDbType.VarChar,255),
+                    new SqlParameter("@mainCollisionPoints", SqlDbType.VarChar,3),
+                    new SqlParameter("@subCollisionPoints", SqlDbType.VarChar,50),
+                    new SqlParameter("@country", SqlDbType.VarChar,30),
+                    new SqlParameter("@vehicleManufMakeName", SqlDbType.VarChar,255),
+                    new SqlParameter("@vehicleSubModelName", SqlDbType.VarChar,255),
+                    new SqlParameter("@claimAttachmentsIDs", SqlDbType.VarChar,50),
+                    new SqlParameter("@partType", SqlDbType.VarChar,30),
+                    new SqlParameter("@partTypeCode", SqlDbType.VarChar,30),
+                    new SqlParameter("@manageRate", SqlDbType.Decimal,9),
+                    new SqlParameter("@laborFeeManageRate", SqlDbType.Decimal,9),
+                    new SqlParameter("@electricianMachinistRate", SqlDbType.Decimal,9),
+                    new SqlParameter("@sheetMetalRate", SqlDbType.Decimal,9),
+                    new SqlParameter("@paintRate", SqlDbType.Decimal,9),
+                    new SqlParameter("@managementFee", SqlDbType.Decimal,9),
+                    new SqlParameter("@multiPaintDiscountRate", SqlDbType.Decimal,9),
+                    new SqlParameter("@ChangeItemIDs", SqlDbType.NVarChar,-1),
+                    new SqlParameter("@RepairItemsIDs", SqlDbType.NVarChar,-1),
+                    new SqlParameter("@MaterialItemsIDs", SqlDbType.NVarChar,-1),
+                    new SqlParameter("@feeTotal_partFee", SqlDbType.Decimal,9),
+                    new SqlParameter("@feeTotal_laborFee", SqlDbType.Decimal,9),
+                    new SqlParameter("@feeTotal_materialFee", SqlDbType.Decimal,9),
+                    new SqlParameter("@feeTotal_entireSalvage", SqlDbType.Decimal,9),
+                    new SqlParameter("@feeTotal_totalSalvage", SqlDbType.Decimal,9),
+                    new SqlParameter("@feeTotal_depreciation", SqlDbType.Decimal,9),
+                    new SqlParameter("@feeTotal_manageFee", SqlDbType.Decimal,9),
+                    new SqlParameter("@feeTotal_estimateAmount", SqlDbType.Decimal,9),
+                    new SqlParameter("@feeTotal_rescueFee", SqlDbType.Decimal,9),
+                    new SqlParameter("@feeTotal_lossTotal", SqlDbType.Decimal,9)};
+                        parameters[0].Value = info_Model.Id;
+                        parameters[1].Value = info_Model.partyId;
+                        parameters[2].Value = info_Model.businessNo;
+                        parameters[3].Value = info_Model.senderTelNo;
+                        parameters[4].Value = info_Model.senderName;
+                        parameters[5].Value = info_Model.vehicleOwnerName;
+                        parameters[6].Value = info_Model.vehicleOwnerTelNo;
+                        parameters[7].Value = info_Model.repairOrderNo;
+                        parameters[8].Value = info_Model.claimNo;
+                        parameters[9].Value = info_Model.sourceType;
+                        parameters[10].Value = info_Model.sendRepairFlag;
+                        parameters[11].Value = info_Model.insuranceCompanyGroupCode;
+                        parameters[12].Value = info_Model.insuranceCompanyGroupName;
+                        parameters[13].Value = info_Model.insuranceCompanyCode;
+                        parameters[14].Value = info_Model.insuranceCompanyName;
+                        parameters[15].Value = info_Model.repairFactoryCode;
+                        parameters[16].Value = info_Model.repairFactoryName;
+                        parameters[17].Value = info_Model.repairFacilityType;
+                        parameters[18].Value = info_Model.qualificationLevel;
+                        parameters[19].Value = info_Model.estimatorCode;
+                        parameters[20].Value = info_Model.estimatorName;
+                        parameters[21].Value = info_Model.workFlowNodeCode;
+                        parameters[22].Value = info_Model.workFlowNodeName;
+                        parameters[23].Value = info_Model.assignDate;
+                        parameters[24].Value = info_Model.estimateStartTime;
+                        parameters[25].Value = info_Model.estimateEndTime;
+                        parameters[26].Value = info_Model.reportNo;
+                        parameters[27].Value = info_Model.reportDate;
+                        parameters[28].Value = info_Model.lossVehicleTypeCode;
+                        parameters[29].Value = info_Model.lossVehicleType;
+                        parameters[30].Value = info_Model.plateNo;
+                        parameters[31].Value = info_Model.vin;
+                        parameters[32].Value = info_Model.brandModel;
+                        parameters[33].Value = info_Model.engineNo;
+                        parameters[34].Value = info_Model.vehicleCategoryCode;
+                        parameters[35].Value = info_Model.vehicleCategory;
+                        parameters[36].Value = info_Model.usingTypeCode;
+                        parameters[37].Value = info_Model.usingType;
+                        parameters[38].Value = info_Model.licenseFirstRegisterDate;
+                        parameters[39].Value = info_Model.purchasePrice;
+                        parameters[40].Value = info_Model.plateTypeCode;
+                        parameters[41].Value = info_Model.plateType;
+                        parameters[42].Value = info_Model.plateColorCode;
+                        parameters[43].Value = info_Model.plateColor;
+                        parameters[44].Value = info_Model.vehicleBodyColor;
+                        parameters[45].Value = info_Model.currentValue;
+                        parameters[46].Value = info_Model.fuelRemain;
+                        parameters[47].Value = info_Model.mileage;
+                        parameters[48].Value = info_Model.itemsInCar;
+                        parameters[49].Value = info_Model.mainCollisionPoints;
+                        parameters[50].Value = info_Model.subCollisionPoints;
+                        parameters[51].Value = info_Model.country;
+                        parameters[52].Value = info_Model.vehicleManufMakeName;
+                        parameters[53].Value = info_Model.vehicleSubModelName;
+                        parameters[54].Value = info_Model.claimAttachmentsIDs;
+                        parameters[55].Value = info_Model.partType;
+                        parameters[56].Value = info_Model.partTypeCode;
+                        parameters[57].Value = info_Model.manageRate;
+                        parameters[58].Value = info_Model.laborFeeManageRate;
+                        parameters[59].Value = info_Model.electricianMachinistRate;
+                        parameters[60].Value = info_Model.sheetMetalRate;
+                        parameters[61].Value = info_Model.paintRate;
+                        parameters[62].Value = info_Model.managementFee;
+                        parameters[63].Value = info_Model.multiPaintDiscountRate;
+                        parameters[64].Value = info_Model.ChangeItemIDs;
+                        parameters[65].Value = info_Model.RepairItemsIDs;
+                        parameters[66].Value = info_Model.MaterialItemsIDs;
+                        parameters[67].Value = info_Model.feeTotal_partFee;
+                        parameters[68].Value = info_Model.feeTotal_laborFee;
+                        parameters[69].Value = info_Model.feeTotal_materialFee;
+                        parameters[70].Value = info_Model.feeTotal_entireSalvage;
+                        parameters[71].Value = info_Model.feeTotal_totalSalvage;
+                        parameters[72].Value = info_Model.feeTotal_depreciation;
+                        parameters[73].Value = info_Model.feeTotal_manageFee;
+                        parameters[74].Value = info_Model.feeTotal_estimateAmount;
+                        parameters[75].Value = info_Model.feeTotal_rescueFee;
+                        parameters[76].Value = info_Model.feeTotal_lossTotal;
 
-                        var parameters =new SqlParameter[] {
-                            new SqlParameter("@Id", info_Model.Id),
-                            new SqlParameter("@senderTelNo", info_Model.senderTelNo),
-                            new SqlParameter("@senderName", info_Model.senderName),
-                            new SqlParameter("@vehicleOwnerName", info_Model.vehicleOwnerName),
-                            new SqlParameter("@vehicleOwnerTelNo", info_Model.vehicleOwnerTelNo),
-                            new SqlParameter("@repairOrderNo", info_Model.repairOrderNo),
-                            new SqlParameter("@claimNo", info_Model.claimNo),
-                            new SqlParameter("@sourceType", info_Model.sourceType),
-                            new SqlParameter("@sendRepairFlag",info_Model.sendRepairFlag),
-                            new SqlParameter("@insuranceCompanyGroupCode", info_Model.insuranceCompanyGroupCode),
-                            new SqlParameter("@insuranceCompanyGroupName", info_Model.insuranceCompanyGroupName),
-                            new SqlParameter("@insuranceCompanyCode", info_Model.insuranceCompanyCode),
-                            new SqlParameter("@insuranceCompanyName", info_Model.insuranceCompanyName),
-                            new SqlParameter("@repairFactoryCode", info_Model.repairFactoryCode),
-                            new SqlParameter("@repairFactoryName", info_Model.repairFactoryName),
-                            new SqlParameter("@repairFacilityType",info_Model.repairFacilityType),
-                            new SqlParameter("@qualificationLevel", info_Model.qualificationLevel),
-                            new SqlParameter("@estimatorCode", info_Model.estimatorCode),
-                            new SqlParameter("@estimatorName", info_Model.estimatorName),
-                            new SqlParameter("@workFlowNodeCode", info_Model.workFlowNodeCode),
-                            new SqlParameter("@workFlowNodeName", info_Model.workFlowNodeName),
-                            new SqlParameter("@assignDate", info_Model.assignDate),
-                            new SqlParameter("@estimateStartTime", info_Model.estimateStartTime),
-                            new SqlParameter("@estimateEndTime", info_Model.estimateEndTime),
-                            new SqlParameter("@reportNo", info_Model.reportNo),
-                            new SqlParameter("@reportDate", info_Model.reportDate),
-                            new SqlParameter("@lossVehicleTypeCode", info_Model.lossVehicleTypeCode),
-                            new SqlParameter("@lossVehicleType", info_Model.lossVehicleType),
-                            new SqlParameter("@plateNo", info_Model.plateNo),
-                            new SqlParameter("@vin", info_Model.vin),
-                            new SqlParameter("@brandModel", info_Model.brandModel),
-                            new SqlParameter("@engineNo", info_Model.engineNo),
-                            new SqlParameter("@vehicleCategoryCode", info_Model.vehicleCategoryCode),
-                            new SqlParameter("@vehicleCategory", info_Model.vehicleCategory),
-                            new SqlParameter("@usingTypeCode", info_Model.usingTypeCode),
-                            new SqlParameter("@usingType", info_Model.usingType),
-                            new SqlParameter("@licenseFirstRegisterDate", info_Model.licenseFirstRegisterDate),
-                            new SqlParameter("@purchasePrice", info_Model.purchasePrice),
-                            new SqlParameter("@plateTypeCode", info_Model.plateTypeCode),
-                            new SqlParameter("@plateType", info_Model.plateType),
-                            new SqlParameter("@plateColorCode", info_Model.plateColorCode),
-                            new SqlParameter("@plateColor", info_Model.plateColor),
-                            new SqlParameter("@vehicleBodyColor", info_Model.vehicleBodyColor),
-                            new SqlParameter("@currentValue", info_Model.currentValue),
-                            new SqlParameter("@fuelRemain", info_Model.fuelRemain),
-                            new SqlParameter("@mileage", info_Model.mileage),
-                            new SqlParameter("@itemsInCar", info_Model.itemsInCar),
-                            new SqlParameter("@mainCollisionPoints",info_Model.mainCollisionPoints),
-                            new SqlParameter("@subCollisionPoints", info_Model.subCollisionPoints),
-                            new SqlParameter("@country", info_Model.country),
-                            new SqlParameter("@vehicleManufMakeName", info_Model.vehicleManufMakeName),
-                            new SqlParameter("@vehicleSubModelName", info_Model.vehicleSubModelName),
-                            new SqlParameter("@claimAttachmentsIDs", info_Model.claimAttachmentsIDs),
-                            new SqlParameter("@partType", info_Model.partType),
-                            new SqlParameter("@partTypeCode", info_Model.partTypeCode),
-                            new SqlParameter("@manageRate", info_Model.manageRate),
-                            new SqlParameter("@laborFeeManageRate", info_Model.laborFeeManageRate),
-                            new SqlParameter("@electricianMachinistRate", info_Model.electricianMachinistRate),
-                            new SqlParameter("@sheetMetalRate", info_Model.sheetMetalRate),
-                            new SqlParameter("@paintRate", info_Model.paintRate),
-                            new SqlParameter("@managementFee", info_Model.managementFee),
-                            new SqlParameter("@multiPaintDiscountRate", info_Model.multiPaintDiscountRate),
-                            new SqlParameter("@ChangeItemIDs", info_Model.ChangeItemIDs),
-                            new SqlParameter("@RepairItemsIDs", info_Model.RepairItemsIDs),
-                            new SqlParameter("@MaterialItemsIDs", info_Model.MaterialItemsIDs),
-                            new SqlParameter("@feeTotal_partFee", info_Model.feeTotal_partFee),
-                            new SqlParameter("@feeTotal_laborFee", info_Model.feeTotal_laborFee),
-                            new SqlParameter("@feeTotal_materialFee", info_Model.feeTotal_materialFee),
-                            new SqlParameter("@feeTotal_entireSalvage",info_Model.feeTotal_entireSalvage),
-                            new SqlParameter("@feeTotal_totalSalvage", info_Model.feeTotal_totalSalvage),
-                            new SqlParameter("@feeTotal_depreciation", info_Model.feeTotal_depreciation),
-                            new SqlParameter("@feeTotal_manageFee", info_Model.feeTotal_manageFee),
-                            new SqlParameter("@feeTotal_estimateAmount",info_Model.feeTotal_estimateAmount),
-                            new SqlParameter("@feeTotal_rescueFee", info_Model.feeTotal_rescueFee),
-                            new SqlParameter("@feeTotal_lossTotal", info_Model.feeTotal_lossTotal)
-                        };
-                        DbHelperSQL.ExecuteSql(conn, trans, strSql.ToString(), parameters);
+                        int rows = DbHelperSQL.ExecuteSql(conn, trans, strSql.ToString(), parameters);
 
                         trans.Commit();
                         return true;

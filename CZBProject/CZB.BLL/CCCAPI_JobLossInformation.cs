@@ -95,6 +95,11 @@ namespace CZB.BLL
             return dal.GetList(Top, strWhere, filedOrder);
         }
 
+        /// <summary>
+        /// 根据工单号查询是否存在
+        /// </summary>
+        /// <param name="businessNo"></param>
+        /// <returns></returns>
         public bool ExistsBusinessNo(string businessNo)
         {
             return dal.ExistsBusinessNo(businessNo);
