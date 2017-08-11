@@ -161,6 +161,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Adm1n_L0g1n\Adm1n_L0g1nAreaRegistration.cs" />
+    <Compile Include="Areas\Adm1n_L0g1n\Controllers\BaseController.cs" />
     <Compile Include="Areas\Adm1n_L0g1n\Controllers\CommonController.cs" />
     <Compile Include="Areas\Adm1n_L0g1n\Controllers\ManagerController.cs" />
     <Compile Include="Areas\Adm1n_L0g1n\Controllers\MaterialController.cs" />
@@ -347,6 +348,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Adm1n_L0g1n\Views\Base\" />
     <Folder Include="Areas\Adm1n_L0g1n\Views\Common\" />
     <Folder Include="Areas\Adm1n_L0g1n\Views\Shared\" />
     <Folder Include="Models\" />

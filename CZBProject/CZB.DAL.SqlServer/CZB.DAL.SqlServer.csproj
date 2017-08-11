@@ -49,6 +49,7 @@
     <Compile Include="DataProvider\CCCAPI_MaterialItems.cs" />
     <Compile Include="DataProvider\CCCAPI_RepairItems.cs" />
     <Compile Include="DataProvider\Material.cs" />
+    <Compile Include="DataProvider\WXBasePara.cs" />
     <Compile Include="DbHelperSQL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

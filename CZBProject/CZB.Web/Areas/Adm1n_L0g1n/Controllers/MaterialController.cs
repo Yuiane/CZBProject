@@ -7,10 +7,11 @@ using CZB.Common.Extensions;
 using System.IO;
 using System.Security.Cryptography;
 using CZB.Web.Areas.Adm1n_L0g1n.Models;
+using Senparc.Weixin.MP.AdvancedAPIs;
 
 namespace CZB.Web.Areas.Adm1n_L0g1n.Controllers
 {
-    public class MaterialController : Controller
+    public class MaterialController : BaseController
     {
         // GET: Adm1n_L0g1n/Material
         public ActionResult Index()
@@ -28,6 +29,15 @@ namespace CZB.Web.Areas.Adm1n_L0g1n.Controllers
 
             return View(list);
         }
+
+        public ActionResult GetOnlineList()
+        {
+            var result = MediaApi.GetNewsMediaList("", 0, 5);
+            return Content(result.ToJson());
+        }
+
+
+
 
         /// <summary>
         /// 修改&新增 页面

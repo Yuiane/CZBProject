@@ -19,7 +19,7 @@ namespace CZB.Web.Areas.Adm1n_L0g1n.Controllers
     /// <summary>
     /// 自定义菜单控制类
     /// </summary>
-    public class MenuController : Controller
+    public class MenuController : BaseController
     {
         /// <summary>
         /// 
@@ -37,11 +37,7 @@ namespace CZB.Web.Areas.Adm1n_L0g1n.Controllers
         /// <returns></returns>
         public JsonResult GetMenu()
         {
-            if (!AccessTokenContainer.CheckRegistered(BaseConfig.AppId))
-            {
-                AccessTokenContainer.Register(BaseConfig.AppId, BaseConfig.AppSecret);
-            }
-            var result = CommonApi.GetMenu(BaseConfig.AppId);
+            var result = CommonApi.GetMenu(GetAccessToken());
             if (result.errcode == ReturnCode.请求成功)
             {
                 return Json(result, JsonRequestBehavior.AllowGet);
@@ -63,12 +59,7 @@ namespace CZB.Web.Areas.Adm1n_L0g1n.Controllers
                 if (model != null)
                 {
                     var bg = GetSendMenuJson(model.list);
-                    LogHelper.WriteLog(LogEnum.Error, bg.ToJson());
-                    if (!AccessTokenContainer.CheckRegistered(BaseConfig.AppId))
-                    {
-                        AccessTokenContainer.Register(BaseConfig.AppId, BaseConfig.AppSecret);
-                    }
-                    var result = CommonApi.CreateMenu(BaseConfig.AppId, bg);
+                    var result = CommonApi.CreateMenu(GetAccessToken(), bg);
                     if (result != null)
                     {
                         return Content(result.errcode.ToStringEx());

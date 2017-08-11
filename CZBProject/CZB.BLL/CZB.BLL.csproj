@@ -46,6 +46,7 @@
     <Compile Include="CCCAPI_JobLossInformation.cs" />
     <Compile Include="CCCAPI_MaterialItems.cs" />
     <Compile Include="CCCAPI_RepairItems.cs" />
+    <Compile Include="WXBasePara.cs" />
     <Compile Include="Materials.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

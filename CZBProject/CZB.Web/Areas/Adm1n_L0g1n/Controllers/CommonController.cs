@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace CZB.Web.Areas.Adm1n_L0g1n.Controllers
 {
-    public class CommonController : Controller
+    public class CommonController : BaseController
     {
         /// <summary>  
         /// 附件上传  

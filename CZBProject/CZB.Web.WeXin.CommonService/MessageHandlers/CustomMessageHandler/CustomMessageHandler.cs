@@ -32,6 +32,7 @@ using Senparc.Weixin.Entities.Request;
 using CZB.Config;
 using CZB.Common.Extensions;
 using CZB.Common.Enums;
+using CZB.Common;
 
 namespace CZB.Web.WeXin.CommonService.MessageHandlers.CustomMessageHandler
 {
@@ -105,14 +106,16 @@ namespace CZB.Web.WeXin.CommonService.MessageHandlers.CustomMessageHandler
         /// <returns></returns>
         public override IResponseMessageBase OnTextRequest(RequestMessageText requestMessage)
         {
+            LogHelper.WriteLog(LogEnum.WeChatSend, "requestMessage.Content:" + requestMessage.Content);
             if (requestMessage.Content.Contains("客服"))
             {
                 var _responseMessage = this.CreateResponseMessage<ResponseMessageTransfer_Customer_Service>();
+                
                 return _responseMessage;
             }
 
             var responseMessageContent = BaseConfig.DefaultInfo;
-            var model = new CZB.BLL.AutoReplys().GetAutoReplyList(requestMessage.Content).Tables[0].ToEntity<Model.AutoReply>();
+            var model = new BLL.AutoReplys().GetAutoReplyList(requestMessage.Content).Tables[0].ToEntity<Model.AutoReply>();
             if (model != null)
             {
                 if (model.ReplyType == AutoReplyTypeEnum.Text.GetHashCode())
