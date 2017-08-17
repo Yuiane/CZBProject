@@ -19,7 +19,7 @@ namespace CZB.Web
             );
             //config.ParameterBindingRules.Add(j => RewriteParameterBinding.HookupParameterBinding(j));
 
-            //GlobalConfiguration.Configuration.Formatters.XmlFormatter.SupportedMediaTypes.Clear();
+            GlobalConfiguration.Configuration.Formatters.XmlFormatter.SupportedMediaTypes.Clear();
             ////默认返回 json   
             GlobalConfiguration.Configuration.Formatters.JsonFormatter.MediaTypeMappings.Add(
                 new QueryStringMapping("datatype", "json", "application/json"));

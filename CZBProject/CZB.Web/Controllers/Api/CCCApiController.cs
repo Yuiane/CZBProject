@@ -28,7 +28,8 @@ namespace CZB.Web.Controllers
         {
             try
             {
-                Models model = Request.Param<Models>();
+
+                var model = Request.Param<CZB.Common.CCCModel.Models>();
                 if (model != null)
                 {
                     var info = "partyId:" + model.partyId + "\r\n  businessNo:" + model.businessNo + "\r\n model.content:" + model.content.ToJson();
@@ -72,7 +73,7 @@ namespace CZB.Web.Controllers
         ///  核损
         /// </summary>
         /// <returns></returns>
-        public ReturnResult NuclearDamage(Models model)
+        public ReturnResult NuclearDamage(CZB.Common.CCCModel.Models model)
         {
             if (!new CZB.BLL.CCCAPI_JobLossInformation().ExistsBusinessNo(model.businessNo))
             {
@@ -285,7 +286,7 @@ namespace CZB.Web.Controllers
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public ReturnResult ToAssessTheDamage(Models model)
+        public ReturnResult ToAssessTheDamage(CZB.Common.CCCModel.Models model)
         {
             Model.CCCAPI_JobLossInformation infoModel = new Model.CCCAPI_JobLossInformation()
             {
@@ -405,7 +406,7 @@ namespace CZB.Web.Controllers
         /// 验证数据null问题
         /// </summary>
         /// <returns></returns>
-        public ReturnResult CheckIsNullOrEmpty(Models model)
+        public ReturnResult CheckIsNullOrEmpty(CZB.Common.CCCModel.Models model)
         {
             var result = new ReturnResult()
             {
