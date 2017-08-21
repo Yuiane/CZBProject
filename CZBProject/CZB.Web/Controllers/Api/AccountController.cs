@@ -41,11 +41,8 @@ namespace CZB.Web.Controllers.Api
                             desc = "登录成功",
                             data = new
                             {
-                                result = new
-                                {
-                                    token = "",
-                                    phone = ""
-                                }
+                                token = "",
+                                phone = phone
                             }
                         };
                     }
@@ -55,8 +52,8 @@ namespace CZB.Web.Controllers.Api
                         return new ReturnResult
                         {
                             code = ReturnCode.Error,
-                            desc = "验证码不正确或已超市",
-                            data = new { }
+                            desc = "验证码不正确或已超时",
+                            data = ""
                         };
                     }
 
@@ -67,7 +64,7 @@ namespace CZB.Web.Controllers.Api
                     {
                         code = ReturnCode.NullOrEmpty,
                         desc = "参数异常 phone:" + phone + "&code:" + code,
-                        data = new { }
+                        data = ""
                     };
                 }
             }
@@ -77,7 +74,7 @@ namespace CZB.Web.Controllers.Api
                 {
                     code = ReturnCode.Error,
                     desc = "登录失败 err:" + err.Message,
-                    data = new { }
+                    data = ""
                 };
             }
         }
@@ -126,7 +123,7 @@ namespace CZB.Web.Controllers.Api
                     {
                         code = ReturnCode.Error,
                         desc = "请求失败",
-                        data = new { }
+                        data = ""
                     };
                 }
                 else
@@ -135,7 +132,7 @@ namespace CZB.Web.Controllers.Api
                     {
                         code = ReturnCode.NullOrEmpty,
                         desc = "参数异常 phone:" + phone,
-                        data = new { }
+                        data = ""
                     };
                 }
             }
@@ -145,9 +142,10 @@ namespace CZB.Web.Controllers.Api
                 {
                     code = ReturnCode.Error,
                     desc = "发送验证码接口请求异常:" + err.Message,
-                    data = new { }
+                    data = ""
                 };
             }
         }
+
     }
 }
