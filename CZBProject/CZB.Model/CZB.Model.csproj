@@ -46,6 +46,10 @@
     <Compile Include="CCCAPI_JobLossInformation.cs" />
     <Compile Include="CCCAPI_MaterialItems.cs" />
     <Compile Include="CCCAPI_RepairItems.cs" />
+    <Compile Include="FX_Agent.cs" />
+    <Compile Include="FX_CityParaDetails.cs" />
+    <Compile Include="FX_IncomeRecord.cs" />
+    <Compile Include="FX_Policy.cs" />
     <Compile Include="TB_MessageRecord.cs" />
     <Compile Include="WXBasePara.cs" />
     <Compile Include="Material.cs" />

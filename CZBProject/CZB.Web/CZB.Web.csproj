@@ -173,6 +173,7 @@
     <Compile Include="Areas\Adm1n_L0g1n\Models\MenuModel.cs" />
     <Compile Include="Controllers\Api\AccountController.cs" />
     <Compile Include="Controllers\Api\CCCApiController.cs" />
+    <Compile Include="Controllers\Common\Accounts.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Controllers\WechatController.cs" />
@@ -184,6 +185,7 @@
     </Compile>
     <Compile Include="Models\ReturnCode.cs" />
     <Compile Include="Models\ReturnResult.cs" />
+    <Compile Include="Models\UserLoginReturn.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

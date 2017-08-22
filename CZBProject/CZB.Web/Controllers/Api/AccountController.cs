@@ -4,7 +4,7 @@ using System.Web.Http;
 using CZB.Common;
 using CZB.Common.Extensions;
 using CZB.Web.Models;
-
+using System.Collections.Generic;
 
 namespace CZB.Web.Controllers.Api
 {
@@ -34,16 +34,13 @@ namespace CZB.Web.Controllers.Api
                     //验证码10分钟有效性
                     if (new BLL.TB_MessageRecord().Exists(phone, code))
                     {
+                        var userInfo = new Accounts().UserLogin(phone);
                         // 获取用户相关基本信息 
                         return new ReturnResult
                         {
                             code = ReturnCode.Success,
                             desc = "登录成功",
-                            data = new
-                            {
-                                token = "",
-                                phone = phone
-                            }
+                            data = userInfo
                         };
                     }
                     else
