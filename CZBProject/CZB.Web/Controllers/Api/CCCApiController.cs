@@ -256,9 +256,36 @@ namespace CZB.Web.Controllers
                 }
             }
 
+            List<Model.CCCAPI_RepairItems> repairItems = null;
+            if (model.content.lossItem != null && model.content.lossItem.repairItems != null && model.content.lossItem.repairItems.Count > 0)
+            {
+                infoModel.RepairItemsIDs += ",";
+                repairItems = new List<Model.CCCAPI_RepairItems>();
+                foreach (var repairItemModel in model.content.lossItem.repairItems)
+                {
+                    var _guid = Guid.NewGuid().ToStringEx();
+                    repairItems.Add(new Model.CCCAPI_RepairItems()
+                    {
+                        id = _guid,
+                        itemId = repairItemModel.itemId.ToDecimal(),
+                        itemName = repairItemModel.itemName,
+                        laborFeeAfterDiscount = repairItemModel.laborFeeAfterDiscount.ToDecimal(),
+                        laborFeeManageRate = repairItemModel.laborFeeManageRate.ToDecimal(),
+                        laborHour = repairItemModel.laborHour.ToDecimal(),
+                        laborHourFee = repairItemModel.laborHourFee.ToDecimal(),
+                        laborType = repairItemModel.laborType,
+                        manualFlag = repairItemModel.manualFlag == "0" ? true : false,
+                        operationType = repairItemModel.operationType,
+                        outerLaborFee = repairItemModel.outerLaborFee.ToDecimal(),
+                        outerRepairFlag = repairItemModel.outerRepairFlag == "0" ? true : false,
+                        paintDiscountFlag = repairItemModel.paintDiscountFlag == "0" ? true : false,
+                        partNo = ""
+                    });
+                    infoModel.RepairItemsIDs += _guid + ",";
+                }
+            }
 
-
-            if (new CZB.BLL.CCCAPI_JobLossInformation().AddJobLoss(infoModel, claimAttachmentsList, changeItemsList, materialItems, null))
+            if (new CZB.BLL.CCCAPI_JobLossInformation().AddJobLoss(infoModel, claimAttachmentsList, changeItemsList, materialItems, repairItems))
             {
 
                 return new ReturnResult
