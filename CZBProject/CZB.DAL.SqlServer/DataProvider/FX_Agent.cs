@@ -4,6 +4,9 @@ using System.Data;
 using System.Text;
 using System.Data.SqlClient;
 using CZB.IDAL;
+
+using CZB.Common.Extensions;
+
 namespace CZB.DAL.SqlServer.DataProvider
 {
     /// <summary>
@@ -111,6 +114,31 @@ namespace CZB.DAL.SqlServer.DataProvider
                 return Convert.ToInt32(obj);
             }
         }
+
+        /// <summary>
+        ///  获取=>下级发展的数量
+        /// </summary>
+        /// <param name="agentId"></param>
+        /// <returns></returns>
+        public int GetCountParent(int agentId)
+        {
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append(" select count(1) from FX_Agent where  charindex(@agentId,ParentList)>0 and AgentLevel !=1  ; ");
+
+            var sqlParameters = new SqlParameter[] {
+                new SqlParameter("@agentId",","+agentId+",")
+            };
+            object obj = DbHelperSQL.GetSingle(strSql.ToString(), sqlParameters);
+            if (obj == null)
+            {
+                return 0;
+            }
+            else
+            {
+                return obj.ToInt32();
+            }
+        }
+
         /// <summary>
         /// 更新一条数据
         /// </summary>

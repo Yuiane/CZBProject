@@ -8,7 +8,6 @@ namespace CZB.Web.Models
     /// <summary>
     /// 登录接口返回参数
     /// </summary>
-    [Serializable]
     public class UserLoginReturn
     {
         /// <summary>
@@ -30,7 +29,6 @@ namespace CZB.Web.Models
     /// <summary>
     /// 订单
     /// </summary>
-    [Serializable]
     public class OrderList
     {
         /// <summary>
@@ -47,7 +45,6 @@ namespace CZB.Web.Models
     /// <summary>
     /// 首页中部显示的菜单
     /// </summary>
-    [Serializable]
     public class ShowMenuList
     {
         /// <summary>
@@ -64,7 +61,6 @@ namespace CZB.Web.Models
     /// <summary>
     /// 用户基本信息
     /// </summary>
-    [Serializable]
     public class UserInfo
     {
         /// <summary>

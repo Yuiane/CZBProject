@@ -176,6 +176,9 @@ namespace CZB.DAL.SqlServer.DataProvider
                 return Convert.ToInt32(obj);
             }
         }
+
+
+
         /// <summary>
         /// 更新一条数据
         /// </summary>
@@ -491,6 +494,43 @@ namespace CZB.DAL.SqlServer.DataProvider
                 new SqlParameter("@agentId",agentId),
                 new SqlParameter("@month",DateTime.Now.Month)
             };
+            return DbHelperSQL.Query(strSql.ToStringEx(), sqlParameters);
+        }
+
+        /// <summary>
+        /// 获取总保额
+        /// </summary>
+        /// <param name="agentId">代理商</param>
+        /// <returns></returns>
+        public DataSet GetPolicyAll(int agentId)
+        {
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append(" select sum(PolicyAmount ) as num from [FX_Policy] ");
+            strSql.Append(" where  policystate=3 and AgentId=@agentId  ");
+
+            var sqlParameters = new SqlParameter[]
+            {
+                new SqlParameter("@agentId",agentId)
+            };
+            return DbHelperSQL.Query(strSql.ToStringEx(), sqlParameters);
+        }
+
+
+        /// <summary>
+        /// 获取销售所有保单
+        /// </summary>
+        /// <param name="agentId"></param>
+        /// <returns></returns>
+        public DataSet GetListByAgentId(int agentId)
+        {
+            var strSql = new StringBuilder();
+            strSql.Append(" select * from FX_Policy where 1=1 ");
+            strSql.Append(" and AgentId=@agentId ");
+
+            var sqlParameters = new SqlParameter[] {
+                new SqlParameter("@agentId",agentId)
+            };
+
             return DbHelperSQL.Query(strSql.ToStringEx(), sqlParameters);
         }
 

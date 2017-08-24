@@ -39,13 +39,19 @@ namespace CZB.IDAL
 		DataSet GetList(int Top,string strWhere,string filedOrder);
 		int GetRecordCount(string strWhere);
 		DataSet GetListByPage(string strWhere, string orderby, int startIndex, int endIndex);
-		/// <summary>
-		/// 根据分页获得数据列表
-		/// </summary>
-		//DataSet GetList(int PageSize,int PageIndex,string strWhere);
-		#endregion  成员方法
-		#region  MethodEx
-
-		#endregion  MethodEx
-	} 
+        /// <summary>
+        /// 根据分页获得数据列表
+        /// </summary>
+        //DataSet GetList(int PageSize,int PageIndex,string strWhere);
+        #endregion  成员方法
+        #region  MethodEx
+        /// <summary>
+        /// 获取销售目标
+        /// </summary>
+        /// <param name="cityCode"></param>
+        /// <param name="paraCode"></param>
+        /// <returns></returns>
+        DataSet GetListByCode(string cityCode, string paraCode);
+        #endregion  MethodEx
+    } 
 }

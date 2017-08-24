@@ -108,6 +108,38 @@ namespace CZB.DAL.SqlServer.DataProvider
                 return Convert.ToInt32(obj);
             }
         }
+
+        /// <summary>
+        /// 获取下级收益
+        /// </summary>
+        /// <returns></returns>
+        public DataSet GetCommissionAmount(int agentId)
+        {
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append(" select sum(CommissionAmount) as num from FX_IncomeRecord where AgentId = @agentId and IncomeType=2 ");
+
+            var sqlParameters = new SqlParameter[] {
+                new SqlParameter("@agentId",agentId)
+            };
+            return DbHelperSQL.Query(strSql.ToString(), sqlParameters);
+        }
+
+        /// <summary>
+        /// 销售个人总收益
+        /// </summary>
+        /// <param name="agentId">销售编号</param>
+        /// <returns></returns>
+        public DataSet GetIncomeRecord(int agentId)
+        {
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append(" select sum(CommissionAmount) as num from FX_IncomeRecord where AgentId = @agentId ");
+
+            var sqlParameters = new SqlParameter[] {
+                new SqlParameter("@agentId",agentId)
+            };
+            return DbHelperSQL.Query(strSql.ToString(), sqlParameters);
+        }
+
         /// <summary>
         /// 更新一条数据
         /// </summary>

@@ -77,8 +77,8 @@ namespace CZB.BLL
         {
             return dal.GetList(Top, strWhere, filedOrder);
         }
-   
-     
+
+
         /// <summary>
         /// 获得数据列表
         /// </summary>
@@ -111,6 +111,17 @@ namespace CZB.BLL
 
         #endregion  BasicMethod
         #region  ExtensionMethod
+        /// <summary>
+        /// 获取销售目标
+        /// </summary>
+        /// <param name="cityCode"></param>
+        /// <param name="paraCode"></param>
+        /// <returns></returns>
+        public DataSet GetListByCode(string cityCode, string paraCode)
+        {
+            return dal.GetListByCode(cityCode, paraCode);
+        }
+
 
         #endregion  ExtensionMethod
     }

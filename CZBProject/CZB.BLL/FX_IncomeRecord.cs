@@ -1,20 +1,4 @@
-﻿/**  版本信息模板在安装目录下，可自行修改。
-* FX_IncomeRecord.cs
-*
-* 功 能： N/A
-* 类 名： FX_IncomeRecord
-*
-* Ver    变更日期             负责人  变更内容
-* ───────────────────────────────────
-* V0.01  2017/8/22 15:50:26   N/A    初版
-*
-* Copyright (c) 2012 Maticsoft Corporation. All rights reserved.
-*┌──────────────────────────────────┐
-*│　此技术信息为本公司机密信息，未经本公司书面同意禁止向第三方披露．　│
-*│　版权所有：动软卓越（北京）科技有限公司　　　　　　　　　　　　　　│
-*└──────────────────────────────────┘
-*/
-using System;
+﻿using System;
 using System.Data;
 using System.Collections.Generic;
 namespace CZB.BLL
@@ -77,9 +61,9 @@ namespace CZB.BLL
             return dal.DeleteList(IncomeRecordIdlist);
         }
 
-       
 
-        
+
+
 
         /// <summary>
         /// 获得数据列表
@@ -95,7 +79,7 @@ namespace CZB.BLL
         {
             return dal.GetList(Top, strWhere, filedOrder);
         }
-       
+
         /// <summary>
         /// 获得数据列表
         /// </summary>
@@ -128,6 +112,25 @@ namespace CZB.BLL
 
         #endregion  BasicMethod
         #region  ExtensionMethod
+
+
+        /// <summary>
+        /// 销售个人总收益
+        /// </summary>
+        /// <param name="agentId">销售编号</param>
+        /// <returns></returns>
+        public DataSet GetIncomeRecord(int agentId)
+        {
+            return dal.GetIncomeRecord(agentId);
+        }
+
+        /// <summary>
+        /// 获取下级收益
+        /// </summary>
+        /// <returns></returns>
+        public DataSet GetCommissionAmount(int agentId) {
+            return dal.GetCommissionAmount(agentId);
+        }
 
         #endregion  ExtensionMethod
     }

@@ -51,6 +51,21 @@ namespace CZB.IDAL
         /// <param name="agentId">代理商</param>
         /// <returns></returns>
         DataSet GetPolicyMonth(int agentId);
+
+
+        /// <summary>
+        /// 获取总保额
+        /// </summary>
+        /// <param name="agentId">代理商</param>
+        /// <returns></returns>
+        DataSet GetPolicyAll(int agentId);
+
+        /// <summary>
+        /// 获取销售所有保单
+        /// </summary>
+        /// <param name="agentId"></param>
+        /// <returns></returns>
+        DataSet GetListByAgentId(int agentId);
         #endregion  MethodEx
     }
 }

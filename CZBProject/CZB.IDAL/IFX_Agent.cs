@@ -48,6 +48,14 @@ namespace CZB.IDAL
         /// <param name="phone"></param>
         /// <returns></returns>
         DataSet GetModelByPhone(string phone);
+
+
+        /// <summary>
+        ///  获取=>下级发展的数量
+        /// </summary>
+        /// <param name="agentId"></param>
+        /// <returns></returns>
+        int GetCountParent(int agentId);
         #endregion  MethodEx
     }
 }

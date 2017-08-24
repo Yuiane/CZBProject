@@ -120,6 +120,25 @@ namespace CZB.BLL
             return dal.GetPolicyMonth(agentId);
         }
 
+        /// <summary>
+        /// 获取总保额
+        /// </summary>
+        /// <param name="agentId">代理商</param>
+        /// <returns></returns>
+        public DataSet GetPolicyAll(int agentId)
+        {
+            return dal.GetPolicyAll(agentId);
+        }
+
+        /// <summary>
+        /// 获取销售所有保单
+        /// </summary>
+        /// <param name="agentId"></param>
+        /// <returns></returns>
+        public DataSet GetListByAgentId(int agentId) {
+            return dal.GetListByAgentId(agentId);
+        }
+
         #endregion  ExtensionMethod
     }
 }

@@ -120,6 +120,16 @@ namespace CZB.BLL
             return GetDataByPhone(phone).Tables[0].ToEntity<Model.FX_Agent>();
         }
 
+        /// <summary>
+        /// 获取=>下级发展的数量
+        /// </summary>
+        /// <param name="agentId"></param>
+        /// <returns></returns>
+        public int GetCountParent(int agentId)
+        {
+            return dal.GetCountParent(agentId);
+        }
+
         #endregion  ExtensionMethod
     }
 }
