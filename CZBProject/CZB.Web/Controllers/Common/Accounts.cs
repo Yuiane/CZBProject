@@ -163,5 +163,48 @@ namespace CZB.Web.Controllers
             }
             return returnModel;
         }
+
+        /// <summary>
+        /// 获取保单详情
+        /// </summary>
+        /// <param name="policyId"></param>
+        /// <returns></returns>
+        public PolicyDetailReturn GetPolicyDetailByPolicyId(int policyId)
+        {
+            PolicyDetailReturn model = new PolicyDetailReturn();
+            var policyInfo = new BLL.FX_Policy().GetListByPolicyId(policyId).Tables[0].ToEntity<Model.FX_Policy>();
+            if (policyInfo != null)
+            {
+                model.policyDetailInfo = new PolicyDetailInfo()
+                {
+                    startTime = policyInfo.StartTime.ToDateString("yyyy-MM-dd"),
+                    carNo = policyInfo.CarNo,
+                    carVin = policyInfo.VIN,
+                    customerName = policyInfo.CustomerName,
+                    endTime = policyInfo.EndTime.ToDateString("yyyy-MM-dd"),
+                    insureName = new BLL.FX_InsureCode().GetInsureName(policyInfo.InsureCode),  //保险公司名称
+                    PayUrl = policyInfo.PayUrl,
+                    policyAmount = policyInfo.PolicyAmount.ToStringEx(),
+                    policyBusiness = "",
+                    policyCompulsory = ""
+                };
+
+                var policyInsurePara = new BLL.FX_PolicyInsurePara().GetList(policyInfo.PolicyId).Tables[0].ToEntity<Model.FX_PolicyInsurePara>();
+                if (policyInsurePara != null)
+                {
+                    decimal RP002 = policyInsurePara.BusinessCommission.ToDecimal() / 100;//商业直接销售反点 2-6
+                    decimal RP006 = policyInsurePara.CompulsoryCommission.ToDecimal() / 100;//交强险直接返点2-6
+                    decimal RP009 = policyInsurePara.BusinessTax.ToDecimal() / 100;//商业险税点
+                    decimal RP010 = policyInsurePara.CompulsoryTax.ToDecimal() / 100;//交强险税点
+
+                    //商业险预计提成
+                    model.policyDetailInfo.policyBusiness = (policyInfo.BusinessAmount / (1 + RP009) * RP002).Value.ToString("F2");
+                    model.policyDetailInfo.policyCompulsory = (policyInfo.CompulsoryAmount / (1 + RP010) * RP006).Value.ToString("F2");
+                    //交强险预计提成
+                }
+                model.InsureTypeList = new BLL.FX_PolicyDetail().GetList(policyId).Tables[0].ToEntityList<InsureTypeDetail>();
+            }
+            return model;
+        }
     }
 }

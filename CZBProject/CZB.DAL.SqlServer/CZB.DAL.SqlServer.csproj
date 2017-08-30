@@ -51,7 +51,10 @@
     <Compile Include="DataProvider\FX_Agent.cs" />
     <Compile Include="DataProvider\FX_CityParaDetails.cs" />
     <Compile Include="DataProvider\FX_IncomeRecord.cs" />
+    <Compile Include="DataProvider\FX_InsureCode.cs" />
     <Compile Include="DataProvider\FX_Policy.cs" />
+    <Compile Include="DataProvider\FX_PolicyDetail.cs" />
+    <Compile Include="DataProvider\FX_PolicyInsurePara.cs" />
     <Compile Include="DataProvider\Material.cs" />
     <Compile Include="DataProvider\TB_MessageRecord.cs" />
     <Compile Include="DataProvider\WXBasePara.cs" />

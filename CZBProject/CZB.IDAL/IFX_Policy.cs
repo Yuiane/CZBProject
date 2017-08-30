@@ -66,6 +66,22 @@ namespace CZB.IDAL
         /// <param name="agentId"></param>
         /// <returns></returns>
         DataSet GetListByAgentId(int agentId);
+
+        /// <summary>
+        /// 获取我的保单列表
+        /// </summary>
+        /// <param name="agentId"></param>
+        /// <param name="state"></param>
+        /// <returns></returns>
+        DataSet GetPolicyListByState(int agentId, int state);
+
+
+        /// <summary>
+        /// 根据保单编号获取保单详细信息
+        /// </summary>
+        /// <param name="policyId">保单编号</param>
+        /// <returns></returns>
+        DataSet GetListByPolicyId(int policyId);
         #endregion  MethodEx
     }
 }

@@ -1,20 +1,4 @@
-﻿/**  版本信息模板在安装目录下，可自行修改。
-* FX_Policy.cs
-*
-* 功 能： N/A
-* 类 名： FX_Policy
-*
-* Ver    变更日期             负责人  变更内容
-* ───────────────────────────────────
-* V0.01  2017/8/22 15:50:30   N/A    初版
-*
-* Copyright (c) 2012 Maticsoft Corporation. All rights reserved.
-*┌──────────────────────────────────┐
-*│　此技术信息为本公司机密信息，未经本公司书面同意禁止向第三方披露．　│
-*│　版权所有：动软卓越（北京）科技有限公司　　　　　　　　　　　　　　│
-*└──────────────────────────────────┘
-*/
-using System;
+﻿using System;
 using System.Data;
 using System.Text;
 using System.Data.SqlClient;
@@ -176,6 +160,8 @@ namespace CZB.DAL.SqlServer.DataProvider
                 return Convert.ToInt32(obj);
             }
         }
+
+      
 
 
 
@@ -534,6 +520,76 @@ namespace CZB.DAL.SqlServer.DataProvider
             return DbHelperSQL.Query(strSql.ToStringEx(), sqlParameters);
         }
 
+
+        /// <summary>
+        /// 获取我的保单列表
+        /// </summary>
+        /// <param name="agentId"></param>
+        /// <param name="state"></param>
+        /// <returns></returns>
+        public DataSet GetPolicyListByState(int agentId, int state)
+        {
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append(" select p.FX_PolicyNo FX_PolicyNo,  p.PolicyId policyId, p.CarNo carName,i.InsureName insureName,p.PolicyAmount policyAmount, ");
+            strSql.Append(" p.CustomerName customerName,p.CustomerMoblie moblie,p.CreateTime createTime ,p.PolicyState policyState,p.EndTime endtime   ");
+            strSql.Append(" ,p.CancelRemark from FX_Policy p inner join Fx_Agent a   ");
+            strSql.Append(" on p.AgentId = a.AgentId  ");
+            strSql.Append(" inner join FX_InsureCode i on p.InsureCode = i.InsureCode ");
+            strSql.Append(" where 1=1 ");
+            strSql.Append(" and a.agentId=@agentId ");
+            if (state != 0)
+            {
+                strSql.Append(" and p.policyState= @state ");
+            }
+            SqlParameter[] parameters;
+
+            if (state != 0)
+            {
+                parameters = new SqlParameter[]  {
+                                            new SqlParameter("@agentId",SqlDbType.Int,4),
+                                            new SqlParameter("@state",SqlDbType.Int,4)
+                                        };
+            }
+            else
+            {
+                parameters = new SqlParameter[]  {
+                                            new SqlParameter("@agentId",SqlDbType.Int,4)
+                                        };
+            }
+            parameters[0].Value = agentId;
+            if (state != 0)
+            {
+                parameters[1].Value = state;
+            }
+            if (state == 3)
+            {
+                strSql.Append(" and p.EndTime > getdate() ");
+            }
+            else if (state == 4)
+            {
+                parameters[1].Value = 3;
+                strSql.Append(" and p.EndTime < getdate() ");
+            }
+            strSql.Append(" order by p.CreateTime desc ");
+            return DbHelperSQL.Query(strSql.ToString(), parameters);
+        }
+
+        /// <summary>
+        /// 根据保单编号获取保单详细信息
+        /// </summary>
+        /// <param name="policyId">保单编号</param>
+        /// <returns></returns>
+        public DataSet GetListByPolicyId(int policyId)
+        {
+            var strSql = new StringBuilder();
+            strSql.Append(" select * from FX_Policy where 1=1 ");
+            strSql.Append(" and policyId=@policyId ");
+
+            var sqlParameters = new SqlParameter[] {
+                new SqlParameter("@policyId",policyId)
+            };
+            return DbHelperSQL.Query(strSql.ToStringEx(), sqlParameters);
+        }
         #endregion  ExtensionMethod
     }
 }

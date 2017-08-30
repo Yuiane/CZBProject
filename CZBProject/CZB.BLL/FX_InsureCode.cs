@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Data;
 using System.Collections.Generic;
+using CZB.Common.Extensions;
+
 namespace CZB.BLL
 {
     /// <summary>
-    /// FX_Policy
+    /// FX_InsureCode
     /// </summary>
-    public partial class FX_Policy
+    public partial class FX_InsureCode
     {
-        private readonly DAL.SqlServer.DataProvider.FX_Policy dal = new DAL.SqlServer.DataProvider.FX_Policy();
-        public FX_Policy()
+        private readonly DAL.SqlServer.DataProvider.FX_InsureCode dal = new DAL.SqlServer.DataProvider.FX_InsureCode();
+        public FX_InsureCode()
         { }
         #region  BasicMethod
 
@@ -24,15 +26,15 @@ namespace CZB.BLL
         /// <summary>
         /// 是否存在该记录
         /// </summary>
-        public bool Exists(int PolicyId)
+        public bool Exists(int InsureCodeId)
         {
-            return dal.Exists(PolicyId);
+            return dal.Exists(InsureCodeId);
         }
 
         /// <summary>
         /// 增加一条数据
         /// </summary>
-        public int Add(CZB.Model.FX_Policy model)
+        public int Add(CZB.Model.FX_InsureCode model)
         {
             return dal.Add(model);
         }
@@ -40,7 +42,7 @@ namespace CZB.BLL
         /// <summary>
         /// 更新一条数据
         /// </summary>
-        public bool Update(CZB.Model.FX_Policy model)
+        public bool Update(CZB.Model.FX_InsureCode model)
         {
             return dal.Update(model);
         }
@@ -48,18 +50,19 @@ namespace CZB.BLL
         /// <summary>
         /// 删除一条数据
         /// </summary>
-        public bool Delete(int PolicyId)
+        public bool Delete(int InsureCodeId)
         {
 
-            return dal.Delete(PolicyId);
+            return dal.Delete(InsureCodeId);
         }
         /// <summary>
         /// 删除一条数据
         /// </summary>
-        public bool DeleteList(string PolicyIdlist)
+        public bool DeleteList(string InsureCodeIdlist)
         {
-            return dal.DeleteList(PolicyIdlist);
+            return dal.DeleteList(InsureCodeIdlist);
         }
+
 
         /// <summary>
         /// 获得数据列表
@@ -75,7 +78,6 @@ namespace CZB.BLL
         {
             return dal.GetList(Top, strWhere, filedOrder);
         }
-
         /// <summary>
         /// 获得数据列表
         /// </summary>
@@ -98,7 +100,6 @@ namespace CZB.BLL
         {
             return dal.GetListByPage(strWhere, orderby, startIndex, endIndex);
         }
-
         /// <summary>
         /// 分页获取数据列表
         /// </summary>
@@ -110,57 +111,24 @@ namespace CZB.BLL
         #endregion  BasicMethod
         #region  ExtensionMethod
 
-        /// <summary>
-        /// 获取当月保额
-        /// </summary>
-        /// <param name="agentId">代理商</param>
-        /// <returns></returns>
-        public DataSet GetPolicyMonth(int agentId)
+        ///根据编号获取保险公司名称
+        public string GetInsureName(string insureCode)
         {
-            return dal.GetPolicyMonth(agentId);
+            var model = GetInsure(insureCode).Tables[0].ToEntity<Model.FX_InsureCode>();
+            if (model != null)
+                return model.InsureName;
+            return string.Empty;
         }
 
         /// <summary>
-        /// 获取总保额
+        /// 根据编号获取一条数据
         /// </summary>
-        /// <param name="agentId">代理商</param>
+        /// <param name="insureCode"></param>
         /// <returns></returns>
-        public DataSet GetPolicyAll(int agentId)
+        public DataSet GetInsure(string insureCode)
         {
-            return dal.GetPolicyAll(agentId);
+            return dal.GetInsureName(insureCode);
         }
-
-        /// <summary>
-        /// 获取销售所有保单
-        /// </summary>
-        /// <param name="agentId"></param>
-        /// <returns></returns>
-        public DataSet GetListByAgentId(int agentId)
-        {
-            return dal.GetListByAgentId(agentId);
-        }
-
-        /// <summary>
-        /// 根据保单编号获取保单详细信息
-        /// </summary>
-        /// <param name="policyId">保单编号</param>
-        /// <returns></returns>
-        public DataSet GetListByPolicyId(int policyId) {
-            return dal.GetListByPolicyId(policyId);
-        }
-
-
-        /// <summary>
-        /// 获取我的保单列表
-        /// </summary>
-        /// <param name="agentId"></param>
-        /// <param name="state"></param>
-        /// <returns></returns>
-        public DataSet GetPolicyListByState(int agentId, int state)
-        {
-            return dal.GetPolicyListByState(agentId, state);
-        }
-
         #endregion  ExtensionMethod
     }
 }

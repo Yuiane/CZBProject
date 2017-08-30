@@ -144,5 +144,95 @@ namespace CZB.Web.Controllers.Api
             }
         }
 
+
+        /// <summary>
+        /// 保单列表
+        /// </summary>
+        /// <returns></returns>
+        [AllowAnonymous]
+        [AcceptVerbs("GET", "POST")]
+        [ActionName("PolicyListByState")]
+        public ReturnResult PolicyListByState()
+        {
+            try
+            {
+                var orderState = Request.Param("state").ToInt32();
+                var agentId = Request.Param("agentId").ToInt32();
+                if (orderState > 0 || agentId > 0)
+                {
+                    List<PolicyListReturn> policyListList = new BLL.FX_Policy().GetPolicyListByState(agentId, orderState).Tables[0].ToEntityList<PolicyListReturn>();
+                    return new ReturnResult
+                    {
+                        code = ReturnCode.Success,
+                        data = new
+                        {
+                            policyListList = policyListList
+                        },
+                        desc = "请求成功"
+                    };
+                }
+                else
+                {
+                    return new ReturnResult
+                    {
+                        code = ReturnCode.NullOrEmpty,
+                        data = "",
+                        desc = "参数异常 state:" + orderState + " agentId:" + agentId
+                    };
+                }
+            }
+            catch (Exception err)
+            {
+                return new ReturnResult
+                {
+                    code = ReturnCode.Error,
+                    data = "",
+                    desc = "内部异常:" + err.Message
+                };
+            }
+        }
+
+
+        /// <summary>
+        /// 保单详情
+        /// </summary>
+        [AllowAnonymous]
+        [AcceptVerbs("GET", "POST")]
+        [ActionName("PolicyDetailByPolicyId")]
+        public ReturnResult PolicyDetailByPolicyId()
+        {
+            try
+            {
+                var policyId = Request.Param("policyId").ToInt32();
+                if (policyId > 0)
+                {
+                    return new ReturnResult
+                    {
+                        code = ReturnCode.Success,
+                        data = new Accounts().GetPolicyDetailByPolicyId(policyId),
+                        desc = "请求成功"
+                    };
+                }
+                else
+                {
+                    return new ReturnResult
+                    {
+                        code = ReturnCode.NullOrEmpty,
+                        data = "",
+                        desc = "参数异常 policyId:" + policyId
+                    };
+                }
+            }
+            catch (Exception err)
+            {
+                return new ReturnResult
+                {
+                    code = ReturnCode.Error,
+                    data = "",
+                    desc = "内部异常:" + err.Message
+                };
+
+            }
+        }
     }
 }
