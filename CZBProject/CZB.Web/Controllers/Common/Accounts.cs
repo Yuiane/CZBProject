@@ -198,8 +198,8 @@ namespace CZB.Web.Controllers
                     decimal RP010 = policyInsurePara.CompulsoryTax.ToDecimal() / 100;//交强险税点
 
                     //商业险预计提成
-                    model.policyDetailInfo.policyBusiness = (policyInfo.BusinessAmount / (1 + RP009) * RP002).Value.ToString("F2");
-                    model.policyDetailInfo.policyCompulsory = (policyInfo.CompulsoryAmount / (1 + RP010) * RP006).Value.ToString("F2");
+                    model.policyDetailInfo.policyBusiness = (policyInfo.BusinessAmount.ToDecimal() / (1 + RP009) * RP002).ToString("F2");
+                    model.policyDetailInfo.policyCompulsory = (policyInfo.CompulsoryAmount.ToDecimal() / (1 + RP010) * RP006).ToString("F2");
                     //交强险预计提成
                 }
                 model.InsureTypeList = new BLL.FX_PolicyDetail().GetList(policyId).Tables[0].ToEntityList<InsureTypeDetail>();
