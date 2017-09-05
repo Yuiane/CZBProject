@@ -1,8 +1,8 @@
-﻿using System;
+﻿using CZB.IDAL;
+using System;
 using System.Data;
-using System.Text;
 using System.Data.SqlClient;
-using CZB.IDAL;
+using System.Text;
 namespace CZB.DAL.SqlServer.DataProvider
 {
     /// <summary>
@@ -124,6 +124,8 @@ namespace CZB.DAL.SqlServer.DataProvider
                 return false;
             }
         }
+
+
         /// <summary>
         /// 批量删除数据
         /// </summary>
@@ -251,7 +253,36 @@ namespace CZB.DAL.SqlServer.DataProvider
             return DbHelperSQL.Query(strSql.ToString(), sqlParameters);
 
         }
+
+
+        /// <summary>
+        /// 获取保险公司返点列表
+        /// </summary>
+        /// <returns></returns>
+        public DataSet GetInsureList()
+        {
+            var strSql = new StringBuilder();
+            strSql.Append(" select ic.InsureCode,ic.InsureName,ParaName,ParaValue from FX_InsureParaDetail ipd  ");
+            strSql.Append(" inner join FX_InsureCode ic on ipd.InsureCode = ic.InsureCode  ");
+            strSql.Append(" inner join FX_InsurePara ip on ipd.ParaCode = ip.ParaCode ");
+            strSql.Append(" where ip.ParaName='交强险直接销售返点' or ip.ParaName='商业险直接销售返点' ");
+            return DbHelperSQL.Query(strSql.ToString());
+        }
+
+        /// <summary>
+        /// 获取险种类型列表
+        /// </summary>
+        /// <returns></returns>
+        public DataSet GetInsuranceList()
+        {
+            var strSql = new StringBuilder();
+            strSql.Append(" select it.*,i.InsureCode from FX_InsuranceType it ,FX_Insure i ");
+            strSql.Append("  where   CHARINDEX((','+cast(it.InsuranceTypeId as varchar)+','),(','+(i.InsureTypeList)+','))>0 ; ");
+            return DbHelperSQL.Query(strSql.ToString());
+        }
+
+
+
         #endregion  ExtensionMethod
     }
 }
-

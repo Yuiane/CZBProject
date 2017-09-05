@@ -1,7 +1,5 @@
-﻿using System;
+﻿using CZB.Common.Extensions;
 using System.Data;
-using System.Collections.Generic;
-using CZB.Common.Extensions;
 
 namespace CZB.BLL
 {
@@ -129,7 +127,26 @@ namespace CZB.BLL
         {
             return dal.GetInsureName(insureCode);
         }
+
+
+        /// <summary>
+        /// 获取保险公司返点列表
+        /// </summary>
+        /// <returns></returns>
+        public DataSet GetInsureList()
+        {
+            return dal.GetInsureList();
+        }
+
+        /// <summary>
+        /// 获取险种类型列表
+        /// </summary>
+        /// <returns></returns>
+        public DataSet GetInsuranceList()
+        {
+            return dal.GetInsuranceList();
+        }
+
         #endregion  ExtensionMethod
     }
 }
-

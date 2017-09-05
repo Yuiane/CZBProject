@@ -3,7 +3,6 @@ using CZB.Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
 namespace CZB.Web.Controllers
 {
@@ -204,6 +203,38 @@ namespace CZB.Web.Controllers
                 }
                 model.InsureTypeList = new BLL.FX_PolicyDetail().GetList(policyId).Tables[0].ToEntityList<InsureTypeDetail>();
             }
+            return model;
+        }
+
+        /// <summary>
+        /// 获取保险公司列表和险种类型
+        /// </summary>
+        /// <returns></returns>
+        public List<InsureListReturn> InsureList()
+        {
+            List<InsureListReturn> model = new List<InsureListReturn>();
+            List<InsureModel> insureList = new BLL.FX_InsureCode().GetInsureList().Tables[0].ToEntityList<InsureModel>();
+            List<InsuranceModel> insuranceList = new BLL.FX_InsureCode().GetInsuranceList().Tables[0].ToEntityList<InsuranceModel>();
+            model = insureList.OrderBy(exp => exp.InsureCode)
+                .GroupBy(exp => new { exp.InsureCode, exp.InsureName })
+                .Select(a => new InsureListReturn
+                {
+                    InsureCode = a.Key.InsureCode,
+                    InsureName = a.Key.InsureName,
+                    typeList = a.Select(b => new TypeList()
+                    {
+                        ParaName = b.ParaName,
+                        ParaValue = b.ParaValue
+                    }).ToList(),
+                    InsuranceList =
+                    insuranceList.Where(c => c.InsureCode == a.Key.InsureCode)
+                    .Select(c => new Insurance
+                    {
+                        InsuranceName = c.InsuranceName,
+                        InsuranceTypeId = c.InsuranceTypeId,
+                        InsurancrMoney = c.InsurancrMoney
+                    }).ToList()
+                }).ToList();
             return model;
         }
     }

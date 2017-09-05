@@ -1,10 +1,10 @@
-﻿using System;
-using System.Web;
-using System.Web.Http;
-using CZB.Common;
+﻿using CZB.Common;
 using CZB.Common.Extensions;
 using CZB.Web.Models;
+using System;
 using System.Collections.Generic;
+using System.Web;
+using System.Web.Http;
 
 namespace CZB.Web.Controllers.Api
 {
@@ -232,6 +232,35 @@ namespace CZB.Web.Controllers.Api
                     desc = "内部异常:" + err.Message
                 };
 
+            }
+        }
+
+
+        // <summary>
+        /// 获取保单类型
+        /// </summary>
+        [AllowAnonymous]
+        [AcceptVerbs("GET", "POST")]
+        [ActionName("InsureList")]
+        public ReturnResult InsureList()
+        {
+            try
+            {
+                return new ReturnResult
+                {
+                    code = ReturnCode.Success,
+                    data = new Accounts().InsureList(),
+                    desc = "请求成功"
+                };
+            }
+            catch (Exception err)
+            {
+                return new ReturnResult
+                {
+                    code = ReturnCode.Error,
+                    data = "",
+                    desc = "内部异常:" + err.Message
+                };
             }
         }
     }
