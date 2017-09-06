@@ -1,12 +1,12 @@
 ﻿using CZB.Common;
 using CZB.Common.CCCModel;
 using CZB.Common.Enums;
+using CZB.Common.Extensions;
+using CZB.Common.Helpers;
+using CZB.Model;
 using System;
 using System.Collections.Generic;
 using System.Web.Http;
-using CZB.Common.Extensions;
-using CZB.Model;
-using CZB.Common.Helpers;
 
 namespace CZB.Web.Controllers
 {
@@ -285,6 +285,177 @@ namespace CZB.Web.Controllers
                 }
             }
 
+
+
+
+            Model.STAPI_DrpRepairSheet stModel = new Model.STAPI_DrpRepairSheet()
+            {
+                drpDeptId = infoModel.partyId,
+                drpRepairSheet = new List<drpRepairSheet>()
+                {
+                    new drpRepairSheet()
+                    {
+                        senderTelNo = infoModel.senderTelNo,
+                        senderName = infoModel.senderName,
+                        vehicleOwnerName = infoModel.vehicleOwnerName,
+                        vehicleOwnerTelNo = infoModel.vehicleOwnerTelNo,
+                        repairOrderNo = infoModel.repairOrderNo,
+                        claimNo = infoModel.claimNo,
+                        sourceType = infoModel.sourceType,
+                        sendRepairFlag = infoModel.sendRepairFlag,
+                        insuranceCompanyGroupCode = infoModel.insuranceCompanyGroupCode,
+                        insuranceCompanyGroupName = infoModel.insuranceCompanyGroupName,
+                        insuranceCompanyCode = infoModel.insuranceCompanyCode,
+                        repairFactoryCode = infoModel.repairFactoryCode,
+                        repairFactoryName = infoModel.repairFactoryName,
+                        repairFacilityType = infoModel.repairFacilityType,
+                        qualificationLevel = infoModel.qualificationLevel,
+                        estimatorCode = infoModel.estimatorCode,
+                        estimatorName = infoModel.estimatorName,
+                        workFlowNodeCode = infoModel.workFlowNodeCode,
+                        workFlowNodeName = infoModel.workFlowNodeName,
+                        assignDate = infoModel.assignDate.Value,
+                        estimateStartTime = infoModel.estimateStartTime.Value,
+                        estimateEndTime = infoModel.estimateEndTime.Value,
+                        reportNo = infoModel.reportNo,
+                        reportDate = infoModel.reportDate.Value,
+                        lossVehicleTypeCode = infoModel.lossVehicleTypeCode,
+                        lossVehicleType = infoModel.lossVehicleType,
+                        plateNo = infoModel.plateNo,
+                        vin =  infoModel.vin,
+                        brandModel = infoModel.brandModel,
+                        engineNo = infoModel.engineNo,
+                        vehicleCategoryCode = infoModel.vehicleCategoryCode,
+                        vehicleCategory = infoModel.vehicleCategory,
+                        usingTypeCode = infoModel.usingTypeCode,
+                        usingType = infoModel.usingType,
+                        licenseFirstRegisterDate = infoModel.licenseFirstRegisterDate.Value,
+                        purchasePrice = infoModel.purchasePrice.ToDecimal(),
+                        plateTypeCode = infoModel.plateTypeCode,
+                        plateType = infoModel.plateType,
+                        plateColorCode = infoModel.plateColorCode,
+                        plateColor = infoModel.plateColor,
+                        vehicleBodyColor = infoModel.vehicleBodyColor,
+                        currentValue = infoModel.currentValue.ToDecimal(),
+                        fuelRemain = infoModel.fuelRemain.ToDecimal(),
+                        mileage = infoModel.mileage.ToDecimal(),
+                        itemsInCar = infoModel.itemsInCar,
+                        mainCollisionPoints = infoModel.mainCollisionPoints,
+                        subCollisionPoints = infoModel.subCollisionPoints,
+                        country = infoModel.country,
+                        vehicleManufMakeName = infoModel.vehicleManufMakeName,
+                        vehicleSubModelName = infoModel.vehicleSubModelName,
+                        partType = infoModel.partType,
+                        partTypeCode = infoModel.partTypeCode,
+                        manageRate = infoModel.manageRate.ToDecimal(),
+                        laborFeeManageRate = infoModel.laborFeeManageRate.ToDecimal(),
+                        electricianMachinistRate = infoModel.electricianMachinistRate.ToDecimal(),
+                       sheetMetalRate = infoModel.sheetMetalRate.ToDecimal(),
+                       paintRate = infoModel.paintRate.ToDecimal(),
+                       managementFee = infoModel.managementFee.ToDecimal(),
+                       multiPaintDiscountRate = infoModel.multiPaintDiscountRate.ToDecimal(),
+                       partFee = infoModel.feeTotal_partFee.ToDecimal(),
+                       laborFee = infoModel.feeTotal_laborFee.ToDecimal(),
+                       materialFee = infoModel.feeTotal_materialFee.ToDecimal(),
+                       entireSalvage = infoModel.feeTotal_entireSalvage.ToDecimal(),
+                       totalSalvage = infoModel.feeTotal_totalSalvage.ToDecimal(),
+                       depreciation = infoModel.feeTotal_depreciation.ToDecimal(),
+                       manageFee = infoModel.feeTotal_manageFee.ToDecimal(),
+                       estimateAmount = infoModel.feeTotal_estimateAmount.ToDecimal(),
+                       rescueFee = infoModel.feeTotal_rescueFee.ToDecimal()
+                    },
+                }
+            };
+
+
+            stModel.drpChangeItems = null;
+            if (model.content.lossItem != null && model.content.lossItem.changeItems != null && model.content.lossItem.changeItems.Count > 0)
+            {
+                stModel.drpChangeItems = new List<drpChangeItems>();
+                foreach (var changeItemsModel in model.content.lossItem.changeItems)
+                {
+                    stModel.drpChangeItems.Add(new Model.drpChangeItems()
+                    {
+                        itemId = changeItemsModel.itemId,
+                        unitPriceAfterDiscount = changeItemsModel.unitPriceAfterDiscount.ToDecimal(),
+                        salvage = changeItemsModel.salvage.ToDecimal(),
+                        depreciation = changeItemsModel.depreciation.ToDecimal(),
+                        itemName = changeItemsModel.itemName,
+                        manualFlag = changeItemsModel.manualFlag.ToLower() == "true" ? true : false,
+                        partFeeAfterDiscount = changeItemsModel.partFeeAfterDiscount.ToDecimal(),
+                        partNo = changeItemsModel.partNo,
+                        partQuantity = changeItemsModel.partQuantity.ToDecimal(),
+                        recycleFlag = changeItemsModel.recycleFlag.ToLower() == "true" ? true : false,
+                    });
+                }
+            }
+
+
+
+            stModel.drpRepairItems = null;
+            if (model.content.lossItem != null && model.content.lossItem.repairItems != null && model.content.lossItem.repairItems.Count > 0)
+            {
+                stModel.drpRepairItems = new List<Model.drpRepairItems>();
+                foreach (var repairItemModel in model.content.lossItem.repairItems)
+                {
+                    stModel.drpRepairItems.Add(new Model.drpRepairItems()
+                    {
+                        itemId = repairItemModel.itemId,
+                        itemName = repairItemModel.itemName,
+                        laborFeeAfterDiscount = repairItemModel.laborFeeAfterDiscount.ToDecimal(),
+                        laborFeeManageRate = repairItemModel.laborFeeManageRate.ToDecimal(),
+                        laborHour = repairItemModel.laborHour.ToDecimal(),
+                        laborHourFee = repairItemModel.laborHourFee.ToDecimal(),
+                        laborType = repairItemModel.laborType,
+                        manualFlag = repairItemModel.manualFlag == "0" ? true : false,
+                        operationType = repairItemModel.operationType,
+                        outerLaborFee = repairItemModel.outerLaborFee.ToDecimal(),
+                        outerRepairFlag = repairItemModel.outerRepairFlag == "0" ? true : false,
+                        paintDiscountFlag = repairItemModel.paintDiscountFlag == "0" ? true : false,
+                        partNo = ""
+                    });
+                }
+            }
+
+            stModel.drpMaterialItems = null;
+            if (model.content.lossItem != null && model.content.lossItem.materialItems != null && model.content.lossItem.materialItems.Count > 0)
+            {
+                stModel.drpMaterialItems = new List<drpMaterialItems>();
+                foreach (var materialItemsModel in model.content.lossItem.materialItems)
+                {
+
+                    stModel.drpMaterialItems.Add(new drpMaterialItems()
+                    {
+                        itemId = materialItemsModel.itemId,
+                        itemName = materialItemsModel.itemName,
+                        manualFlag = materialItemsModel.manualFlag.ToLower() == "true" ? true : false,
+                        materialUnit = "",
+                        partFee = materialItemsModel.partFee.ToDecimal(),
+                        partQuantity = materialItemsModel.partQuantity.ToDecimal(),
+                        unitPrice = materialItemsModel.unitPrice.ToDecimal()
+                    });
+                }
+            }
+
+            stModel.drpAttachments = null;
+            if (model.content.claimAttachments != null && model.content.claimAttachments.Count > 0)
+            {
+
+                stModel.drpAttachments = new List<drpAttachments>();
+                foreach (var claimAttachmentsModel in model.content.claimAttachments)
+                {
+                    stModel.drpAttachments.Add(new Model.drpAttachments()
+                    {
+                        attachmentCategoryName = claimAttachmentsModel.attachmentCategoryName,
+                        attachmentId = claimAttachmentsModel.attachmentId,
+                        attachmentName = claimAttachmentsModel.attachmentName,
+                        attachmentUrl = claimAttachmentsModel.attachmentUrl,
+                    });
+                }
+            }
+
+            new CZB.Web.Common.CCCApis().SendToSiTeng(stModel.ToJson());
+
             if (new CZB.BLL.CCCAPI_JobLossInformation().AddJobLoss(infoModel, claimAttachmentsList, changeItemsList, materialItems, repairItems))
             {
 
@@ -408,6 +579,177 @@ namespace CZB.Web.Controllers
                 estimatorName = "", //修理厂信息-维修顾问姓名
                 managementFee = 0,//费率折扣-管理费率
             };
+
+
+
+            Model.STAPI_DrpRepairSheet stModel = new Model.STAPI_DrpRepairSheet()
+            {
+                drpDeptId = infoModel.partyId,
+                drpRepairSheet = new List<drpRepairSheet>()
+                {
+                    new drpRepairSheet()
+                    {
+                        senderTelNo = infoModel.senderTelNo,
+                        senderName = infoModel.senderName,
+                        vehicleOwnerName = infoModel.vehicleOwnerName,
+                        vehicleOwnerTelNo = infoModel.vehicleOwnerTelNo,
+                        repairOrderNo = infoModel.repairOrderNo,
+                        claimNo = infoModel.claimNo,
+                        sourceType = infoModel.sourceType,
+                        sendRepairFlag = infoModel.sendRepairFlag,
+                        insuranceCompanyGroupCode = infoModel.insuranceCompanyGroupCode,
+                        insuranceCompanyGroupName = infoModel.insuranceCompanyGroupName,
+                        insuranceCompanyCode = infoModel.insuranceCompanyCode,
+                        repairFactoryCode = infoModel.repairFactoryCode,
+                        repairFactoryName = infoModel.repairFactoryName,
+                        repairFacilityType = infoModel.repairFacilityType,
+                        qualificationLevel = infoModel.qualificationLevel,
+                        estimatorCode = infoModel.estimatorCode,
+                        estimatorName = infoModel.estimatorName,
+                        workFlowNodeCode = infoModel.workFlowNodeCode,
+                        workFlowNodeName = infoModel.workFlowNodeName,
+                        assignDate = infoModel.assignDate.Value,
+                        estimateStartTime = infoModel.estimateStartTime.Value,
+                        estimateEndTime = infoModel.estimateEndTime.Value,
+                        reportNo = infoModel.reportNo,
+                        reportDate = infoModel.reportDate.Value,
+                        lossVehicleTypeCode = infoModel.lossVehicleTypeCode,
+                        lossVehicleType = infoModel.lossVehicleType,
+                        plateNo = infoModel.plateNo,
+                        vin =  infoModel.vin,
+                        brandModel = infoModel.brandModel,
+                        engineNo = infoModel.engineNo,
+                        vehicleCategoryCode = infoModel.vehicleCategoryCode,
+                        vehicleCategory = infoModel.vehicleCategory,
+                        usingTypeCode = infoModel.usingTypeCode,
+                        usingType = infoModel.usingType,
+                        licenseFirstRegisterDate = infoModel.licenseFirstRegisterDate.Value,
+                        purchasePrice = infoModel.purchasePrice.ToDecimal(),
+                        plateTypeCode = infoModel.plateTypeCode,
+                        plateType = infoModel.plateType,
+                        plateColorCode = infoModel.plateColorCode,
+                        plateColor = infoModel.plateColor,
+                        vehicleBodyColor = infoModel.vehicleBodyColor,
+                        currentValue = infoModel.currentValue.ToDecimal(),
+                        fuelRemain = infoModel.fuelRemain.ToDecimal(),
+                        mileage = infoModel.mileage.ToDecimal(),
+                        itemsInCar = infoModel.itemsInCar,
+                        mainCollisionPoints = infoModel.mainCollisionPoints,
+                        subCollisionPoints = infoModel.subCollisionPoints,
+                        country = infoModel.country,
+                        vehicleManufMakeName = infoModel.vehicleManufMakeName,
+                        vehicleSubModelName = infoModel.vehicleSubModelName,
+                        partType = infoModel.partType,
+                        partTypeCode = infoModel.partTypeCode,
+                        manageRate = infoModel.manageRate.ToDecimal(),
+                        laborFeeManageRate = infoModel.laborFeeManageRate.ToDecimal(),
+                        electricianMachinistRate = infoModel.electricianMachinistRate.ToDecimal(),
+                       sheetMetalRate = infoModel.sheetMetalRate.ToDecimal(),
+                       paintRate = infoModel.paintRate.ToDecimal(),
+                       managementFee = infoModel.managementFee.ToDecimal(),
+                       multiPaintDiscountRate = infoModel.multiPaintDiscountRate.ToDecimal(),
+                       partFee = infoModel.feeTotal_partFee.ToDecimal(),
+                       laborFee = infoModel.feeTotal_laborFee.ToDecimal(),
+                       materialFee = infoModel.feeTotal_materialFee.ToDecimal(),
+                       entireSalvage = infoModel.feeTotal_entireSalvage.ToDecimal(),
+                       totalSalvage = infoModel.feeTotal_totalSalvage.ToDecimal(),
+                       depreciation = infoModel.feeTotal_depreciation.ToDecimal(),
+                       manageFee = infoModel.feeTotal_manageFee.ToDecimal(),
+                       estimateAmount = infoModel.feeTotal_estimateAmount.ToDecimal(),
+                       rescueFee = infoModel.feeTotal_rescueFee.ToDecimal()
+                    },
+                }
+            };
+
+
+            stModel.drpChangeItems = null;
+            if (model.content.lossItem != null && model.content.lossItem.changeItems != null && model.content.lossItem.changeItems.Count > 0)
+            {
+                stModel.drpChangeItems = new List<drpChangeItems>();
+                foreach (var changeItemsModel in model.content.lossItem.changeItems)
+                {
+                    stModel.drpChangeItems.Add(new Model.drpChangeItems()
+                    {
+                        itemId = changeItemsModel.itemId,
+                        unitPriceAfterDiscount = changeItemsModel.unitPriceAfterDiscount.ToDecimal(),
+                        salvage = changeItemsModel.salvage.ToDecimal(),
+                        depreciation = changeItemsModel.depreciation.ToDecimal(),
+                        itemName = changeItemsModel.itemName,
+                        manualFlag = changeItemsModel.manualFlag.ToLower() == "true" ? true : false,
+                        partFeeAfterDiscount = changeItemsModel.partFeeAfterDiscount.ToDecimal(),
+                        partNo = changeItemsModel.partNo,
+                        partQuantity = changeItemsModel.partQuantity.ToDecimal(),
+                        recycleFlag = changeItemsModel.recycleFlag.ToLower() == "true" ? true : false,
+                    });
+                }
+            }
+
+
+
+            stModel.drpRepairItems = null;
+            if (model.content.lossItem != null && model.content.lossItem.repairItems != null && model.content.lossItem.repairItems.Count > 0)
+            {
+                stModel.drpRepairItems = new List<Model.drpRepairItems>();
+                foreach (var repairItemModel in model.content.lossItem.repairItems)
+                {
+                    stModel.drpRepairItems.Add(new Model.drpRepairItems()
+                    {
+                        itemId = repairItemModel.itemId,
+                        itemName = repairItemModel.itemName,
+                        laborFeeAfterDiscount = repairItemModel.laborFeeAfterDiscount.ToDecimal(),
+                        laborFeeManageRate = repairItemModel.laborFeeManageRate.ToDecimal(),
+                        laborHour = repairItemModel.laborHour.ToDecimal(),
+                        laborHourFee = repairItemModel.laborHourFee.ToDecimal(),
+                        laborType = repairItemModel.laborType,
+                        manualFlag = repairItemModel.manualFlag == "0" ? true : false,
+                        operationType = repairItemModel.operationType,
+                        outerLaborFee = repairItemModel.outerLaborFee.ToDecimal(),
+                        outerRepairFlag = repairItemModel.outerRepairFlag == "0" ? true : false,
+                        paintDiscountFlag = repairItemModel.paintDiscountFlag == "0" ? true : false,
+                        partNo = ""
+                    });
+                }
+            }
+
+            stModel.drpMaterialItems = null;
+            if (model.content.lossItem != null && model.content.lossItem.materialItems != null && model.content.lossItem.materialItems.Count > 0)
+            {
+                stModel.drpMaterialItems = new List<drpMaterialItems>();
+                foreach (var materialItemsModel in model.content.lossItem.materialItems)
+                {
+
+                    stModel.drpMaterialItems.Add(new drpMaterialItems()
+                    {
+                        itemId = materialItemsModel.itemId,
+                        itemName = materialItemsModel.itemName,
+                        manualFlag = materialItemsModel.manualFlag.ToLower() == "true" ? true : false,
+                        materialUnit = "",
+                        partFee = materialItemsModel.partFee.ToDecimal(),
+                        partQuantity = materialItemsModel.partQuantity.ToDecimal(),
+                        unitPrice = materialItemsModel.unitPrice.ToDecimal()
+                    });
+                }
+            }
+
+            stModel.drpAttachments = null;
+            if (model.content.claimAttachments != null && model.content.claimAttachments.Count > 0)
+            {
+
+                stModel.drpAttachments = new List<drpAttachments>();
+                foreach (var claimAttachmentsModel in model.content.claimAttachments)
+                {
+                    stModel.drpAttachments.Add(new Model.drpAttachments()
+                    {
+                        attachmentCategoryName = claimAttachmentsModel.attachmentCategoryName,
+                        attachmentId = claimAttachmentsModel.attachmentId,
+                        attachmentName = claimAttachmentsModel.attachmentName,
+                        attachmentUrl = claimAttachmentsModel.attachmentUrl,
+                    });
+                }
+            }
+
+            new CZB.Web.Common.CCCApis().SendToSiTeng(stModel.ToJson());
+
             if (new CZB.BLL.CCCAPI_JobLossInformation().Add(infoModel))
             {
                 return new ReturnResult

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CZB.Common.Enums
+﻿namespace CZB.Common.Enums
 {
     public enum LogEnum
     {
@@ -27,6 +21,12 @@ namespace CZB.Common.Enums
         /// <summary>
         /// CCCAPI日志
         /// </summary>
-        CCCApiJson
+        CCCApiJson,
+
+
+        /// <summary>
+        /// 偲滕
+        /// </summary>
+        SiTengApi,
     }
 }

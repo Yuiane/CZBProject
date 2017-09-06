@@ -215,6 +215,7 @@ namespace CZB.Web.Controllers
             List<InsureListReturn> model = new List<InsureListReturn>();
             List<InsureModel> insureList = new BLL.FX_InsureCode().GetInsureList().Tables[0].ToEntityList<InsureModel>();
             List<InsuranceModel> insuranceList = new BLL.FX_InsureCode().GetInsuranceList().Tables[0].ToEntityList<InsuranceModel>();
+            insuranceList = insuranceList.Where(exp => exp.InsuranceName != "交强险" && exp.InsuranceName != "车船税" && exp.InsuranceName != "不计免赔(责任免除)").ToList();
             model = insureList.OrderBy(exp => exp.InsureCode)
                 .GroupBy(exp => new { exp.InsureCode, exp.InsureName })
                 .Select(a => new InsureListReturn
