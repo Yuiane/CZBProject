@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace CZB.Model
 {
@@ -13,7 +12,7 @@ namespace CZB.Model
         /// <summary>
         /// 定损单信息
         /// </summary>
-        public List<drpRepairSheet> drpRepairSheet { set; get; }
+        public drpRepairSheet drpRepairSheet { set; get; }
 
         /// <summary>
         /// 定损单更换项目
@@ -122,15 +121,15 @@ namespace CZB.Model
         /// <summary>
         /// 任务分配时间
         /// </summary>
-        public DateTime assignDate { set; get; }
+        public string assignDate { set; get; }
         /// <summary>
         /// 定损开始时间
         /// </summary>
-        public DateTime estimateStartTime { set; get; }
+        public string estimateStartTime { set; get; }
         /// <summary>
         /// 定损完成时间
         /// </summary>
-        public DateTime estimateEndTime { set; get; }
+        public string estimateEndTime { set; get; }
 
         /// <summary>
         /// 报案号
@@ -139,7 +138,7 @@ namespace CZB.Model
         /// <summary>
         /// 报案时间
         /// </summary>
-        public DateTime reportDate { set; get; }
+        public string reportDate { set; get; }
         /// <summary>
         /// 损失车辆Code
         /// </summary>
@@ -183,7 +182,7 @@ namespace CZB.Model
         /// <summary>
         /// 行驶证初次登记日期
         /// </summary>
-        public DateTime licenseFirstRegisterDate { set; get; }
+        public string licenseFirstRegisterDate { set; get; }
         /// <summary>
         /// 新车购置价（万）
         /// </summary>
