@@ -263,5 +263,83 @@ namespace CZB.Web.Controllers.Api
                 };
             }
         }
+
+
+        /// <summary>
+        /// 上传图片
+        /// </summary>
+        /// <param name="base64Str"></param>
+        /// <returns></returns>
+        [AllowAnonymous]
+        [AcceptVerbs("GET", "POST")]
+        [ActionName("UploadImage")]
+        public ReturnResult UploadImage()
+        {
+            try
+            {
+                string base64Str = Request.Param("base64Str");
+                return new ReturnResult
+                {
+                    code = ReturnCode.Success,
+                    desc = new Accounts().Base64StringToImage(base64Str),
+                    data = new { }
+                };
+            }
+            catch (Exception err)
+            {
+                return new ReturnResult
+                {
+                    code = ReturnCode.Error,
+                    desc = "请求出错 :" + err.Message,
+                    data = ""
+                };
+            }
+        }
+
+
+        /// <summary>
+        /// 新增保单
+        /// </summary>
+        /// <returns></returns>
+        [AllowAnonymous]
+        [AcceptVerbs("GET", "POST")]
+        [ActionName("AddPolicy")]
+        public ReturnResult AddPolicy()
+        {
+            try
+            {
+
+                //var json = "{\"agentId\":\"56\",\"city\": \"苏州\", \"cityCode\": \"320500\", \"codeType\": \"geren\", \"codeTypeValue\": \"320723199601292415\", \"customerName\": \"袁连杰\",\"customerPhone\": \"18051803995\",\"insureListSelectedString\": \",交强险,不计免赔（责任免除) ,车船税,第三者责任险: 800万,盗抢险,车上人员(司机)责任保险,划痕险,玻璃单独破碎险,自燃险,车辆损失险,车上人员(乘客)责任保险,\", \"notifications\": \"000001\", \"textarea\": \"就这里吧\", \"timeEnd\": \"2019-09-11\", \"timeStarts\": \"2018-09-12\", \"_1_image_path\": \"http://localhost:52453/upload/20170912/105217105.jpg \", \"_2_image_path\": \"http://localhost:52453/upload/20170912/105217104.jpg \"}";
+                Models.PostAddPolicy model = Request.CZBParam<Models.PostAddPolicy>();
+                if (new Accounts().AddPolicy(model))
+                {
+                    return new ReturnResult
+                    {
+                        code = ReturnCode.Success,
+                        data = "",
+                        desc = "请求成功"
+                    };
+                }
+                else
+                {
+                    return new ReturnResult
+                    {
+                        code = ReturnCode.Error,
+                        data = "",
+                        desc = "请求失败"
+                    };
+
+                }
+            }
+            catch (Exception err)
+            {
+                return new ReturnResult
+                {
+                    code = ReturnCode.Error,
+                    data = "",
+                    desc = err.Message
+                };
+            }
+        }
     }
 }

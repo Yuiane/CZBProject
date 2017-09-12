@@ -188,6 +188,7 @@
     <Compile Include="Models\InsureListReturn.cs" />
     <Compile Include="Models\PolicyDetailReturn.cs" />
     <Compile Include="Models\PolicyListReturn.cs" />
+    <Compile Include="Models\PostAddPolicy.cs" />
     <Compile Include="Models\ReturnCode.cs" />
     <Compile Include="Models\ReturnResult.cs" />
     <Compile Include="Models\SiTengModel\STAPI_DrpRepairSheet.cs" />

@@ -1,6 +1,5 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using System.Data;
-using System.Collections.Generic;
 namespace CZB.BLL
 {
     /// <summary>
@@ -145,7 +144,8 @@ namespace CZB.BLL
         /// </summary>
         /// <param name="policyId">保单编号</param>
         /// <returns></returns>
-        public DataSet GetListByPolicyId(int policyId) {
+        public DataSet GetListByPolicyId(int policyId)
+        {
             return dal.GetListByPolicyId(policyId);
         }
 
@@ -161,7 +161,18 @@ namespace CZB.BLL
             return dal.GetPolicyListByState(agentId, state);
         }
 
+
+        /// <summary>
+        /// 添加保单
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="policyDetailList"></param>
+        /// <returns></returns>
+        public bool AddPolicyList(Model.FX_Policy model, List<Model.FX_PolicyDetail> policyDetailList)
+        {
+            return dal.AddPolicyList(model, policyDetailList);
+        }
+
         #endregion  ExtensionMethod
     }
 }
-

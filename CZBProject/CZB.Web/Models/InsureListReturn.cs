@@ -48,11 +48,26 @@ namespace CZB.Web.Models
     /// </summary>
     public class Insurance
     {
-
+        //交强险 车船税 不计免赔(责任免除)
         public string InsuranceTypeId { get; set; }
 
         public string InsuranceName { get; set; }
 
         public string InsurancrMoney { get; set; }
+
+        public int Selected
+        {
+            get
+            {
+                if (InsuranceTypeId == "1" || InsuranceTypeId == "10" || InsuranceTypeId == "9")
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
     }
 }

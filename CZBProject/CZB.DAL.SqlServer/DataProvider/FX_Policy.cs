@@ -1,9 +1,10 @@
-﻿using System;
-using System.Data;
-using System.Text;
-using System.Data.SqlClient;
+﻿using CZB.Common.Extensions;
 using CZB.IDAL;
-using CZB.Common.Extensions;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using System.Text;
 
 namespace CZB.DAL.SqlServer.DataProvider
 {
@@ -161,7 +162,7 @@ namespace CZB.DAL.SqlServer.DataProvider
             }
         }
 
-      
+
 
 
 
@@ -590,7 +591,224 @@ namespace CZB.DAL.SqlServer.DataProvider
             };
             return DbHelperSQL.Query(strSql.ToStringEx(), sqlParameters);
         }
+
+        /// <summary>
+        /// 添加保单
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="policyDetailList"></param>
+        /// <returns></returns>
+        public bool AddPolicyList(Model.FX_Policy model, List<Model.FX_PolicyDetail> policyDetailList)
+        {
+            using (SqlConnection conn = new SqlConnection(DbHelperSQL.connectionString))
+            {
+                conn.Open();
+                using (SqlTransaction trans = conn.BeginTransaction())
+                {
+                    try
+                    {
+                        #region 新增保单===主表
+                        StringBuilder strSql = new StringBuilder();
+                        strSql.Append("insert into FX_Policy(");
+                        strSql.Append("AgentId,CustomerId,VIN,DrivingLicense,DrivingLicensePic,CarType,OrganizationCode,InsureCode,FX_PolicyNo,PolicyNoCompulsory,PolicyNoBusiness,PolicyType,CreateTime,PayTime,OfferTime,OfferNum,PolicyState,PayState,PayUrl,PayValidateCode,PaydealCode,PolicyAmount,CompulsoryAmount,BusinessAmount,VehicleAndVesselTax,StartTime,EndTime,CityCode,Discount,UserId,Remark,CancelRemark,RejectNum,RejectTime,CustomerName,CustomerMoblie,CustomerIdNo,CustomerIdPic,CarModel,CarNo,CarEngineNo,CarRegisterDate,IsRead,SafetyFactor,DangerousCount,InquiryDate,ComeFrom,CZBTbCustomerID)");
+                        strSql.Append(" values (");
+                        strSql.Append("@AgentId,@CustomerId,@VIN,@DrivingLicense,@DrivingLicensePic,@CarType,@OrganizationCode,@InsureCode,@FX_PolicyNo,@PolicyNoCompulsory,@PolicyNoBusiness,@PolicyType,@CreateTime,@PayTime,@OfferTime,@OfferNum,@PolicyState,@PayState,@PayUrl,@PayValidateCode,@PaydealCode,@PolicyAmount,@CompulsoryAmount,@BusinessAmount,@VehicleAndVesselTax,@StartTime,@EndTime,@CityCode,@Discount,@UserId,@Remark,@CancelRemark,@RejectNum,@RejectTime,@CustomerName,@CustomerMoblie,@CustomerIdNo,@CustomerIdPic,@CarModel,@CarNo,@CarEngineNo,@CarRegisterDate,@IsRead,@SafetyFactor,@DangerousCount,@InquiryDate,@ComeFrom,@CZBTbCustomerID)");
+                        strSql.Append(";select @@IDENTITY");
+                        SqlParameter[] parameters =
+                            {
+                                    new SqlParameter("@AgentId", SqlDbType.Int,4),
+                                    new SqlParameter("@CustomerId", SqlDbType.Int,4),
+                                    new SqlParameter("@VIN", SqlDbType.NVarChar,50),
+                                    new SqlParameter("@DrivingLicense", SqlDbType.NVarChar,50),
+                                    new SqlParameter("@DrivingLicensePic", SqlDbType.NVarChar,-1),
+                                    new SqlParameter("@CarType", SqlDbType.Int,4),
+                                    new SqlParameter("@OrganizationCode", SqlDbType.NVarChar,50),
+                                    new SqlParameter("@InsureCode", SqlDbType.NVarChar,50),
+                                    new SqlParameter("@FX_PolicyNo", SqlDbType.NVarChar,50),
+                                    new SqlParameter("@PolicyNoCompulsory", SqlDbType.NVarChar,50),
+                                    new SqlParameter("@PolicyNoBusiness", SqlDbType.NVarChar,50),
+                                    new SqlParameter("@PolicyType", SqlDbType.Int,4),
+                                    new SqlParameter("@CreateTime", SqlDbType.DateTime),
+                                    new SqlParameter("@PayTime", SqlDbType.DateTime),
+                                    new SqlParameter("@OfferTime", SqlDbType.DateTime),
+                                    new SqlParameter("@OfferNum", SqlDbType.Int,4),
+                                    new SqlParameter("@PolicyState", SqlDbType.Int,4),
+                                    new SqlParameter("@PayState", SqlDbType.Int,4),
+                                    new SqlParameter("@PayUrl", SqlDbType.NVarChar,-1),
+                                    new SqlParameter("@PayValidateCode", SqlDbType.NVarChar,50),
+                                    new SqlParameter("@PaydealCode", SqlDbType.NVarChar,50),
+                                    new SqlParameter("@PolicyAmount", SqlDbType.Decimal,9),
+                                    new SqlParameter("@CompulsoryAmount", SqlDbType.Decimal,9),
+                                    new SqlParameter("@BusinessAmount", SqlDbType.Decimal,9),
+                                    new SqlParameter("@VehicleAndVesselTax", SqlDbType.Decimal,9),
+                                    new SqlParameter("@StartTime", SqlDbType.DateTime),
+                                    new SqlParameter("@EndTime", SqlDbType.DateTime),
+                                    new SqlParameter("@CityCode", SqlDbType.NVarChar,50),
+                                    new SqlParameter("@Discount", SqlDbType.Decimal,9),
+                                    new SqlParameter("@UserId", SqlDbType.Int,4),
+                                    new SqlParameter("@Remark", SqlDbType.NVarChar,100),
+                                    new SqlParameter("@CancelRemark", SqlDbType.NVarChar,100),
+                                    new SqlParameter("@RejectNum", SqlDbType.Int,4),
+                                    new SqlParameter("@RejectTime", SqlDbType.DateTime),
+                                    new SqlParameter("@CustomerName", SqlDbType.NVarChar,50),
+                                    new SqlParameter("@CustomerMoblie", SqlDbType.NVarChar,50),
+                                    new SqlParameter("@CustomerIdNo", SqlDbType.NVarChar,50),
+                                    new SqlParameter("@CustomerIdPic", SqlDbType.NVarChar,-1),
+                                    new SqlParameter("@CarModel", SqlDbType.NVarChar,50),
+                                    new SqlParameter("@CarNo", SqlDbType.NVarChar,50),
+                                    new SqlParameter("@CarEngineNo", SqlDbType.NVarChar,100),
+                                    new SqlParameter("@CarRegisterDate", SqlDbType.DateTime),
+                                    new SqlParameter("@IsRead", SqlDbType.Bit,1),
+                                    new SqlParameter("@SafetyFactor", SqlDbType.Decimal,9),
+                                    new SqlParameter("@DangerousCount", SqlDbType.Int,4),
+                                    new SqlParameter("@InquiryDate", SqlDbType.DateTime),
+                                    new SqlParameter("@ComeFrom", SqlDbType.Int,4),
+                                    new SqlParameter("@CZBTbCustomerID", SqlDbType.NVarChar,50)
+                            };
+                        parameters[0].Value = model.AgentId;
+                        parameters[1].Value = model.CustomerId;
+                        parameters[2].Value = model.VIN;
+                        parameters[3].Value = model.DrivingLicense;
+                        parameters[4].Value = model.DrivingLicensePic;
+                        parameters[5].Value = model.CarType;
+                        parameters[6].Value = model.OrganizationCode;
+                        parameters[7].Value = model.InsureCode;
+                        parameters[8].Value = model.FX_PolicyNo;
+                        parameters[9].Value = model.PolicyNoCompulsory;
+                        parameters[10].Value = model.PolicyNoBusiness;
+                        parameters[11].Value = model.PolicyType;
+                        parameters[12].Value = model.CreateTime;
+                        parameters[13].Value = model.PayTime;
+                        parameters[14].Value = model.OfferTime;
+                        parameters[15].Value = model.OfferNum;
+                        parameters[16].Value = model.PolicyState;
+                        parameters[17].Value = model.PayState;
+                        parameters[18].Value = model.PayUrl;
+                        parameters[19].Value = model.PayValidateCode;
+                        parameters[20].Value = model.PaydealCode;
+                        parameters[21].Value = model.PolicyAmount;
+                        parameters[22].Value = model.CompulsoryAmount;
+                        parameters[23].Value = model.BusinessAmount;
+                        parameters[24].Value = model.VehicleAndVesselTax;
+                        parameters[25].Value = model.StartTime;
+                        parameters[26].Value = model.EndTime;
+                        parameters[27].Value = model.CityCode;
+                        parameters[28].Value = model.Discount;
+                        parameters[29].Value = model.UserId;
+                        parameters[30].Value = model.Remark;
+                        parameters[31].Value = model.CancelRemark;
+                        parameters[32].Value = model.RejectNum;
+                        parameters[33].Value = model.RejectTime;
+                        parameters[34].Value = model.CustomerName;
+                        parameters[35].Value = model.CustomerMoblie;
+                        parameters[36].Value = model.CustomerIdNo;
+                        parameters[37].Value = model.CustomerIdPic;
+                        parameters[38].Value = model.CarModel;
+                        parameters[39].Value = model.CarNo;
+                        parameters[40].Value = model.CarEngineNo;
+                        parameters[41].Value = model.CarRegisterDate;
+                        parameters[42].Value = model.IsRead;
+                        parameters[43].Value = model.SafetyFactor;
+                        parameters[44].Value = model.DangerousCount;
+                        parameters[45].Value = model.InquiryDate;
+                        parameters[46].Value = model.ComeFrom;
+                        parameters[47].Value = model.CZBTbCustomerID;
+                        object obj = DbHelperSQL.GetSingle(conn, trans, strSql.ToString(), parameters);
+                        if (obj == null)
+                        {
+                            trans.Rollback();
+                            return false;
+                        }
+                        else
+                        {
+                            model.PolicyId = Convert.ToInt32(obj);
+                        }
+                        #endregion
+
+                        #region 具体险种列表
+                        foreach (Model.FX_PolicyDetail p in policyDetailList)
+                        {
+                            StringBuilder _strSql = new StringBuilder();
+                            _strSql.Append("insert into FX_PolicyDetail(");
+                            _strSql.Append("PolicyId,InsuranceTypeId,InsuranceTypeDetail,TotalAmount,CreateTime,UpdateTime,IsUse)");
+                            _strSql.Append(" values (");
+                            _strSql.Append("@PolicyId,@InsuranceTypeId,@InsuranceTypeDetail,@TotalAmount,@CreateTime,@UpdateTime,@IsUse)");
+                            _strSql.Append(";select @@IDENTITY");
+                            SqlParameter[] _parameters = {
+                                                        new SqlParameter("@PolicyId", SqlDbType.Int,4),
+                                                        new SqlParameter("@InsuranceTypeId", SqlDbType.Int,4),
+                                                        new SqlParameter("@InsuranceTypeDetail", SqlDbType.NVarChar,100),
+                                                        new SqlParameter("@TotalAmount", SqlDbType.Decimal,9),
+                                                        new SqlParameter("@CreateTime", SqlDbType.DateTime),
+                                                        new SqlParameter("@UpdateTime", SqlDbType.DateTime),
+                                                         new SqlParameter("@IsUse", SqlDbType.Int,4)};
+                            _parameters[0].Value = model.PolicyId;
+                            _parameters[1].Value = p.InsuranceTypeId;
+                            _parameters[2].Value = p.InsuranceTypeDetail;
+                            _parameters[3].Value = p.TotalAmount;
+                            _parameters[4].Value = p.CreateTime;
+                            _parameters[5].Value = p.UpdateTime;
+                            _parameters[6].Value = p.IsUse;
+
+                            DbHelperSQL.GetSingle(conn, trans, _strSql.ToString(), _parameters);
+                        }
+                        #endregion
+
+                        #region ===分佣参数表
+                        if (model.PolicyInsurePara != null)
+                        {
+                            Model.FX_PolicyInsurePara modelinsuerpara = model.PolicyInsurePara;
+                            StringBuilder strSqlInsurePara = new StringBuilder();
+                            strSqlInsurePara.Append("insert into FX_PolicyInsurePara(");
+                            strSqlInsurePara.Append("PolicyID,InsureCode,BusinessTotal,BusinessCommission,BusinessCommissionLevel1,BusinessCommissionLevel2,BusinessTax,CompulsoryTotal,CompulsoryCommission,CompulsoryCommissionLelve1,CompulsoryCommissionLelve2,CompulsoryTax,CreateTime)");
+                            strSqlInsurePara.Append(" values (");
+                            strSqlInsurePara.Append("@PolicyID,@InsureCode,@BusinessTotal,@BusinessCommission,@BusinessCommissionLevel1,@BusinessCommissionLevel2,@BusinessTax,@CompulsoryTotal,@CompulsoryCommission,@CompulsoryCommissionLelve1,@CompulsoryCommissionLelve2,@CompulsoryTax,@CreateTime)");
+                            strSqlInsurePara.Append(";select @@IDENTITY");
+                            SqlParameter[] parametersInsurePara = {
+                                        new SqlParameter("@PolicyID", SqlDbType.Int,4),
+                                        new SqlParameter("@InsureCode", SqlDbType.NVarChar,50),
+                                        new SqlParameter("@BusinessTotal", SqlDbType.Decimal,9),
+                                        new SqlParameter("@BusinessCommission", SqlDbType.Decimal,9),
+                                        new SqlParameter("@BusinessCommissionLevel1", SqlDbType.Decimal,9),
+                                        new SqlParameter("@BusinessCommissionLevel2", SqlDbType.Decimal,9),
+                                        new SqlParameter("@BusinessTax", SqlDbType.Decimal,9),
+                                        new SqlParameter("@CompulsoryTotal", SqlDbType.Decimal,9),
+                                        new SqlParameter("@CompulsoryCommission", SqlDbType.Decimal,9),
+                                        new SqlParameter("@CompulsoryCommissionLelve1", SqlDbType.Decimal,9),
+                                        new SqlParameter("@CompulsoryCommissionLelve2", SqlDbType.Decimal,9),
+                                        new SqlParameter("@CompulsoryTax", SqlDbType.Decimal,9),
+                                        new SqlParameter("@CreateTime", SqlDbType.DateTime)
+                            };
+                            parametersInsurePara[0].Value = model.PolicyId;
+                            parametersInsurePara[1].Value = model.InsureCode;
+                            parametersInsurePara[2].Value = modelinsuerpara.BusinessTotal;
+                            parametersInsurePara[3].Value = modelinsuerpara.BusinessCommission;
+                            parametersInsurePara[4].Value = modelinsuerpara.BusinessCommissionLevel1;
+                            parametersInsurePara[5].Value = modelinsuerpara.BusinessCommissionLevel2;
+                            parametersInsurePara[6].Value = modelinsuerpara.BusinessTax;
+                            parametersInsurePara[7].Value = modelinsuerpara.CompulsoryTotal;
+                            parametersInsurePara[8].Value = modelinsuerpara.CompulsoryCommission;
+                            parametersInsurePara[9].Value = modelinsuerpara.CompulsoryCommissionLelve1;
+                            parametersInsurePara[10].Value = modelinsuerpara.CompulsoryCommissionLelve2;
+                            parametersInsurePara[11].Value = modelinsuerpara.CompulsoryTax;
+                            parametersInsurePara[12].Value = modelinsuerpara.CreateTime;
+                            DbHelperSQL.GetSingle(conn, trans, strSqlInsurePara.ToString(), parametersInsurePara);
+                        }
+                        #endregion
+
+                        trans.Commit();
+                    }
+                    catch (Exception err)
+                    {
+                        trans.Rollback();
+                        Common.LogHelper.WriteLog(Common.Enums.LogEnum.Error, "err:" + err.Message);
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
         #endregion  ExtensionMethod
     }
 }
-

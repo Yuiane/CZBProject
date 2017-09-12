@@ -1,11 +1,7 @@
-﻿using CZB.Common.CCCModel;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CZB.Common.Extensions
 {
@@ -131,6 +127,20 @@ namespace CZB.Common.Extensions
                 throw ex;
             }
             return string.Empty;
+        }
+
+        public static T CZBParam<T>(this HttpRequestMessage request)
+        {
+            try
+            {
+                var jsonStr = request.Content.ReadAsStringAsync().Result;//{"Name":"tongl","Age":22}
+                LogHelper.WriteLog(Enums.LogEnum.Api, "jsonStr" + jsonStr);
+                return JsonConvert.DeserializeObject<T>(jsonStr);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

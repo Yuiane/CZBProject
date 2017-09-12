@@ -28,5 +28,7 @@
         /// 偲滕
         /// </summary>
         SiTengApi,
+
+        Api
     }
 }

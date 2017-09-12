@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using System.Data;
 namespace CZB.IDAL
 {
@@ -82,6 +82,14 @@ namespace CZB.IDAL
         /// <param name="policyId">保单编号</param>
         /// <returns></returns>
         DataSet GetListByPolicyId(int policyId);
+
+        /// <summary>
+        /// 添加保单
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="policyDetailList"></param>
+        /// <returns></returns>
+        bool AddPolicyList(Model.FX_Policy model, List<Model.FX_PolicyDetail> policyDetailList);
         #endregion  MethodEx
     }
 }

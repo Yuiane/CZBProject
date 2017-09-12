@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 
 namespace CZB.Web.Models
 {
@@ -95,5 +92,7 @@ namespace CZB.Web.Models
         /// 可提现金额
         /// </summary>
         public string money { get; set; }
+
+        public string cityCode { get; set; }
     }
 }

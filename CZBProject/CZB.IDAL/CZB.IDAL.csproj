@@ -49,7 +49,9 @@
     <Compile Include="IFX_Agent.cs" />
     <Compile Include="IFX_CityParaDetails.cs" />
     <Compile Include="IFX_IncomeRecord.cs" />
+    <Compile Include="IFX_InsuranceType.cs" />
     <Compile Include="IFX_InsureCode.cs" />
+    <Compile Include="IFX_InsureParaDetail.cs" />
     <Compile Include="IFX_Policy.cs" />
     <Compile Include="IFX_PolicyDetail.cs" />
     <Compile Include="IFX_PolicyInsurePara.cs" />

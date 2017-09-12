@@ -1,0 +1,4 @@
+
+http://localhost:52453/api/account/AddPolicy    11时42分12秒
+err:不能将值 NULL 插入列 'DrivingLicense'，表 'FixAutoInsurance.dbo.FX_Policy'；列不允许有 Null 值。INSERT 失败。
+语句已终止。

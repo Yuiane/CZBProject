@@ -264,5 +264,35 @@ namespace CZB.Common
                 // ForumExceptions.Log(ex);
             }
         }
+
+
+        /// <summary>
+        /// 根据日期和随机码生成订单号
+        /// </summary>
+        /// <returns></returns>
+        public static string GetOrderNumber()
+        {
+            string num = DateTime.Now.ToString("yyMMddHHmmss");//yyyyMMddHHmmssms
+            return num + Number(2, true).ToString();
+        }
+
+        /// <summary>
+        /// 生成随机数字
+        /// </summary>
+        /// <param name="Length">生成长度</param>
+        /// <param name="Sleep">是否要在生成前将当前线程阻止以避免重复</param>
+        /// <returns></returns>
+        public static string Number(int Length, bool Sleep)
+        {
+            if (Sleep)
+                System.Threading.Thread.Sleep(3);
+            string result = "";
+            System.Random random = new Random();
+            for (int i = 0; i < Length; i++)
+            {
+                result += random.Next(10).ToString();
+            }
+            return result;
+        }
     }
 }
