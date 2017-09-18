@@ -28,7 +28,6 @@ namespace CZB.Web.Controllers
         {
             try
             {
-
                 var model = Request.Param<CZB.Common.CCCModel.Models>();
                 if (model != null)
                 {
