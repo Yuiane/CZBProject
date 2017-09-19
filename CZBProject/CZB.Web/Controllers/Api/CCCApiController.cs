@@ -642,12 +642,27 @@ namespace CZB.Web.Controllers
                     result.resultMsg = "工单信息-DRP工单号为必须项!";
                     return result;
                 }
-                if (model.content.claimInfo.claimNo.IsNullOrWhiteSpace())
+                if (model.content.workflow.workFlowNodeCode == WorkFlowNode.NuclearDamage.GetDescription())
                 {
-                    result.resultCode = ResultCode.EntriesMustNotBeNull;
-                    result.resultMsg = "工单信息-定损单号为必须项!";
-                    return result;
+                    if (model.content.claimInfo.claimNo.IsNullOrWhiteSpace())
+                    {
+                        result.resultCode = ResultCode.EntriesMustNotBeNull;
+                        result.resultMsg = "工单信息-定损单号为必须项!";
+                        return result;
+                    }
                 }
+
+                if (model.content.workflow.assignDate == WorkFlowNode.NuclearDamage.GetDescription())
+                {
+                    if (model.content.workflow.assignDate.IsNullOrWhiteSpace())
+                    {
+                        result.resultCode = ResultCode.EntriesMustNotBeNull;
+                        result.resultMsg = "工单信息-任务分配时间为必须项!";
+                        return result;
+                    }
+                }
+
+
                 if (model.content.claimInfo.sourceType.IsNullOrWhiteSpace())
                 {
                     result.resultCode = ResultCode.EntriesMustNotBeNull;
@@ -663,48 +678,54 @@ namespace CZB.Web.Controllers
             }
 
             //保险公司 insuranceCompany
-            if (model.content.insuranceCompany != null)
+            if (model.content.workflow.workFlowNodeCode == WorkFlowNode.NuclearDamage.GetDescription())
             {
-                if (model.content.insuranceCompany.insuranceCompanyGroupCode.IsNullOrWhiteSpace())
+                if (model.content.insuranceCompany != null)
                 {
-                    result.resultCode = ResultCode.EntriesMustNotBeNull;
-                    result.resultMsg = "保险公司-保险公司Code为必须项!";
+                    if (model.content.insuranceCompany.insuranceCompanyGroupCode.IsNullOrWhiteSpace())
+                    {
+                        result.resultCode = ResultCode.EntriesMustNotBeNull;
+                        result.resultMsg = "保险公司-保险公司Code为必须项!";
+                        return result;
+                    }
+                    if (model.content.insuranceCompany.insuranceCompanyGroupName.IsNullOrWhiteSpace())
+                    {
+                        result.resultCode = ResultCode.EntriesMustNotBeNull;
+                        result.resultMsg = "保险公司-保险公司名称为必须项!";
+                        return result;
+                    }
+                    if (model.content.insuranceCompany.insuranceCompanyCode.IsNullOrWhiteSpace())
+                    {
+                        result.resultCode = ResultCode.EntriesMustNotBeNull;
+                        result.resultMsg = "保险公司-保险公司分支机构Code为必须项!";
+                        return result;
+                    }
+                    if (model.content.insuranceCompany.insuranceCompanyName.IsNullOrWhiteSpace())
+                    {
+                        result.resultCode = ResultCode.EntriesMustNotBeNull;
+                        result.resultMsg = "保险公司-保险公司分支机构名称为必须项!";
+                        return result;
+                    }
+                }
+                else
+                {
+                    result.resultCode = ResultCode.DataFormatDoesNotMeetRequirements;
+                    result.resultMsg = "未获取到保险公司信息!";
                     return result;
                 }
-                if (model.content.insuranceCompany.insuranceCompanyGroupName.IsNullOrWhiteSpace())
-                {
-                    result.resultCode = ResultCode.EntriesMustNotBeNull;
-                    result.resultMsg = "保险公司-保险公司名称为必须项!";
-                    return result;
-                }
-                if (model.content.insuranceCompany.insuranceCompanyCode.IsNullOrWhiteSpace())
-                {
-                    result.resultCode = ResultCode.EntriesMustNotBeNull;
-                    result.resultMsg = "保险公司-保险公司分支机构Code为必须项!";
-                    return result;
-                }
-                if (model.content.insuranceCompany.insuranceCompanyName.IsNullOrWhiteSpace())
-                {
-                    result.resultCode = ResultCode.EntriesMustNotBeNull;
-                    result.resultMsg = "保险公司-保险公司分支机构名称为必须项!";
-                    return result;
-                }
-            }
-            else
-            {
-                result.resultCode = ResultCode.DataFormatDoesNotMeetRequirements;
-                result.resultMsg = "未获取到保险公司信息!";
-                return result;
             }
 
             //事故信息accInfo
             if (model.content.accInfo != null)
             {
-                if (model.content.accInfo.reportNo.IsNullOrWhiteSpace())
+                if (model.content.workflow.workFlowNodeCode == WorkFlowNode.NuclearDamage.GetDescription())
                 {
-                    result.resultCode = ResultCode.EntriesMustNotBeNull;
-                    result.resultMsg = "事故信息-报案号为必须项!";
-                    return result;
+                    if (model.content.accInfo.reportNo.IsNullOrWhiteSpace())
+                    {
+                        result.resultCode = ResultCode.EntriesMustNotBeNull;
+                        result.resultMsg = "事故信息-报案号为必须项!";
+                        return result;
+                    }
                 }
             }
             else
