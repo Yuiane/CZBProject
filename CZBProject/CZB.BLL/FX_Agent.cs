@@ -1,9 +1,5 @@
-﻿
-using System;
+﻿using CZB.Common.Extensions;
 using System.Data;
-using System.Collections.Generic;
-using CZB.DAL;
-using CZB.Common.Extensions;
 
 namespace CZB.BLL
 {
@@ -121,6 +117,26 @@ namespace CZB.BLL
         }
 
         /// <summary>
+        /// 根据代理商编号获取代理商信息
+        /// </summary>
+        /// <param name="phone"></param>
+        /// <returns></returns>
+        public Model.FX_Agent GetModelByAgentId(int agentId)
+        {
+            return GetDataByAgentId(agentId).Tables[0].ToEntity<Model.FX_Agent>();
+        }
+
+        /// <summary>
+        /// 根据代理商编号获取一条信息
+        /// </summary>
+        /// <param name="agentId"></param>
+        /// <returns></returns>
+        private DataSet GetDataByAgentId(int agentId)
+        {
+            return dal.GetDataByAgentId(agentId);
+        }
+
+        /// <summary>
         /// 获取=>下级发展的数量
         /// </summary>
         /// <param name="agentId"></param>
@@ -133,4 +149,3 @@ namespace CZB.BLL
         #endregion  ExtensionMethod
     }
 }
-

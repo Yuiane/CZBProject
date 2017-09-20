@@ -1,6 +1,4 @@
-﻿using System;
-using System.Data;
-using System.Collections.Generic;
+﻿using System.Data;
 namespace CZB.BLL
 {
     /// <summary>
@@ -128,11 +126,21 @@ namespace CZB.BLL
         /// 获取下级收益
         /// </summary>
         /// <returns></returns>
-        public DataSet GetCommissionAmount(int agentId) {
+        public DataSet GetCommissionAmount(int agentId)
+        {
             return dal.GetCommissionAmount(agentId);
         }
+
+        /// <summary>
+        /// 我的收益列表
+        /// </summary>
+        /// <returns></returns>
+        public DataSet GetIncomeRecordList(int agentId, string where)
+        {
+            return dal.GetIncomeRecordList(agentId, where);
+        }
+
 
         #endregion  ExtensionMethod
     }
 }
-

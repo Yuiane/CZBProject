@@ -1,5 +1,4 @@
-﻿using System;
-using System.Data;
+﻿using System.Data;
 namespace CZB.IDAL
 {
     /// <summary>
@@ -56,6 +55,13 @@ namespace CZB.IDAL
         /// <param name="agentId"></param>
         /// <returns></returns>
         int GetCountParent(int agentId);
+
+        /// <summary>
+        /// 根据代理商编号获取代理商信息
+        /// </summary>
+        /// <param name="agentId"></param>
+        /// <returns></returns>
+        DataSet GetDataByAgentId(int agentId);
         #endregion  MethodEx
     }
 }

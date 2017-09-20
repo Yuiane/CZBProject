@@ -173,6 +173,17 @@ namespace CZB.BLL
             return dal.AddPolicyList(model, policyDetailList);
         }
 
+
+        /// <summary>
+        /// 获取当月保费
+        /// </summary>
+        /// <param name="agentId"></param>
+        /// <returns></returns>
+        public decimal GetMonthPolicy(int agentId)
+        {
+            return dal.GetMonthPolicy(agentId);
+        }
+
         #endregion  ExtensionMethod
     }
 }

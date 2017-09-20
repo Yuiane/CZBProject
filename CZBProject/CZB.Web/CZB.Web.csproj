@@ -185,7 +185,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\BaseModel\InsureModel.cs" />
+    <Compile Include="Models\FundChangeRecordReturn.cs" />
     <Compile Include="Models\InsureListReturn.cs" />
+    <Compile Include="Models\IntroduceReturn.cs" />
     <Compile Include="Models\PolicyDetailReturn.cs" />
     <Compile Include="Models\PolicyListReturn.cs" />
     <Compile Include="Models\PostAddPolicy.cs" />

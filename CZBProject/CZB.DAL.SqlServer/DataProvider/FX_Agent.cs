@@ -1,11 +1,10 @@
 ﻿
+using CZB.Common.Extensions;
+using CZB.IDAL;
 using System;
 using System.Data;
-using System.Text;
 using System.Data.SqlClient;
-using CZB.IDAL;
-
-using CZB.Common.Extensions;
+using System.Text;
 
 namespace CZB.DAL.SqlServer.DataProvider
 {
@@ -114,6 +113,8 @@ namespace CZB.DAL.SqlServer.DataProvider
                 return Convert.ToInt32(obj);
             }
         }
+
+
 
         /// <summary>
         ///  获取=>下级发展的数量
@@ -360,7 +361,23 @@ namespace CZB.DAL.SqlServer.DataProvider
             return DbHelperSQL.Query(strSql.ToString(), sqlParameters);
         }
 
+        /// <summary>
+        /// 根据代理商编号获取代理商信息
+        /// </summary>
+        /// <param name="agentId"></param>
+        /// <returns></returns>
+        public DataSet GetDataByAgentId(int agentId)
+        {
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append(" select *  from FX_Agent where AgentId=@agentId ; ");
+
+            var sqlParameters = new SqlParameter[] {
+                new SqlParameter("@agentId",agentId)
+            };
+
+            return DbHelperSQL.Query(strSql.ToString(), sqlParameters);
+        }
+
         #endregion  ExtensionMethod
     }
 }
-

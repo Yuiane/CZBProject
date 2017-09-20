@@ -48,8 +48,10 @@
     <Compile Include="CCCModel\PostModel.cs" />
     <Compile Include="CCCModel\ReturnResult.cs" />
     <Compile Include="Enums.cs" />
+    <Compile Include="Enums\AgentLevelEnum.cs" />
     <Compile Include="Enums\AutoReplyTypeEnum.cs" />
     <Compile Include="Enums\CCCEnums.cs" />
+    <Compile Include="Enums\IncomeTypeEnum.cs" />
     <Compile Include="Enums\LogEnum.cs" />
     <Compile Include="Extensions\ExtConvert.cs" />
     <Compile Include="Extensions\ExtJson.cs" />

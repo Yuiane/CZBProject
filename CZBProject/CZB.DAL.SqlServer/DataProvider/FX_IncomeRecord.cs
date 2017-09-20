@@ -320,6 +320,32 @@ namespace CZB.DAL.SqlServer.DataProvider
         #endregion  BasicMethod
         #region  ExtensionMethod
 
+        /// <summary>
+        /// 我的收益列表
+        /// </summary>
+        /// <returns></returns>
+        public DataSet GetIncomeRecordList(int agentId, string where)
+        {
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("  select a.FacePic headImg,a.TrueName name,ir.IncomeType [type], ir.CreateTime createTime , ");
+            strSql.Append("  ir.commissionAmount [money],p.FX_PolicyNo PolicyNo ,ir.InsureType from FX_IncomeRecord ir  ");
+            strSql.Append("  inner join FX_Policy p on ir.PolicyId = p.PolicyId  ");
+            strSql.Append("  inner join FX_Agent a on a.agentId = p.AgentId ");
+            strSql.Append("  where ir.agentId=@agentId ");
+
+            if (!string.IsNullOrEmpty(where))
+            {
+                strSql.Append(where);
+            }
+            strSql.Append(" order by ir.CreateTime desc ");
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@agentId",SqlDbType.Int,4)
+            };
+            parameters[0].Value = agentId;
+            return DbHelperSQL.Query(strSql.ToString(), parameters);
+        }
+
         #endregion  ExtensionMethod
     }
 }

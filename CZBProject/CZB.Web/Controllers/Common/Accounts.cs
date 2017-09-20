@@ -1,4 +1,5 @@
 ﻿using CZB.Common;
+using CZB.Common.Enums;
 using CZB.Common.Extensions;
 using CZB.Web.Models;
 using System;
@@ -8,6 +9,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
+using System.Text;
 
 namespace CZB.Web.Controllers
 {
@@ -352,6 +354,108 @@ namespace CZB.Web.Controllers
                 return true;
             }
             return false;
+        }
+
+
+        /// <summary>
+        /// 获取我的团队推荐信息
+        /// </summary>
+        /// <param name="agentId"></param>
+        /// <returns></returns>
+        public IntroduceReturn GetMyTeam(int agentId)
+        {
+            Model.FX_Agent agentModel = new BLL.FX_Agent().GetModelByAgentId(agentId);
+            if (agentModel == null)
+            {
+                return null;
+            }
+            IntroduceReturn introduceList = new IntroduceReturn()
+            {
+                parentAgentInfo = new IntroduceDetail(),
+                childAgentList = new List<IntroduceDetail>(),
+            };
+            introduceList.agentLevel = agentModel.AgentLevel.Value;
+            //代理商本身信息
+            introduceList.agentInfo = new IntroduceDetail()
+            {
+                id = agentModel.AgentId,
+                parentId = agentModel.ParentId.ToInt32(),
+                name = agentModel.TrueName,
+                mobile = agentModel.Mobile,
+                picUrl = agentModel.FacePic,
+                policyAmout = new BLL.FX_Policy().GetMonthPolicy(agentModel.AgentId)
+            };
+            StringBuilder strWhere = new StringBuilder();
+            //非三级代理商增加子集信息
+            if (agentModel.AgentLevel != AgentLevelEnum.ThirdAgent.GetHashCode())
+            {
+                strWhere = new StringBuilder();
+                strWhere.AppendFormat(" CHARINDEX(',{0},',ParentList)>0 and AgentLevel={1}", agentModel.AgentId, (agentModel.AgentLevel.ToInt32() + 1));
+                List<Model.FX_Agent> agentList = new BLL.FX_Agent().GetList(strWhere.ToString()).Tables[0].ToEntityList<Model.FX_Agent>();
+                if (agentList != null && agentList.Count > 0)
+                {
+                    agentList = agentList.OrderBy(exp => exp.TrueName).ToList();
+                    introduceList.childAgentList = new List<IntroduceDetail>();
+                    foreach (Model.FX_Agent info in agentList)
+                    {
+                        introduceList.childAgentList.Add(new IntroduceDetail()
+                        {
+                            id = info.AgentId,
+                            parentId = info.ParentId.ToInt32(),
+                            name = info.TrueName,
+                            mobile = info.Mobile,
+                            picUrl = info.FacePic,
+                            policyAmout = new BLL.FX_Policy().GetMonthPolicy(info.AgentId)
+                        });
+                    }
+                }
+            }
+            //非一级加载推荐人信息
+            if (agentModel.AgentLevel != AgentLevelEnum.FirstAgent.GetHashCode())
+            {
+                Model.FX_Agent parentAgentModel = new BLL.FX_Agent().GetModelByAgentId(agentModel.ParentId.ToInt32());
+                if (parentAgentModel != null)
+                {
+                    introduceList.parentAgentInfo = new IntroduceDetail()
+                    {
+                        id = parentAgentModel.AgentId,
+                        name = parentAgentModel.TrueName,
+                        parentId = parentAgentModel.ParentId.ToInt32(),
+                        mobile = parentAgentModel.Mobile,
+                        picUrl = parentAgentModel.FacePic,
+                        policyAmout = new BLL.FX_Policy().GetMonthPolicy(parentAgentModel.AgentId)
+                    };
+                }
+            }
+            return introduceList;
+        }
+
+
+        /// <summary>
+        /// 获取我的收益详情
+        /// </summary>
+        /// <param name="agentId"></param>
+        /// <param name="startTime"></param>
+        /// <param name="endTime"></param>
+        /// <returns></returns>
+        public FundChangeRecordReturn RecordList(int agentId, string startTime, string endTime)
+        {
+            FundChangeRecordReturn model = new FundChangeRecordReturn();
+            StringBuilder strWhere = new StringBuilder();
+
+            if (startTime.IsNotNullOrWhiteSpace())
+            {
+                strWhere.AppendFormat(" and ir.CreateTime > '{0}'", startTime);
+            }
+
+            if (endTime.IsNotNullOrWhiteSpace())
+            {
+                endTime = endTime.ToDateTime().AddDays(1).ToDateString();
+                strWhere.AppendFormat(" and ir.CreateTime < '{0}'", endTime);
+            }
+
+            model.list = new BLL.FX_IncomeRecord().GetIncomeRecordList(agentId, strWhere.ToString()).Tables[0].ToEntityList<FundChangeRecordDetail>();
+            return model;
         }
 
         #region 险种处理

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Data;
+﻿using System.Data;
 namespace CZB.IDAL
 {
     /// <summary>
@@ -57,6 +56,12 @@ namespace CZB.IDAL
         /// </summary>
         /// <returns></returns>
         DataSet GetCommissionAmount(int agentId);
+
+        /// <summary>
+        /// 我的收益列表
+        /// </summary>
+        /// <returns></returns>
+        DataSet GetIncomeRecordList(int agentId, string where);
 
 
         #endregion  MethodEx

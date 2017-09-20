@@ -341,5 +341,89 @@ namespace CZB.Web.Controllers.Api
                 };
             }
         }
+
+        /// <summary>
+        /// 获取我的团队【推荐树】
+        /// </summary>
+        /// <returns></returns>
+        [AllowAnonymous]
+        [AcceptVerbs("GET", "POST")]
+        [ActionName("MyTeam")]
+        public ReturnResult GetMyTeam()
+        {
+            try
+            {
+                var agentId = Request.Param("agentId").ToInt32();
+                if (agentId <= 0)
+                {
+                    return new ReturnResult()
+                    {
+                        code = ReturnCode.NullOrEmpty,
+                        data = "",
+                        desc = "参数异常 agentId:" + agentId
+                    };
+                }
+
+                return new ReturnResult()
+                {
+                    code = ReturnCode.Success,
+                    data = new Accounts().GetMyTeam(agentId),
+                    desc = "请求成功"
+                };
+            }
+            catch (Exception err)
+            {
+                return new ReturnResult()
+                {
+                    code = ReturnCode.Error,
+                    data = "",
+                    desc = err.Message
+                };
+            }
+        }
+
+
+        /// <summary>
+        /// 获取我的收益详情
+        /// </summary>
+        /// <returns></returns>
+        [AllowAnonymous]
+        [AcceptVerbs("GET", "POST")]
+        [ActionName("RecordList")]
+        public ReturnResult GetChanegeRecordDetail()
+        {
+            try
+            {
+                int agentId = Request.Param("agentId").ToInt32();
+                string startTime = Request.Param("startTime").ToStringEx();
+                string endTime = Request.Param("endTime").ToStringEx();
+
+                if (agentId <= 0)
+                {
+                    return new ReturnResult()
+                    {
+                        code = ReturnCode.NullOrEmpty,
+                        data = "",
+                        desc = "参数异常 agentId:" + agentId
+                    };
+                }
+                return new ReturnResult()
+                {
+                    code = ReturnCode.NullOrEmpty,
+                    data = new Accounts().RecordList(agentId, startTime, endTime),
+                    desc = "请求成功"
+                };
+
+            }
+            catch (Exception err)
+            {
+                return new ReturnResult()
+                {
+                    code = ReturnCode.Error,
+                    data = "",
+                    desc = err.Message
+                };
+            }
+        }
     }
 }

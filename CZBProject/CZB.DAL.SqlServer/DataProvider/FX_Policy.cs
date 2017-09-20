@@ -809,6 +809,33 @@ namespace CZB.DAL.SqlServer.DataProvider
             return true;
         }
 
+
+        /// <summary>
+        /// 获取当月保费
+        /// </summary>
+        /// <param name="agentId"></param>
+        /// <returns></returns>
+        public decimal GetMonthPolicy(int agentId)
+        {
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append(" select sum(PolicyAmount) from FX_Policy where PolicyState = 3 and MONTH(PayTime) = MONTH(GETDATE()) and agentId = @agentId ");
+
+            SqlParameter[] parameters = {
+                                            new SqlParameter("@agentId",agentId)
+                                        };
+            parameters[0].Value = agentId;
+            object result = DbHelperSQL.GetSingle(strSql.ToString(), parameters);
+            if (result != null)
+            {
+                return result.ToDecimal();
+            }
+            else
+            {
+                return 0;
+            }
+
+        }
+
         #endregion  ExtensionMethod
     }
 }
