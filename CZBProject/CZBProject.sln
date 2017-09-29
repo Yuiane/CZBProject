@@ -19,6 +19,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CZB.IDAL", "CZB.IDAL\CZB.ID
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CZB.Web.WeXin.CommonService", "CZB.Web.WeXin.CommonService\CZB.Web.WeXin.CommonService.csproj", "{845057CF-6DD8-46AC-B036-AEB74BB402E7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CZB.Web.WeChat", "CZB.Web.WeChat\CZB.Web.WeChat.csproj", "{34253058-C187-4D96-88F3-84BE8688D8B3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CZB.Web.WeChat.Test", "CZB.Web.WeChat.Test\CZB.Web.WeChat.Test.csproj", "{39A27BB2-35D9-49B2-B7B5-EB229315DA37}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CZB.Web.Api", "CZB.Web.Api\CZB.Web.Api.csproj", "{BAA24E8D-8957-418F-9E0D-FCE3464D3A28}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CZB.Web.Api.Test", "CZB.Web.Api.Test\CZB.Web.Api.Test.csproj", "{CD82C782-B398-4411-A02A-C8955B9BB035}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +65,22 @@ Global
 		{845057CF-6DD8-46AC-B036-AEB74BB402E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{845057CF-6DD8-46AC-B036-AEB74BB402E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{845057CF-6DD8-46AC-B036-AEB74BB402E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34253058-C187-4D96-88F3-84BE8688D8B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34253058-C187-4D96-88F3-84BE8688D8B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34253058-C187-4D96-88F3-84BE8688D8B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34253058-C187-4D96-88F3-84BE8688D8B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39A27BB2-35D9-49B2-B7B5-EB229315DA37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39A27BB2-35D9-49B2-B7B5-EB229315DA37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39A27BB2-35D9-49B2-B7B5-EB229315DA37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39A27BB2-35D9-49B2-B7B5-EB229315DA37}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BAA24E8D-8957-418F-9E0D-FCE3464D3A28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAA24E8D-8957-418F-9E0D-FCE3464D3A28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAA24E8D-8957-418F-9E0D-FCE3464D3A28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAA24E8D-8957-418F-9E0D-FCE3464D3A28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD82C782-B398-4411-A02A-C8955B9BB035}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD82C782-B398-4411-A02A-C8955B9BB035}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD82C782-B398-4411-A02A-C8955B9BB035}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD82C782-B398-4411-A02A-C8955B9BB035}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

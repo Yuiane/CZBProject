@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace CZB.Common.CCCModel
 {
@@ -238,6 +234,7 @@ namespace CZB.Common.CCCModel
         public string repairFacilityCode { get; set; }
         public string repairFacilityName { get; set; }
         public string repairFacilityType { get; set; }
+
     }
 
     /// <summary>

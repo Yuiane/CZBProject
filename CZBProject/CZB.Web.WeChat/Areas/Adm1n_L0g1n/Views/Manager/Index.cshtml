@@ -1,0 +1,267 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>控制台 - 车直保公众号管理</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- basic styles -->
+    <link href="~/Areas/Adm1n_L0g1n/assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Areas/Adm1n_L0g1n/assets/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="~/Areas/Adm1n_L0g1n/assets/css/ace.min.css" />
+    <link rel="stylesheet" href="~/Areas/Adm1n_L0g1n/assets/css/ace-rtl.min.css" />
+    <link rel="stylesheet" href="~/Areas/Adm1n_L0g1n/assets/css/ace-skins.min.css" />
+    <script src="~/Areas/Adm1n_L0g1n/assets/js/ace-extra.min.js"></script>
+</head>
+
+<body>
+    <div class="navbar navbar-default" id="navbar">
+        <script type="text/javascript">
+            try { ace.settings.check('navbar', 'fixed') } catch (e) { }
+        </script>
+
+        <div class="navbar-container" id="navbar-container">
+            <div class="navbar-header pull-left">
+                <a href="#" class="navbar-brand">
+                    <small>
+                        <i class="icon-leaf"></i>
+                        车直保微信管理系统
+                    </small>
+                </a><!-- /.brand -->
+            </div><!-- /.navbar-header -->
+
+            <div class="navbar-header pull-right" role="navigation">
+                <ul class="nav ace-nav">
+                    <li class="light-blue">
+                        <a data-toggle="dropdown" href="#" class="dropdown-toggle">
+                            <img class="nav-user-photo" src="~/Areas/Adm1n_L0g1n/assets/avatars/user.jpg" alt="Jason's Photo" />
+                            <span class="user-info">
+                                <small>欢迎光临,管理员</small>
+                                Jason
+                            </span>
+
+                            <i class="icon-caret-down"></i>
+                        </a>
+
+                        <ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+                            <li>
+                                <a href="#">
+                                    <i class="icon-cog"></i>
+                                    设置
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#">
+                                    <i class="icon-user"></i>
+                                    个人资料
+                                </a>
+                            </li>
+
+                            <li class="divider"></li>
+
+                            <li>
+                                <a href="#">
+                                    <i class="icon-off"></i>
+                                    退出
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul><!-- /.ace-nav -->
+            </div><!-- /.navbar-header -->
+        </div><!-- /.container -->
+    </div>
+
+    <div class="main-container" id="main-container">
+
+        <script type="text/javascript">
+            try { ace.settings.check('main-container', 'fixed') } catch (e) { }
+        </script>
+
+        <div class="main-container-inner">
+            <div class="sidebar" id="sidebar">
+                <script type="text/javascript">
+                    try { ace.settings.check('sidebar', 'fixed') } catch (e) { }
+                </script>
+
+                <div class="sidebar-shortcuts" id="sidebar-shortcuts">
+                    <div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
+                        <button class="btn btn-success">
+                            <i class="icon-signal"></i>
+                        </button>
+
+                        <button class="btn btn-info">
+                            <i class="icon-pencil"></i>
+                        </button>
+
+                        <button class="btn btn-warning">
+                            <i class="icon-group"></i>
+                        </button>
+
+                        <button class="btn btn-danger">
+                            <i class="icon-cogs"></i>
+                        </button>
+                    </div>
+
+                    <div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
+                        <span class="btn btn-success"></span>
+
+                        <span class="btn btn-info"></span>
+
+                        <span class="btn btn-warning"></span>
+
+                        <span class="btn btn-danger"></span>
+                    </div>
+                </div><!-- #sidebar-shortcuts -->
+
+                <ul class="nav nav-list">
+                    <li class="active">
+                        <a href="#" class="dropdown-toggle">
+                            <i class="icon-list"></i>
+                            <span class="menu-text"> 回复管理 </span>
+
+                            <b class="arrow icon-angle-down"></b>
+                        </a>
+
+                        <ul class="submenu">
+                            <li>
+                                <a href="Update" target="iframe_a">
+                                    <i class="icon-double-angle-right"></i>
+                                    &nbsp;新增 &amp; 回复
+                                </a>
+                            </li>
+                            <li>
+                                <a href="~/Adm1n_L0g1n/Manager/List/1" target="iframe_a">
+                                    <i class="icon-double-angle-right"></i>
+                                    &nbsp;关注 &amp; 回复
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="~/Adm1n_L0g1n/Manager/List/2" target="iframe_a">
+                                    <i class="icon-double-angle-right"></i>
+                                    关键词 &amp; 回复
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" class="dropdown-toggle">
+                            <i class="icon-file-alt"></i>
+
+                            <span class="menu-text">
+                                素材管理
+                                @*<span class="badge badge-primary ">2</span>*@
+                            </span>
+
+                            <b class="arrow icon-angle-down"></b>
+                        </a>
+                        <ul class="submenu">
+                            <li>
+                                <a href="/Adm1n_L0g1n/Material/Update" target="iframe_a">
+                                    <i class="icon-double-angle-right"></i>
+                                    新增素材
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="/Adm1n_L0g1n/Material/List" target="iframe_a">
+                                    <i class="icon-double-angle-right"></i>
+                                    素材列表
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="#" class="dropdown-toggle">
+                            <i class="icon-file-alt"></i>
+
+                            <span class="menu-text">
+                                自定义菜单管理
+                                @*<span class="badge badge-primary ">2</span>*@
+                            </span>
+
+                            <b class="arrow icon-angle-down"></b>
+                        </a>
+                        <ul class="submenu">
+                            <li>
+                                <a href="/Adm1n_L0g1n/Menu/Index" target="iframe_a">
+                                    <i class="icon-double-angle-right"></i>
+                                    自定义菜单设置
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                </ul><!-- /.nav-list -->
+
+                <div class="sidebar-collapse" id="sidebar-collapse">
+                    <i class="icon-double-angle-left" data-icon1="icon-double-angle-left" data-icon2="icon-double-angle-right"></i>
+                </div>
+                <script type="text/javascript">
+                    try { ace.settings.check('sidebar', 'collapsed') } catch (e) { }
+                </script>
+            </div>
+            <div class="container-info" style="height:520px; position:absolute; right:0; top:0;">
+                <iframe name="iframe_a" style=" width:100%; height:500px;  border:0;" id="frame" src="~/Adm1n_L0g1n/Manager/List"></iframe>
+            </div>
+        </div>
+
+    </div><!-- /.main-container -->
+    <!-- basic scripts -->
+    <!--[if !IE]> -->
+
+    <script type="text/javascript">
+                    window.jQuery || document.write("<script src='/Areas/Adm1n_L0g1n/assets/js/jquery-2.0.3.min.js'>" + "<" + "script>");
+    </script>
+    <!-- <![endif]-->
+    <!--[if IE]>
+    <script type="text/javascript">
+     window.jQuery || document.write("<script src='~/Areas/Adm1n_L0g1n/assets/js/jquery-1.10.2.min.js'>"+"<"+"script>");
+    </script>
+    <![endif]-->
+
+    <script type="text/javascript">
+                    if ("ontouchend" in document) document.write("<script src='/Areas/Adm1n_L0g1n/assets/js/jquery.mobile.custom.min.js'>" + "<" + "script>");
+    </script>
+    <script src="~/Areas/Adm1n_L0g1n/assets/js/bootstrap.min.js"></script>
+    <script src="~/Areas/Adm1n_L0g1n/assets/js/typeahead-bs2.min.js"></script>
+
+    <!-- page specific plugin scripts -->
+    <!--[if lte IE 8]>
+      <script src="~/Areas/Adm1n_L0g1n/assets/js/excanvas.min.js"></script>
+    <![endif]-->
+
+    <script src="~/Areas/Adm1n_L0g1n/assets/js/jquery-ui-1.10.3.custom.min.js"></script>
+    <script src="~/Areas/Adm1n_L0g1n/assets/js/jquery.ui.touch-punch.min.js"></script>
+    <script src="~/Areas/Adm1n_L0g1n/assets/js/jquery.slimscroll.min.js"></script>
+    <script src="~/Areas/Adm1n_L0g1n/assets/js/jquery.easy-pie-chart.min.js"></script>
+    <script src="~/Areas/Adm1n_L0g1n/assets/js/jquery.sparkline.min.js"></script>
+    <script src="~/Areas/Adm1n_L0g1n/assets/js/flot/jquery.flot.min.js"></script>
+    <script src="~/Areas/Adm1n_L0g1n/assets/js/flot/jquery.flot.pie.min.js"></script>
+    <script src="~/Areas/Adm1n_L0g1n/assets/js/flot/jquery.flot.resize.min.js"></script>
+    <!-- ace scripts -->
+    <script src="~/Areas/Adm1n_L0g1n/assets/js/ace-elements.min.js"></script>
+    <script src="~/Areas/Adm1n_L0g1n/assets/js/ace.min.js"></script>
+    <script type="text/javascript">
+                    $(function () {
+                        $(".container-info").css("margin-left", $(".sidebar").width());
+
+                        var _width = $(".main-container-inner").width() - $(".sidebar").width();
+                        $(".container-info").css("width", _width + "px");
+                    });
+
+                    $("#sidebar-collapse").click(function () {
+                        $(".container-info").css("margin-left", $(".sidebar").width());
+                        window.location.reload();
+                    });
+    </script>
+    <!-- inline scripts related to this page -->
+</body>
+</html>

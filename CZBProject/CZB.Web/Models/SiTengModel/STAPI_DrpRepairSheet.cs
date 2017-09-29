@@ -316,6 +316,11 @@ namespace CZB.Model
         /// 施救费
         /// </summary>
         public decimal rescueFee { set; get; }
+
+        /// <summary>
+        /// 损失金额
+        /// </summary>
+        public decimal lossTotal { get; set; }
     }
 
 

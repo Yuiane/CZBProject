@@ -1,0 +1,111 @@
+﻿
+@{
+    Layout = null;
+}
+<link href="~/Areas/Adm1n_L0g1n/skin/common/css.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+<div class="content">
+    <div class="navTitle">回复管理 | 回复设置</div>
+    <form action="javascript:void(0);" id="autoReplyForm" name="autoReplyForm" onsubmit="return CheckForm()">
+        <table width="100%" border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+            <tr>
+                <td align="right">消息类型:</td>
+                <td align="left">
+                    <input type="hidden" id="txtId" name="txtId" value=" @if (Model.info != null) { @Model.info.ID } " />
+                    <select name="selectMessageType" onchange="changeMessageType()" id="selectMessageType" value=" @if (Model.info != null) { @Model.info.MessageType}">
+                        <option value="0">关注</option>
+                        <option value="1">关键词</option>
+                    </select>
+                    <span class="redbold">*关注消息 只能存在一条,请谨慎修改</span>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">关键词:</td>
+                <td align="left">
+                    <input name="txtKeyWord" id="txtKeyWord" class="txtInput" value="@if (Model.info != null) {@Model.info.Keyword}" />
+                    <span class="redbold">*关注消息 不需要关键词</span>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">回复类型:</td>
+                <td align="left">
+                    <select name="selectReplyType" id="selectReplyType" value=" @if (Model.info != null) { @Model.info.ReplyType}">
+                        <option value="0">文字</option>
+                        <option value="1">图片</option>
+                        <option value="2">图文</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">回复内容:</td>
+                <td align="left" colspan="2">
+                    <textarea name="txtContent" id="txtContent" style="width: 813px; height:140px;">@if (Model.info != null)
+                    {@Model.info.ReplyIdList}</textarea>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">状态:</td>
+                <td align="left">
+                    <select name="selectState" id="selectState" value=" @if (Model.info != null) { @Model.info.state}">
+                        <option value="0">有效</option>
+                        <option value="1">无效</option>
+                    </select>
+                </td>
+            </tr>
+            <tr></tr>
+            <tr>
+                <td></td>
+                <td align="left" colspan="3">
+                    <input class=" btn-submit" type="submit" value="提 交">
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        $("#selectMessageType").find("option[value=" + $("#selectMessageType").attr("value") + "]").attr("selected", true);
+        $("#selectReplyType").find("option[value=" + $("#selectReplyType").attr("value") + "]").attr("selected", true);
+        $("#selectState").find("option[value=" + $("#selectState").attr("value") + "]").attr("selected", true);
+
+        if ($("#selectMessageType").val() == "0") {
+            $("#txtKeyWord").attr("readonly", "readonly");
+        }
+    });
+
+    function changeMessageType() {
+        if ($("#selectMessageType").val() == "0") {
+            $("#txtKeyWord").attr("readonly", "readonly");
+        } else {
+            $("#txtKeyWord").removeAttr("readonly");
+            $("#txtKeyWord").focus();
+        }
+    }
+
+    function CheckForm() {
+        $.ajax({
+            type: "post",
+            async: true,
+            url: "../AddOrUpdate",
+            data: $("#autoReplyForm").serialize(),
+            dataType: "text",
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                alert("网络错误，请刷新后再操作！");
+            },
+            success: function (result) {
+                console.log(result);
+                if (result == "1") {
+                    alert("修改成功");
+                    window.location.href = "/Adm1n_L0g1n/Manager/List";
+                } else if (result == "3") {
+                    alert("新增成功");
+                    window.location.href = "/Adm1n_L0g1n/Manager/List";
+                } else {
+                    alert("操作失败,请联系管理员");
+                }
+            }
+        });
+    }
+</script>

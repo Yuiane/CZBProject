@@ -16,16 +16,16 @@ namespace CZB.Web.Models
         {
             get
             {
-                string _n = InsureName + "(返点:";
+                string _n = InsureName + "(";
                 TypeList _t1 = typeList.FirstOrDefault(exp => exp.ParaName == "商业险直接销售返点");
                 if (_t1 != null)
                 {
-                    _n += "商业险" + _t1.ParaValue + "%;";
+                    _n += "商业" + _t1.ParaValue + "%;";
                 }
                 TypeList _t2 = typeList.FirstOrDefault(exp => exp.ParaName == "交强险直接销售返点");
                 if (_t2 != null)
                 {
-                    _n += "交强险" + _t2.ParaValue + "%)";
+                    _n += "交强" + _t2.ParaValue + "%)";
                 }
                 return _n;
             }

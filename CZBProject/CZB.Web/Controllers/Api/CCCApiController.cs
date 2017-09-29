@@ -181,8 +181,8 @@ namespace CZB.Web.Controllers
                 claimAttachmentsIDs = "",//附件信息(复数)
                 MaterialItemsIDs = "",//损失项目-辅料项目(复数)
                 RepairItemsIDs = "",//损失项目-维修项目(复数)
-                estimatorCode = "", //修理厂信息-维修顾问账号
-                estimatorName = "", //修理厂信息-维修顾问姓名
+                estimatorCode = model.content.repairFacility.appraiserCode, //修理厂信息-维修顾问账号
+                estimatorName = model.content.repairFacility.appraiserName, //修理厂信息-维修顾问姓名
                 managementFee = 0,//费率折扣-管理费率
             };
             infoModel.claimAttachmentsIDs = "";
@@ -273,11 +273,11 @@ namespace CZB.Web.Controllers
                         laborHour = repairItemModel.laborHour.ToDecimal(),
                         laborHourFee = repairItemModel.laborHourFee.ToDecimal(),
                         laborType = repairItemModel.laborType,
-                        manualFlag = repairItemModel.manualFlag == "0" ? true : false,
+                        manualFlag = repairItemModel.manualFlag == "0" ? false : true,
                         operationType = repairItemModel.operationType,
                         outerLaborFee = repairItemModel.outerLaborFee.ToDecimal(),
-                        outerRepairFlag = repairItemModel.outerRepairFlag == "0" ? true : false,
-                        paintDiscountFlag = repairItemModel.paintDiscountFlag == "0" ? true : false,
+                        outerRepairFlag = repairItemModel.outerRepairFlag == "0" ? false : true,
+                        paintDiscountFlag = repairItemModel.paintDiscountFlag == "0" ? false : true,
                         partNo = ""
                     });
                     infoModel.RepairItemsIDs += _guid + ",";
@@ -302,6 +302,7 @@ namespace CZB.Web.Controllers
                     sendRepairFlag = infoModel.sendRepairFlag,
                     insuranceCompanyGroupCode = infoModel.insuranceCompanyGroupCode,
                     insuranceCompanyGroupName = infoModel.insuranceCompanyGroupName,
+                    insuranceCompanyName = infoModel.insuranceCompanyName,
                     insuranceCompanyCode = infoModel.insuranceCompanyCode,
                     repairFactoryCode = infoModel.repairFactoryCode,
                     repairFactoryName = infoModel.repairFactoryName,
@@ -359,8 +360,8 @@ namespace CZB.Web.Controllers
                     depreciation = infoModel.feeTotal_depreciation.ToDecimal(),
                     manageFee = infoModel.feeTotal_manageFee.ToDecimal(),
                     estimateAmount = infoModel.feeTotal_estimateAmount.ToDecimal(),
-                    rescueFee = infoModel.feeTotal_rescueFee.ToDecimal()
-
+                    rescueFee = infoModel.feeTotal_rescueFee.ToDecimal(),
+                    lossTotal = infoModel.feeTotal_lossTotal.ToDecimal()
                 }
             };
 
@@ -404,11 +405,11 @@ namespace CZB.Web.Controllers
                         laborHour = repairItemModel.laborHour.ToDecimal(),
                         laborHourFee = repairItemModel.laborHourFee.ToDecimal(),
                         laborType = repairItemModel.laborType,
-                        manualFlag = repairItemModel.manualFlag == "0" ? true : false,
+                        manualFlag = repairItemModel.manualFlag == "0" ? false : true,
                         operationType = repairItemModel.operationType,
                         outerLaborFee = repairItemModel.outerLaborFee.ToDecimal(),
-                        outerRepairFlag = repairItemModel.outerRepairFlag == "0" ? true : false,
-                        paintDiscountFlag = repairItemModel.paintDiscountFlag == "0" ? true : false,
+                        outerRepairFlag = repairItemModel.outerRepairFlag == "0" ? false : true,
+                        paintDiscountFlag = repairItemModel.paintDiscountFlag == "0" ? false : true,
                         partNo = ""
                     });
                 }
@@ -572,8 +573,8 @@ namespace CZB.Web.Controllers
                 claimAttachmentsIDs = "",//附件信息(复数)
                 MaterialItemsIDs = "",//损失项目-辅料项目(复数)
                 RepairItemsIDs = "",//损失项目-维修项目(复数)
-                estimatorCode = "", //修理厂信息-维修顾问账号
-                estimatorName = "", //修理厂信息-维修顾问姓名
+                estimatorCode = model.content.repairFacility.appraiserCode, //修理厂信息-维修顾问账号
+                estimatorName = model.content.repairFacility.appraiserName, //修理厂信息-维修顾问姓名
                 managementFee = 0,//费率折扣-管理费率
             };
 
