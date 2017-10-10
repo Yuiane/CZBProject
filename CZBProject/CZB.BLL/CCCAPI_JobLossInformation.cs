@@ -1,4 +1,5 @@
-﻿/**  版本信息模板在安装目录下，可自行修改。
+﻿using System.Collections.Generic;
+/**  版本信息模板在安装目录下，可自行修改。
 * CCCAPI_JobLossInformation.cs
 *
 * 功 能： N/A
@@ -14,10 +15,7 @@
 *│　版权所有：动软卓越（北京）科技有限公司　　　　　　　　　　　　　　│
 *└──────────────────────────────────┘
 */
-using System;
 using System.Data;
-using System.Collections.Generic;
-using CZB.Model;
 namespace CZB.BLL
 {
     /// <summary>
@@ -138,8 +136,8 @@ namespace CZB.BLL
 
         #endregion  BasicMethod
         #region  ExtensionMethod
-           
-        
+
+
         public bool AddJobLoss(Model.CCCAPI_JobLossInformation info_Model,
             List<Model.CCCAPI_ClaimAttachments> claimAttachmentsList,
             List<Model.CCCAPI_ChangeItems> changeItems,
@@ -149,7 +147,15 @@ namespace CZB.BLL
             return dal.AddJobLoss(info_Model, claimAttachmentsList, changeItems, materialItems, repairItems);
         }
 
+        /// <summary>
+        /// 根据工单号获取partyId编号
+        /// </summary>
+        /// <param name="businessNo"></param>
+        /// <returns></returns>
+        public object GetPartyId(string businessNo)
+        {
+            return dal.GetPartyId(businessNo);
+        }
         #endregion  ExtensionMethod
     }
 }
-

@@ -3,16 +3,14 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace CZB.DAL.SqlServer.DataProvider
 {
     /// <summary>
-	/// 数据访问类:CCCAPI_JobLossInformation
-	/// </summary>
-	public partial class CCCAPI_JobLossInformation : ICCCAPI_JobLossInformation
+    /// 数据访问类:CCCAPI_JobLossInformation
+    /// </summary>
+    public partial class CCCAPI_JobLossInformation : ICCCAPI_JobLossInformation
     {
         public CCCAPI_JobLossInformation()
         { }
@@ -952,29 +950,29 @@ namespace CZB.DAL.SqlServer.DataProvider
         }
 
         /*
-		/// <summary>
-		/// 分页获取数据列表
-		/// </summary>
-		public DataSet GetList(int PageSize,int PageIndex,string strWhere)
-		{
-			SqlParameter[] parameters = {
-					new SqlParameter("@tblName", SqlDbType.VarChar, 255),
-					new SqlParameter("@fldName", SqlDbType.VarChar, 255),
-					new SqlParameter("@PageSize", SqlDbType.Int),
-					new SqlParameter("@PageIndex", SqlDbType.Int),
-					new SqlParameter("@IsReCount", SqlDbType.Bit),
-					new SqlParameter("@OrderType", SqlDbType.Bit),
-					new SqlParameter("@strWhere", SqlDbType.VarChar,1000),
-					};
-			parameters[0].Value = "CCCAPI_JobLossInformation";
-			parameters[1].Value = "Id";
-			parameters[2].Value = PageSize;
-			parameters[3].Value = PageIndex;
-			parameters[4].Value = 0;
-			parameters[5].Value = 0;
-			parameters[6].Value = strWhere;	
-			return DbHelperSQL.RunProcedure("UP_GetRecordByPage",parameters,"ds");
-		}*/
+        /// <summary>
+        /// 分页获取数据列表
+        /// </summary>
+        public DataSet GetList(int PageSize,int PageIndex,string strWhere)
+        {
+            SqlParameter[] parameters = {
+                    new SqlParameter("@tblName", SqlDbType.VarChar, 255),
+                    new SqlParameter("@fldName", SqlDbType.VarChar, 255),
+                    new SqlParameter("@PageSize", SqlDbType.Int),
+                    new SqlParameter("@PageIndex", SqlDbType.Int),
+                    new SqlParameter("@IsReCount", SqlDbType.Bit),
+                    new SqlParameter("@OrderType", SqlDbType.Bit),
+                    new SqlParameter("@strWhere", SqlDbType.VarChar,1000),
+                    };
+            parameters[0].Value = "CCCAPI_JobLossInformation";
+            parameters[1].Value = "Id";
+            parameters[2].Value = PageSize;
+            parameters[3].Value = PageIndex;
+            parameters[4].Value = 0;
+            parameters[5].Value = 0;
+            parameters[6].Value = strWhere; 
+            return DbHelperSQL.RunProcedure("UP_GetRecordByPage",parameters,"ds");
+        }*/
 
         #endregion  BasicMethod
         #region  ExtensionMethod
@@ -1273,6 +1271,18 @@ namespace CZB.DAL.SqlServer.DataProvider
             return false;
         }
 
+        public object GetPartyId(string businessNo)
+        {
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append(" select top 1 partyId from CCCAPI_JobLossInformation where businessNo=@businessNo ");
+
+            SqlParameter[] sqlParameters = new SqlParameter[]
+            {
+                new SqlParameter("businessNo", businessNo)
+            };
+
+            return DbHelperSQL.GetSingle(strSql.ToString(), sqlParameters);
+        }
         #endregion  ExtensionMethod
     }
 }

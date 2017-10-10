@@ -194,6 +194,8 @@
     <Compile Include="Models\ReturnCode.cs" />
     <Compile Include="Models\ReturnResult.cs" />
     <Compile Include="Models\SiTengModel\STAPI_DrpRepairSheet.cs" />
+    <Compile Include="Models\UpdateDrpInfo.cs" />
+    <Compile Include="Models\UpdateDrpReturn.cs" />
     <Compile Include="Models\UserLoginReturn.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

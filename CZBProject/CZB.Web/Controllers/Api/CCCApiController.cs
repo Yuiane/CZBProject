@@ -6,10 +6,12 @@ using CZB.Common.Helpers;
 using CZB.Model;
 using System;
 using System.Collections.Generic;
+using System.Text;
 using System.Web.Http;
 
 namespace CZB.Web.Controllers
 {
+
     /// <summary>
     /// CCC接口管理
     /// </summary>
@@ -67,6 +69,100 @@ namespace CZB.Web.Controllers
 
         }
 
+        /// <summary>
+        /// 工单维修接口
+        /// </summary>
+        /// <returns></returns>
+        [AllowAnonymous]
+        [Route("UpdateDrpInfo")]
+        [AcceptVerbs("Get", "Post")]
+        public ReturnResult UpdateDrpInfo()
+        {
+            StringBuilder strLog = new StringBuilder();
+            try
+            {
+                strLog.AppendLine("--------------begin--------------");
+                Models.UpdateDrpInfo model = Request.CZBParam<Models.UpdateDrpInfo>();
+                if (model == null)
+                {
+                    strLog.AppendLine("--------------数据不符合要求--------------");
+                    LogHelper.WriteLog(LogEnum.Api, strLog.ToStringEx());
+                    return new ReturnResult()
+                    {
+                        resultCode = ResultCode.DataFormatDoesNotMeetRequirements,
+                        repairOrderNo = "",
+                        resultMsg = "请求失败"
+                    };
+                }
+
+                if (model.repairOrderNo.IsNullOrWhiteSpace())
+                {
+                    strLog.AppendLine("--------------repairOrderNo数据不符合要求--------------");
+                    LogHelper.WriteLog(LogEnum.Api, strLog.ToStringEx());
+                    return new ReturnResult()
+                    {
+                        resultCode = ResultCode.EntriesMustNotBeNull,
+                        repairOrderNo = "",
+                        resultMsg = "请求失败"
+                    };
+                }
+
+                strLog.AppendLine("--------------model:--------------" + model.ToJson());
+                string url = "http://sit-interface.cccdrp.com/drp-interface/interface/restful/changeRepairOrderStatusRequest";
+                var _model = new
+                {
+                    businessNo = model.repairOrderNo,
+                    partyId = new BLL.CCCAPI_JobLossInformation().GetPartyId(model.repairOrderNo),
+                    content = new
+                    {
+                        repairOrderNo = model.repairOrderNo,
+                        repairOrderTypeCode = model.repairOrderTypeCode,
+                        modifyDate = DateTime.Now.ToDateString("yyyy-MM-dd HH:mm:ss"),
+                        vehicleOwnerName = model.vehicleOwnerName,
+                        vehicleOwnerTelNo = model.vehicleOwnerTelNo,
+                        estimatePickCarDate = model.estimatePickCarDate.ToDateString(),
+                        pickCarDate = model.pickCarDate.ToDateString()
+                    }
+                };
+                string postInfo = string.Format("\"partyId\":\"{0}\",\"businessNo\":\"{1}\",\"content\":\"{2}\"", _model.partyId, _model.businessNo, _model.content.ToJson().Replace("\"", "'"));
+                postInfo = "{" + postInfo + "}";
+                strLog.AppendLine("--------------postInfo:--------------" + postInfo);
+                CZB.Web.Models.UpdateDrpReturn _result = Utils.HttpPostRequest(url, postInfo).JsonToObj<CZB.Web.Models.UpdateDrpReturn>();
+                if (_result.success)
+                {
+                    strLog.AppendLine("--------------success--------------");
+                    LogHelper.WriteLog(LogEnum.Api, strLog.ToStringEx());
+                    return new ReturnResult()
+                    {
+                        resultCode = ResultCode.Success,
+                        repairOrderNo = "",
+                        resultMsg = "请求成功"
+                    };
+                }
+                else
+                {
+                    strLog.AppendLine("--------------success--------------");
+                    LogHelper.WriteLog(LogEnum.Api, strLog.ToStringEx());
+                    return new ReturnResult()
+                    {
+                        resultCode = ResultCode.UnknownException,
+                        repairOrderNo = "",
+                        resultMsg = "请求失败"
+                    };
+                }
+
+            }
+            catch (Exception err)
+            {
+                LogHelper.WriteLog(LogEnum.Api, strLog.ToStringEx());
+                return new ReturnResult
+                {
+                    resultCode = ResultCode.UnknownException,
+                    repairOrderNo = err.Message,
+                    resultMsg = "未知异常情况"
+                };
+            }
+        }
 
         /// <summary>
         ///  核损

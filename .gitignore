@@ -288,3 +288,4 @@ __pycache__/
 *.xsd.cs
 /CZBProject/CZB.Web/Logs/CCCApi
 /CZBProject/CZB.Web/Logs/CCCApiJson
+/CZBProject/CZB.Web/Logs
