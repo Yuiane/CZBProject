@@ -41,7 +41,8 @@ namespace CZB.Web.Api.Common
                     levelName = level == 1 ? "一级代理商" : level == 2 ? "二级代理商" : "三级代理商",
                     name = model.TrueName,
                     phone = model.Mobile,
-                    cityCode = model.CityCode
+                    cityCode = model.CityCode,
+                    code = model.UserAccountNumer
                 };
                 //中部菜单信息
                 var Menulist = new List<ShowMenuList>();

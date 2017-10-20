@@ -15,7 +15,7 @@ namespace CZB.Web.Common
             //userName=dsbp&passWord=666666&clientId=AW0001
             var postValue1 = "userName=automan&passWord=c655ab48d02e4edcaddc7bc81661d35e&clientId=AW0001";
             var url = "http://wechat.51sten.com/autoOpen/api/drp/login";
-            url = "http://114.55.72.16/api/drp/login";
+            //url = "http://114.55.72.16/api/drp/login";
             var _value = Utils.HttpRequestSiTeng(url, RequestType.POST, postValue1);
             LogHelper.WriteLog(LogEnum.SiTengApi, "login:" + _value);
             SiTengReturn model = _value.JsonToObj<SiTengReturn>();
@@ -23,7 +23,7 @@ namespace CZB.Web.Common
             {
                 var postValue2 = string.Format("token={0}&clientId={1}&drpData={2}", model.token, "AW0001", postJson);
                 var _url = "http://wechat.51sten.com/autoOpen/api/drp/addDrpRepairSheet";
-                _url = "http://114.55.72.16/api/drp/addDrpRepairSheet";
+                //_url = "http://114.55.72.16/api/drp/addDrpRepairSheet";
                 var _value2 = Utils.HttpRequestSiTeng(_url, RequestType.POST, postValue2);
                 LogHelper.WriteLog(LogEnum.SiTengApi, "addDrpRepairSheet:" + _value2 + "参数:" + postValue2);
             }

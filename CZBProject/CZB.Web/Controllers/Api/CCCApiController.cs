@@ -342,7 +342,7 @@ namespace CZB.Web.Controllers
                         itemid = materialItemsModel.itemId.ToDecimal(),
                         itemName = materialItemsModel.itemName,
                         manualFlag = materialItemsModel.manualFlag.ToLower() == "true" ? true : false,
-                        materialUnit = "",
+                        materialUnit = materialItemsModel.materialUnit.ToStringEx(),
                         partFee = materialItemsModel.partFee.ToDecimal(),
                         partQuantity = materialItemsModel.partQuantity.ToDecimal(),
                         unitPrice = materialItemsModel.unitPrice.ToDecimal()
@@ -479,7 +479,7 @@ namespace CZB.Web.Controllers
                         partFeeAfterDiscount = changeItemsModel.partFeeAfterDiscount.ToDecimal(),
                         partNo = changeItemsModel.partNo,
                         partQuantity = changeItemsModel.partQuantity.ToDecimal(),
-                        recycleFlag = changeItemsModel.recycleFlag.ToLower() == "true" ? true : false,
+                        recycleFlag = changeItemsModel.recycleFlag.ToLower() == "true" ? true : false
                     });
                 }
             }

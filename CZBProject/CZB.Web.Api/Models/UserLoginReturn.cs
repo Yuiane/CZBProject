@@ -94,5 +94,10 @@ namespace CZB.Web.Api.Models
         public string money { get; set; }
 
         public string cityCode { get; set; }
+
+        /// <summary>
+        /// 用户邀请码
+        /// </summary>
+        public string code { get; set; }
     }
 }

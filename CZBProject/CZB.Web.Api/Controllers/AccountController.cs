@@ -425,5 +425,74 @@ namespace CZB.Web.Api.Controllers
                 };
             }
         }
+
+        /// <summary>
+        /// APP注册代理商
+        /// </summary>
+        /// <returns></returns>
+        [AllowAnonymous]
+        [AcceptVerbs("GET", "POST")]
+        [ActionName("Register")]
+        public ReturnResult Register()
+        {
+            try
+            {
+                string name = Request.Param("name").ToStringEx();     //用户名
+                string number = Request.Param("number").ToStringEx(); //身份证号
+                string phone = Request.Param("phone").ToStringEx();   //手机号码
+                string code = Request.Param("code").ToStringEx();     //短信验证码
+                string zcode = Request.Param("zcode").ToStringEx();   //代理商邀请码
+
+                Model.FX_Agent agentModel = new Model.FX_Agent()
+                {
+                    TrueName = name,
+                    IDNO = number,
+                    Mobile = phone,
+                    OpenId = "",
+                    WXName = "",
+                    FacePic = "",
+                    ParentId = 0,
+                    ParentList = ",",
+                    TotalAmout = 0,
+                    AvailableAmount = 0,
+                    CreateTime = DateTime.Now,
+                    IsDelete = false,
+                    IsUse = true,
+                    ComeFrom = 1
+                };
+
+                Model.FX_Agent agentParentModel = new BLL.FX_Agent().GetModelByZCode(zcode);
+                if (agentParentModel != null)
+                {
+                    agentModel.CityCode = agentParentModel.CityCode;
+                    if (agentParentModel.AgentLevel == 1)
+                    {
+                        agentModel.ParentList += agentParentModel.AgentId + ",";
+                        agentModel.AgentLevel = 2;
+                    }
+                    else
+                    {
+                        Model.FX_Agent agentFirstParent = new BLL.FX_Agent().GetModelByZCode(agentParentModel.ParentId.Value.ToStringEx());
+                        if (agentFirstParent != null)
+                        {
+                            agentModel.ParentList += agentFirstParent.AgentId + ",";
+                            agentModel.ParentList += agentParentModel.AgentId + ",";
+                            agentModel.AgentLevel = 3;
+                        }
+                    }
+                }
+
+                new BLL.FX_Agent().RegisterAgent(agentModel);
+            }
+            catch (Exception err)
+            {
+                return new ReturnResult()
+                {
+                    code = ReturnCode.Error,
+                    data = "",
+                    desc = err.Message
+                };
+            }
+        }
     }
 }

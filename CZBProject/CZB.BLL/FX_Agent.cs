@@ -117,6 +117,26 @@ namespace CZB.BLL
         }
 
         /// <summary>
+        /// 根据Code邀请码获取用户信息
+        /// </summary>
+        /// <param name="zCode"></param>
+        /// <returns></returns>
+        public Model.FX_Agent GetModelByZCode(string zCode)
+        {
+            return GetModelByZ_Code(zCode).Tables[0].ToEntity<Model.FX_Agent>();
+        }
+
+        /// <summary>
+        /// 根据Code邀请码获取用户信息
+        /// </summary>
+        /// <param name="phone"></param>
+        /// <returns></returns>
+        private DataSet GetModelByZ_Code(string zCode)
+        {
+            return dal.GetModelByZ_Code(zCode);
+        }
+
+        /// <summary>
         /// 根据代理商编号获取代理商信息
         /// </summary>
         /// <param name="phone"></param>
@@ -144,6 +164,15 @@ namespace CZB.BLL
         public int GetCountParent(int agentId)
         {
             return dal.GetCountParent(agentId);
+        }
+        /// <summary>
+        /// 注册代理商
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public bool RegisterAgent(CZB.Model.FX_Agent model)
+        {
+            return dal.RegisterAgent(model);
         }
 
         #endregion  ExtensionMethod

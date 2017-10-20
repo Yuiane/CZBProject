@@ -116,6 +116,7 @@ namespace CZB.DAL.SqlServer.DataProvider
 
 
 
+
         /// <summary>
         ///  获取=>下级发展的数量
         /// </summary>
@@ -361,6 +362,23 @@ namespace CZB.DAL.SqlServer.DataProvider
             return DbHelperSQL.Query(strSql.ToString(), sqlParameters);
         }
 
+
+        /// <summary>
+        /// 根据Code邀请码获取用户信息
+        /// </summary>
+        /// <param name="phone"></param>
+        /// <returns></returns>
+        public DataSet GetModelByZ_Code(string z_code)
+        {
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append(" select * from FX_Agent where UserAccountNumer=@UserAccountNumer; ");
+
+            var sqlParameters = new SqlParameter[] {
+                new SqlParameter("@UserAccountNumer",z_code)
+            };
+            return DbHelperSQL.Query(strSql.ToString(), sqlParameters);
+        }
+
         /// <summary>
         /// 根据代理商编号获取代理商信息
         /// </summary>
@@ -376,6 +394,110 @@ namespace CZB.DAL.SqlServer.DataProvider
             };
 
             return DbHelperSQL.Query(strSql.ToString(), sqlParameters);
+        }
+
+
+        /// <summary>
+        /// 注册代理商
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public bool RegisterAgent(CZB.Model.FX_Agent model)
+        {
+            using (SqlConnection conn = new SqlConnection(DbHelperSQL.connectionString))
+            {
+                conn.Open();
+                using (SqlTransaction trans = conn.BeginTransaction())
+                {
+                    try
+                    {
+                        StringBuilder strSql = new StringBuilder();
+                        strSql.Append("insert into FX_Agent(");
+                        strSql.Append("TrueName,IDNO,Mobile,UserAccountNumer,Password,OpenId,WXName,FacePic,ProvId,CityId,Address,ParentId,ParentList,AgentLevel,TotalAmout,AvailableAmount,CityCode,CreateTime,IsDelete,IsUse,RoleTypeID,ShareRate)");
+                        strSql.Append(" values (");
+                        strSql.Append("@TrueName,@IDNO,@Mobile,@UserAccountNumer,@Password,@OpenId,@WXName,@FacePic,@ProvId,@CityId,@Address,@ParentId,@ParentList,@AgentLevel,@TotalAmout,@AvailableAmount,@CityCode,@CreateTime,@IsDelete,@IsUse,@RoleTypeID,@ShareRate)");
+                        strSql.Append(";select @@IDENTITY");
+                        SqlParameter[] parameters =
+                        {
+                        new SqlParameter("@TrueName", SqlDbType.NVarChar,50),
+                        new SqlParameter("@IDNO", SqlDbType.NVarChar,50),
+                        new SqlParameter("@Mobile", SqlDbType.NVarChar,50),
+                        new SqlParameter("@UserAccountNumer", SqlDbType.NVarChar,50),
+                        new SqlParameter("@Password", SqlDbType.NVarChar,50),
+                        new SqlParameter("@OpenId", SqlDbType.NVarChar,50),
+                        new SqlParameter("@WXName", SqlDbType.NVarChar,50),
+                        new SqlParameter("@FacePic", SqlDbType.NVarChar,200),
+                        new SqlParameter("@ProvId", SqlDbType.Int,4),
+                        new SqlParameter("@CityId", SqlDbType.Int,4),
+                        new SqlParameter("@Address", SqlDbType.NVarChar,200),
+                        new SqlParameter("@ParentId", SqlDbType.Int,4),
+                        new SqlParameter("@ParentList", SqlDbType.NVarChar,50),
+                        new SqlParameter("@AgentLevel", SqlDbType.Int,4),
+                        new SqlParameter("@TotalAmout", SqlDbType.Decimal,9),
+                        new SqlParameter("@AvailableAmount", SqlDbType.Decimal,9),
+                        new SqlParameter("@CityCode", SqlDbType.NVarChar,50),
+                        new SqlParameter("@CreateTime", SqlDbType.DateTime),
+                        new SqlParameter("@IsDelete", SqlDbType.Bit,1),
+                        new SqlParameter("@IsUse", SqlDbType.Bit,1),
+                        new SqlParameter("@RoleTypeID", SqlDbType.Int,4),
+                        new SqlParameter("@ShareRate", SqlDbType.Int,4)
+                        };
+                        parameters[0].Value = model.TrueName;
+                        parameters[1].Value = model.IDNO;
+                        parameters[2].Value = model.Mobile;
+                        parameters[3].Value = model.UserAccountNumer;
+                        parameters[4].Value = model.Password;
+                        parameters[5].Value = model.OpenId;
+                        parameters[6].Value = model.WXName;
+                        parameters[7].Value = model.FacePic;
+                        parameters[8].Value = model.ProvId;
+                        parameters[9].Value = model.CityId;
+                        parameters[10].Value = model.Address;
+                        parameters[11].Value = model.ParentId;
+                        parameters[12].Value = model.ParentList;
+                        parameters[13].Value = model.AgentLevel;
+                        parameters[14].Value = model.TotalAmout;
+                        parameters[15].Value = model.AvailableAmount;
+                        parameters[16].Value = model.CityCode;
+                        parameters[17].Value = model.CreateTime;
+                        parameters[18].Value = model.IsDelete;
+                        parameters[19].Value = model.IsUse;
+                        parameters[20].Value = model.RoleTypeID;
+                        parameters[21].Value = model.ShareRate;
+
+                        object obj = DbHelperSQL.GetSingle(conn, trans, strSql.ToString(), parameters);
+                        int addId = 0;
+                        if (obj != null)
+                        {
+                            addId = Convert.ToInt32(obj);
+                        }
+                        if (addId > 0)
+                        {
+                            string parentList = model.ParentList + addId + ",";
+                            StringBuilder strUpdateSql = new StringBuilder();
+                            strUpdateSql.Append(" update FX_Agent ");
+                            strUpdateSql.Append(" set ParentList = @ParentList ");
+                            strUpdateSql.Append(" where AgentId = @AgentId ");
+
+                            SqlParameter[] updateParameters = {
+                                                        new SqlParameter("@ParentList",SqlDbType.VarChar,50),
+                                                        new SqlParameter("@AgentId",SqlDbType.Int,4)
+                                                        };
+
+                            updateParameters[0].Value = parentList;
+                            updateParameters[1].Value = addId;
+                            DbHelperSQL.ExecuteSql(conn, trans, strUpdateSql.ToString(), updateParameters);
+                        }
+                        trans.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        trans.Rollback();
+                        return false;
+                    }
+                }
+            }
+            return true;
         }
 
         #endregion  ExtensionMethod

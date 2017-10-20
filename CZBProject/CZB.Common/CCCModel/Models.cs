@@ -198,6 +198,8 @@ namespace CZB.Common.CCCModel
         public string itemId { get; set; }
         public string itemName { get; set; }
         public string manualFlag { get; set; }
+
+        public string materialUnit { get; set; }
         public string partFee { get; set; }
         public string partQuantity { get; set; }
         public string unitPrice { get; set; }
