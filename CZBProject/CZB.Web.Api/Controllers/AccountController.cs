@@ -76,6 +76,49 @@ namespace CZB.Web.Api.Controllers
             }
         }
 
+        /// <summary>
+        /// 刷新用户信息
+        /// </summary>
+        /// <returns></returns>
+        [AllowAnonymous]
+        [AcceptVerbs("GET", "POST")]
+        [ActionName("RefreshUserInfo")]
+        public ReturnResult RefreshUserInfo()
+        {
+            try
+            {
+                string phone = Request.Param("phone");
+                if (phone.IsNotNullOrWhiteSpace())
+                {
+                    var userInfo = new Accounts().UserLogin(phone);
+                    // 获取用户相关基本信息 
+                    return new ReturnResult
+                    {
+                        code = ReturnCode.Success,
+                        desc = "登录成功",
+                        data = userInfo
+                    };
+                }
+                else
+                {
+                    return new ReturnResult()
+                    {
+                        code = ReturnCode.NullOrEmpty,
+                        data = "",
+                        desc = "参数异常 phone:" + phone
+                    };
+                }
+            }
+            catch (Exception err)
+            {
+                return new ReturnResult()
+                {
+                    code = ReturnCode.Error,
+                    data = "",
+                    desc = err.Message
+                };
+            }
+        }
 
         /// <summary>
         /// 发送验证码
@@ -443,6 +486,56 @@ namespace CZB.Web.Api.Controllers
                 string code = Request.Param("code").ToStringEx();     //短信验证码
                 string zcode = Request.Param("zcode").ToStringEx();   //代理商邀请码
 
+                if (name.IsNullOrWhiteSpace())
+                {
+                    return new ReturnResult()
+                    {
+                        code = ReturnCode.NullOrEmpty,
+                        data = "",
+                        desc = "用户名为必填项"
+                    };
+                }
+
+                if (number.IsNullOrWhiteSpace())
+                {
+                    return new ReturnResult()
+                    {
+                        code = ReturnCode.NullOrEmpty,
+                        data = "",
+                        desc = "身份证号为必填项"
+                    };
+                }
+
+                if (phone.IsNullOrWhiteSpace())
+                {
+                    return new ReturnResult()
+                    {
+                        code = ReturnCode.NullOrEmpty,
+                        data = "",
+                        desc = "手机号码为必填项"
+                    };
+                }
+
+                if (code.IsNullOrWhiteSpace())
+                {
+                    return new ReturnResult()
+                    {
+                        code = ReturnCode.NullOrEmpty,
+                        data = "",
+                        desc = "验证码为必填项"
+                    };
+                }
+
+                if (zcode.IsNullOrWhiteSpace())
+                {
+                    return new ReturnResult()
+                    {
+                        code = ReturnCode.NullOrEmpty,
+                        data = "",
+                        desc = "邀请码为必填项"
+                    };
+                }
+
                 Model.FX_Agent agentModel = new Model.FX_Agent()
                 {
                     TrueName = name,
@@ -458,7 +551,8 @@ namespace CZB.Web.Api.Controllers
                     CreateTime = DateTime.Now,
                     IsDelete = false,
                     IsUse = true,
-                    ComeFrom = 1
+                    ComeFrom = 1,
+                    UserAccountNumer = new BLL.FX_Agent().GetUserAccountNumer().ToStringEx()
                 };
 
                 Model.FX_Agent agentParentModel = new BLL.FX_Agent().GetModelByZCode(zcode);
@@ -482,7 +576,71 @@ namespace CZB.Web.Api.Controllers
                     }
                 }
 
-                new BLL.FX_Agent().RegisterAgent(agentModel);
+                if (new BLL.FX_Agent().RegisterAgent(agentModel))
+                {
+                    //LogHelper.WriteLog(CZB.Common.Enums.LogEnum.Api, agentModel.ToJson());
+                    return new ReturnResult()
+                    {
+                        code = ReturnCode.Success,
+                        data = "",
+                        desc = "注册成功"
+                    };
+                }
+                else
+                {
+                    return new ReturnResult()
+                    {
+                        code = ReturnCode.Error,
+                        data = "",
+                        desc = "注册失败"
+                    };
+                }
+            }
+            catch (Exception err)
+            {
+                return new ReturnResult()
+                {
+                    code = ReturnCode.Error,
+                    data = "",
+                    desc = err.Message
+                };
+            }
+        }
+
+
+        /// <summary>
+        /// 获取代理商最新可注册邀请码
+        /// </summary>
+        /// <returns></returns>
+        [AllowAnonymous]
+        [AcceptVerbs("POST")]
+        [ActionName("GetUserAccountNumer")]
+        public ReturnResult GetUserAccountNumer()
+        {
+            try
+            {
+                int number = new BLL.FX_Agent().GetUserAccountNumer();
+                if (number > 0)
+                {
+                    return new ReturnResult()
+                    {
+                        code = ReturnCode.Success,
+                        data = new
+                        {
+                            number = number
+                        },
+                        desc = ""
+                    };
+                }
+                else
+                {
+                    return new ReturnResult()
+                    {
+                        code = ReturnCode.Error,
+                        data = "",
+                        desc = "未知错误"
+                    };
+                }
             }
             catch (Exception err)
             {

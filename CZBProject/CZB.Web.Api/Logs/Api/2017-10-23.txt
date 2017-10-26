@@ -1,0 +1,2 @@
+
+11时45分37秒   {"AgentId":0,"TrueName":"宋璇","IDNO":"320723199601292415","Mobile":"18626196414","UserAccountNumer":null,"Password":null,"OpenId":"","WXName":"","FacePic":"","ProvId":null,"CityId":null,"Address":null,"ParentId":0,"ParentList":",3154,","AgentLevel":2,"TotalAmout":0.0,"AvailableAmount":0.0,"CityCode":"320500","CreateTime":"2017-10-23T11:44:53.8785271+08:00","IsDelete":false,"IsUse":true,"RoleTypeID":null,"ShareRate":1,"ShareUrl":null,"ComeFrom":1}

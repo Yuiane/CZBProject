@@ -175,6 +175,14 @@ namespace CZB.BLL
             return dal.RegisterAgent(model);
         }
 
+        /// <summary>
+        /// 获取代理商最新可注册邀请码
+        /// </summary>
+        public int GetUserAccountNumer()
+        {
+            return dal.GetUserAccountNumer();
+        }
+
         #endregion  ExtensionMethod
     }
 }

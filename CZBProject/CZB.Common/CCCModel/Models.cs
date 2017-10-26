@@ -223,6 +223,7 @@ namespace CZB.Common.CCCModel
         public string outerRepairFlag { get; set; }
         public string partNo { get; set; }
         public string paintDiscountFlag { get; set; }
+
     }
 
     /// <summary>

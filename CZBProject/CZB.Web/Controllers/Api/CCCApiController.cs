@@ -369,12 +369,12 @@ namespace CZB.Web.Controllers
                         laborHour = repairItemModel.laborHour.ToDecimal(),
                         laborHourFee = repairItemModel.laborHourFee.ToDecimal(),
                         laborType = repairItemModel.laborType,
-                        manualFlag = repairItemModel.manualFlag == "0" ? false : true,
+                        manualFlag = repairItemModel.manualFlag == "1" ? true : false,
                         operationType = repairItemModel.operationType,
                         outerLaborFee = repairItemModel.outerLaborFee.ToDecimal(),
-                        outerRepairFlag = repairItemModel.outerRepairFlag == "0" ? false : true,
-                        paintDiscountFlag = repairItemModel.paintDiscountFlag == "0" ? false : true,
-                        partNo = ""
+                        outerRepairFlag = repairItemModel.outerRepairFlag == "1" ? true : false,
+                        paintDiscountFlag = repairItemModel.paintDiscountFlag == "1" ? true : false,
+                        partNo = repairItemModel.partNo.ToStringEx()
                     });
                     infoModel.RepairItemsIDs += _guid + ",";
                 }
@@ -501,12 +501,12 @@ namespace CZB.Web.Controllers
                         laborHour = repairItemModel.laborHour.ToDecimal(),
                         laborHourFee = repairItemModel.laborHourFee.ToDecimal(),
                         laborType = repairItemModel.laborType,
-                        manualFlag = repairItemModel.manualFlag == "0" ? false : true,
+                        manualFlag = repairItemModel.manualFlag == "1" ? true : false,
                         operationType = repairItemModel.operationType,
                         outerLaborFee = repairItemModel.outerLaborFee.ToDecimal(),
-                        outerRepairFlag = repairItemModel.outerRepairFlag == "0" ? false : true,
-                        paintDiscountFlag = repairItemModel.paintDiscountFlag == "0" ? false : true,
-                        partNo = ""
+                        outerRepairFlag = repairItemModel.outerRepairFlag == "1" ? true : false,
+                        paintDiscountFlag = repairItemModel.paintDiscountFlag == "1" ? true : false,
+                        partNo = repairItemModel.partNo.ToStringEx()
                     });
                 }
             }
@@ -523,7 +523,7 @@ namespace CZB.Web.Controllers
                         itemId = materialItemsModel.itemId,
                         itemName = materialItemsModel.itemName,
                         manualFlag = materialItemsModel.manualFlag.ToLower() == "true" ? true : false,
-                        materialUnit = "",
+                        materialUnit = materialItemsModel.materialUnit.ToStringEx(),
                         partFee = materialItemsModel.partFee.ToDecimal(),
                         partQuantity = materialItemsModel.partQuantity.ToDecimal(),
                         unitPrice = materialItemsModel.unitPrice.ToDecimal()

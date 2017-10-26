@@ -500,6 +500,25 @@ namespace CZB.DAL.SqlServer.DataProvider
             return true;
         }
 
+        /// <summary>
+        /// 获取代理商最新可注册邀请码
+        /// </summary>
+        public int GetUserAccountNumer()
+        {
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append(" select max(UserAccountNumer) from FX_Agent; ");
+            object obj = DbHelperSQL.GetSingle(strSql.ToString());
+            if (obj == null)
+            {
+                return 0;
+            }
+            else
+            {
+                return obj.ToInt32() + 1;
+            }
+        }
+
+
         #endregion  ExtensionMethod
     }
 }
