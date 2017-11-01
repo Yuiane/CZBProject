@@ -8,31 +8,17 @@
     创建标识：yuanlj - 2017-07-04
 ----------------------------------------------------------------*/
 
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Web;
-using System.Web.Configuration;
-using Senparc.Weixin.MP.Agent;
-using Senparc.Weixin.Context;
-using Senparc.Weixin.Exceptions;
-using Senparc.Weixin.Helpers;
+using CZB.Common;
+using CZB.Common.Enums;
+using CZB.Common.Extensions;
+using CZB.Config;
+using Senparc.Weixin.MP.CommonAPIs;
 using Senparc.Weixin.MP.Entities;
 using Senparc.Weixin.MP.Entities.Request;
 using Senparc.Weixin.MP.MessageHandlers;
-using Senparc.Weixin.MP.Helpers;
-using System.Xml.Linq;
-using Senparc.Weixin.MP.AdvancedAPIs;
-using System.Threading.Tasks;
-using Senparc.Weixin.Entities.Request;
-using CZB.Config;
-using CZB.Common.Extensions;
-using CZB.Common.Enums;
-using CZB.Common;
+using System;
+using System.Collections.Generic;
+using System.IO;
 
 namespace CZB.Web.WeXin.CommonService.MessageHandlers.CustomMessageHandler
 {
@@ -110,7 +96,7 @@ namespace CZB.Web.WeXin.CommonService.MessageHandlers.CustomMessageHandler
             if (requestMessage.Content.Contains("客服"))
             {
                 var _responseMessage = this.CreateResponseMessage<ResponseMessageTransfer_Customer_Service>();
-                
+
                 return _responseMessage;
             }
 
@@ -123,10 +109,104 @@ namespace CZB.Web.WeXin.CommonService.MessageHandlers.CustomMessageHandler
                     responseMessageContent = model.ReplyIdList;
                 }
             }
+            try
+            {
+                var access_token = CommonApi.GetToken(BaseConfig.AppId, BaseConfig.AppSecret);
+                if (access_token.errcode == Senparc.Weixin.ReturnCode.请求成功)
+                {
+                    string urlFormat = string.Format("https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token={0}", access_token.access_token);
+                    var info = new
+                    {
+                        touser = "og-q0wrX_5_GLHjUTarJJ13yg1hc",
+                        msgtype = "text",
+                        text = new
+                        {
+                            content = "公众号新消息:" + requestMessage.Content
+                        }
+                    };
+                    Utils.HttpPostRequest(urlFormat, info.ToJson());
+                }
+            }
+            catch (Exception err)
+            {
+                LogHelper.WriteLog(LogEnum.Error, " 客服接口异常:" + err.Message);
+            }
+
             var responseMessage = this.CreateResponseMessage<ResponseMessageText>();
             responseMessage.Content = responseMessageContent;
             return responseMessage;
         }
+
+        /// <summary>
+        /// 处理图片请求
+        /// </summary>
+        /// <param name="requestMessage"></param>
+        /// <returns></returns>
+        public override IResponseMessageBase OnImageRequest(RequestMessageImage requestMessage)
+        {
+            try
+            {
+                var access_token = CommonApi.GetToken(BaseConfig.AppId, BaseConfig.AppSecret);
+                if (access_token.errcode == Senparc.Weixin.ReturnCode.请求成功)
+                {
+                    string urlFormat = string.Format("https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token={0}", access_token.access_token);
+                    var info = new
+                    {
+                        touser = "og-q0wrX_5_GLHjUTarJJ13yg1hc",
+                        msgtype = "text",
+                        text = new
+                        {
+                            content = "公众号收到一张图片消息: " + requestMessage.PicUrl
+                        }
+                    };
+                    Utils.HttpPostRequest(urlFormat, info.ToJson());
+                }
+            }
+            catch (Exception err)
+            {
+                LogHelper.WriteLog(LogEnum.Error, " 客服接口异常:" + err.Message);
+            }
+
+            var responseMessage = this.CreateResponseMessage<ResponseMessageText>();
+            responseMessage.Content = "success";
+            return responseMessage;
+        }
+
+        /// <summary>
+        /// 处理语音请求
+        /// </summary>
+        /// <param name="requestMessage"></param>
+        /// <returns></returns>
+        public override IResponseMessageBase OnVoiceRequest(RequestMessageVoice requestMessage)
+        {
+            try
+            {
+                var access_token = CommonApi.GetToken(BaseConfig.AppId, BaseConfig.AppSecret);
+                if (access_token.errcode == Senparc.Weixin.ReturnCode.请求成功)
+                {
+                    string urlFormat = string.Format("https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token={0}", access_token.access_token);
+                    var info = new
+                    {
+                        touser = "og-q0wrX_5_GLHjUTarJJ13yg1hc",
+                        msgtype = "text",
+                        text = new
+                        {
+                            content = "公众号收到一条语音消息"
+                        }
+                    };
+                    Utils.HttpPostRequest(urlFormat, info.ToJson());
+                }
+            }
+            catch (Exception err)
+            {
+                LogHelper.WriteLog(LogEnum.Error, " 客服接口异常:" + err.Message);
+            }
+
+            var responseMessage = this.CreateResponseMessage<ResponseMessageText>();
+            responseMessage.Content = "success";
+            return responseMessage;
+        }
+
 
         #region 分开管理
         /*

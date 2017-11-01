@@ -101,11 +101,63 @@ namespace CZB.Common
         /// <returns></returns>
         public static string HttpPostRequest(string url, string param)
         {
-            return HttpRequest(url, RequestType.POST, param);
+            return HttpUtilRequest(url, RequestType.POST, param);
         }
 
         /// <summary>
         /// http 请求  Get/Post
+        /// </summary>
+        /// <param name="url">请求路径</param>
+        /// <param name="requestType">Get/Post</param>
+        /// <param name="param">Post 请求参数</param>
+        /// <returns></returns>
+        private static string HttpUtilRequest(string url, RequestType enumType, string param)
+        {
+            HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(url);
+            request.Method = enumType.ToString();
+
+            request.ContentType = "application/x-www-form-urlencoded";
+            request.Accept = "*/*";
+
+            request.Timeout = 15000;
+            request.AllowAutoRedirect = false;
+
+            StreamWriter requestStream = null;
+            WebResponse response = null;
+            string responseStr = null;
+
+            try
+            {
+                if (enumType == RequestType.POST)
+                {
+                    requestStream = new StreamWriter(request.GetRequestStream());
+                    requestStream.Write(param);
+                    requestStream.Close();
+                }
+                response = request.GetResponse();
+                if (response != null)
+                {
+                    StreamReader reader = new StreamReader(response.GetResponseStream(), Encoding.UTF8);
+                    responseStr = reader.ReadToEnd();
+                    reader.Close();
+                }
+            }
+            catch (Exception e)
+            {
+                LogHelper.WriteLog(Enums.LogEnum.Error, e.Message);
+                return string.Empty;
+            }
+            finally
+            {
+                request = null;
+                requestStream = null;
+                response = null;
+            }
+            return responseStr;
+        }
+
+        /// <summary>
+        /// http 请求  Get/Post  CCC
         /// </summary>
         /// <param name="url">请求路径</param>
         /// <param name="requestType">Get/Post</param>
@@ -294,5 +346,8 @@ namespace CZB.Common
             }
             return result;
         }
+
+
+
     }
 }
