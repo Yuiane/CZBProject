@@ -1,0 +1,38 @@
+﻿page-login {
+
+    .item-contain {
+        background-color: #0058b6;
+        background-size: cover;
+    }
+
+    .item-inner {
+        border-bottom-color: #1a68bd !important;
+        box-shadow: none !important;
+    }
+
+    .item-contain-button {
+        border-radius: 6px;
+        -moz-border-radius: 6px;
+        -webkit-border-radius: 6px;
+        font-size: 1.7rem;
+        color: #0058b6;
+    }
+
+    .item-contain-button2 {
+        border-radius: 6px;
+        -moz-border-radius: 6px;
+        -webkit-border-radius: 6px;
+        font-size: 1.7rem;
+        color: #ff6a00;
+    }
+
+    .login-item {
+        border: none;
+        background: none !important;
+        color: white;
+    }
+
+    .image {
+        margin-left: 35%;
+    }
+}

@@ -22272,3 +22272,39 @@ page-home .ionic-logo:before {
     -webkit-transform: rotate(360deg);
   }
 }
+
+page-login .item-contain {
+  background-color: #0058b6;
+  background-size: cover;
+}
+
+page-login .item-inner {
+  border-bottom-color: #1a68bd !important;
+  box-shadow: none !important;
+}
+
+page-login .item-contain-button {
+  border-radius: 6px;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  font-size: 1.7rem;
+  color: #0058b6;
+}
+
+page-login .item-contain-button2 {
+  border-radius: 6px;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  font-size: 1.7rem;
+  color: #ff6a00;
+}
+
+page-login .login-item {
+  border: none;
+  background: none !important;
+  color: white;
+}
+
+page-login .image {
+  margin-left: 35%;
+}

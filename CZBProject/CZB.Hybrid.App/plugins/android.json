@@ -7,23 +7,27 @@
         "files": {}
     },
     "installed_plugins": {
-        "ionic-plugin-keyboard": {
-            "PACKAGE_NAME": "io.cordova.myappb9420c"
-        },
-        "cordova-plugin-whitelist": {
-            "PACKAGE_NAME": "io.cordova.myappb9420c"
-        },
         "cordova-plugin-console": {
-            "PACKAGE_NAME": "io.cordova.myappb9420c"
-        },
-        "cordova-plugin-statusbar": {
-            "PACKAGE_NAME": "io.cordova.myappb9420c"
+            "PACKAGE_NAME": "CZB.Hybrid.App"
         },
         "cordova-plugin-device": {
-            "PACKAGE_NAME": "io.cordova.myappb9420c"
+            "PACKAGE_NAME": "CZB.Hybrid.App"
         },
         "cordova-plugin-splashscreen": {
-            "PACKAGE_NAME": "io.cordova.myappb9420c"
+            "PACKAGE_NAME": "CZB.Hybrid.App"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "CZB.Hybrid.App"
+        },
+        "cordova-plugin-wechat": {
+            "WECHATAPPID": "wx1cdbeb9e794cb54a",
+            "PACKAGE_NAME": "CZB.Hybrid.App"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "CZB.Hybrid.App"
+        },
+        "ionic-plugin-keyboard": {
+            "PACKAGE_NAME": "CZB.Hybrid.App"
         }
     },
     "dependent_plugins": {}
