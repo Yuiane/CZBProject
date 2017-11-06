@@ -1,0 +1,55 @@
+﻿<ion-header>
+    <ion-navbar color="primary">
+        <ion-title>收益详情</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <ion-item class="dateItem">
+        <div class="startDate" tappable (click)="gotoSelectTime(1)">
+            <img src="assets/images/calendar.png" class="icon-calendar" />
+            <div class="title">开始时间:</div>
+            <div class="time">{{startTime}}</div>
+        </div>
+        <div class="endDate" tappable (click)="gotoSelectTime(2)">
+            <img src="assets/images/calendar.png" class="icon-calendar" />
+            <div class="title">结束时间:</div>
+            <div class="time">{{endTime}}</div>
+        </div>
+    </ion-item>
+    <div class="profit-details" padding>
+        <div class="income">
+            <div class="chart">
+                <span>收入</span>
+                <div class="progress"></div>
+            </div>
+            <div class="money">￥{{outMoney}}</div>
+        </div>
+        <div class="expenditure">
+            <div class="chart">
+                <span>支出</span>
+                <div class="progress"></div>
+            </div>
+            <div class="money">￥{{inMoney}}</div>
+        </div>
+    </div>
+    <div class="Profit-list">
+        <div class="item" *ngFor="let profit of list">
+            <dl>
+                <dt class="logobox">
+                    <img src="{{profit.headImg}}" />
+                </dt>
+                <dd class="title">{{profit.insuranceName}}</dd>
+                <dd class="policy-code">{{profit.PolicyNo}}</dd>
+                <dd class="policy-type">{{profit.typeName}}</dd>
+            </dl>
+            <!--reduce-->
+            <div class="profit-money add">
+                {{profit.money}}
+            </div>
+            <div class="Policy-timebox">
+                <ion-icon name="md-alarm"></ion-icon>
+                <span class="policy-time">{{profit.createTimeStr}}</span>
+            </div>
+        </div>
+    </div>
+</ion-content>

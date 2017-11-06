@@ -1,4 +1,12 @@
 @charset "UTF-8";
+[float-left] {
+  float: left !important;
+}
+
+[float-right] {
+  float: right !important;
+}
+
 /*!
   Ionicons, v3.0.0-alpha.3
   Created by Ben Sperry for the Ionic Framework, http://ionicons.com/
@@ -22216,61 +22224,321 @@ sub {
   }
 }
 
-page-home .center {
+page-addPolicy .red {
+  color: red;
+}
+
+page-addPolicy .item-title {
+  background-color: #ebebeb;
+}
+
+page-addPolicy .label-md {
+  color: #000000 !important;
+  font-size: 1.6rem;
+}
+
+page-addPolicy .item-md.item-input.input-has-focus .item-inner {
+  border-bottom-color: #dedede;
+  box-shadow: none !important;
+}
+
+page-addPolicy .bottom-item .item-inner {
+  border-bottom: none !important;
+  box-shadow: none !important;
+}
+
+page-addPolicy ion-label {
+  overflow: visible;
+}
+
+page-addPolicy .addimage-div {
+  background-color: white;
+}
+
+page-addPolicy .addXSZImage {
+  width: 100px;
+  height: 100px;
+}
+
+page-addPolicy .addXSZImage img {
+  overflow: hidden;
+  border: 1px solid #808080;
+  background-color: #dedede;
+}
+
+page-addPolicy .padding-label {
+  padding-left: 16px;
+}
+
+page-addPolicy .bg_xian_type {
+  background-color: white;
+}
+
+page-addPolicy .textarea {
+  min-height: 82px;
+  border: none;
+  background-color: white;
+  padding: 10px;
+}
+
+page-addPolicy .list-md {
+  margin: 0;
+}
+
+page-addPolicy .foot .toolbar-title-md {
+  color: #fff;
+}
+
+page-addPolicy .foot .toolbar-background-md {
+  background-color: #387ef5;
+}
+
+page-addPolicy .noborder .item-inner {
+  border-bottom-color: #dedede !important;
+  box-shadow: none !important;
+}
+
+page-home {
+  /*收益模块1*/
+  /*我的收益（4模块样式）*/
+  /*第二块*/
+  /*第三块*/
+  /*第四块*/
+  /*图片*/
+  /*保单列表*/
+}
+
+page-home .sale-box {
+  padding: 0 20px;
+  box-sizing: border-box;
+  background-image: url(../assets/images/banner@2x.png);
+  background-size: cover;
+  min-height: 120px;
+}
+
+page-home .grid-menu {
+  margin-top: 15px;
+  background-color: #f4f4f4;
+  zoom: 1;
+}
+
+page-home .item-menu {
+  height: 70px;
+  width: 50%;
+  border-right: 1px solid #f4f4f4;
+  border-bottom: 1px solid #f4f4f4;
+  background-color: white;
+  float: left;
+}
+
+page-home .item-menu:nth-child(2n) {
+  border-right: none;
+}
+
+page-home .item-details {
+  width: 60%;
+  float: left;
+  line-height: 1.8;
+  margin-top: 15px;
+  padding-left: 10px;
+  box-sizing: border-box;
+}
+
+page-home .item-details p:first-child {
+  font-size: 1.5rem;
+}
+
+page-home .item-details p {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  font-size: 1.2rem;
+}
+
+page-home .item-menu img {
+  width: 30px;
+  height: 30px;
+  float: right;
+  margin: 20px 20px 0 0;
+}
+
+page-home .grid-menu2 {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  border-top: 1px solid #ebebeb;
+}
+
+page-home .grid-menu2 .label-md {
+  margin: 0;
+}
+
+page-home .menu-1, page-home .menu-2, page-home .menu-3, page-home .menu-4 {
+  padding: 5px;
+  box-sizing: border-box;
+}
+
+page-home .menu-1 .number, page-home .menu-2 .number, page-home .menu-3 .number, page-home .menu-4 .number {
+  color: blue;
+}
+
+page-home .menu-1 .number, page-home .menu-3 .number, page-home .menu-4 .number {
+  display: block;
+  width: 100%;
+  font-size: 1.5rem;
+  text-align: center;
+  margin-top: 10px;
+}
+
+page-home .menu-1 .text, page-home .menu-3 .text, page-home .menu-4 .text {
+  height: 30px;
+  line-height: 30px;
+  font-size: 1.2rem;
   text-align: center;
 }
 
-page-home .ionic-logo {
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
+page-home .menu-1 {
+  width: 38%;
+  height: 170px;
+  border-right: 1px solid #ebebeb;
+  float: left;
+}
+
+page-home .menu-1 .number {
+  color: #4CBB62;
+}
+
+page-home .menu-1 .menu-imgbox {
+  margin-top: 30px;
+  width: 50px;
+  height: 50px;
+}
+
+page-home .menu-2 {
+  width: 62%;
+  height: 70px;
+  margin-left: 38%;
+  border-bottom: 1px solid #ebebeb;
+}
+
+page-home .menu-2 .number {
+  margin-left: 10px;
+  font-size: 1.5rem;
+  margin-top: 10px;
+  color: #36ADDE;
+}
+
+page-home .menu-2 .text {
+  height: 30px;
+  line-height: 30px;
+  margin-left: 10px;
+  font-size: 1.2rem;
+}
+
+page-home .menu-2 .menu-imgbox {
+  float: right;
+  width: 30px;
+  height: 30px;
+  margin-top: 15px;
+  margin-right: 30px;
+}
+
+page-home .menu-3 {
+  width: 31%;
+  height: 100px;
+  float: left;
+  border-right: 1px solid #ebebeb;
+  padding-left: 10px;
+}
+
+page-home .menu-3 .number {
+  color: #E6A741;
+}
+
+page-home .menu-4 {
+  width: 31%;
+  height: 100px;
+  padding-left: 10px;
+  float: left;
+}
+
+page-home .menu-4 .number {
+  color: #E25C58;
+}
+
+page-home .menu-imgbox {
+  width: 30px;
+  height: 30px;
+  display: block;
+  margin: 0 auto;
+}
+
+page-home .menu-imgbox img {
+  width: 100%;
+  height: 100%;
+}
+
+page-home .order-list {
+  margin-top: 8px;
+  margin-bottom: 10px;
+  background: #fff;
+}
+
+page-home .order-list-title {
+  height: 40px;
+  line-height: 40px;
   position: relative;
-  width: 87px;
-  height: 87px;
-  border: 3.5px solid #5E86C4;
-  border-radius: 100%;
-  -moz-border-radius: 100%;
-  -webkit-border-radius: 100%;
-  -moz-animation: spin 2s infinite linear;
-  -webkit-animation: spin 2s infinite linear;
 }
 
-page-home .ionic-logo:after {
-  content: '';
+page-home .order-title-right {
+  float: right;
+  padding-right: 25px;
+}
+
+page-home .order-title-left {
+  float: left;
+  padding-left: 10px;
+}
+
+page-home .order-title-leftImage {
   position: absolute;
-  width: 38px;
-  height: 38px;
-  background: #5E86C4;
-  top: 50%;
-  left: 50%;
-  margin-left: -19px;
-  margin-top: -19px;
-  border-radius: 100%;
-  -moz-border-radius: 100%;
-  -webkit-border-radius: 100%;
+  left: 0;
+  top: 5px;
+  width: 3px;
+  height: 30px;
+  line-height: 30px;
 }
 
-page-home .ionic-logo:before {
-  content: '';
-  background: #5E86C4;
-  width: 14px;
-  height: 14px;
+page-home .order-title-leftImage img {
+  height: 100%;
+}
+
+page-home .order-title-rightImage {
   position: absolute;
-  top: -8px;
-  left: 50%;
-  margin-left: -7px;
-  border-radius: 100%;
-  -moz-border-radius: 100%;
-  -webkit-border-radius: 100%;
+  right: 8px;
+  width: 10px;
+  line-height: 47px;
 }
 
-@-webkit-keyframes spin {
-  0% {
-    -webkit-transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform: rotate(360deg);
-  }
+page-home .order-item {
+  overflow: auto;
+  border-top: 1px solid #ebebeb;
+  border-right: 1px solid #ebebeb;
+  margin-top: 7px;
+}
+
+page-home .order-item section {
+  width: 33.33333%;
+  float: left;
+  padding: 10px 0;
+  border-left: 1px solid #ebebeb;
+  border-bottom: 1px solid #ebebeb;
+}
+
+page-home .order-item section p:first-child {
+  margin-bottom: 5px;
+  height: 35px;
+  line-height: 35px;
 }
 
 page-login .item-contain {
@@ -22288,7 +22556,6 @@ page-login .item-contain-button {
   -moz-border-radius: 6px;
   -webkit-border-radius: 6px;
   font-size: 1.7rem;
-  color: #0058b6;
 }
 
 page-login .item-contain-button2 {
@@ -22307,4 +22574,475 @@ page-login .login-item {
 
 page-login .image {
   margin-left: 35%;
+}
+
+page-myTeam .block-title {
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  background: #F5F5F5;
+  padding-left: 10px;
+  box-sizing: border-box;
+  color: #9C9C9C;
+}
+
+page-myTeam .team-list {
+  width: 100%;
+}
+
+page-myTeam .team-list .item {
+  width: 100%;
+  height: 80px;
+  background: #fff;
+  border-bottom: 1px solid #ebebeb;
+}
+
+page-myTeam .contacts {
+  height: 100%;
+  width: 70%;
+  float: left;
+  margin: 0;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+page-myTeam .contacts dt {
+  width: 60px;
+  height: 60px;
+  float: left;
+  border-radius: 100%;
+  overflow: hidden;
+}
+
+page-myTeam .contacts dt img {
+  width: 100%;
+  height: 100%;
+}
+
+page-myTeam .contacts dd {
+  margin-left: 70px;
+  height: 30px;
+  line-height: 30px;
+}
+
+page-myTeam .contacts-name {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #000;
+}
+
+page-myTeam .contacts-phone {
+  font-size: 1.5rem;
+  color: #999;
+}
+
+page-myTeam .baofeibox {
+  width: 30%;
+  float: right;
+  margin-top: 10px;
+  padding-right: 10px;
+}
+
+page-myTeam .baofeibox p {
+  margin: 0;
+  height: 30px;
+  line-height: 30px;
+  text-align: right;
+}
+
+page-myTeam .baofeibox .title {
+  color: #666;
+}
+
+page-myTeam .baofeibox .number {
+  color: #44ACD3;
+  font-size: 1.8rem;
+}
+
+page-policyDetail .item-title {
+  background-color: #ebebeb;
+}
+
+page-policyDetail .item-headimg {
+  width: 80px;
+  height: 80px;
+}
+
+page-policyDetail .item-md.item-block .item-inner {
+  border-bottom: none !important;
+}
+
+page-policyDetail .label-md {
+  margin: 0;
+}
+
+page-policyDetail .label-small {
+  font-size: 1.6rem;
+  white-space: inherit !important;
+}
+
+page-policyList {
+  /*新样式*/
+}
+
+page-policyList .order-section {
+  padding: 0 5% 2% 5%;
+  border-bottom: 1px solid #dedede;
+  background-color: whitesmoke;
+  margin-bottom: 15px;
+}
+
+page-policyList .order-section .order-title {
+  height: 50px;
+  line-height: 50px;
+  border-bottom: 1px solid #dedede;
+}
+
+page-policyList .order-section .order-item {
+  height: 35px;
+  line-height: 35px;
+}
+
+page-policyList .order-section .order-item .order-item-left {
+  float: left;
+}
+
+page-policyList .order-section .order-item .order-item-right {
+  float: right;
+}
+
+page-policyList .order-item {
+  width: 100%;
+  background: #fff;
+  margin-top: 10px;
+}
+
+page-policyList .car-no {
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  padding-left: 10px;
+  font-size: 1.6rem;
+}
+
+page-policyList .order-details {
+  width: 100%;
+  height: 120px;
+  padding: 10px;
+  box-sizing: border-box;
+  border-top: 1px solid #c7baba;
+}
+
+page-policyList .order-details dl {
+  margin: 0;
+}
+
+page-policyList .order-details dl dt {
+  width: 80px;
+  height: 80px;
+  border-radius: 3px;
+  overflow: hidden;
+  float: left;
+  margin-top: 10px;
+}
+
+page-policyList .order-details dl dt img {
+  width: 100%;
+  height: 100%;
+}
+
+page-policyList .order-details dl dd {
+  margin-left: 100px;
+  line-height: 1.8;
+  color: #9b9b9b;
+}
+
+page-policyList .order-details dl dd.Insurance-company {
+  color: #000;
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+page-policyList .order-details .man {
+  color: #666;
+}
+
+page-policyList .policy-bottom {
+  width: 100%;
+  height: 50px;
+  padding: 10px;
+  box-sizing: border-box;
+  border-top: 1px solid #c7baba;
+}
+
+page-policyList .policy-money {
+  font-size: 1.5rem;
+  width: 60%;
+  height: 30px;
+  line-height: 30px;
+  float: left;
+}
+
+page-policyList .policy-money strong {
+  color: orange;
+}
+
+page-policyList .btn-look {
+  width: 80px;
+  height: 30px;
+  line-height: 28px;
+  border: 1px solid #c7baba;
+  background: transparent;
+  border-radius: 10px;
+  float: right;
+}
+
+page-policyList .scroll-content {
+  margin-bottom: 56px !important;
+  margin-top: 56px !important;
+}
+
+page-profit {
+  /*收益列表*/
+}
+
+page-profit .dateItem {
+  width: 100%;
+  background: #fff;
+  padding: 0;
+}
+
+page-profit .dateItem .item-inner {
+  padding: 0;
+  border: none;
+}
+
+page-profit .dateItem .label-md {
+  margin: 0;
+}
+
+page-profit .startDate, page-profit .endDate {
+  width: 50%;
+  float: left;
+  padding: 10px 0 10px 15px;
+  box-sizing: border-box;
+}
+
+page-profit .startDate {
+  border-right: 1px solid #ebebeb;
+}
+
+page-profit .startDate .title, page-profit .endDate .title {
+  font-size: 1.5rem;
+  color: #ccc;
+  height: 30px;
+  line-height: 30px;
+}
+
+page-profit .startDate .time, page-profit .endDate .time {
+  font-size: 1.8rem;
+}
+
+page-profit .startDate .time {
+  /*color: #4150F5;*/
+  color: #333;
+}
+
+page-profit .endDate .time {
+  /*color: #EE6787;*/
+  color: #333;
+}
+
+page-profit .icon-calendar {
+  float: right;
+  width: 30px;
+  height: 30px;
+  margin-top: 15px;
+  margin-right: 10px;
+}
+
+page-profit .profit-details {
+  width: 100%;
+}
+
+page-profit .income, page-profit .expenditure {
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+  margin-bottom: 10px;
+}
+
+page-profit .expenditure {
+  margin-bottom: 0;
+}
+
+page-profit .profit-details .chart {
+  width: 65%;
+  height: 30px;
+  background: #EEF1F9;
+  border: 1px solid #D3DAEA;
+  border-radius: 0 5px 5px 0;
+  border-left: 5px solid #4251F5;
+  float: left;
+  position: relative;
+}
+
+page-profit .profit-details .chart span {
+  display: block;
+  height: 30px;
+  line-height: 30px;
+  position: absolute;
+  left: 20px;
+}
+
+page-profit .expenditure .chart {
+  border-left: 5px solid #8997B4;
+}
+
+page-profit .income .chart .progress {
+  width: 100px;
+  height: 100%;
+  background: #CCE1FA;
+  color: #4251F5;
+}
+
+page-profit .expenditure .chart .progress {
+  width: 1px;
+  height: 100%;
+  background: #EEF1F9;
+  color: #8997B4;
+}
+
+page-profit .profit-details .money {
+  float: left;
+  margin-left: 10px;
+  font-size: 1.5rem;
+  font-family: 'Microsoft YaHei';
+}
+
+page-profit .income .money {
+  color: #F56C0F;
+}
+
+page-profit .expenditure .money {
+  color: #9A9A9C;
+}
+
+page-profit .Profit-list {
+  width: 100%;
+  padding: 0 15px;
+}
+
+page-profit .Profit-list .item {
+  width: 100%;
+  padding: 15px;
+  border-radius: 5px;
+  box-sizing: border-box;
+  background: #fff;
+  box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px;
+}
+
+page-profit .Profit-list .item dl {
+  width: 70%;
+  float: left;
+  margin: 0;
+}
+
+page-profit .Profit-list .item dl dt {
+  width: 50px;
+  height: 50px;
+  float: left;
+  margin-top: 10px;
+}
+
+page-profit .Profit-list .item dl dt img {
+  width: 100%;
+  height: 100%;
+  border-radius: 3px;
+}
+
+page-profit .Profit-list .item dl dd {
+  margin-left: 60px;
+  line-height: 1.5;
+}
+
+page-profit .Profit-list .item dl dd.title {
+  font-size: 2rem;
+  color: #333;
+}
+
+page-profit .Profit-list .item dl dd.policy-code {
+  color: #666;
+  font-size: 1.5rem;
+}
+
+page-profit .Profit-list .item dl dd.policy-type {
+  color: #ccc;
+  font-size: 1.5rem;
+}
+
+page-profit .profit-money {
+  float: right;
+  height: 40px;
+  line-height: 40px;
+  text-align: right;
+  font-size: 2rem;
+  max-width: 30%;
+  position: relative;
+}
+
+page-profit .profit-money.add {
+  color: #3AADDB;
+}
+
+page-profit .profit-money.add:before {
+  content: "+";
+  font-size: 1.8rem;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 0;
+  left: -25px;
+}
+
+page-profit .profit-money.reduce {
+  color: red;
+}
+
+page-profit .profit-money.reduce:before {
+  content: "-";
+  font-size: 1.8rem;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 0;
+  left: -25px;
+}
+
+page-profit .Policy-timebox {
+  display: block;
+  width: 100%;
+  font-size: 1.5rem;
+  height: 30px;
+  line-height: 30px;
+  clear: both;
+  color: #4D5560;
+}
+
+page-register .toolbar-title-md {
+  color: #424242 !important;
+}
+
+page-register .item-list {
+  width: 86%;
+  margin-left: 7%;
+}
+
+page-register .item-md {
+  padding-left: 0;
+}
+
+page-register .list-md .item-input:last-child {
+  border: none;
 }

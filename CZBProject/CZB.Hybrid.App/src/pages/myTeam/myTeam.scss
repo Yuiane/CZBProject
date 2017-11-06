@@ -1,0 +1,84 @@
+﻿page-myTeam {
+    .block-title {
+        width: 100%;
+        height: 40px;
+        line-height: 40px;
+        background: #F5F5F5;
+        padding-left: 10px;
+        box-sizing: border-box;
+        color: #9C9C9C;
+    }
+
+    .team-list {
+        width: 100%;
+    }
+
+    .team-list .item {
+        width: 100%;
+        height: 80px;
+        background: #fff;
+        border-bottom: 1px solid #ebebeb;
+    }
+
+    .contacts {
+        height: 100%;
+        width: 70%;
+        float: left;
+        margin: 0;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+    .contacts dt {
+        width: 60px;
+        height: 60px;
+        float: left;
+        border-radius: 100%;
+        overflow: hidden;
+    }
+
+    .contacts dt img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .contacts dd {
+        margin-left: 70px;
+        height: 30px;
+        line-height: 30px;
+    }
+
+    .contacts-name {
+        font-size: 1.8rem;
+        font-weight: bold;
+        color: #000;
+    }
+
+    .contacts-phone {
+        font-size: 1.5rem;
+        color: #999;
+    }
+
+    .baofeibox {
+        width: 30%;
+        float: right;
+        margin-top: 10px;
+        padding-right: 10px;
+    }
+
+    .baofeibox p {
+        margin: 0;
+        height: 30px;
+        line-height: 30px;
+        text-align: right;
+    }
+
+    .baofeibox .title {
+        color: #666;
+    }
+
+    .baofeibox .number {
+        color: #44ACD3;
+        font-size: 1.8rem;
+    }
+}

@@ -1,0 +1,77 @@
+﻿page-addPolicy {
+    .red {
+        color: red;
+    }
+
+    .item-title {
+        background-color: #ebebeb;
+    }
+
+
+    .label-md {
+        color: #000000 !important;
+        font-size: 1.6rem;
+    }
+
+    .item-md.item-input.input-has-focus .item-inner {
+        border-bottom-color: #dedede;
+        box-shadow: none !important;
+    }
+
+    .bottom-item .item-inner {
+        border-bottom: none !important;
+        box-shadow: none !important;
+    }
+
+    ion-label {
+        overflow: visible;
+    }
+
+    .addimage-div {
+        background-color: white;
+    }
+
+    .addXSZImage {
+        width: 100px;
+        height: 100px;
+    }
+
+    .addXSZImage img {
+        overflow: hidden;
+        border: 1px solid #808080;
+        background-color: #dedede;
+    }
+
+    .padding-label {
+        padding-left: 16px;
+    }
+
+    .bg_xian_type {
+        background-color: white;
+    }
+
+    .textarea {
+        min-height: 82px;
+        border: none;
+        background-color: white;
+        padding: 10px;
+    }
+
+    .list-md {
+        margin: 0;
+    }
+
+    .foot .toolbar-title-md {
+        color: #fff;
+    }
+
+    .foot .toolbar-background-md {
+        background-color: #387ef5;
+    }
+
+
+    .noborder .item-inner {
+        border-bottom-color: #dedede !important;
+        box-shadow: none !important;
+    }
+}

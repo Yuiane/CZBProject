@@ -1,0 +1,119 @@
+﻿page-policyList {
+
+    .order-section {
+        padding: 0 5% 2% 5%;
+        border-bottom: 1px solid #dedede;
+        background-color: whitesmoke;
+        margin-bottom: 15px;
+    }
+
+    .order-section .order-title {
+        height: 50px;
+        line-height: 50px;
+        border-bottom: 1px solid #dedede;
+    }
+
+    .order-section .order-item {
+        height: 35px;
+        line-height: 35px;
+    }
+
+    .order-section .order-item .order-item-left {
+        float: left;
+    }
+
+    .order-section .order-item .order-item-right {
+        float: right;
+    }
+    /*新样式*/
+    .order-item {
+        width: 100%;
+        background: #fff;
+        margin-top: 10px;
+    }
+
+    .car-no {
+        width: 100%;
+        height: 40px;
+        line-height: 40px;
+        padding-left: 10px;
+        font-size: 1.6rem;
+    }
+
+    .order-details {
+        width: 100%;
+        height: 120px;
+        padding: 10px;
+        box-sizing: border-box;
+        border-top: 1px solid #c7baba;
+    }
+
+    .order-details dl {
+        margin: 0;
+    }
+
+    .order-details dl dt {
+        width: 80px;
+        height: 80px;
+        border-radius: 3px;
+        overflow: hidden;
+        float: left;
+        margin-top: 10px;
+    }
+
+    .order-details dl dt img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .order-details dl dd {
+        margin-left: 100px;
+        line-height: 1.8;
+        color: #9b9b9b;
+    }
+
+    .order-details dl dd.Insurance-company {
+        color: #000;
+        font-size: 1.6rem;
+        font-weight: bold;
+    }
+
+    .order-details .man {
+        color: #666;
+    }
+
+    .policy-bottom {
+        width: 100%;
+        height: 50px;
+        padding: 10px;
+        box-sizing: border-box;
+        border-top: 1px solid #c7baba;
+    }
+
+    .policy-money {
+        font-size: 1.5rem;
+        width: 60%;
+        height: 30px;
+        line-height: 30px;
+        float: left;
+    }
+
+    .policy-money strong {
+        color: orange;
+    }
+
+    .btn-look {
+        width: 80px;
+        height: 30px;
+        line-height: 28px;
+        border: 1px solid #c7baba;
+        background: rgba(0,0,0,0);
+        border-radius: 10px;
+        float: right;
+    }
+
+    .scroll-content {
+        margin-bottom: 56px !important;
+        margin-top: 56px !important;
+    }
+}

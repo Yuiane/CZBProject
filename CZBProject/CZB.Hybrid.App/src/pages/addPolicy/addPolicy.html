@@ -1,0 +1,104 @@
+﻿<!--
+  Generated template for the NewPage page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <ion-navbar color="primary">
+        <ion-title>新增保单</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content no-padding no-margin style=" background-color:#ebebeb; ">
+    <ion-item item-left no-margin padding-left class="item-title">
+        车主基本信息
+    </ion-item>
+    <ion-item no-margin class="noborder">
+        <ion-label fixed class="shiti"><span class="red"> * </span>姓名</ion-label>
+        <ion-input type="text" [(ngModel)]="event.customerName" value="" placeholder="请输入姓名"></ion-input>
+    </ion-item>
+    <ion-item no-margin class="bottom-item">
+        <ion-label fixed class="shiti"><span class="red"> * </span>手机号</ion-label>
+        <ion-input type="text" value="" [(ngModel)]="event.customerPhone" placeholder="请输入手机号"></ion-input>
+    </ion-item>
+    <ion-item item-left no-margin padding-left class="item-title">
+        车辆性质
+    </ion-item>
+    <ion-list radio-group (ionChange)="radioSelect($event)">
+        <ion-item>
+            <ion-label>个人车辆</ion-label>
+            <ion-radio checked="true" value="geren"></ion-radio>
+        </ion-item>
+        <ion-item>
+            <ion-label>企业车辆</ion-label>
+            <ion-radio value="qiye"></ion-radio>
+        </ion-item>
+    </ion-list>
+    <ion-item margin-top class="bottom-item">
+        <ion-label fixed><span class="red"> * </span>{{danXuan}}</ion-label>
+        <ion-input type="text" [(ngModel)]="event.codeTypeValue" value="" placeholder="{{danXuanTitle}}"></ion-input>
+    </ion-item>
+    <!--<ion-item no-margin margin-top class="bottom-item">
+        <ion-label fixed><span class="red">*</span>组织机构代码</ion-label>
+        <ion-input type="text" value="" placeholder="请输入组织机构代码"></ion-input>
+    </ion-item>-->
+    <ion-item item-left no-margin padding-left class="item-title">
+        车主行驶证图片
+    </ion-item>
+    <div no-margin class="bottom-item addimage-div">
+        <div class="addXSZImage" tappable padding-left no-margin padding (click)="gotoTakeOrSelectPhone(1)">
+            <img id="addXSZImage" width="68" height="68" src="{{image._1_image_show}}">
+        </div>
+    </div>
+    <ion-item item-left no-margin padding-left class="item-title">
+        车主身份证图片
+    </ion-item>
+    <div no-margin class="bottom-item addimage-div">
+        <div class="addXSZImage" tappable padding-left no-margin padding (click)="gotoTakeOrSelectPhone(2)">
+            <img id="addXSZImage" width="68" height="68" src="{{image._2_image_show}}">
+        </div>
+    </div>
+    <ion-item item-left no-margin padding-left class="item-title">
+        选择
+    </ion-item>
+    <ion-item no-margin class="bottom-item">
+        <ion-label fixed>保险公司</ion-label>
+        <ion-select [(ngModel)]="event.notifications" interface="action-sheet" cancelText="取消">
+            <ion-option value="{{insure.InsureCode}}" *ngFor="let insure of insureList" (ionSelect)="notificationSelect($event)">
+                {{insure.InsureShowName}}
+            </ion-option>
+            <!--<ion-option value="太平洋保险" (ionSelect)="notificationSelect($event)">太平洋保险(返点:商业险22%;交强险21%)</ion-option>
+            <ion-option value="平安保险" (ionSelect)="notificationSelect($event)">平安保险(返点:商业险22%;交强险21%)</ion-option>
+            <ion-option value="中国人保" (ionSelect)="notificationSelect($event)">中国人保(返点:商业险22%;交强险21%)</ion-option>-->
+        </ion-select>
+    </ion-item>
+    <ion-item no-margin class="bottom-item">
+        <ion-label fixed class="shiti">区域</ion-label>
+        <ion-label class="padding-label">苏州</ion-label>
+    </ion-item>
+    <ion-item no-margin class="bottom-item">
+        <ion-label fixed class="shiti">开始日期</ion-label>
+        <ion-datetime (ionChange)="gotoOk()" [(ngModel)]="event.timeStarts" displayFormat="YYYY-MM-DD" cancelText="取消" doneText="确定" pickerFormat="YYYY-MM-DD"></ion-datetime>
+    </ion-item>
+    <ion-item no-margin class="bottom-item">
+        <ion-label fixed class="shiti">结束日期</ion-label>
+        <ion-label class="padding-label">{{event.timeEnd}}</ion-label>
+    </ion-item>
+    <ion-item item-left no-margin padding-left class="item-title">
+        险种选择
+    </ion-item>
+    <ion-list class="bg_xian_type bottom-item" padding>
+        <button ion-button tappable (click)="clickButton(insurance.InsuranceTypeId,insurance.Selected)" color="{{insurance.Selected !='0' ? 'outline' : 'light'}}" *ngFor="let insurance of insuranceList">
+            {{insurance.InsuranceName}}
+        </button>
+    </ion-list>
+    <ion-item item-left no-margin padding-left class="item-title">
+        保单、发票邮寄地址
+    </ion-item>
+    <ion-textarea class="textarea" [(ngModel)]="event.textarea" no-margin no-padding placeholder="请输入保单、发票邮寄地址"></ion-textarea>
+</ion-content>
+<ion-footer class="foot">
+    <ion-toolbar (click)="submitForm()">
+        <ion-title text-center>提交保单</ion-title>
+    </ion-toolbar>
+</ion-footer>

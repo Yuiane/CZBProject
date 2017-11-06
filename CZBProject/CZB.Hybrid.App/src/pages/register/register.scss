@@ -1,0 +1,20 @@
+﻿page-register {
+    .toolbar-title-md {
+        color: rgb(66, 66, 66) !important;
+    }
+
+
+    .item-list {
+        width: 86%;
+        margin-left: 7%;
+        //background-color: rgb(128, 128, 128);
+    }
+
+    .item-md {
+        padding-left: 0;
+    }
+
+    .list-md .item-input:last-child {
+        border: none;
+    }
+}

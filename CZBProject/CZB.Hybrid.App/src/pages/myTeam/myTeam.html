@@ -1,0 +1,49 @@
+﻿<ion-header>
+    <ion-navbar color="primary">
+        <ion-title>我的团队</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <div class="block-title" *ngIf="myParent.id>0">推荐人</div>
+    <div class="team-list first" *ngIf="myParent.id>0">
+        <div class="item">
+            <dl class="contacts">
+                <dt><img src="{{myParent.picUrl}}" /></dt>
+                <dd class="contacts-name">{{myParent.name}}</dd>
+                <dd class="contacts-phone">{{myParent.mobile}}</dd>
+            </dl>
+            <div class="baofeibox">
+                <p class="title">当月保费</p>
+                <p class="number">{{myParent.policyAmout}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="block-title">{{agentLevelName}}</div>
+    <div class="team-list Second">
+        <div class="item">
+            <dl class="contacts">
+                <dt><img src="{{agentInfo.picUrl}}" /></dt>
+                <dd class="contacts-name">{{agentInfo.name}}</dd>
+                <dd class="contacts-phone">{{agentInfo.mobile}}</dd>
+            </dl>
+            <div class="baofeibox">
+                <p class="title">当月保费</p>
+                <p class="number">{{agentInfo.policyAmout}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="block-title" *ngIf="agentLevel<3">下级代理商</div>
+    <div class="team-list Third" *ngIf="agentLevel<3">
+        <div class="item" *ngFor="let agent of childAgentList">
+            <dl class="contacts">
+                <dt><img src="{{agent.picUrl}}" /></dt>
+                <dd class="contacts-name">{{agent.name}}</dd>
+                <dd class="contacts-phone">{{agent.mobile}}</dd>
+            </dl>
+            <div class="baofeibox">
+                <p class="title">当月保费</p>
+                <p class="number">{{agent.policyAmout}}</p>
+            </div>
+        </div>
+    </div>
+</ion-content>

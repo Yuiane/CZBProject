@@ -1,6 +1,8 @@
 ﻿import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/toPromise';
 
 /*
   Generated class for the httpService provider.
@@ -11,8 +13,34 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class httpService {
 
-    constructor(public http: Http) {
-        console.log('Hello httpService Provider');
+    constructor(private http: Http) {
+    }
+
+    public httpGetNoAuth(url: string) {
+
+        var headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        let options = new RequestOptions({ headers: headers });
+        return this.http.get(url, options).toPromise()
+            .then(res => res.json())
+            .catch(err => {
+                this.handleError(err);
+            });
+    }
+    public httpPostNoAuth(url: string, body: any) {
+        var headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        let options = new RequestOptions({ headers: headers });
+        return this.http.post(url, body, options).toPromise()
+            .then(res => res.json())
+            .catch(err => {
+                this.handleError(err);
+            });
+    }
+
+    private handleError(error: Response) {
+        console.log(error);
+        return Observable.throw(error.json().error || 'Server Error');
     }
 
 }

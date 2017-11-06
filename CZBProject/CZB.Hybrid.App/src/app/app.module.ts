@@ -6,6 +6,23 @@ import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { loginPage } from '../pages/login/login';
+import { policyListPage } from '../pages/policyList/policyList';
+import { myTeamPage } from '../pages/myTeam/myTeam';
+import { profitPage } from '../pages/profit/profit';
+import { policyDetailPage } from '../pages/policyDetail/policyDetail';
+import { addPolicyPage } from '../pages/addPolicy/addPolicy';
+import { registerPage } from '../pages/register/register';
+
+
+
+import { userInfoService } from '../providers/userInfoService';
+import { httpService } from '../providers/httpService';
+import { storageService } from '../providers/storageService';
+import { insureService } from '../providers/insureService';
+import { policyService } from '../providers/policyService';
+
+import { DatePicker } from '@ionic-native/date-picker';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
     declarations: [
@@ -14,7 +31,12 @@ import { loginPage } from '../pages/login/login';
         ContactPage,
         HomePage,
         TabsPage,
-        loginPage
+        loginPage,
+        policyListPage,
+        myTeamPage,
+        profitPage,
+        policyDetailPage,
+        addPolicyPage
     ],
     imports: [
         IonicModule.forRoot(MyApp)
@@ -26,8 +48,13 @@ import { loginPage } from '../pages/login/login';
         ContactPage,
         HomePage,
         TabsPage,
-        loginPage
+        loginPage,
+        policyListPage,
+        myTeamPage,
+        profitPage,
+        policyDetailPage,
+        addPolicyPage
     ],
-    providers: [{ provide: ErrorHandler, useClass: IonicErrorHandler }]
+    providers: [{ provide: ErrorHandler, useClass: IonicErrorHandler }, userInfoService, httpService, storageService, insureService, policyService, DatePicker, DatePipe]
 })
 export class AppModule { }

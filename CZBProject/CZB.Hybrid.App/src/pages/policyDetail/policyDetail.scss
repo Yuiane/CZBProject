@@ -1,0 +1,23 @@
+﻿page-policyDetail {
+    .item-title {
+        background-color: #ebebeb;
+    }
+
+    .item-headimg {
+        width: 80px;
+        height: 80px;
+    }
+
+    .item-md.item-block .item-inner {
+        border-bottom: none !important;
+    }
+
+    .label-md {
+        margin: 0;
+    }
+
+    .label-small {
+        font-size: 1.6rem;
+        white-space: inherit !important;
+    }
+}

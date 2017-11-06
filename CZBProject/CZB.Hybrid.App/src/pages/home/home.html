@@ -1,49 +1,107 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>Home</ion-title>
-  </ion-navbar>
+﻿<ion-header>
+    <ion-navbar color="primary">
+        <ion-title>销售首页</ion-title>
+        <!--<ion-buttons start tappable (click)="gotoShare()">
+            <button ion-button icon-only>
+                <ion-icon name="share"></ion-icon>
+            </button>
+        </ion-buttons>-->
+        <ion-buttons end tappable>
+            <button ion-button icon-only (click)="goShare()">
+                <ion-icon name="contact"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
 </ion-header>
-
-<ion-content padding>
-
-    <h2 class="center">Ionic Tabs Starter</h2>
-
-   <div class="center">
-        <p class="ionic-logo"></p>
+<ion-content class="ion-content">
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content pullingIcon="sync"
+                               pullingText="松开刷新"
+                               refreshingSpinner="circles"
+                               refreshingText="刷新中...">
+        </ion-refresher-content>
+    </ion-refresher>
+    <!--我的个人信息-->
+    <div class="sale-box" padding>
+        <div float-left padding-right>
+            <img item-start width="80" height="80" src="{{userInfo.headImg}}" />
+        </div>
+        <div float-left>
+            <p>{{userInfo.name}}</p>
+            <p>{{userInfo.levelName}}</p>
+        </div>
     </div>
-
-    <ion-card>
-        <ion-card-header>
-            Docs are here to help
-        </ion-card-header>
-
-        <ion-list>
-            <button ion-item (click)="onLink('http://go.microsoft.com/fwlink/?LinkID=820516')">
-                <ion-icon name="jet" item-left></ion-icon>
-                Getting Started
-            </button>
-
-            <button ion-item (click)="onLink('http://go.microsoft.com/fwlink/?LinkID=820761')">
-                <ion-icon name="ionic" item-left></ion-icon>
-                Ionic Framework
-            </button>
-
-            <button ion-item (click)="onLink('http://go.microsoft.com/fwlink/?LinkID=820520')">
-                <ion-icon name="thunderstorm" item-left></ion-icon>
-                Azure Services
-            </button>
-
-            <button ion-item (click)="onLink('http://go.microsoft.com/fwlink/?LinkID=820524')">
-                <ion-icon name="cafe" item-left></ion-icon>
-                Plugins Support
-            </button>
-
-            <button ion-item (click)="onLink('http://go.microsoft.com/fwlink/?LinkID=820526')">
-                <ion-icon name="paw" item-left></ion-icon>
-                Troubleshooting
-            </button>
-        </ion-list>
-        
-    </ion-card>
-
+    <div>
+        <!--我的余额-->
+        <div float-left padding-left>
+            <img no-padding height="30" style="margin-top:6px;" src="assets/images/keyongyue.png">
+        </div>
+        <div float-left padding-left style="line-height:45px;">余额&nbsp;{{userInfo.money}}</div>
+        <div float-right>
+            <button padding margin-right ion-button color="primary">&nbsp;提现&nbsp;</button>
+        </div>
+    </div>
+    <!--收益模块-->
+    <ion-list class="grid-menu clearfix" *ngIf="userInfo.level>2">
+        <div class="item-menu" *ngFor="let menu of showMenuList; let i = index;">
+            <div class="item-details">
+                <p>{{ menu.showMenuNumber }}</p>
+                <p>{{ menu.showMenuName }}</p>
+            </div>
+            <img *ngIf="i<1" src="assets/images/profit.png" />
+            <img *ngIf="i>0" src="assets/images/saleNumber.png" />
+        </div>
+    </ion-list>
+    <ion-item class="grid-menu2" *ngIf="userInfo.level<3">
+        <div class="menu-1" tappable (click)="gotoProfit()">
+            <div class="number">{{showMenuList[0].showMenuNumber}}</div>
+            <div class="text">{{showMenuList[0].showMenuName}}</div>
+            <div class="menu-imgbox">
+                <img src="assets/images/profit.png" />
+            </div>
+        </div>
+        <div class="menu-2" tappable (click)="gotoMyTeamPage()">
+            <div class="menu-imgbox">
+                <img src="assets/images/businessNumber.png" />
+            </div>
+            <div class="number">{{showMenuList[2].showMenuNumber}}</div>
+            <div class="text">{{showMenuList[2].showMenuName}}</div>
+        </div>
+        <div class="menu-3">
+            <div class="number">{{showMenuList[1].showMenuNumber}}</div>
+            <div class="text">{{showMenuList[1].showMenuName}}</div>
+            <div class="menu-imgbox">
+                <img src="assets/images/saleNumber.png" />
+            </div>
+        </div>
+        <div class="menu-4">
+            <div class="number">{{showMenuList[3].showMenuNumber}}</div>
+            <div class="text">{{showMenuList[3].showMenuName}}</div>
+            <div class="menu-imgbox">
+                <img src="assets/images/point.png" />
+            </div>
+        </div>
+    </ion-item>
+    <div class="order-list">
+        <div class="order-list-title">
+            <div class="order-title-left">我的保单</div>
+            <div class="order-title-right" tappable (click)="onGotoPolicy(1)">查看历史保单</div>
+            <div class="order-title-leftImage">
+                <img src="assets/images/Rectangle 3@2x.png" />
+            </div>
+            <div class="order-title-rightImage">
+                <img src="assets/images/more copy@2x.png" />
+            </div>
+        </div>
+        <section class="order-item">
+            <section *ngFor="let orderitem of orderList" tappable (click)="onGotoPolicy(orderitem.orderStateName)">
+                <p no-margin text-center>{{ orderitem.orderStateNumber }}</p>
+                <p no-margin text-center>{{ orderitem.orderStateName }}</p>
+            </section>
+            <section tappable (click)="gotoAddPolicy()">
+                <p no-margin text-center><img style="height:25px;" align="center" src="assets/images/add.png" /></p>
+                <p no-margin text-center>录入保单</p>
+            </section>
+        </section>
+    </div>
 </ion-content>

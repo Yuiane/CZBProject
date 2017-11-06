@@ -1,0 +1,225 @@
+﻿page-profit {
+    .dateItem {
+        width: 100%;
+        background: #fff;
+        padding: 0;
+    }
+
+    .dateItem .item-inner {
+        padding: 0;
+        border: none;
+    }
+
+    .dateItem .label-md {
+        margin: 0;
+    }
+
+    .startDate, .endDate {
+        width: 50%;
+        float: left;
+        padding: 10px 0 10px 15px;
+        box-sizing: border-box;
+    }
+
+    .startDate {
+        border-right: 1px solid #ebebeb;
+    }
+
+    .startDate .title, .endDate .title {
+        font-size: 1.5rem;
+        color: #ccc;
+        height: 30px;
+        line-height: 30px;
+    }
+
+    .startDate .time, .endDate .time {
+        font-size: 1.8rem;
+    }
+
+    .startDate .time {
+        /*color: #4150F5;*/
+        color: #333;
+    }
+
+    .endDate .time {
+        /*color: #EE6787;*/
+        color: #333;
+    }
+
+    .icon-calendar {
+        float: right;
+        width: 30px;
+        height: 30px;
+        margin-top: 15px;
+        margin-right: 10px;
+    }
+
+    .profit-details {
+        width: 100%;
+    }
+
+    .income, .expenditure {
+        width: 100%;
+        height: 30px;
+        line-height: 30px;
+        margin-bottom: 10px;
+    }
+
+    .expenditure {
+        margin-bottom: 0;
+    }
+
+    .profit-details .chart {
+        width: 65%;
+        height: 30px;
+        background: #EEF1F9;
+        border: 1px solid #D3DAEA;
+        border-radius: 0 5px 5px 0;
+        border-left: 5px solid #4251F5;
+        float: left;
+        position: relative;
+    }
+
+    .profit-details .chart span {
+        display: block;
+        height: 30px;
+        line-height: 30px;
+        position: absolute;
+        left: 20px;
+    }
+
+    .expenditure .chart {
+        border-left: 5px solid #8997B4;
+    }
+
+    .income .chart .progress {
+        width: 100px;
+        height: 100%;
+        background: #CCE1FA;
+        color: #4251F5;
+    }
+
+    .expenditure .chart .progress {
+        width: 1px;
+        height: 100%;
+        background: #EEF1F9;
+        color: #8997B4;
+    }
+
+    .profit-details .money {
+        float: left;
+        margin-left: 10px;
+        font-size: 1.5rem;
+        font-family: 'Microsoft YaHei';
+    }
+
+    .income .money {
+        color: #F56C0F;
+    }
+
+    .expenditure .money {
+        color: #9A9A9C;
+    }
+    /*收益列表*/
+    .Profit-list {
+        width: 100%;
+        padding: 0 15px;
+    }
+
+    .Profit-list .item {
+        width: 100%;
+        padding: 15px;
+        border-radius: 5px;
+        box-sizing: border-box;
+        background: #fff;
+        box-shadow: 1px 1px 8px rgba(0,0,0,.2);
+        margin-bottom: 20px;
+    }
+
+    .Profit-list .item dl {
+        width: 70%;
+        float: left;
+        margin: 0;
+    }
+
+    .Profit-list .item dl dt {
+        width: 50px;
+        height: 50px;
+        float: left;
+        margin-top: 10px;
+    }
+
+    .Profit-list .item dl dt img {
+        width: 100%;
+        height: 100%;
+        border-radius: 3px;
+    }
+
+    .Profit-list .item dl dd {
+        margin-left: 60px;
+        line-height: 1.5;
+    }
+
+    .Profit-list .item dl dd.title {
+        font-size: 2rem;
+        color: #333;
+    }
+
+    .Profit-list .item dl dd.policy-code {
+        color: #666;
+        font-size: 1.5rem;
+    }
+
+    .Profit-list .item dl dd.policy-type {
+        color: #ccc;
+        font-size: 1.5rem;
+    }
+
+    .profit-money {
+        float: right;
+        height: 40px;
+        line-height: 40px;
+        text-align: right;
+        font-size: 2rem;
+        max-width: 30%;
+        position: relative;
+    }
+
+    .profit-money.add {
+        color: #3AADDB;
+    }
+
+    .profit-money.add:before {
+        content: "+";
+        font-size: 1.8rem;
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        top: 0;
+        left: -25px;
+    }
+
+    .profit-money.reduce {
+        color: red;
+    }
+
+    .profit-money.reduce:before {
+        content: "-";
+        font-size: 1.8rem;
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        top: 0;
+        left: -25px;
+    }
+
+    .Policy-timebox {
+        display: block;
+        width: 100%;
+        font-size: 1.5rem;
+        height: 30px;
+        line-height: 30px;
+        clear: both;
+        color: #4D5560;
+    }
+}

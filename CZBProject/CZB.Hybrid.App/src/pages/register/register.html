@@ -1,0 +1,58 @@
+﻿<!--<ion-header>
+  <ion-navbar>
+    <ion-title>注册</ion-title>
+  </ion-navbar>
+</ion-header>-->
+<ion-content class="item-contain">
+    <button margin-vertical ion-button icon-left clear tappable (click)="gologinPage()">
+        <ion-icon name="arrow-back"></ion-icon>
+        返回
+    </button>
+    <ion-list class="item-list">
+        <h3 text-center margin-vertical>请输入推荐码</h3>
+        <ion-grid margin-vertical>
+            <ion-row margin-vertical>
+                <ion-col width-25>
+                    <ion-item>
+                        <ion-input no-padding placeholder="" text-center #focusInputFirst (keyup)="changeInput($event)" maxlength="1" type="number" [(ngModel)]="first"></ion-input>
+                    </ion-item>
+                </ion-col>
+                <ion-col width-25>
+                    <ion-item>
+                        <ion-input no-padding placeholder="" text-center #focusInputSecond (keyup)="changeInput2($event)" maxlength="1" type="number" [(ngModel)]="second"></ion-input>
+                    </ion-item>
+                </ion-col>
+                <ion-col width-25>
+                    <ion-item>
+                        <ion-input no-padding placeholder="" text-center #focusInputThird (keyup)="changeInput3($event)" maxlength="1" type="number" [(ngModel)]="third"></ion-input>
+                    </ion-item>
+                </ion-col>
+                <ion-col width-25>
+                    <ion-item>
+                        <ion-input no-padding placeholder="" text-center #focusInputFourth maxlength="1" type="number" [(ngModel)]="fourth"></ion-input>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+        <button ion-button margin-bottom icon-left full clear tappable (click)="onScan()">
+            <ion-icon name="qr-scanner"></ion-icon>扫一扫
+        </button>
+        <ion-item>
+            <ion-input placeholder="真实姓名" type="text" [(ngModel)]="name"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-input placeholder="身份证号" type="number" [(ngModel)]="number"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-input placeholder="手机号码" type="number" [(ngModel)]="phone"></ion-input>
+        </ion-item>
+        <section style="width:50%; float:left; ">
+            <ion-item>
+                <ion-input placeholder="验证码" type="number" [(ngModel)]="code"></ion-input>
+            </ion-item>
+        </section>
+        <button ion-button style="width:45%;" clear text-center (click)="sendCode($event)">{{sendTitle}}</button>
+        <h1>&nbsp;</h1>
+        <button ion-button full padding (click)="onlogin()">确认</button>
+    </ion-list>
+</ion-content>

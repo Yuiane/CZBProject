@@ -76,6 +76,36 @@ namespace CZB.Web.Api.Controllers
             }
         }
 
+
+        /// <summary>
+        /// 第三方登录
+        /// </summary>
+        /// <returns></returns>
+        [AllowAnonymous]
+        [AcceptVerbs("GET", "POST")]
+        [ActionName("UserLoginOAuth")]
+        public ReturnResult UserLoginOAuth()
+        {
+            try
+            {
+                return new ReturnResult()
+                {
+                    code = ReturnCode.Error,
+                    data = "",
+                    desc = ""
+                };
+            }
+            catch (Exception err)
+            {
+                return new ReturnResult()
+                {
+                    code = ReturnCode.Error,
+                    data = "",
+                    desc = err.Message
+                };
+            }
+        }
+
         /// <summary>
         /// 刷新用户信息
         /// </summary>

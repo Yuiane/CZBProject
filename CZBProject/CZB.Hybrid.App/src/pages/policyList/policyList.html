@@ -1,0 +1,129 @@
+﻿<!--
+  Generated template for the NewPage page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <ion-navbar color="primary">
+        <ion-title>保单列表</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content no-padding margin-top>
+    <ion-segment [(ngModel)]="order">
+        <ion-segment-button value="awaitOffer">
+            待报价
+        </ion-segment-button>
+        <ion-segment-button value="awaitPay">
+            待支付
+        </ion-segment-button>
+        <ion-segment-button value="alreadyInForce">
+            已生效
+        </ion-segment-button>
+        <ion-segment-button value="expired">
+            已过期
+        </ion-segment-button>
+        <ion-segment-button value="rejected">
+            已拒绝
+        </ion-segment-button>
+    </ion-segment>
+    <div [ngSwitch]="order">
+        <ion-list *ngSwitchCase="'awaitOffer'" class="order-list">
+            <!--新样式-->
+            <section class="order-item" *ngFor="let orderitem of orderList1" tappable (click)="gotoDetail(orderitem.policyId)">
+                <!--<div class="car-no">{{orderitem.carName}}</div>-->
+                <div class="order-details">
+                    <dl>
+                        <dt>
+                            <img *ngIf="orderitem.insureName == '中国平安' " src="assets/images/zgpa.jpg" />
+                            <img *ngIf="orderitem.insureName == '太平洋保险' " src="assets/images/tpybx.jpg" />
+                            <img *ngIf="orderitem.insureName == '中国人保' " src="assets/images/zgrs.jpg" />
+                        </dt>
+                        <dd class="Insurance-company">{{orderitem.insureName}}</dd>
+                        <dd class="man">{{orderitem.customerName}}</dd>
+                        <dd class="phone">{{orderitem.moblie}}</dd>
+                        <dd class="time">{{orderitem.createTime}}</dd>
+                    </dl>
+                </div>
+                <div class="policy-bottom">
+                    <div class="policy-money">费用：<strong>{{orderitem.policyAmount}}</strong>元</div>
+                    <button class="btn-look">查看详情</button>
+                </div>
+            </section>
+            <!--新样式END-->
+        </ion-list>
+        <ion-list *ngSwitchCase="'awaitPay'">
+            <section class="order-item" *ngFor="let orderitem of orderList2" tappable (click)="gotoDetail(orderitem.policyId)">
+                <!--<div class="car-no">{{orderitem.carName}}</div>-->
+                <div class="order-details">
+                    <dl>
+                        <dt><img src="assets/images/header.jpg" /></dt>
+                        <dd class="Insurance-company">{{orderitem.insureName}}</dd>
+                        <dd class="man">{{orderitem.customerName}}</dd>
+                        <dd class="phone">{{orderitem.moblie}}</dd>
+                        <dd class="time">{{orderitem.createTime}}</dd>
+                    </dl>
+                </div>
+                <div class="policy-bottom">
+                    <div class="policy-money">费用：<strong>{{orderitem.policyAmount}}</strong>元</div>
+                    <button class="btn-look">查看详情</button>
+                </div>
+            </section>
+        </ion-list>
+        <ion-list *ngSwitchCase="'alreadyInForce'">
+            <section class="order-item" *ngFor="let orderitem of orderList3" tappable (click)="gotoDetail(orderitem.policyId)">
+                <!--<div class="car-no">{{orderitem.carName}}</div>-->
+                <div class="order-details">
+                    <dl>
+                        <dt><img src="assets/images/header.jpg" /></dt>
+                        <dd class="Insurance-company">{{orderitem.insureName}}</dd>
+                        <dd class="man">{{orderitem.customerName}}</dd>
+                        <dd class="phone">{{orderitem.moblie}}</dd>
+                        <dd class="time">{{orderitem.createTime}}</dd>
+                    </dl>
+                </div>
+                <div class="policy-bottom">
+                    <div class="policy-money">费用：<strong>{{orderitem.policyAmount}}</strong>元</div>
+                    <button class="btn-look">查看详情</button>
+                </div>
+            </section>
+        </ion-list>
+        <ion-list *ngSwitchCase="'expired'">
+            <section class="order-item" *ngFor="let orderitem of orderList4" tappable (click)="gotoDetail(orderitem.policyId)">
+                <!--<div class="car-no">{{orderitem.carName}}</div>-->
+                <div class="order-details">
+                    <dl>
+                        <dt><img src="assets/images/header.jpg" /></dt>
+                        <dd class="Insurance-company">{{orderitem.insureName}}</dd>
+                        <dd class="man">{{orderitem.customerName}}</dd>
+                        <dd class="phone">{{orderitem.moblie}}</dd>
+                        <dd class="time">{{orderitem.createTime}}</dd>
+                    </dl>
+                </div>
+                <div class="policy-bottom">
+                    <div class="policy-money">费用：<strong>{{orderitem.policyAmount}}</strong>元</div>
+                    <button class="btn-look">查看详情</button>
+                </div>
+            </section>
+        </ion-list>
+        <ion-list *ngSwitchCase="'rejected'">
+            <section class="order-item" *ngFor="let orderitem of orderList5" tappable (click)="gotoDetail(orderitem.policyId)">
+                <!--<div class="car-no">{{orderitem.carName}}</div>-->
+                <div class="order-details">
+                    <dl>
+                        <dt><img src="assets/images/header.jpg" /></dt>
+                        <dd class="Insurance-company">{{orderitem.insureName}}</dd>
+                        <dd class="man">{{orderitem.customerName}}</dd>
+                        <dd class="phone">{{orderitem.moblie}}</dd>
+                        <dd class="time">{{orderitem.createTime}}</dd>
+                    </dl>
+                </div>
+                <div class="policy-bottom">
+                    <div class="policy-money">费用：<strong>{{orderitem.policyAmount}}</strong>元</div>
+                    <button class="btn-look">查看详情</button>
+                </div>
+            </section>
+        </ion-list>
+    </div>
+    <h1>&nbsp;</h1>
+</ion-content>
