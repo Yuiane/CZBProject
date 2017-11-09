@@ -127,7 +127,7 @@ namespace CZB.Web.Controllers
                 string postInfo = string.Format("\"partyId\":\"{0}\",\"businessNo\":\"{1}\",\"content\":\"{2}\"", _model.partyId, _model.businessNo, _model.content.ToJson().Replace("\"", "'"));
                 postInfo = "{" + postInfo + "}";
                 strLog.AppendLine("--------------postInfo:--------------" + postInfo);
-                CZB.Web.Models.UpdateDrpReturn _result = Utils.HttpPostRequest(url, postInfo).JsonToObj<CZB.Web.Models.UpdateDrpReturn>();
+                CZB.Web.Models.UpdateDrpReturn _result = Utils.HttpRequest(url, RequestType.POST, postInfo).JsonToObj<CZB.Web.Models.UpdateDrpReturn>();
                 if (_result.success)
                 {
                     strLog.AppendLine("--------------success--------------");
@@ -317,11 +317,11 @@ namespace CZB.Web.Controllers
                         salvage = changeItemsModel.salvage.ToDecimal(),
                         depreciation = changeItemsModel.depreciation.ToDecimal(),
                         itemName = changeItemsModel.itemName,
-                        ManualFlag = changeItemsModel.manualFlag.ToLower() == "true" ? true : false,
+                        ManualFlag = changeItemsModel.manualFlag.ToLower() == "1" ? true : false,
                         partFeeAfterDiscount = changeItemsModel.partFeeAfterDiscount.ToDecimal(),
                         partNo = changeItemsModel.partNo,
                         partQuantity = changeItemsModel.partQuantity.ToDecimal(),
-                        recycleFlag = changeItemsModel.recycleFlag.ToLower() == "true" ? true : false,
+                        recycleFlag = changeItemsModel.recycleFlag.ToLower() == "1" ? true : false,
                         Id = _guid
                     });
                     infoModel.ChangeItemIDs += _guid + ",";
@@ -341,7 +341,7 @@ namespace CZB.Web.Controllers
                         id = _guid,
                         itemid = materialItemsModel.itemId.ToDecimal(),
                         itemName = materialItemsModel.itemName,
-                        manualFlag = materialItemsModel.manualFlag.ToLower() == "true" ? true : false,
+                        manualFlag = materialItemsModel.manualFlag.ToLower() == "1" ? true : false,
                         materialUnit = materialItemsModel.materialUnit.ToStringEx(),
                         partFee = materialItemsModel.partFee.ToDecimal(),
                         partQuantity = materialItemsModel.partQuantity.ToDecimal(),
@@ -475,11 +475,11 @@ namespace CZB.Web.Controllers
                         salvage = changeItemsModel.salvage.ToDecimal(),
                         depreciation = changeItemsModel.depreciation.ToDecimal(),
                         itemName = changeItemsModel.itemName,
-                        manualFlag = changeItemsModel.manualFlag.ToLower() == "true" ? true : false,
+                        manualFlag = changeItemsModel.manualFlag.ToLower() == "1" ? true : false,
                         partFeeAfterDiscount = changeItemsModel.partFeeAfterDiscount.ToDecimal(),
                         partNo = changeItemsModel.partNo,
                         partQuantity = changeItemsModel.partQuantity.ToDecimal(),
-                        recycleFlag = changeItemsModel.recycleFlag.ToLower() == "true" ? true : false
+                        recycleFlag = changeItemsModel.recycleFlag.ToLower() == "1" ? true : false
                     });
                 }
             }
@@ -522,7 +522,7 @@ namespace CZB.Web.Controllers
                     {
                         itemId = materialItemsModel.itemId,
                         itemName = materialItemsModel.itemName,
-                        manualFlag = materialItemsModel.manualFlag.ToLower() == "true" ? true : false,
+                        manualFlag = materialItemsModel.manualFlag.ToLower() == "1" ? true : false,
                         materialUnit = materialItemsModel.materialUnit.ToStringEx(),
                         partFee = materialItemsModel.partFee.ToDecimal(),
                         partQuantity = materialItemsModel.partQuantity.ToDecimal(),

@@ -9,6 +9,7 @@ import { profitPage } from '../profit/profit';
 import { policyListPage } from '../policyList/policyList';
 import { addPolicyPage } from '../addPolicy/addPolicy';
 import { TabsPage } from '../tabs/tabs';
+
 declare var Wechat: any;
 
 @Component({

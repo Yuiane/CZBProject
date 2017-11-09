@@ -2,11 +2,14 @@
 import { NavController, AlertController, App, Platform, LoadingController } from 'ionic-angular';
 import { Http, Response } from '@angular/http';
 import { FormBuilder, Validators } from '@angular/forms';
+
+
 import { userInfoService } from './../../providers/userInfoService';
 import { storageService } from './../../providers/storageService';
 
 import { TabsPage } from '../tabs/tabs';
 import { registerPage } from '../register/register';
+
 declare var Wechat: any;
 
 /*

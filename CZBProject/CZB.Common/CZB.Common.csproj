@@ -59,6 +59,9 @@
     <Compile Include="Helpers\EnumsHelper.cs" />
     <Compile Include="Helpers\LogHelper.cs" />
     <Compile Include="Messages.cs" />
+    <Compile Include="OpenWeChat\Model\AccessToken.cs" />
+    <Compile Include="OpenWeChat\Model\UserInfo.cs" />
+    <Compile Include="OpenWeChat\OpenApi.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SerializationHelper.cs" />
     <Compile Include="Utils.cs" />

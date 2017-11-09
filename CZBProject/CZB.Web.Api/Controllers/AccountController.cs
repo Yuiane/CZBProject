@@ -1,5 +1,6 @@
 ﻿using CZB.Common;
 using CZB.Common.Extensions;
+using CZB.Common.OpenWeChat;
 using CZB.Web.Api.Common;
 using CZB.Web.Api.Models;
 using System;
@@ -88,6 +89,15 @@ namespace CZB.Web.Api.Controllers
         {
             try
             {
+                string code = Request.Param("code");
+                if (code.IsNotNullOrWhiteSpace())
+                {
+                    var info = new OpenApi().GetUserInfo(code);
+                    if (info != null)
+                    {
+
+                    }
+                }
                 return new ReturnResult()
                 {
                     code = ReturnCode.Error,

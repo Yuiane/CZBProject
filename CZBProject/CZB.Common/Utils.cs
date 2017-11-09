@@ -163,7 +163,7 @@ namespace CZB.Common
         /// <param name="requestType">Get/Post</param>
         /// <param name="param">Post 请求参数</param>
         /// <returns></returns>
-        private static string HttpRequest(string url, RequestType enumType, string param)
+        public static string HttpRequest(string url, RequestType enumType, string param)
         {
             HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(url);
             request.Method = enumType.ToString();

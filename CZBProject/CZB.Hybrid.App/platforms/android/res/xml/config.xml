@@ -22,7 +22,7 @@
         <param name="android-package" value="io.ionic.keyboard.IonicKeyboard" />
         <param name="onload" value="true" />
     </feature>
-    <name>销售端</name>
+    <name>销7</name>
     <description>An Ionic Framework and Cordova project for Visual Studio</description>
     <author email="vscordovatools@microsoft.com" href="http://taco.visualstudio.com">Visual Studio JS Mobile Tooling</author>
     <vs:toolsetVersion>6.3.1</vs:toolsetVersion>
@@ -65,6 +65,7 @@
     <preference name="FadeSplashScreenDuration" value="300" />
     <preference name="windows-target-version" value="10.0" />
     <preference name="SplashShowOnlyFirstTime" value="false" />
+    <preference name="ShowSplashScreenSpinner" value="false" />
     <preference name="ShowTitle" value="True" />
     <preference name="Fullscreen" value="True" />
 </widget>
