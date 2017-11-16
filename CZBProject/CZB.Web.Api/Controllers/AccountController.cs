@@ -89,20 +89,38 @@ namespace CZB.Web.Api.Controllers
         {
             try
             {
-                string code = Request.Param("code");
+                string code = Request.ParamUtil("code");
                 if (code.IsNotNullOrWhiteSpace())
                 {
-                    var info = new OpenApi().GetUserInfo(code);
+                    var info = new OpenApi().GetAccess_token(code);
                     if (info != null)
                     {
-
+                        var userInfo = new Accounts().UserLoginThird(info.openid);
+                        if (userInfo != null)
+                        {
+                            return new ReturnResult()
+                            {
+                                code = ReturnCode.Success,
+                                data = userInfo,
+                                desc = "第三方登录成功"
+                            };
+                        }
+                        else
+                        {
+                            return new ReturnResult()
+                            {
+                                code = ReturnCode.Error,
+                                data = "",
+                                desc = "该微信尚未绑定代理商,请先绑定"
+                            };
+                        }
                     }
                 }
                 return new ReturnResult()
                 {
                     code = ReturnCode.Error,
                     data = "",
-                    desc = ""
+                    desc = "授权失败"
                 };
             }
             catch (Exception err)
@@ -112,6 +130,63 @@ namespace CZB.Web.Api.Controllers
                     code = ReturnCode.Error,
                     data = "",
                     desc = err.Message
+                };
+            }
+        }
+
+        /// <summary>
+        /// 第三方账号绑定
+        /// </summary>
+        /// <returns></returns>
+        [AllowAnonymous]
+        [AcceptVerbs("GET", "POST")]
+        [ActionName("BandWechatLogin")]
+        public ReturnResult BandWechatLogin()
+        {
+            try
+            {
+                var agentId = Request.Param("agentId").ToInt32();
+                string code = Request.ParamUtil("code");
+                if (code.IsNotNullOrWhiteSpace() && agentId > 0)
+                {
+                    var info = new OpenApi().GetAccess_token(code);
+                    if (info != null)
+                    {
+                        if (new BLL.FX_Agent().BandWechatLogin(agentId, info.openid))
+                        {
+                            return new ReturnResult
+                            {
+                                code = ReturnCode.Success,
+                                desc = "绑定成功",
+                                data = ""
+                            };
+                        }
+                    }
+                }
+                else
+                {
+                    return new ReturnResult
+                    {
+                        code = ReturnCode.NullOrEmpty,
+                        desc = "参数异常 agentId:" + agentId + "&code:" + code,
+                        data = ""
+                    };
+                }
+                return new ReturnResult
+                {
+                    code = ReturnCode.Error,
+                    desc = "内部错误",
+                    data = ""
+                };
+            }
+            catch (Exception err)
+            {
+                return new ReturnResult
+                {
+                    code = ReturnCode.Error,
+                    data = "",
+                    desc = err.Message
+
                 };
             }
         }

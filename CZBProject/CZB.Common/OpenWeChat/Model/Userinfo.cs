@@ -12,5 +12,7 @@
 
         public string headimgurl { get; set; }
 
+        public string unionid { get; set; }
+
     }
 }

@@ -12,6 +12,8 @@ import { profitPage } from '../pages/profit/profit';
 import { policyDetailPage } from '../pages/policyDetail/policyDetail';
 import { addPolicyPage } from '../pages/addPolicy/addPolicy';
 import { registerPage } from '../pages/register/register';
+import { personPage } from '../pages/person/person';
+import { salesRulesPage } from '../pages/salesRules/salesRules';
 
 
 
@@ -36,7 +38,9 @@ import { DatePipe } from '@angular/common';
         myTeamPage,
         profitPage,
         policyDetailPage,
-        addPolicyPage
+        addPolicyPage,
+        personPage,
+        salesRulesPage
     ],
     imports: [
         IonicModule.forRoot(MyApp)
@@ -53,7 +57,9 @@ import { DatePipe } from '@angular/common';
         myTeamPage,
         profitPage,
         policyDetailPage,
-        addPolicyPage
+        addPolicyPage,
+        personPage,
+        salesRulesPage
     ],
     providers: [{ provide: ErrorHandler, useClass: IonicErrorHandler }, userInfoService, httpService, storageService, insureService, policyService, DatePicker, DatePipe]
 })

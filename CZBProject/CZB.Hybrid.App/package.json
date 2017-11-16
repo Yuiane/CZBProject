@@ -25,6 +25,7 @@
         "@ionic-native/date-picker": "^4.2.1",
         "@ionic/storage": "1.1.7",
         "cordova-android": "^5.2.1",
+        "cordova-ios": "^4.4.0",
         "cordova-plugin-console": "1.0.5",
         "cordova-plugin-device": "1.1.4",
         "cordova-plugin-splashscreen": "~4.0.1",
@@ -71,7 +72,8 @@
             "ionic-plugin-keyboard": {}
         },
         "platforms": [
-            "android"
+            "android",
+            "ios"
         ]
     }
 }

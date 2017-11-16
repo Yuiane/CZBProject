@@ -117,6 +117,7 @@ namespace CZB.DAL.SqlServer.DataProvider
 
 
 
+
         /// <summary>
         ///  获取=>下级发展的数量
         /// </summary>
@@ -362,6 +363,23 @@ namespace CZB.DAL.SqlServer.DataProvider
             return DbHelperSQL.Query(strSql.ToString(), sqlParameters);
         }
 
+        /// <summary>
+        /// 根据手机号获取用户信息
+        /// </summary>
+        /// <param name="phone"></param>
+        /// <returns></returns>
+        public DataSet GetModelByThirdOpenId(string thirdOpenId)
+        {
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append(" select *  from FX_Agent where ThirdOpenId=@thirdOpenId; ");
+
+            var sqlParameters = new SqlParameter[] {
+                new SqlParameter("@thirdOpenId",thirdOpenId)
+            };
+
+            return DbHelperSQL.Query(strSql.ToString(), sqlParameters);
+        }
+
 
         /// <summary>
         /// 根据Code邀请码获取用户信息
@@ -518,6 +536,26 @@ namespace CZB.DAL.SqlServer.DataProvider
             }
         }
 
+        /// <summary>
+        /// 代理商绑定第三方微信登录
+        /// </summary>
+        /// <param name="agentId"></param>
+        /// <param name="thirdOpenId"></param>
+        /// <returns></returns>
+        public bool BandWechatLogin(int agentId, string thirdOpenId)
+        {
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append(" update FX_Agent  ");
+            strSql.Append(" set ThirdOpenId=@thirdOpenId  ");
+            strSql.Append(" where AgentId=@agentId and (ThirdOpenId ='' or ThirdOpenId is null or ThirdOpenId =null)  ");
+            strSql.Append(" and (select count(1) from FX_Agent where ThirdOpenId=@thirdOpenId)= 0  ");
+
+            SqlParameter[] updateParameters = {
+                                               new SqlParameter("@thirdOpenId",thirdOpenId),
+                                               new SqlParameter("@agentId",agentId)
+                                              };
+            return DbHelperSQL.ExecuteSql(strSql.ToString(), updateParameters) > 0;
+        }
 
         #endregion  ExtensionMethod
     }

@@ -117,6 +117,16 @@ namespace CZB.BLL
         }
 
         /// <summary>
+        /// 根据手机号获取用户信息
+        /// </summary>
+        /// <param name="phone"></param>
+        /// <returns></returns>
+        public Model.FX_Agent GetModelByThirdOpenId(string phone)
+        {
+            return dal.GetModelByThirdOpenId(phone).Tables[0].ToEntity<Model.FX_Agent>();
+        }
+
+        /// <summary>
         /// 根据Code邀请码获取用户信息
         /// </summary>
         /// <param name="zCode"></param>
@@ -181,6 +191,17 @@ namespace CZB.BLL
         public int GetUserAccountNumer()
         {
             return dal.GetUserAccountNumer();
+        }
+
+        /// <summary>
+        /// 代理商绑定第三方微信登录
+        /// </summary>
+        /// <param name="agentId"></param>
+        /// <param name="thirdOpenId"></param>
+        /// <returns></returns>
+        public bool BandWechatLogin(int agentId, string thirdOpenId)
+        {
+            return dal.BandWechatLogin(agentId, thirdOpenId);
         }
 
         #endregion  ExtensionMethod

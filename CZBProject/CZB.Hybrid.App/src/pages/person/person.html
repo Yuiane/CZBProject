@@ -1,0 +1,37 @@
+﻿<ion-header>
+    <ion-navbar color="primary">
+        <ion-title>个人中心</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <ion-list no-border>
+        <ion-list-header>
+            基本信息
+        </ion-list-header>
+        <ion-item>
+            {{event.agentName}}
+            <ion-note item-end right>
+                {{event.levelName}}
+            </ion-note>
+        </ion-item>
+        <ion-item>
+            <ion-toggle checked="false"></ion-toggle>
+            <ion-label>
+                是否接收推送
+            </ion-label>
+            <ion-icon name='body' item-start></ion-icon>
+        </ion-item>
+        <ion-item tappable (click)="gotoRule()">
+            销售规则
+        </ion-item>
+        <ion-item tappable (click)="wechatLogin($event)">
+            微信登录
+            <ion-note item-end>
+                {{event.thirdOpenIdState}}
+            </ion-note>
+        </ion-item>
+    </ion-list>
+    <ion-list margin-horizontal>
+        <button ion-button block tappable (click)="onExit()">退出登录</button>
+    </ion-list>
+</ion-content>

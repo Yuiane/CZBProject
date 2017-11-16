@@ -2,6 +2,7 @@
 import { NavController, AlertController, App, Platform, LoadingController } from 'ionic-angular';
 import { Http, Response } from '@angular/http';
 import { FormBuilder, Validators } from '@angular/forms';
+import { StatusBar, Splashscreen } from 'ionic-native';
 
 
 import { userInfoService } from './../../providers/userInfoService';
@@ -28,6 +29,8 @@ export class loginPage {
     constructor(public navCtrl: NavController, public alertCtrl: AlertController, public userInfoService: userInfoService,
         public formBuilder: FormBuilder, public loadingCtrl: LoadingController,
         public storageService: storageService, public appCtrl: App) {
+
+        StatusBar.backgroundColorByHexString('#0058b6');
     }
 
     loginForm = this.formBuilder.group({
@@ -56,7 +59,7 @@ export class loginPage {
         }
         const login_loading = this.loadingCtrl.create({
             spinner: 'crescent',
-            content: '登陆中...'
+            content: '登录中...'
         });
         login_loading.present();
 
@@ -69,7 +72,6 @@ export class loginPage {
                     //登录成功
                     this.storageService.write('userInfo', data.data);
                     this.appCtrl.getRootNav().setRoot(TabsPage);
-                    //this.navCtrl.push(TabsPage);
                 } else {
                     let alert = this.alertCtrl.create({
                         subTitle: data.desc,
@@ -130,19 +132,44 @@ export class loginPage {
 
     wechatLogin(_event) {
         _event.preventDefault();//该方法将通知 Web 浏览器不要执行与事件关联的默认动作
+        var _that = this.userInfoService;
+        var __that = this;
         Wechat.isInstalled(function (installed) {
-            if (!installed) {
-                alert("请先安装微信");
-            } else {
+            if (installed) {
+                let _loading = __that.loadingCtrl.create({
+                    spinner: 'crescent',
+                    content: '微信登录中...',
+                    dismissOnPageChange: true
+                });
+                _loading.present();
                 var scope = "snsapi_userinfo", state = "wechat";
                 Wechat.auth(scope, state, function (val) {
-                    alert(JSON.stringify(val));
+                    if (val != null && val != "" && val.state == "wechat") {
+                        _that.loginOAuth(val.code).then(valU => {
+                            _loading.dismiss();
+                            if (valU.code == 100) {
+                                //登录成功
+                                __that.storageService.write('userInfo', valU.data);
+                                __that.appCtrl.getRootNav().setRoot(TabsPage);
+                            } else {
+                                __that.alertCtrl.create({
+                                    subTitle: valU.desc,
+                                    buttons: ['我知道了']
+                                }).present();
+                            }
+                        });
+                    }
                 }, function (reason) {
                     alert("Failed: " + reason);
                 });
+            } else {
+                __that.alertCtrl.create({
+                    subTitle: "请先安装微信客户端",
+                    buttons: ['我知道了']
+                }).present();
             }
         }, function (reason) {
-            alert(JSON.stringify(reason));
+            alert("异常" + (reason));
         });
     }
 

@@ -129,6 +129,73 @@ namespace CZB.Common.Extensions
             return string.Empty;
         }
 
+        /// <summary>
+        /// api接口获取请求参数
+        /// </summary>
+        /// <param name="request"></param>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public static string ParamUtil(this HttpRequestMessage request, string name)
+        {
+            try
+            {
+                if (request.Method == HttpMethod.Post)
+                {
+                    var jsonStr = request.Content.ReadAsStringAsync().Result;//{"Name":"tongl","Age":22}
+                    var json = JsonConvert.DeserializeObject<IDictionary<string, string>>(jsonStr);
+                    if (json != null && json.Count > 0)
+                    {
+                        foreach (var item in json)
+                        {
+                            if (item.Key == name)
+                            {
+                                return item.Value.Trim();
+                            }
+                        }
+                    }
+                }
+                else if (request.Method == HttpMethod.Get)
+                {
+                    if (!string.IsNullOrEmpty(request.RequestUri.Query) && request.RequestUri.Query.Contains(name))
+                    {
+                        string queryValue = request.RequestUri.Query.Replace("?", "");
+                        if (!string.IsNullOrEmpty(queryValue))
+                        {
+                            if (queryValue.Contains("&"))
+                            {
+                                string[] queryParameter = queryValue.Split('&');
+                                foreach (string queryInfo in queryParameter)
+                                {
+                                    if (queryInfo.Contains(name))
+                                    {
+                                        string[] parameter = queryInfo.Split('=');
+                                        foreach (string parameterInfo in parameter)
+                                        {
+                                            if (parameterInfo != name) return parameterInfo;
+                                        }
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                string[] parameter = queryValue.Split('=');
+                                foreach (string parameterInfo in parameter)
+                                {
+                                    if (parameterInfo != name) return parameterInfo;
+                                }
+                            }
+                        }
+                    }
+                    return string.Empty;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return string.Empty;
+        }
+
         public static T CZBParam<T>(this HttpRequestMessage request)
         {
             try

@@ -2,7 +2,7 @@
 import { NavController, NavParams, AlertController, Tabs } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { AboutPage } from '../about/about';
-import { ContactPage } from '../contact/contact';
+import { personPage } from '../person/person';
 import { loginPage } from '../login/login';
 import { policyListPage } from '../policyList/policyList';
 
@@ -14,7 +14,7 @@ export class TabsPage {
     // should be each tab's root Page
     tab1Root: any = HomePage;
     tab2Root: any = policyListPage;
-    tab3Root: any = ContactPage;
+    tab3Root: any = personPage;
     @ViewChild('myTabs') tabRef: Tabs;
     indexTab: number = 0; //默认左边第一个菜单
     constructor(public navCtrl: NavController,

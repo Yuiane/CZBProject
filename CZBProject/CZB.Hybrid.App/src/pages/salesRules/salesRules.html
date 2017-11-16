@@ -1,0 +1,135 @@
+﻿<ion-header>
+    <ion-navbar color="primary">
+        <ion-title>销售规则</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content padding>
+    <div class="page">
+        <h3 class="title">车直保平台业务提点规则V1.0</h3>
+        <div class="first-title">
+            <div class="Serial-number">一、</div>
+            <div class="content">模式说明：销售代理共分为三级，一、二级销售人员可通过分享自己的分享链接发展下级。所有上级均可享受下级销售返点。</div>
+        </div>
+        <div class="first-title">
+            <div class="Serial-number">二、</div>
+            <div class="content">返点计算模式：</div>
+        </div>
+        <div class="er-title">
+            <div class="content">
+                1.&nbsp;&nbsp;&nbsp;&nbsp;价税分离系数1.06，若交强险为1000元，商业险为3000，实际参与分红的交强险保费为1000/1.06，实际参与分红的商业险保费为3000/1.06。
+            </div>
+        </div>
+        <div class="er-title">
+            <div class="content">
+                2.&nbsp;&nbsp;&nbsp;&nbsp;所有返点均使用微信直接转账，提现需扣除个人所得税。
+            </div>
+        </div>
+        <div class="first-title">
+            <div class="Serial-number">三、</div>
+            <div class="content">平台接入险企返点政策</div>
+        </div>
+        <div class="er-title">
+            <div class="content">
+                <p>1.&nbsp;太平洋保险</p>
+                <table>
+                    <tr>
+                        <td>交强险</td>
+                        <td runat="server" id="TPY_JQ"></td>
+                    </tr>
+                    <tr>
+                        <td>商业险直接销售</td>
+                        <td runat="server" id="TPY_zj"></td>
+                    </tr>
+                    <tr runat="server" id="erjitaipin">
+                        <td>商业险二级代理</td>
+                        <td runat="server" id="TPY_erji"></td>
+                    </tr>
+                    <tr runat="server" id="yijitaipin">
+                        <td>商业险一级代理</td>
+                        <td runat="server" id="TPY_yiji"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="er-title">
+            <div class="content">
+                <p>2.&nbsp;人保车险</p>
+                <table>
+                    <tr>
+                        <td>交强险</td>
+                        <td runat="server" id="RB_JQ"></td>
+                    </tr>
+                    <tr>
+                        <td>商业险直接销售</td>
+                        <td runat="server" id="RB_zj"></td>
+                    </tr>
+                    <tr runat="server" id="erjirenbao">
+                        <td>商业险二级代理</td>
+                        <td runat="server" id="RB_erji"></td>
+                    </tr>
+                    <tr runat="server" id="yijirenbao">
+                        <td>商业险一级代理</td>
+                        <td runat="server" id="RB_yiji"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="er-title">
+            <div class="content">
+                <p>2.&nbsp;中国平安</p>
+                <table>
+                    <tr>
+                        <td>交强险</td>
+                        <td runat="server" id="ab_Jq"></td>
+                    </tr>
+                    <tr>
+                        <td>商业险直接销售</td>
+                        <td runat="server" id="ab_zhijie"></td>
+                    </tr>
+                    <tr runat="server" id="erjianbang">
+                        <td>商业险二级代理</td>
+                        <td runat="server" id="ab_erji"></td>
+                    </tr>
+                    <tr runat="server" id="yijianbang">
+                        <td>商业险一级代理</td>
+                        <td runat="server" id="ab_yiji"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="first-title">
+            <div class="Serial-number">四、</div>
+            <div class="content">晋升规则：</div>
+        </div>
+        <div class="er-title">
+            <div class="content">
+                2.&nbsp;&nbsp;&nbsp;&nbsp;二级代理商团队销售保费连续3个月超过200万，团队即可脱离原有一级代理商，成为一级代理商（即城市合伙人），其下级同时进行晋升。原所属一级代理商享受其晋升后团队整体销售额1%的额外平台贴点。
+            </div>
+        </div>
+        <div class="first-title">
+            <div class="Serial-number">五、</div>
+            <div class="content">额外补贴：</div>
+        </div>
+        <div class="er-title">
+            <div class="content">
+                <p>1.&nbsp;每个月度城市保费个人销售前3，可获得额外奖励</p>
+                <table>
+                    <tr>
+                        <td>第一名</td>
+                        <td>3000</td>
+                    </tr>
+                    <tr>
+                        <td>第二名</td>
+                        <td>2000</td>
+                    </tr>
+                    <tr>
+                        <td>第三名</td>
+                        <td>1000</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <br />
+        <br />
+    </div>
+</ion-content>

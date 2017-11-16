@@ -17,7 +17,7 @@
                 </ion-input>
             </ion-item>
         </section>
-        <button margin-bottom ion-button style="width:45%; color:white" clear text-center (click)="sendCode(loginForm.value,$event)">{{sendTitle}}</button>
+        <button tappable margin-bottom ion-button style="width:45%; color:white" clear text-center (click)="sendCode(loginForm.value,$event)">{{sendTitle}}</button>
         <ion-list>
             <button margin-vertical class="item-contain-button" ion-button color="white" full large tappable (click)="onLogin(loginForm.value,$event)">登&nbsp;录</button>
             <button margin-vertical class="item-contain-button2" ion-button color="white" full large tappable (click)="onRegister()">注 册</button>

@@ -23,6 +23,18 @@ export class userInfoService {
         return this.httpService.httpPostNoAuth(url, user);
     }
 
+    loginOAuth(_a) {
+        var post = { 'code': _a };
+        var url = this.API_URL + '/UserLoginOAuth';
+        return this.httpService.httpPostNoAuth(url, post);
+    }
+
+    bandWechatLogin(_a, _b) {
+        var post = { 'code': _a, 'agentId': _b };
+        var url = this.API_URL + '/BandWechatLogin';
+        return this.httpService.httpPostNoAuth(url, post);
+    }
+
     RefreshUserInfo(user) {
         var url = this.API_URL + '/RefreshUserInfo';
         return this.httpService.httpPostNoAuth(url, user);

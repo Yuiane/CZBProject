@@ -99,5 +99,7 @@ namespace CZB.Web.Api.Models
         /// 用户邀请码
         /// </summary>
         public string code { get; set; }
+
+        public string thirdOpenId { get; set; }
     }
 }

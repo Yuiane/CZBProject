@@ -22224,6 +22224,10 @@ sub {
   }
 }
 
+.toolbar-md {
+  min-height: 48px !important;
+}
+
 page-addPolicy .red {
   color: red;
 }

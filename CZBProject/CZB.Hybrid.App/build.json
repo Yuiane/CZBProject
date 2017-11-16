@@ -1,0 +1,11 @@
+﻿{
+  "android": {
+    "release": {
+      "keystore": "c:\\comczbekf.keystore",
+      "storePassword": "pwd123",
+      "alias": "comczbekf",
+      "password": "pwd123",
+      "keystoreType": ""
+    }
+  }
+}
