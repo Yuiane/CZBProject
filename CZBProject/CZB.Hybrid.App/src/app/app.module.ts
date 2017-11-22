@@ -25,6 +25,7 @@ import { policyService } from '../providers/policyService';
 
 import { DatePicker } from '@ionic-native/date-picker';
 import { DatePipe } from '@angular/common';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 
 @NgModule({
     declarations: [
@@ -40,7 +41,8 @@ import { DatePipe } from '@angular/common';
         policyDetailPage,
         addPolicyPage,
         personPage,
-        salesRulesPage
+        salesRulesPage,
+        registerPage
     ],
     imports: [
         IonicModule.forRoot(MyApp)
@@ -59,8 +61,9 @@ import { DatePipe } from '@angular/common';
         policyDetailPage,
         addPolicyPage,
         personPage,
-        salesRulesPage
+        salesRulesPage,
+        registerPage
     ],
-    providers: [{ provide: ErrorHandler, useClass: IonicErrorHandler }, userInfoService, httpService, storageService, insureService, policyService, DatePicker, DatePipe]
+    providers: [{ provide: ErrorHandler, useClass: IonicErrorHandler }, userInfoService, httpService, storageService, insureService, policyService, DatePicker, DatePipe, BarcodeScanner]
 })
 export class AppModule { }

@@ -9,8 +9,14 @@
             基本信息
         </ion-list-header>
         <ion-item>
-            {{event.agentName}}
-            <ion-note item-end right>
+            代理商名称
+            <ion-note item-right>
+                {{event.agentName}}
+            </ion-note>
+        </ion-item>
+        <ion-item>
+            代理商等级
+            <ion-note item-right>
                 {{event.levelName}}
             </ion-note>
         </ion-item>
@@ -26,7 +32,7 @@
         </ion-item>
         <ion-item tappable (click)="wechatLogin($event)">
             微信登录
-            <ion-note item-end>
+            <ion-note item-right>
                 {{event.thirdOpenIdState}}
             </ion-note>
         </ion-item>

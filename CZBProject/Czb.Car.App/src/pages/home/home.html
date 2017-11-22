@@ -1,0 +1,68 @@
+﻿<!--
+  Generated template for the NewPage page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>车直保</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <!--顶部轮播图-->
+  <ion-list class="header-slides-height">
+    <ion-slides pager direction="horizontal" autoplay="2000" loop>
+      <ion-slide>
+        <h1>Slide 1</h1>
+      </ion-slide>
+      <ion-slide>
+        <h1>Slide 2</h1>
+      </ion-slide>
+      <ion-slide>
+        <h1>Slide 3</h1>
+      </ion-slide>
+    </ion-slides>
+  </ion-list>
+  <!--图标功能区-->
+  <ion-list>
+    <ion-grid>
+      <ion-row>
+        <ion-col text-center tappable>
+          <img width="80%" src="http://www.51czb.com/admin/Fx_Mobile/images/icon_by@2x.png" /><br />
+          钣喷
+        </ion-col>
+        <ion-col text-center tappable>
+          <img width="80%" src="http://www.51czb.com/admin/Fx_Mobile/images/icon_cp@2x.png" /><br />
+          机修
+        </ion-col>
+        <ion-col text-center tappable>
+          <img width="80%" src="http://www.51czb.com/admin/Fx_Mobile/images/icon_qc@2x.png" /><br />
+          保养
+        </ion-col>
+        <ion-col text-center tappable>
+          <img width="80%" src="http://www.51czb.com/admin/Fx_Mobile/images/icon_by@2x.png" /><br />
+          车险
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col text-center tappable (click)="gotoSecondHandCar()">
+          <img width="80%" src="http://www.51czb.com/admin/Fx_Mobile/images/icon_by@2x.png" /><br />
+          二手车
+        </ion-col>
+        <ion-col text-center tappable (click)="gotoFinanceLease()">
+          <img width="80%" src="http://www.51czb.com/admin/Fx_Mobile/images/icon_cp@2x.png" /><br />
+          融资租赁
+        </ion-col>
+        <ion-col text-center tappable (click)="gotoDeferredWarranty()">
+          <img width="80%" src="http://www.51czb.com/admin/Fx_Mobile/images/icon_qc@2x.png" /><br />
+          延保服务
+        </ion-col>
+        <ion-col text-center tappable (click)="gotoEmergencyRescue()">
+          <img width="80%" src="http://www.51czb.com/admin/Fx_Mobile/images/icon_by@2x.png" /><br />
+          应急救援
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-list>
+</ion-content>

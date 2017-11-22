@@ -347,7 +347,17 @@ namespace CZB.Common
             return result;
         }
 
-
+        /// <summary>
+        /// 使用Get方法获取字符串结果（没有加入Cookie）
+        /// </summary>
+        /// <param name="url"></param>
+        /// <returns></returns>
+        public static string HttpGet(string url)
+        {
+            WebClient wc = new WebClient();
+            wc.Encoding = Encoding.UTF8;
+            return wc.DownloadString(url);
+        }
 
     }
 }

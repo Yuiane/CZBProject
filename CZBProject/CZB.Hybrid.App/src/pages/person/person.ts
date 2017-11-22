@@ -32,7 +32,7 @@ export class personPage {
         if (_userInfo != null && _userInfo != "") {
             var __userInfo = JSON.parse(_userInfo).userInfo;
             this.event.agentId = __userInfo.id;
-            this.event.agentName = __userInfo.agentName;
+            this.event.agentName = __userInfo.name;
             this.event.levelName = __userInfo.levelName;
             if (__userInfo.thirdOpenId == null || __userInfo.thirdOpenId == "") {
                 this.event.thirdOpenIdState = "点击绑定";
@@ -68,7 +68,9 @@ export class personPage {
 
     wechatLogin(_event) {
         _event.preventDefault();//该方法将通知 Web 浏览器不要执行与事件关联的默认动作
-
+        if (this.event.thirdOpenIdState != "点击绑定") {
+            return;
+        }
         let loading = this.loadingCtrl.create({
             spinner: 'crescent',
             content: '微信绑定中...',

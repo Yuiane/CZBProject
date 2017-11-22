@@ -44,6 +44,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AutoNaviMap\AutoNaviMapApi.cs" />
+    <Compile Include="AutoNaviMap\Models\Return\Base.cs" />
+    <Compile Include="AutoNaviMap\Models\Return\Regeo.cs" />
     <Compile Include="CCCModel\Models.cs" />
     <Compile Include="CCCModel\PostModel.cs" />
     <Compile Include="CCCModel\ReturnResult.cs" />
@@ -69,5 +72,6 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

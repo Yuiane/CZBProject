@@ -32,7 +32,10 @@ export class registerPage {
     public fourth = "";
 
     constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public userInfoService: userInfoService,
-        public appCtrl: App, private barcodeScanner: BarcodeScanner) { }
+        public appCtrl: App, private barcodeScanner: BarcodeScanner) {
+        this.sendTitle = "发送验证码";
+        this.canSend = true;
+    }
 
     gologinPage() {
         this.appCtrl.getRootNav().setRoot(loginPage);
@@ -151,7 +154,6 @@ export class registerPage {
 
 
     sendCode(_event) {
-
         if (this.canSend) {
             console.log(this.phone);
             this.canSend = false;
