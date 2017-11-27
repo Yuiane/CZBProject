@@ -16,7 +16,10 @@ export class emergencyRescuePage {
     constructor(public navCtrl: NavController, public navParams: NavParams) { }
 
     ionViewDidLoad() {
-        console.log('ionViewDidLoad emergencyRescuePage');
+        // console.log('ionViewDidLoad emergencyRescuePage');
     }
 
+    call(phone) {
+        window.open('tel:' + phone);
+    }
 }

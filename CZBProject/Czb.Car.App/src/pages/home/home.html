@@ -6,7 +6,12 @@
 -->
 <ion-header>
   <ion-navbar color="primary">
-    <ion-title>车直保</ion-title>
+    <ion-title>车直保({{postion}})</ion-title>
+    <ion-buttons start tappable (click)="gotoSelectCity()">
+      <button ion-button icon-only>
+        <ion-icon name="sync"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 <ion-content>

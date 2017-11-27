@@ -1,7 +1,8 @@
 ﻿import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { homePage } from '../home/home';
-import { selectCityPage } from '../selectCity/selectCity';
+import { Page1 } from '../page1/page1';
+import { storeListPage } from '../storeList/storeList';
 /*
   Generated class for the tabs page.
 
@@ -14,7 +15,7 @@ import { selectCityPage } from '../selectCity/selectCity';
 })
 export class tabsPage {
     tab1Root: any = homePage;
-    tab2Root: any = selectCityPage;
-    tab3Root: any = homePage;
+    tab2Root: any = storeListPage;
+    tab3Root: any = Page1;
     constructor(public navCtrl: NavController, public navParams: NavParams) { }
 }

@@ -16,7 +16,7 @@ export class secondHandCarPage {
     constructor(public navCtrl: NavController, public navParams: NavParams) { }
 
     ionViewDidLoad() {
-        console.log('ionViewDidLoad secondHandCarPage');
+        //console.log('ionViewDidLoad secondHandCarPage');
     }
 
 }

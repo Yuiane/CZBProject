@@ -10,13 +10,17 @@ import { secondHandCarPage } from '../pages/secondHandCar/secondHandCar';
 import { financeLeasePage } from '../pages/financeLease/financeLease';
 import { deferredWarrantyPage } from '../pages/deferredWarranty/deferredWarranty';
 import { emergencyRescuePage } from '../pages/emergencyRescue/emergencyRescue';
-
+import { storeListPage } from '../pages/storeList/storeList';
+import { storeDetailPage } from '../pages/storeDetail/storeDetail';
 
 import { HttpService } from '../providers/HttpService';
 import { StorageService } from '../providers/StorageService';
 import { CommonService } from '../providers/CommonService';
 
 import { Geolocation } from '@ionic-native/geolocation';
+import { JPushService } from 'ionic2-jpush/dist';
+import { WebIntent } from '@ionic-native/web-intent';
+
 
 @NgModule({
     declarations: [
@@ -29,7 +33,9 @@ import { Geolocation } from '@ionic-native/geolocation';
         secondHandCarPage,
         financeLeasePage,
         deferredWarrantyPage,
-        emergencyRescuePage
+        emergencyRescuePage,
+        storeListPage,
+        storeDetailPage
     ],
     imports: [
         IonicModule.forRoot(MyApp)
@@ -45,8 +51,10 @@ import { Geolocation } from '@ionic-native/geolocation';
         secondHandCarPage,
         financeLeasePage,
         deferredWarrantyPage,
-        emergencyRescuePage
+        emergencyRescuePage,
+        storeListPage,
+        storeDetailPage
     ],
-    providers: [{ provide: ErrorHandler, useClass: IonicErrorHandler }, Geolocation, HttpService, StorageService, CommonService]
+    providers: [{ provide: ErrorHandler, useClass: IonicErrorHandler }, Geolocation, JPushService, HttpService, StorageService, CommonService, WebIntent]
 })
 export class AppModule { }

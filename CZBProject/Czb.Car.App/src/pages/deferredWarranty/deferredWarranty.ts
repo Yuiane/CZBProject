@@ -16,7 +16,7 @@ export class deferredWarrantyPage {
     constructor(public navCtrl: NavController, public navParams: NavParams) { }
 
     ionViewDidLoad() {
-        console.log('ionViewDidLoad deferredWarrantyPage');
+        // console.log('ionViewDidLoad deferredWarrantyPage');
     }
 
 }
