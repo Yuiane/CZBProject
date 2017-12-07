@@ -180,6 +180,7 @@
     <Compile Include="Common\Accounts.cs" />
     <Compile Include="Common\CarOwners.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CarOwner2Controller.cs" />
     <Compile Include="Controllers\CarOwnerController.cs" />
     <Compile Include="Filter\GetSetValue.cs" />
     <Compile Include="Filter\RewriteParameterBinding.cs" />

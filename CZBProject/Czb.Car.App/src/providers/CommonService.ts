@@ -22,4 +22,10 @@ export class CommonService {
         var url = this.API_URL + "/SendRegeo";
         return this.httpService.httpPostNoAuth(url, postJson);
     }
+    //发送验证码
+    sendMessage(user) {
+        var url = this.API_URL + '/SendPhoneMessage';
+        return this.httpService.httpPostNoAuth(url, user);
+    }
+
 }
