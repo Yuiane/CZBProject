@@ -6,101 +6,60 @@
 -->
 <ion-header>
   <ion-navbar color="primary">
-    <ion-title>附近门店</ion-title>
+    <ion-title>门店</ion-title>
+    <ion-buttons start tappable (click)="gotoSelectCity()">
+      <button ion-button icon-only>
+        {{postion}}
+        <ion-icon ios="ios-arrow-down" md="ios-arrow-down"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
-<ion-content>
-  <ion-list>
-    <ion-list-header no-margin>
-      {{postion}}附近的门店
-    </ion-list-header>
-    <ion-item tapple (click)="gotoStoreDetail('a')">
-      <ion-avatar item-left>
-        <img src="http://www.51czb.com/admin/Fx_Mobile/images/icon_cp@2x.png">
-      </ion-avatar>
-      <h2>苏州园区店   20km</h2>
-      <h3>18051803995</h3>
-      <p>苏州市工业园区斜塘民营工业园民生路18号</p>
-    </ion-item>
-    <ion-item>
-      <ion-avatar item-left>
-        <img src="http://www.51czb.com/admin/Fx_Mobile/images/icon_by@2x.png">
-      </ion-avatar>
-      <div>
-        <span item-left>苏州园区店</span>
-        <span item-right>8km</span>
-      </div>
-      <p><ion-icon ios="ios-phone-portrait" md="md-phone-portrait"></ion-icon>&nbsp;18051803995</p>
-      <p><ion-icon ios="ios-pin" md="md-pin"></ion-icon>&nbsp;苏州市工业园区斜塘民营工业园民生路18号</p>
-    </ion-item>
-    <ion-item>
-      <ion-avatar item-left>
-        <img src="http://www.51czb.com/admin/Fx_Mobile/images/icon_cp@2x.png">
-      </ion-avatar>
-      <h2>苏州园区店</h2>
-      <p><ion-icon ios="ios-phone-portrait" md="md-phone-portrait"></ion-icon>&nbsp;18051803995</p>
-      <p><ion-icon ios="ios-pin" md="md-pin"></ion-icon>&nbsp;苏州市工业园区斜塘民营工业园民生路18号</p>
-    </ion-item>
-    <ion-item>
-      <ion-avatar item-left>
-        <img src="http://www.51czb.com/admin/Fx_Mobile/images/icon_by@2x.png">
-      </ion-avatar>
-      <h2>苏州园区店</h2>
-      <p><ion-icon ios="ios-phone-portrait" md="md-phone-portrait"></ion-icon>&nbsp;18051803995</p>
-      <p><ion-icon ios="ios-pin" md="md-pin"></ion-icon>&nbsp;苏州市工业园区斜塘民营工业园民生路18号</p>
-    </ion-item>
-    <ion-item no-border>
-      <ion-avatar item-left>
-        <img src="http://www.51czb.com/admin/Fx_Mobile/images/icon_cp@2x.png">
-      </ion-avatar>
-      <h2>苏州园区店</h2>
-      <p><ion-icon ios="ios-phone-portrait" md="md-phone-portrait"></ion-icon>&nbsp;18051803995</p>
-      <p><ion-icon ios="ios-pin" md="md-pin"></ion-icon>&nbsp;苏州市工业园区斜塘民营工业园民生路18号</p>
-    </ion-item>
+<ion-content no-padding style="background-color:#E6EDF8;">
+  <!--头部筛选块-->
+  <ion-list no-margin style="background-color:white; padding:8px;">
+    <ion-row>
+      <ion-col text-center>
+        默认排序
+        <ion-icon ios="ios-arrow-down" md="ios-arrow-down"></ion-icon>
+      </ion-col>
+      <ion-col text-center>
+        门店类别
+        <ion-icon ios="ios-arrow-down" md="ios-arrow-down"></ion-icon>
+      </ion-col>
+      <ion-col text-center>
+        筛选
+        <ion-icon ios="ios-arrow-down" md="ios-arrow-down"></ion-icon>
+      </ion-col>
+    </ion-row>
   </ion-list>
-  <ion-list>
-    <ion-list-header no-margin>
-      优质门店
-    </ion-list-header>
-    <ion-item>
+  <!--门店列表-->
+  <ion-list padding-bottom no-margin class="storelist-list">
+    <ion-item (click)="gotoStoreDetail('a')">
       <ion-avatar item-left>
-        <img src="http://www.51czb.com/admin/Fx_Mobile/images/icon_by@2x.png">
+        <img src="http://img5.imgtn.bdimg.com/it/u=547138142,3998729701&fm=27&gp=0.jpg">
       </ion-avatar>
-      <h2>苏州园区店</h2>
-      <p><ion-icon ios="ios-phone-portrait" md="md-phone-portrait"></ion-icon>&nbsp;18051803995</p>
-      <p><ion-icon ios="ios-pin" md="md-pin"></ion-icon>&nbsp;苏州市工业园区斜塘民营工业园民生路18号</p>
+      <h2>园区大师钣喷</h2>
+      <p>
+        <button ion-button small outline color="orange">钣喷</button>
+        <button ion-button small outline color="orange">保养</button>
+        <button ion-button small outline color="orange">机修</button>
+      </p>
+      <p>园区斜塘民营工业园</p>
+      <button ion-button clear item-right>10km</button>
     </ion-item>
-    <ion-item>
+    <ion-item (click)="gotoStoreDetail('b')">
       <ion-avatar item-left>
-        <img src="http://www.51czb.com/admin/Fx_Mobile/images/icon_cp@2x.png">
+        <img src="http://img5.imgtn.bdimg.com/it/u=547138142,3998729701&fm=27&gp=0.jpg">
       </ion-avatar>
-      <h2>苏州园区店</h2>
-      <p><ion-icon ios="ios-phone-portrait" md="md-phone-portrait"></ion-icon>&nbsp;18051803995</p>
-      <p><ion-icon ios="ios-pin" md="md-pin"></ion-icon>&nbsp;苏州市工业园区斜塘民营工业园民生路18号</p>
-    </ion-item>
-    <ion-item>
-      <ion-avatar item-left>
-        <img src="http://www.51czb.com/admin/Fx_Mobile/images/icon_by@2x.png">
-      </ion-avatar>
-      <h2>苏州园区店</h2>
-      <p><ion-icon ios="ios-phone-portrait" md="md-phone-portrait"></ion-icon>&nbsp;18051803995</p>
-      <p><ion-icon ios="ios-pin" md="md-pin"></ion-icon>&nbsp;苏州市工业园区斜塘民营工业园民生路18号</p>
-    </ion-item>
-    <ion-item>
-      <ion-avatar item-left>
-        <img src="http://www.51czb.com/admin/Fx_Mobile/images/icon_cp@2x.png">
-      </ion-avatar>
-      <h2>苏州园区店</h2>
-      <p><ion-icon ios="ios-phone-portrait" md="md-phone-portrait"></ion-icon>&nbsp;18051803995</p>
-      <p><ion-icon ios="ios-pin" md="md-pin"></ion-icon>&nbsp;苏州市工业园区斜塘民营工业园民生路18号</p>
-    </ion-item>
-    <ion-item>
-      <ion-avatar item-left>
-        <img src="http://www.51czb.com/admin/Fx_Mobile/images/icon_by@2x.png">
-      </ion-avatar>
-      <h2>苏州园区店</h2>
-      <p><ion-icon ios="ios-phone-portrait" md="md-phone-portrait"></ion-icon>&nbsp;18051803995</p>
-      <p><ion-icon ios="ios-pin" md="md-pin"></ion-icon>&nbsp;苏州市工业园区斜塘民营工业园民生路18号</p>
+      <h2>园区大师钣喷</h2>
+      <p>
+        <button ion-button small outline color="orange">钣喷</button>
+        <button ion-button small outline color="orange">保养</button>
+        <button ion-button small outline color="orange">机修</button>
+      </p>
+      <p>园区斜塘民营工业园</p>
+      <button ion-button clear item-right>10km</button>
     </ion-item>
   </ion-list>
 </ion-content>

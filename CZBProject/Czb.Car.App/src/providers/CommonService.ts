@@ -16,7 +16,7 @@ export class CommonService {
     constructor(private http: Http, private httpService: HttpService) {
 
     }
-    //获取保单
+    //获取定位信息
     SendRegeo(longitude: number, latitude: number) {
         var postJson = { longitude: longitude, latitude: latitude };
         var url = this.API_URL + "/SendRegeo";

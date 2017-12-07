@@ -1,0 +1,65 @@
+﻿<!--
+  Generated template for the NewPage page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-content no-padding no-margin style="background-color:#E6EDF8;">
+  <ion-list no-padding no-margin class="bg_content">
+    <ion-grid no-padding no-margin>
+      <ion-row>
+        <ion-col width-33 text-center offset-33>
+          <img class="header-image" src="http://img5.imgtn.bdimg.com/it/u=547138142,3998729701&fm=27&gp=0.jpg"><br />
+          <h2>袁连杰</h2>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-list>
+  <ion-list class="head-menu" no-margin no-padding>
+    <ion-grid no-padding no-margin>
+      <ion-row baseline center>
+        <ion-col text-center (click)="gotoSign()" tappable>
+          <img src="assets/images/sign.png" height="25px" />
+          <br />
+          签到
+        </ion-col>
+        <ion-col text-center>
+          <img src="assets/images/cars.png" height="25px" />
+          <br />
+          车库
+        </ion-col>
+        <ion-col text-center (click)="gotoCoupon()" tappable>
+          <img src="assets/images/coupon.png" height="25px" />
+          <br />
+          卡券
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-list>
+  <ion-list margin-vertical>
+    <button ion-item>
+      <img item-left height="20px" src="assets/images/order.png" />
+      <h3>我的订单</h3>
+    </button>
+  </ion-list>
+  <ion-list no-lines>
+    <button ion-item>
+      <img item-left height="22px" src="assets/images/policy.png" />
+      <h3>保险信息</h3>
+    </button>
+    <button ion-item>
+      <img item-left height="22px" src="assets/images/repair.png" />
+      <h3>维修信息</h3>
+    </button>
+    <button ion-item>
+      <img height="22px" item-left src="assets/images/yanghu.png" />
+      <h3>养护信息</h3>
+    </button>
+  </ion-list>
+  <ion-list margin-vertical>
+    <button ion-item (click)="gotoSetting()" tappable>
+      <img height="20px" item-left src="assets/images/setting.png" />
+      <h3>设置</h3>
+    </button>
+  </ion-list>
+</ion-content>

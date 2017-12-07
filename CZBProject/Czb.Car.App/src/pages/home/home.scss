@@ -1,6 +1,28 @@
 ﻿page-home {
-  .header-slides-height {
-    height: 180px;
+  .header-slides-height, .active-slides-height {
+    height: 125px;
     background-color: aqua;
+    margin-bottom: 8px;
+  }
+
+  .header-slides-height {
+    height: 160px;
+  }
+
+  .content {
+    background-color: #E6ECF8;
+  }
+
+  .icon-list {
+    background-color: white;
+    margin-bottom: 8px;
+  }
+
+  .list {
+    background-color: white;
+  }
+
+  .faq, .partner {
+    border-bottom: 1px solid #dedede;
   }
 }

@@ -1,4 +1,4 @@
-// Ionic Variables and Theming. For more info, please see:
+﻿// Ionic Variables and Theming. For more info, please see:
 // http://ionicframework.com/docs/v2/theming/
 $font-path: "../assets/fonts";
 
@@ -23,43 +23,32 @@ $font-path: "../assets/fonts";
 // colors so you can add, rename and remove colors as needed.
 // The "primary" color is the only required color in the map.
 
-$colors: (
-  primary:    #387ef5,
-  secondary:  #32db64,
-  danger:     #f53d3d,
-  light:      #f4f4f4,
-  dark:       #222
-);
+$colors: ( primary: #548ad1, secondary: #32db64, danger: #f53d3d, light: #f4f4f4, dark: #222,orange:#ED700C,huise:#808080 );
 
 
 // App iOS Variables
 // --------------------------------------------------
 // iOS only Sass variables can go here
-
-
-
-
+$navbar-ios-height: 32px;
+$toolbar-ios-height: 32px;
+$button-ios-small-font-size: 1.2rem;
+$button-ios-small-padding: 0 0.5em;
 // App Material Design Variables
 // --------------------------------------------------
 // Material Design only Sass variables can go here
-
-
-
-
+$button-md-small-font-size: 1.2rem;
+$navbar-md-height: 48px;
+$toolbar-md-height: 48px;
+$button-md-small-padding: 0 0.5em;
 // App Windows Variables
 // --------------------------------------------------
 // Windows only Sass variables can go here
-
-
-
-
 // App Theme
 // --------------------------------------------------
 // Ionic apps can have different themes applied, which can
 // then be future customized. This import comes last
 // so that the above variables are used and Ionic's
 // default are overridden.
-
 @import "ionic.theme.default";
 
 

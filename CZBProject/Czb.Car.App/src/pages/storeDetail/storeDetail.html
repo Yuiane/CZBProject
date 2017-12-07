@@ -6,8 +6,103 @@
 -->
 <ion-header>
   <ion-navbar color="primary">
-    <ion-title>{{store.id}}详情</ion-title>
+    <ion-title>门店详情</ion-title>
   </ion-navbar>
 </ion-header>
-<ion-content>
+<ion-content no-padding no-margin style="background-color:#E6EDF8;">
+  <!--头部分图片信息-->
+  <ion-card no-margin>
+    <img src="http://api.51czb.com/active-1.png" />
+    <div class="card-title">
+      <div item-left padding-left>园区大师钣喷</div>
+      <div item-right padding-right>营业时间9:00至21:00</div>
+    </div>
+    <div class="card-title-bg"></div>
+  </ion-card>
+  <!--地址联系信息-->
+  <ion-list no-margin no-padding class="address-list">
+    <ion-grid no-padding>
+      <ion-row center class="bg-white">
+        <ion-col width-80>
+          <p class="show-title">江苏省苏州市工业园区腾飞创新园</p>
+        </ion-col>
+        <ion-col text-center>
+          <ion-icon ios="ios-pin" md="md-pin" color="orange"></ion-icon><br />
+          10km
+        </ion-col>
+      </ion-row>
+      <ion-row center class="bg-white margin-top-9">
+        <ion-col width-80>
+          <p class="show-title">18051803995</p>
+        </ion-col>
+        <ion-col text-center>
+          <ion-icon ios="ios-call" md="md-call" color="orange"></ion-icon>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-list>
+  <!--主推服务-->
+  <ion-list no-padding class="bg-white margin-top-9">
+    <ion-list-header class="header-storedetail">
+      门店服务
+    </ion-list-header>
+    <ion-grid no-padding class="grid-storedetail">
+      <ion-row>
+        <ion-col text-center padding-vertical>钣喷服务</ion-col>
+        <ion-col text-center padding-vertical class="active">保养服务</ion-col>
+        <ion-col text-center padding-vertical>机修服务</ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-item>
+      <ion-avatar item-left>
+        <img src="http://img5.imgtn.bdimg.com/it/u=547138142,3998729701&fm=27&gp=0.jpg">
+      </ion-avatar>
+      <h2>汽车保养</h2>
+      <p>园区斜塘民营工业园</p>
+      <button ion-button clear item-right>￥108</button>
+    </ion-item>
+    <ion-item>
+      <ion-avatar item-left>
+        <img src="http://img5.imgtn.bdimg.com/it/u=547138142,3998729701&fm=27&gp=0.jpg">
+      </ion-avatar>
+      <h2>汽车保养</h2>
+      <p>园区斜塘民营工业园</p>
+      <button ion-button clear item-right>￥108</button>
+    </ion-item>
+    <ion-item>
+      <ion-avatar item-left>
+        <img src="http://img5.imgtn.bdimg.com/it/u=547138142,3998729701&fm=27&gp=0.jpg">
+      </ion-avatar>
+      <h2>汽车保养</h2>
+      <p>园区斜塘民营工业园</p>
+      <button ion-button clear item-right>￥108</button>
+    </ion-item>
+    <ion-item>
+      <ion-avatar item-left>
+        <img src="http://img5.imgtn.bdimg.com/it/u=547138142,3998729701&fm=27&gp=0.jpg">
+      </ion-avatar>
+      <h2>汽车保养</h2>
+      <p>园区斜塘民营工业园</p>
+      <button ion-button clear item-right>￥108</button>
+    </ion-item>
+  </ion-list>
+  <!--门店介绍-->
+  <ion-card no-margin class="margin-top-9">
+    <ion-card-header class="header-storedetail card-header-bottom">
+      <div item-left>门店介绍</div>
+      <div item-right><ion-icon ios="ios-arrow-down" md="ios-arrow-down"></ion-icon></div>
+    </ion-card-header>
+    <ion-card-content text-left class="padding-top-2">
+      大师钣喷是国内全方位事故车维修领跑者，2011年进入中国，2014年在
+      中国开始全方位事故车维修加盟连锁项目以来，坚持专业、优质、高效、
+      环保的客户服务体验，致力于建立国际领先且适合本土经营的绿色钣喷维
+      修连锁体系，重塑国内钣喷维修生态，以大数据打造透明维修，以标准化
+      SOP、五道质检流程，以达到事故车钣喷维修终生质保。 大师钣喷在中
+      国正将精益化维修理念深深地植入到当地的维修市场中，同时为汽车维修
+      界同行提供钣喷车间工位设计及优化改造，最大限度提升单人单工位的维
+      修产值；提供钣喷人员优化方案，减少人力资源成本；提供各岗位人员的
+      系统培训；共享管理流程，协助完善精益化维修标准及流程 ；提供总部
+      培训或驻厂培训等全方位系统支持。
+    </ion-card-content>
+  </ion-card>
 </ion-content>

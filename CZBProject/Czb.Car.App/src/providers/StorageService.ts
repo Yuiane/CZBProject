@@ -12,7 +12,7 @@ import 'rxjs/add/operator/map';
 export class StorageService {
 
     constructor(public http: Http) {
-        console.log('Hello StorageService Provider');
+
     }
     write(key: string, value: any) {
         if (value) {

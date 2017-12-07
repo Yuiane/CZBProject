@@ -6,31 +6,29 @@
 -->
 <ion-header>
   <ion-navbar color="primary">
-    <ion-title>车直保({{postion}})</ion-title>
+    <ion-title>车直保</ion-title>
     <ion-buttons start tappable (click)="gotoSelectCity()">
       <button ion-button icon-only>
-        <ion-icon name="sync"></ion-icon>
+        {{postion}}
+        <ion-icon ios="ios-arrow-down" md="ios-arrow-down"></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
-<ion-content>
+<ion-content class="content">
   <!--顶部轮播图-->
-  <ion-list class="header-slides-height">
+  <ion-list class="header-slides-height" no-margin>
     <ion-slides pager direction="horizontal" autoplay="2000" loop>
-      <ion-slide>
-        <h1>Slide 1</h1>
+      <ion-slide style="background-image:url(http://api.51czb.com/active-1.png); background-position:center; background-size:cover; background-repeat:no-repeat;">
       </ion-slide>
-      <ion-slide>
-        <h1>Slide 2</h1>
+      <ion-slide style="background-image:url(http://api.51czb.com/active-1.png); background-position:center; background-size:cover; background-repeat:no-repeat;">
       </ion-slide>
-      <ion-slide>
-        <h1>Slide 3</h1>
+      <ion-slide style="background-image:url(http://api.51czb.com/active-1.png); background-position:center; background-size:cover; background-repeat:no-repeat;">
       </ion-slide>
     </ion-slides>
   </ion-list>
   <!--图标功能区-->
-  <ion-list>
+  <ion-list no-margin class="icon-list">
     <ion-grid>
       <ion-row>
         <ion-col text-center tappable>
@@ -66,6 +64,95 @@
         <ion-col text-center tappable (click)="gotoEmergencyRescue()">
           <img width="80%" src="http://www.51czb.com/admin/Fx_Mobile/images/icon_by@2x.png" /><br />
           应急救援
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-list>
+  <ion-list no-margin class="list">
+    <ion-grid>
+      <ion-row>
+        <ion-col text-left>优惠活动</ion-col>
+        <ion-col text-right>
+          更多&nbsp;&nbsp;
+          <ion-icon ios="ios-arrow-forward" md="ios-arrow-forward"></ion-icon>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-list>
+  <ion-list class="active-slides-height" no-margin>
+    <ion-slides pager direction="horizontal" autoplay="5000" loop>
+      <ion-slide style="background-image:url(http://api.51czb.com/active1.png); background-position:center; background-size:cover;background-repeat:no-repeat;">
+      </ion-slide>
+      <ion-slide style="background-image:url(http://api.51czb.com/active1.png); background-position:center; background-size:cover;background-repeat:no-repeat;">
+      </ion-slide>
+      <ion-slide style="background-image:url(http://api.51czb.com/active1.png); background-position:center; background-size:cover;background-repeat:no-repeat;">
+      </ion-slide>
+    </ion-slides>
+  </ion-list>
+  <ion-list no-margin class="list faq">
+    <ion-grid>
+      <ion-row>
+        <ion-col text-left>
+          FAQ
+        </ion-col>
+        <ion-col text-right>
+          更多&nbsp;&nbsp;
+          <ion-icon ios="ios-arrow-forward" md="ios-arrow-forward"></ion-icon>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-list>
+  <ion-list no-margin>
+    <button ion-item>
+      <ion-icon ios="ios-arrow-dropright" md="ios-arrow-dropright"></ion-icon>
+      官网一直打不开增麽办
+    </button>
+    <button ion-item>
+      <ion-icon ios="ios-arrow-dropright" md="ios-arrow-dropright"></ion-icon>
+      你看我，多么渺小一个我你看我，多么渺小一个我你看我，多么渺小一个我你看我，多么渺小一个我你看我，多么渺小一个我
+    </button>
+    <button ion-item>
+      <ion-icon ios="ios-arrow-dropright" md="ios-arrow-dropright"></ion-icon>
+      官网一直打不开增麽办
+    </button>
+  </ion-list>
+  <ion-list no-margin margin-top class="list partner">
+    <ion-grid>
+      <ion-row>
+        <ion-col text-left>
+          车直保合作伙伴
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-list>
+  <ion-list margin-bottom>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <img src="http://api.51czb.com/partner/WechatIMG10.png" />
+        </ion-col>
+        <ion-col>
+          <img src="http://api.51czb.com/partner/WechatIMG16.png" />
+        </ion-col>
+        <ion-col>
+          <img src="http://api.51czb.com/partner/WechatIMG18.png" />
+        </ion-col>
+        <ion-col>
+          <img src="http://api.51czb.com/partner/WechatIMG19.png" />
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <img src="http://api.51czb.com/partner/WechatIMG25.png" />
+        </ion-col>
+        <ion-col>
+          <img src="http://api.51czb.com/partner/WechatIMG27.png" />
+        </ion-col>
+        <ion-col>
+          <img src="http://api.51czb.com/partner/WechatIMG25.png" />
+        </ion-col>
+        <ion-col>
+          <img src="http://api.51czb.com/partner/WechatIMG27.png" />
         </ion-col>
       </ion-row>
     </ion-grid>

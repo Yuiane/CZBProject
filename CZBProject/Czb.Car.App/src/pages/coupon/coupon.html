@@ -1,0 +1,96 @@
+﻿<!--
+  Generated template for the NewPage page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>卡券</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content no-padding no-margin class="content-main">
+  <!--头部筛选块-->
+  <ion-list no-margin margin-bottom no-padding class="coupon-header-list">
+    <ion-row>
+      <ion-col text-center class="active">
+        我的卡
+      </ion-col>
+      <ion-col text-center>
+        兑换券
+      </ion-col>
+      <ion-col text-center>
+        已失效
+      </ion-col>
+    </ion-row>
+  </ion-list>
+  <!--空卡券显示-->
+  <ion-list margin-top no-padding *ngIf="couponListLength<1">
+    <ion-grid margin-top>
+      <ion-row text-center margin-top>
+        <ion-col>
+          <img width="80px" src="assets/images/coupon-bg.png" />
+        </ion-col>
+      </ion-row>
+      <ion-row text-center>
+        <ion-col>
+          <p class="no-coupon-title">暂时还没有卡券哦～</p>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-list>
+  <!--我的卡-->
+  <ion-list padding-bottom no-margin no-lines class="coupon-list">
+    <ion-item>
+      <ion-avatar item-left>
+        <img src="http://img5.imgtn.bdimg.com/it/u=547138142,3998729701&fm=27&gp=0.jpg">
+      </ion-avatar>
+      <h2>园区大师钣喷</h2>
+      <p>园区斜塘民营工业园</p>
+      <button ion-button outline color="orange" item-right>去使用</button>
+    </ion-item>
+    <ion-item>
+      <ion-avatar item-left>
+        <img src="http://img5.imgtn.bdimg.com/it/u=547138142,3998729701&fm=27&gp=0.jpg">
+      </ion-avatar>
+      <h2>园区大师钣喷</h2>
+      <p>园区斜塘民营工业园</p>
+      <button ion-button outline color="orange" item-right>去使用</button>
+    </ion-item>
+    <ion-item>
+      <ion-avatar item-left>
+        <img src="http://img5.imgtn.bdimg.com/it/u=547138142,3998729701&fm=27&gp=0.jpg">
+      </ion-avatar>
+      <h2>园区大师钣喷</h2>
+      <p>园区斜塘民营工业园</p>
+      <button ion-button outline color="orange" item-right>去使用</button>
+    </ion-item>
+    <ion-item>
+      <ion-avatar item-left>
+        <img src="http://img5.imgtn.bdimg.com/it/u=547138142,3998729701&fm=27&gp=0.jpg">
+      </ion-avatar>
+      <h2>园区大师钣喷</h2>
+      <p>园区斜塘民营工业园</p>
+      <button ion-button outline color="orange" item-right>去使用</button>
+    </ion-item>
+    <!--兑换券-->
+    <!--已失效-->
+    <ion-item>
+      <ion-avatar item-left class="expire">
+        <img src="http://img5.imgtn.bdimg.com/it/u=547138142,3998729701&fm=27&gp=0.jpg">
+        <div class="expire_bg"></div>
+      </ion-avatar>
+      <h2 color="huise">园区大师钣喷</h2>
+      <p color="huise">园区斜塘民营工业园</p>
+      <button ion-button outline color="huise" item-right>已过期</button>
+    </ion-item>
+    <ion-item>
+      <ion-avatar item-left>
+        <img src="http://img5.imgtn.bdimg.com/it/u=547138142,3998729701&fm=27&gp=0.jpg">
+      </ion-avatar>
+      <h2>园区大师钣喷</h2>
+      <p>园区斜塘民营工业园</p>
+      <button ion-button outline color="primary" item-right>已使用</button>
+    </ion-item>
+  </ion-list>
+</ion-content>

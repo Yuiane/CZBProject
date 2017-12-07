@@ -19,9 +19,10 @@ export class MyApp {
 
     initializeApp() {
         this.platform.ready().then(() => {
+            StatusBar.overlaysWebView(false);
+            StatusBar.backgroundColorByHexString("548ad1");
             // Okay, so the platform is ready and our plugins are available.
             // Here you can do any higher level native things you might need.
-            StatusBar.styleLightContent();
             setTimeout(Splashscreen.hide(), 100);
         });
     }

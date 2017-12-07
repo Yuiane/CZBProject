@@ -12,6 +12,11 @@ import { deferredWarrantyPage } from '../pages/deferredWarranty/deferredWarranty
 import { emergencyRescuePage } from '../pages/emergencyRescue/emergencyRescue';
 import { storeListPage } from '../pages/storeList/storeList';
 import { storeDetailPage } from '../pages/storeDetail/storeDetail';
+import { personalCenterPage } from '../pages/personalCenter/personalCenter';
+import { loginPage } from '../pages/login/login';
+import { signPage } from '../pages/sign/sign';
+import { settingPage } from '../pages/setting/setting';
+import { couponPage } from '../pages/coupon/coupon';
 
 import { HttpService } from '../providers/HttpService';
 import { StorageService } from '../providers/StorageService';
@@ -19,7 +24,8 @@ import { CommonService } from '../providers/CommonService';
 
 import { Geolocation } from '@ionic-native/geolocation';
 import { JPushService } from 'ionic2-jpush/dist';
-import { WebIntent } from '@ionic-native/web-intent';
+
+
 
 
 @NgModule({
@@ -35,7 +41,12 @@ import { WebIntent } from '@ionic-native/web-intent';
         deferredWarrantyPage,
         emergencyRescuePage,
         storeListPage,
-        storeDetailPage
+        storeDetailPage,
+        personalCenterPage,
+        loginPage,
+        signPage,
+        settingPage,
+        couponPage
     ],
     imports: [
         IonicModule.forRoot(MyApp)
@@ -53,8 +64,13 @@ import { WebIntent } from '@ionic-native/web-intent';
         deferredWarrantyPage,
         emergencyRescuePage,
         storeListPage,
-        storeDetailPage
+        storeDetailPage,
+        personalCenterPage,
+        loginPage,
+        signPage,
+        settingPage,
+        couponPage
     ],
-    providers: [{ provide: ErrorHandler, useClass: IonicErrorHandler }, Geolocation, JPushService, HttpService, StorageService, CommonService, WebIntent]
+    providers: [{ provide: ErrorHandler, useClass: IonicErrorHandler }, Geolocation, JPushService, HttpService, StorageService, CommonService]
 })
 export class AppModule { }

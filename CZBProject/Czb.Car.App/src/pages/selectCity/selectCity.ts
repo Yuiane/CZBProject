@@ -30,8 +30,10 @@ export class selectCityPage {
         this.geolocation.getCurrentPosition().then((resp) => {
             this.commonService.SendRegeo(resp.coords.longitude, resp.coords.latitude).then(val => {
                 if (val.data.infocode == "10000") {
-                    this.postion.postionValue = val.data.regeocode.addressComponent.city + "(";
-                    this.postion.postionValue += val.data.regeocode.addressComponent.district + ")";
+                    this.postion.postionValue = val.data.regeocode.addressComponent.city + "•";
+                    this.postion.postionValue += val.data.regeocode.addressComponent.district;
+                    var _select = { code: '00', value: this.postion.postionValue };
+                    this.storageService.write('postion', _select);
                 } else {
                     this.postion.postionValue = "定位失败,请手动选择";
                 }

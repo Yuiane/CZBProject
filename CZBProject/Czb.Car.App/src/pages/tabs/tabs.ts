@@ -1,8 +1,12 @@
-﻿import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+﻿import { Component, ViewChild } from '@angular/core';
+import { NavController, NavParams, App, Tabs } from 'ionic-angular';
 import { homePage } from '../home/home';
-import { Page1 } from '../page1/page1';
+import { personalCenterPage } from '../personalCenter/personalCenter';
+import { loginPage } from '../login/login';
 import { storeListPage } from '../storeList/storeList';
+
+import { StorageService } from './../../providers/StorageService';
+
 /*
   Generated class for the tabs page.
 
@@ -16,6 +20,28 @@ import { storeListPage } from '../storeList/storeList';
 export class tabsPage {
     tab1Root: any = homePage;
     tab2Root: any = storeListPage;
-    tab3Root: any = Page1;
-    constructor(public navCtrl: NavController, public navParams: NavParams) { }
+    tab3Root: any;
+    userInfo: any;
+    @ViewChild('myTabs') tabRef: Tabs;
+    constructor(private navCtrl: NavController,
+        private navParams: NavParams,
+        private storageService: StorageService,
+        private app: App) {
+        //this.app.getRootNav().push(loginPage);
+    }
+
+    ionViewDidEnter() {
+
+        //进入页面触发的事件
+        this.userInfo = this.storageService.read('userInfo');
+        if (this.userInfo != null && this.userInfo != "") {
+            this.tab3Root = personalCenterPage;
+        }
+    }
+
+    person() {
+        if (this.userInfo == null || this.userInfo == "") {
+            this.app.getRootNav().push(loginPage);
+        }
+    }
 }

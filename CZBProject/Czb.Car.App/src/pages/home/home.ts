@@ -46,6 +46,8 @@ export class homePage {
                     if (val.data.infocode == "10000") {
                         this.postion = val.data.regeocode.addressComponent.city + "•";
                         this.postion += val.data.regeocode.addressComponent.district;
+                        var _select = { code: '00', value: this.postion };
+                        this.storageService.write('postion', _select);
                     } else {
                         this.postion = "...";
                     }

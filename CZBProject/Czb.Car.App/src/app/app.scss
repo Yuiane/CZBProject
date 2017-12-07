@@ -1,4 +1,4 @@
-// http://ionicframework.com/docs/v2/theming/
+﻿// http://ionicframework.com/docs/v2/theming/
 
 
 // App Global Sass
@@ -14,3 +14,18 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+ion-col[offset-8] {
+  margin-left: 8%;
+}
+
+ion-col[offset-40] {
+  margin-left: 40%;
+}
+
+div[item-left] {
+  float: left;
+}
+
+div[item-right] {
+  float: right;
+}

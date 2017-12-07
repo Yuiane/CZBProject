@@ -2,6 +2,7 @@
 import { NavController, NavParams } from 'ionic-angular';
 
 import { storeDetailPage } from '../storeDetail/storeDetail'
+import { selectCityPage } from '../selectCity/selectCity';
 
 import { StorageService } from './../../providers/StorageService';
 
@@ -16,7 +17,7 @@ import { StorageService } from './../../providers/StorageService';
     templateUrl: 'storeList.html'
 })
 export class storeListPage {
-    postion: '';
+    postion: '定位中...';
     constructor(public navCtrl: NavController, public navParams: NavParams, private storageService: StorageService) {
     }
 
@@ -34,5 +35,9 @@ export class storeListPage {
 
     gotoStoreDetail(storeId: any) {
         this.navCtrl.push(storeDetailPage, { storeId: storeId });
+    }
+
+    gotoSelectCity() {
+        this.navCtrl.push(selectCityPage);
     }
 }

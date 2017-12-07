@@ -1,0 +1,27 @@
+﻿page-setting {
+  .content-main {
+    background-color: #E6EDF8;
+  }
+
+  .btn-list {
+    background-color: white;
+  }
+
+  .margin-top-9 {
+    margin-top: 9px !important;
+  }
+
+  .margin-top-1 {
+    margin-top: 1px !important;
+  }
+
+  .div-exit {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+
+    .btn-exit {
+      padding: 25px;
+    }
+  }
+}

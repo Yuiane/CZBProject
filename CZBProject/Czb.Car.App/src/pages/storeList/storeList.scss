@@ -1,3 +1,16 @@
-page-storeList {
+﻿page-storeList {
+  ion-avatar {
+    min-height: 80px !important;
+    min-width: 80px !important;
 
+    img {
+      width: 80px !important;
+      height: 80px !important;
+      border-radius: 0 !important;
+    }
+  }
+
+  .storelist-list {
+    margin-top: 9px;
+  }
 }
