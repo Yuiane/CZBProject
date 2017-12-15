@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, Slides } from 'ionic-angular';
+import { NavController, NavParams, Slides, App } from 'ionic-angular';
+import { EditCarInfoPage } from '../EditCarInfo/EditCarInfo';
 
 /*
   Generated class for the MyGarage page.
@@ -12,13 +13,16 @@ import { NavController, NavParams, Slides } from 'ionic-angular';
     templateUrl: 'MyGarage.html'
 })
 export class MyGaragePage {
-    
+
     public mycarNumber: number = 1;
-    constructor(public navCtrl: NavController, public navParams: NavParams) { }
-    
+    constructor(public navCtrl: NavController, public navParams: NavParams, private appCtrl: App) { }
+
 
     ionViewDidLoad() {
         console.log('ionViewDidLoad MyGaragePage');
     }
 
+    gotoUpdate() {
+        this.appCtrl.getRootNav().push(EditCarInfoPage);
+    }
 }

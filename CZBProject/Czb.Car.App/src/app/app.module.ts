@@ -18,6 +18,7 @@ import { signPage } from '../pages/sign/sign';
 import { settingPage } from '../pages/setting/setting';
 import { couponPage } from '../pages/coupon/coupon';
 import { MyGaragePage } from '../pages/MyGarage/MyGarage';
+import { EditCarInfoPage } from '../pages/EditCarInfo/EditCarInfo';
 
 import { HttpService } from '../providers/HttpService';
 import { StorageService } from '../providers/StorageService';
@@ -51,6 +52,7 @@ import { JPushService } from 'ionic2-jpush/dist';
         settingPage,
         couponPage,
         MyGaragePage,
+        EditCarInfoPage
     ],
     imports: [
         IonicModule.forRoot(MyApp, {
@@ -77,6 +79,7 @@ import { JPushService } from 'ionic2-jpush/dist';
         settingPage,
         couponPage,
         MyGaragePage,
+        EditCarInfoPage
     ],
     providers: [{ provide: ErrorHandler, useClass: IonicErrorHandler }, Geolocation, JPushService, HttpService, StorageService, CommonService]
 })
