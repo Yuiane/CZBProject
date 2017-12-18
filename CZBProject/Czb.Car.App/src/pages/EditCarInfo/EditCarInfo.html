@@ -7,10 +7,12 @@
   <ion-list>
     <ion-item>
       <ion-label>车牌号</ion-label>
-      <div class="llicense-box">
-        <ion-label class="city-Abbreviation">苏</ion-label>
-        <ion-input placeholder="车牌号" text-right class="txt-License"></ion-input>
-      </div>
+      <ion-input placeholder="车牌号" class="txt-License" value="E12345" max="6" text-right></ion-input>
+      <ion-select class="city-Abbreviation">
+        <ion-option value="1" checked="true">苏</ion-option>
+        <ion-option value="2">浙</ion-option>
+        <ion-option value="3">粤</ion-option>
+      </ion-select>
     </ion-item>
     <ion-item>
       <ion-label>车标</ion-label>
