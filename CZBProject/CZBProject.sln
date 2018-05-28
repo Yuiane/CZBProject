@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.14
+VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CZB.Web", "CZB.Web\CZB.Web.csproj", "{233EF633-407C-47FF-B645-9DBE81D26F48}"
 EndProject
@@ -30,6 +30,10 @@ EndProject
 Project("{262852C6-CD72-467D-83FE-5EEB1973A190}") = "CZB.Hybrid.App", "CZB.Hybrid.App\CZB.Hybrid.App.jsproj", "{65AF5A08-FB23-4FC5-81D7-38946BAA4809}"
 EndProject
 Project("{262852C6-CD72-467D-83FE-5EEB1973A190}") = "Czb.Car.App", "Czb.Car.App\Czb.Car.App.jsproj", "{549CBA80-397B-4F8E-BB0E-5944E9D7E7DD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CZB.Web.Open", "CZB.Web.Open\CZB.Web.Open.csproj", "{FFA7E25A-0535-4B25-9E61-95B70D73B174}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CZB.Web.Open.Tests", "CZB.Web.Open.Tests\CZB.Web.Open.Tests.csproj", "{373D9795-4B0E-4A37-8242-A52E0A017A6B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -461,8 +465,68 @@ Global
 		{549CBA80-397B-4F8E-BB0E-5944E9D7E7DD}.Release|Windows-x86.ActiveCfg = Release|Windows-x86
 		{549CBA80-397B-4F8E-BB0E-5944E9D7E7DD}.Release|Windows-x86.Build.0 = Release|Windows-x86
 		{549CBA80-397B-4F8E-BB0E-5944E9D7E7DD}.Release|Windows-x86.Deploy.0 = Release|Windows-x86
+		{FFA7E25A-0535-4B25-9E61-95B70D73B174}.Debug|Android.ActiveCfg = Debug|Any CPU
+		{FFA7E25A-0535-4B25-9E61-95B70D73B174}.Debug|Android.Build.0 = Debug|Any CPU
+		{FFA7E25A-0535-4B25-9E61-95B70D73B174}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFA7E25A-0535-4B25-9E61-95B70D73B174}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFA7E25A-0535-4B25-9E61-95B70D73B174}.Debug|iOS.ActiveCfg = Debug|Any CPU
+		{FFA7E25A-0535-4B25-9E61-95B70D73B174}.Debug|iOS.Build.0 = Debug|Any CPU
+		{FFA7E25A-0535-4B25-9E61-95B70D73B174}.Debug|Windows-AnyCPU.ActiveCfg = Debug|Any CPU
+		{FFA7E25A-0535-4B25-9E61-95B70D73B174}.Debug|Windows-AnyCPU.Build.0 = Debug|Any CPU
+		{FFA7E25A-0535-4B25-9E61-95B70D73B174}.Debug|Windows-ARM.ActiveCfg = Debug|Any CPU
+		{FFA7E25A-0535-4B25-9E61-95B70D73B174}.Debug|Windows-ARM.Build.0 = Debug|Any CPU
+		{FFA7E25A-0535-4B25-9E61-95B70D73B174}.Debug|Windows-x64.ActiveCfg = Debug|Any CPU
+		{FFA7E25A-0535-4B25-9E61-95B70D73B174}.Debug|Windows-x64.Build.0 = Debug|Any CPU
+		{FFA7E25A-0535-4B25-9E61-95B70D73B174}.Debug|Windows-x86.ActiveCfg = Debug|Any CPU
+		{FFA7E25A-0535-4B25-9E61-95B70D73B174}.Debug|Windows-x86.Build.0 = Debug|Any CPU
+		{FFA7E25A-0535-4B25-9E61-95B70D73B174}.Release|Android.ActiveCfg = Release|Any CPU
+		{FFA7E25A-0535-4B25-9E61-95B70D73B174}.Release|Android.Build.0 = Release|Any CPU
+		{FFA7E25A-0535-4B25-9E61-95B70D73B174}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFA7E25A-0535-4B25-9E61-95B70D73B174}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FFA7E25A-0535-4B25-9E61-95B70D73B174}.Release|iOS.ActiveCfg = Release|Any CPU
+		{FFA7E25A-0535-4B25-9E61-95B70D73B174}.Release|iOS.Build.0 = Release|Any CPU
+		{FFA7E25A-0535-4B25-9E61-95B70D73B174}.Release|Windows-AnyCPU.ActiveCfg = Release|Any CPU
+		{FFA7E25A-0535-4B25-9E61-95B70D73B174}.Release|Windows-AnyCPU.Build.0 = Release|Any CPU
+		{FFA7E25A-0535-4B25-9E61-95B70D73B174}.Release|Windows-ARM.ActiveCfg = Release|Any CPU
+		{FFA7E25A-0535-4B25-9E61-95B70D73B174}.Release|Windows-ARM.Build.0 = Release|Any CPU
+		{FFA7E25A-0535-4B25-9E61-95B70D73B174}.Release|Windows-x64.ActiveCfg = Release|Any CPU
+		{FFA7E25A-0535-4B25-9E61-95B70D73B174}.Release|Windows-x64.Build.0 = Release|Any CPU
+		{FFA7E25A-0535-4B25-9E61-95B70D73B174}.Release|Windows-x86.ActiveCfg = Release|Any CPU
+		{FFA7E25A-0535-4B25-9E61-95B70D73B174}.Release|Windows-x86.Build.0 = Release|Any CPU
+		{373D9795-4B0E-4A37-8242-A52E0A017A6B}.Debug|Android.ActiveCfg = Debug|Any CPU
+		{373D9795-4B0E-4A37-8242-A52E0A017A6B}.Debug|Android.Build.0 = Debug|Any CPU
+		{373D9795-4B0E-4A37-8242-A52E0A017A6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{373D9795-4B0E-4A37-8242-A52E0A017A6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{373D9795-4B0E-4A37-8242-A52E0A017A6B}.Debug|iOS.ActiveCfg = Debug|Any CPU
+		{373D9795-4B0E-4A37-8242-A52E0A017A6B}.Debug|iOS.Build.0 = Debug|Any CPU
+		{373D9795-4B0E-4A37-8242-A52E0A017A6B}.Debug|Windows-AnyCPU.ActiveCfg = Debug|Any CPU
+		{373D9795-4B0E-4A37-8242-A52E0A017A6B}.Debug|Windows-AnyCPU.Build.0 = Debug|Any CPU
+		{373D9795-4B0E-4A37-8242-A52E0A017A6B}.Debug|Windows-ARM.ActiveCfg = Debug|Any CPU
+		{373D9795-4B0E-4A37-8242-A52E0A017A6B}.Debug|Windows-ARM.Build.0 = Debug|Any CPU
+		{373D9795-4B0E-4A37-8242-A52E0A017A6B}.Debug|Windows-x64.ActiveCfg = Debug|Any CPU
+		{373D9795-4B0E-4A37-8242-A52E0A017A6B}.Debug|Windows-x64.Build.0 = Debug|Any CPU
+		{373D9795-4B0E-4A37-8242-A52E0A017A6B}.Debug|Windows-x86.ActiveCfg = Debug|Any CPU
+		{373D9795-4B0E-4A37-8242-A52E0A017A6B}.Debug|Windows-x86.Build.0 = Debug|Any CPU
+		{373D9795-4B0E-4A37-8242-A52E0A017A6B}.Release|Android.ActiveCfg = Release|Any CPU
+		{373D9795-4B0E-4A37-8242-A52E0A017A6B}.Release|Android.Build.0 = Release|Any CPU
+		{373D9795-4B0E-4A37-8242-A52E0A017A6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{373D9795-4B0E-4A37-8242-A52E0A017A6B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{373D9795-4B0E-4A37-8242-A52E0A017A6B}.Release|iOS.ActiveCfg = Release|Any CPU
+		{373D9795-4B0E-4A37-8242-A52E0A017A6B}.Release|iOS.Build.0 = Release|Any CPU
+		{373D9795-4B0E-4A37-8242-A52E0A017A6B}.Release|Windows-AnyCPU.ActiveCfg = Release|Any CPU
+		{373D9795-4B0E-4A37-8242-A52E0A017A6B}.Release|Windows-AnyCPU.Build.0 = Release|Any CPU
+		{373D9795-4B0E-4A37-8242-A52E0A017A6B}.Release|Windows-ARM.ActiveCfg = Release|Any CPU
+		{373D9795-4B0E-4A37-8242-A52E0A017A6B}.Release|Windows-ARM.Build.0 = Release|Any CPU
+		{373D9795-4B0E-4A37-8242-A52E0A017A6B}.Release|Windows-x64.ActiveCfg = Release|Any CPU
+		{373D9795-4B0E-4A37-8242-A52E0A017A6B}.Release|Windows-x64.Build.0 = Release|Any CPU
+		{373D9795-4B0E-4A37-8242-A52E0A017A6B}.Release|Windows-x86.ActiveCfg = Release|Any CPU
+		{373D9795-4B0E-4A37-8242-A52E0A017A6B}.Release|Windows-x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {86B0E118-2F24-49F5-BBBD-3446BEA498E5}
+		VisualSVNWorkingCopyRoot = .
 	EndGlobalSection
 EndGlobal

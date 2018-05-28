@@ -26,8 +26,6 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { JPushService } from 'ionic2-jpush/dist';
 
 
-
-
 @NgModule({
     declarations: [
         MyApp,
@@ -49,7 +47,9 @@ import { JPushService } from 'ionic2-jpush/dist';
         couponPage
     ],
     imports: [
-        IonicModule.forRoot(MyApp)
+        IonicModule.forRoot(MyApp, {
+            backButtonText: '返回'
+        })
     ],
     bootstrap: [IonicApp],
     entryComponents: [

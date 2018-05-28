@@ -5,7 +5,7 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-  <ion-navbar color="primary" hideBackButton>
+  <ion-navbar class="navbar-czb" color="primary" hideBackButton>
     <ion-buttons start (click)="goback()">
       <button ion-button icon-only>
         <ion-icon ios="ios-close" md="md-close"></ion-icon>
@@ -15,7 +15,7 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding>
-  <form [formGroup]="todo" (ngSubmit)="logForm()">
+  <form [formGroup]="todo">
     <ion-grid margin-vertical>
       <!--logo-->
       <ion-row center baseline margin-vertical>
@@ -30,7 +30,7 @@
         </ion-col>
         <ion-col width-67>
           <ion-item>
-            <ion-input no-padding type="tel" placeholder="请输入手机号"></ion-input>
+            <ion-input no-padding type="tel" formControlName="phone" placeholder="请输入手机号"></ion-input>
           </ion-item>
         </ion-col>
       </ion-row>
@@ -41,11 +41,11 @@
         </ion-col>
         <ion-col width-33>
           <ion-item>
-            <ion-input type="tel" placeholder="验证码"></ion-input>
+            <ion-input type="tel" placeholder="验证码" formControlName="code"></ion-input>
           </ion-item>
         </ion-col>
         <ion-col text-center width-20>
-          <button ion-button outline class="codeBtn">获取验证码</button>
+          <button ion-button outline class="codeBtn" (click)="sendCode($event)">{{sendTitle}}</button>
         </ion-col>
       </ion-row>
       <ion-row>
@@ -53,7 +53,7 @@
       </ion-row>
       <ion-row margin-vertical>
         <ion-col>
-          <button ion-button type="submit" full class="loginBtn" (click)="login()">登录</button>
+          <button ion-button full class="loginBtn" (click)="login($event)">登录</button>
         </ion-col>
       </ion-row>
     </ion-grid>

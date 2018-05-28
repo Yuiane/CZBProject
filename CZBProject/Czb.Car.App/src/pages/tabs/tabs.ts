@@ -36,6 +36,8 @@ export class tabsPage {
         this.userInfo = this.storageService.read('userInfo');
         if (this.userInfo != null && this.userInfo != "") {
             this.tab3Root = personalCenterPage;
+        } else {
+            this.tab3Root = "";
         }
     }
 

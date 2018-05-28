@@ -176,6 +176,7 @@
     <Compile Include="Controllers\Common\Accounts.cs" />
     <Compile Include="Controllers\Common\CCCApis.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ShengDaApi\ShengDaController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Controllers\WechatController.cs" />
     <Compile Include="Controllers\WeXinController.cs" />

@@ -25,6 +25,7 @@ export class personalCenterPage {
     }
 
     ionViewDidEnter() {
+
     }
 
     gotoSign() {

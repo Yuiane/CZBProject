@@ -55,6 +55,7 @@
     <Compile Include="FX_Policy.cs" />
     <Compile Include="FX_PolicyDetail.cs" />
     <Compile Include="FX_PolicyInsurePara.cs" />
+    <Compile Include="TB_Czb_CarOwner.cs" />
     <Compile Include="TB_MessageRecord.cs" />
     <Compile Include="WXBasePara.cs" />
     <Compile Include="Material.cs" />

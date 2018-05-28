@@ -29,3 +29,11 @@ div[item-left] {
 div[item-right] {
   float: right;
 }
+
+.navbar-czb {
+  padding: 0 !important;
+
+  ion-title {
+    padding: 0 !important;
+  }
+}

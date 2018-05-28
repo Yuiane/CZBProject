@@ -58,6 +58,7 @@
     <Compile Include="DataProvider\FX_PolicyDetail.cs" />
     <Compile Include="DataProvider\FX_PolicyInsurePara.cs" />
     <Compile Include="DataProvider\Material.cs" />
+    <Compile Include="DataProvider\TB_Czb_CarOwner.cs" />
     <Compile Include="DataProvider\TB_MessageRecord.cs" />
     <Compile Include="DataProvider\WXBasePara.cs" />
     <Compile Include="DbHelperSQL.cs" />

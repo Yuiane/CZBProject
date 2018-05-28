@@ -14,25 +14,56 @@ namespace CZB.Web.Api.Controllers
         /// <returns></returns>
         [AllowAnonymous]
         [AcceptVerbs("GET", "POST")]
-        [ActionName("UserLogin")]
+        [ActionName("UserLogin2")]
         public ReturnResult CarLogin()
         {
             try
             {
-                return new ReturnResult()
+                string phone = Request.Param("phone");
+                string code = Request.Param("code");
+                if (phone.IsNotNullOrWhiteSpace() && code.IsNotNullOrWhiteSpace())
                 {
-                    code = ReturnCode.Success,
-                    data = "",
-                    desc = ""
-                };
+                    //验证码10分钟有效性
+                    if (new BLL.TB_MessageRecord().Exists(phone, code))
+                    {
+                        //var userInfo = new Accounts().UserLogin(phone);
+                        // 获取用户相关基本信息 
+                        return new ReturnResult
+                        {
+                            code = ReturnCode.Success,
+                            desc = "登录成功",
+                            data = ""//userInfo
+                        };
+                    }
+                    else
+                    {
+                        // 获取用户相关基本信息 
+                        return new ReturnResult
+                        {
+                            code = ReturnCode.Error,
+                            desc = "验证码不正确或已超时",
+                            data = ""
+                        };
+                    }
+
+                }
+                else
+                {
+                    return new ReturnResult
+                    {
+                        code = ReturnCode.NullOrEmpty,
+                        desc = "参数异常 phone:" + phone + "&code:" + code,
+                        data = ""
+                    };
+                }
             }
             catch (Exception err)
             {
-                return new ReturnResult()
+                return new ReturnResult
                 {
                     code = ReturnCode.Error,
-                    data = "",
-                    desc = err.Message
+                    desc = "登录失败 err:" + err.Message,
+                    data = ""
                 };
             }
         }

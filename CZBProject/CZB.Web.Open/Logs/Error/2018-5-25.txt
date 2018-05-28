@@ -1,0 +1,9 @@
+
+http://localhost:31120/api/Shengda/Renewal    14时32分14秒
+远程服务器返回错误: (404) 未找到。
+
+http://localhost:31120/api/Shengda/Renewal    14时32分17秒
+远程服务器返回错误: (404) 未找到。
+
+http://localhost:31120/api/Shengda/Renewal    14时57分11秒
+操作超时
