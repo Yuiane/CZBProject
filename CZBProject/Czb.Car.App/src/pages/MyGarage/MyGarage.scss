@@ -1,0 +1,107 @@
+page-MyGarage {
+  .page-bg {
+    background: #E6EDF8;
+  }
+
+  .nocar-title {
+    color: #A5B1C6;
+  }
+
+  .mt-100 {
+    margin-top: 100px;
+  }
+
+  .item-value {
+    text-align: right;
+  }
+
+  .city-Abbreviation, .LicensePlate-Initials {
+    border: 2px solid #EE6F0A;
+    color: #EE6F0A;
+    font-size: .875rem;
+    border-radius: 4px;
+    padding: 2px 5px;
+    vertical-align: middle;
+    margin-top: -4px;
+  }
+
+  .header-slides {
+    height: 160px;
+    background: url(../assets/images/pc_bg_head.png) no-repeat center top/cover;
+  }
+
+  .header-slides ion-grid, .header-slides ion-row, .header-slides ion-col {
+    padding: 0;
+  }
+
+  .lunbo {
+    width: 80%;
+    height: 100px;
+    margin-top: 30px;
+    background: rgba(255,255,255,.3);
+  }
+
+  .lunbo.lt {
+    border-radius: 0 10px 10px 0;
+    float: left;
+  }
+
+  .lunbo.rt {
+    border-radius: 10px 0 0 10px;
+    float: right;
+  }
+
+  .box {
+    width: 90%;
+    height: 130px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 10px;
+    margin-top: 15px;
+  }
+
+  .carbox {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+  }
+
+  .carheadimg {
+    width: 80px;
+    height: 80px;
+    border-radius: 100%;
+    overflow: hidden;
+    float: left;
+    margin-left: 25px;
+  }
+
+  .carheadimg img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .carbox dd {
+    margin-left: 130px;
+    text-align: left;
+    line-height: 1.6;
+  }
+
+  .yearstle, .carnumber {
+    color: #9b9b9b;
+  }
+
+  .btnupdateinfo {
+    background: #EE700C;
+    color: #fff;
+    height: 50px;
+    line-height: 50px;
+    font-size: 16px;
+    position:fixed;
+    left:0;
+    bottom:0;
+  }
+
+  .btnupdateinfo:active {
+    background: #EE700C;
+  }
+}

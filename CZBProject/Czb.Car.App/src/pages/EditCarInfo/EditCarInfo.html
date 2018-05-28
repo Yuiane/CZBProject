@@ -1,0 +1,80 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>修改资料</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label>车牌号</ion-label>
+      <ion-input placeholder="车牌号" class="txt-License" value="E12345" max="6" text-right></ion-input>
+      <ion-select class="city-Abbreviation">
+        <ion-option value="1" checked="true">苏</ion-option>
+        <ion-option value="2">浙</ion-option>
+        <ion-option value="3">粤</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>车标</ion-label>
+      <ion-input align-r placeholder="车标" value="阿斯顿马丁" text-right></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>品牌</ion-label>
+      <ion-input align-r placeholder="车牌号" value="阿斯顿马丁" text-right></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>型号</ion-label>
+      <ion-input align-r placeholder="型号" value="2010款" text-right></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>行驶里程</ion-label>
+      <ion-input align-r placeholder="请输入行驶总公里数" value="1130km" text-right></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>车主姓名</ion-label>
+      <ion-input align-r placeholder="请输入真实姓名" value="车直保" text-right></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="plane" item-start color="danger"></ion-icon>
+      <ion-label>VIN</ion-label>
+      <ion-input align-r placeholder="请输车辆VIN" value="121237236726379240123" text-right></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="plane" item-start color="danger"></ion-icon>
+      <ion-label>上路时间</ion-label>
+      <ion-datetime align-r displayFormat="YYYY-MM-DD" [(ngModel)]="myDate" doneText="完成" cancelText="取消"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="plane" item-start color="danger"></ion-icon>
+      <ion-label>生产年份</ion-label>
+      <ion-datetime align-r displayFormat="YYYY-MM-DD" [(ngModel)]="myDate2" doneText="完成" cancelText="取消"></ion-datetime>
+    </ion-item>
+    <ion-item no-line>
+      <ion-icon name="plane" item-start color="danger"></ion-icon>
+      <ion-label>保险状态</ion-label>
+      <ion-select [(ngModel)]="gaming">
+        <ion-option value="1">未参险</ion-option>
+        <ion-option value="2">已参险</ion-option>
+        <ion-option value="3">已过期</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-list-header>
+      车主行驶图片
+    </ion-list-header>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <img src="../../assets/images/coupon-bg.png" class="driving" />
+          <button class="addfile"></button>
+          <div class="shili">
+            <ion-label class="shili-title">示例图</ion-label>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-list>
+  <br />
+  <br />
+  <br />
+  <button class="btnSave">修改信息</button>
+</ion-content>

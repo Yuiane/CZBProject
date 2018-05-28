@@ -1,10 +1,11 @@
-﻿import { Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { NavController, NavParams, App } from 'ionic-angular';
 import { loginPage } from '../login/login';
 import { signPage } from '../sign/sign';
 import { settingPage } from '../setting/setting';
 import { couponPage } from '../coupon/coupon';
 import { StorageService } from './../../providers/StorageService';
+import { MyGaragePage } from '../MyGarage/MyGarage';
 
 /*
   Generated class for the personalCenter page.
@@ -41,6 +42,12 @@ export class personalCenterPage {
     gotoCoupon() {
         //卡券页面
         this.appCtrl.getRootNav().push(couponPage);
+    }
+
+    gotoGarage()
+    {
+        //车库页面
+        this.appCtrl.getRootNav().push(MyGaragePage);
     }
 
 }
